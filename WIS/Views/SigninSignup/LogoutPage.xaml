@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="WIS.Views.LogoutPage"
+    xmlns:gradient="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
+    xmlns:core="clr-namespace:Syncfusion.XForms.Core;assembly=Syncfusion.Core.XForms"
+    xmlns:viewModel="clr-namespace:WIS.ViewModels"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    BackgroundColor="#1746A0"
+    >
+     <!--  Binding context for login page  -->
+    <ContentPage.BindingContext>
+        <viewModel:LogoutPageViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+         <Grid VerticalOptions="Fill">
+            <gradient:SfGradientView Style="{StaticResource BlueGradientStyle}" />             
+            <buttons:SfButton Grid.Row="0" Margin="10,0,10,0" Command="{Binding LogoutCommand}"
+                            HorizontalOptions="Fill"
+                            Style="{StaticResource GradientButtonStyle}"
+                            Text="Logout" />                          
+         </Grid>
+    </ContentPage.Content>
+</ContentPage>

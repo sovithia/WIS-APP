@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:viewmodel="clr-namespace:WIS.ViewModels"
+             xmlns:schedule="clr-namespace:Syncfusion.SfSchedule.XForms;assembly=Syncfusion.SfSchedule.XForms"
+             x:Class="WIS.Views.SchedulePage">
+      <ContentPage.BindingContext>
+        <viewmodel:ScheduleViewModel/>
+    </ContentPage.BindingContext>
+      
+
+    <ContentPage.Content>
+        <StackLayout>            
+            <StackLayout.Padding>
+            <OnIdiom x:TypeArguments="Thickness">
+                <OnIdiom.Phone>
+                    <OnPlatform x:TypeArguments="Thickness" iOS="0,0,0,0" Android="0,20,0,0"  />
+                </OnIdiom.Phone>
+                <OnIdiom.Tablet>
+                    <OnPlatform x:TypeArguments="Thickness" iOS="0,0,0,0" Android="0,0,0,0" />
+                    </OnIdiom.Tablet>
+                </OnIdiom>
+            </StackLayout.Padding>
+
+            <buttons:SfButton x:Name="switchBtn"                           
+                            Clicked="switchView"
+                            Text="Switch View" BackgroundColor="#1746A0" />
+            
+            <Grid >
+           
+              <Grid.RowDefinitions>
+
+                  <RowDefinition Height="700" />
+              </Grid.RowDefinitions>  
+            
+            <schedule:SfSchedule x:Name="Schedule"
+                                 Grid.Column="0"
+                                 Grid.Row="0"
+                                 DataSource="{Binding Courses}"
+                                 ScheduleView="DayView"                                 
+                                 TimeIntervalHeight="55"                                 
+                                 VisibleDatesChangedCommand="{Binding VisibleDateChanged}"
+                                 BackgroundColor="Red"
+                                 >
+
+                <schedule:SfSchedule.WeekViewSettings>
+                    <schedule:WeekViewSettings StartHour="7" EndHour="17" WorkStartHour="7"   WorkEndHour="17" />
+                </schedule:SfSchedule.WeekViewSettings>
+
+                <schedule:SfSchedule.DayViewSettings  >                    
+                    <schedule:DayViewSettings StartHour="7" EndHour="17"  WorkStartHour="7" WorkEndHour="17"  >                                                
+                        <schedule:DayViewSettings.DayLabelSettings>
+                            <schedule:DayLabelSettings TimeFormat="hh:mm"  TimeLabelColor="#1746A0"/>
+                        </schedule:DayViewSettings.DayLabelSettings>
+                    </schedule:DayViewSettings>
+                </schedule:SfSchedule.DayViewSettings>
+
+                <schedule:SfSchedule.AppointmentStyle>
+                    <schedule:AppointmentStyle
+                        FontSize="8"
+                        />
+
+                </schedule:SfSchedule.AppointmentStyle>
+
+                <schedule:SfSchedule.AppointmentMapping>
+                    <schedule:ScheduleAppointmentMapping
+
+                        ColorMapping="Color"
+                        EndTimeMapping="To"
+                        StartTimeMapping="From"
+                        SubjectMapping="EventName"
+                        StartTimeZoneMapping="StartTimeZone"
+                        EndTimeZoneMapping="EndTimeZone"
+                        
+                        />
+                </schedule:SfSchedule.AppointmentMapping>
+            </schedule:SfSchedule>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
+
+

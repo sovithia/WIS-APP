@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="WIS.Views.SignUpPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behaviour="clr-namespace:WIS.Behaviors"
+    xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:pickers="clr-namespace:Syncfusion.XForms.Pickers;assembly=Syncfusion.SfPicker.XForms"
+    xmlns:picker="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
+    xmlns:control="clr-namespace:WIS.Controls"
+    xmlns:converter="clr-namespace:WIS.Converters"
+    xmlns:core="clr-namespace:Syncfusion.XForms.Core;assembly=Syncfusion.Core.XForms"
+    xmlns:gradient="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
+    xmlns:local="clr-namespace:WIS.Views"
+    xmlns:viewModel="clr-namespace:WIS.ViewModels"
+    Title="Sign Up"    
+    NavigationPage.HasNavigationBar="False"
+    xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+    >
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:BooleanToColorConverter x:Key="ColorConverter" />
+            <converter:InverseBoolConverter x:Key="InverseBoolConverter" />
+            <converter:NameValidationConverter x:Key="FirstValidationErrorConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <!--  Binding context for sign-up page  -->
+    <ContentPage.BindingContext>
+        <viewModel:SignUpPageViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <Grid>
+            <gradient:SfGradientView Style="{StaticResource BlueGradientStyle}" />
+
+            <ScrollView HorizontalOptions="Center">
+                <ScrollView.VerticalOptions>
+                    <OnIdiom
+                        x:TypeArguments="LayoutOptions"
+                        Default="CenterAndExpand"
+                        Phone="FillAndExpand" />
+                </ScrollView.VerticalOptions>
+
+                 <Grid>
+
+
+
+                    <Grid HorizontalOptions="FillAndExpand" RowDefinitions="Auto, Auto, Auto" VerticalOptions="FillAndExpand"> 
+
+                    <StackLayout Margin="{core:OnPlatformOrientationThickness PhonePortrait='20,32',
+                                                                 PhoneLandscape='150,32',
+                                                                 TabletPortrait='200,50',
+                                                                 TabletLandscape='300,50',
+                                                                 Desktop='30'}"
+                    Spacing="0"
+                    VerticalOptions="FillAndExpand"
+                    WidthRequest="{OnPlatform Default='-1',
+                                              UWP='350'}">
+                    <StackLayout
+                        HorizontalOptions="Center"
+                        Spacing="15"
+                        VerticalOptions="CenterAndExpand">
+
+                        <Image Source="Logo" HeightRequest="150" />
+
+                        <!--  Label to display the title of this page  -->
+                        <Label
+                            FontSize="20"
+                            Style="{StaticResource TitleLabelStyle}"
+                            Text="Sign Up (1/2)"
+                             />
+                        <BoxView HeightRequest="4"/>
+                        <!--  Label to display the description of this page  -->
+                        <Label
+                            Margin="0,-16,0,8"
+                            Style="{StaticResource DescriptionLabelStyle}"
+                            Text="Create an account to start doing more"
+                            TextColor="{DynamicResource Gray-White}" />
+
+                      <!--  Picker to get type -->
+                        <StackLayout>
+                            
+                             <picker:SfPicker x:Name="typePicker"
+                                                      PickerMode="Dialog"
+                                                      HeaderText="Select a type"
+                                                      ShowFooter="True"
+                                                      ShowHeader="True"
+                                                      HeaderTextColor="{DynamicResource Gray-Bg}"
+                                                      OKButtonBackgroundColor="{DynamicResource Gray-Bg}"                                                      
+                                                      OkButtonClicked="TypePicker_OkButtonClicked"
+                                                      CancelButtonBackgroundColor="{DynamicResource Gray-Bg}"
+                                                      ColumnHeaderBackgroundColor="{DynamicResource Gray-Bg}"
+                                                      ColumnHeaderTextColor="{DynamicResource Gray-900}"
+                                                      HeaderBackgroundColor="{DynamicResource PrimaryColor}"
+                                                      OKButtonTextColor="{DynamicResource PrimaryColor}"
+                                                      CancelButtonTextColor="{DynamicResource PrimaryColor}"
+                                                      BackgroundColor="{DynamicResource Gray-Bg}"
+                                                      SelectedItemFontFamily="Montserrat-Regular"
+                                                      SelectedItemFontSize="16"
+                                                      SelectedItemTextColor="{DynamicResource PrimaryColor}" />
+                            <border:SfBorder BorderColor="{Binding Source={x:Reference TypeEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=0}" Style="{StaticResource LoginFormBorderlessEntryBorderStyle}">
+                                <Grid ColumnDefinitions="*, Auto">
+
+                                    <buttons:SfButton x:Name="TypeEntry" 
+                                                      Text="{Binding Type.Value, Mode=TwoWay}"
+                                                      TextColor="{StaticResource Gray-White}"
+                                                      FontSize="16"
+                                                      Padding="-5, 0, 0 ,0"                                            
+                                                      FontFamily="Montserrat-Regular"
+                                                      HorizontalOptions="FillAndExpand"
+                                                      HorizontalTextAlignment="Start"                                                     
+                                                      BackgroundColor="Transparent"                                                      
+                                                      Margin="15,0"
+                                                      HeightRequest="40"
+                                                      Clicked="TypePicker_Clicked" />
+                                   
+
+                                     <!--  Label to display error icon  -->
+                                    <Label
+                                        Grid.Column="1"
+                                        IsVisible="{Binding Path=IsVisible, Source={x:Reference TypeValidationLabel}}"                                        
+                                        Style="{StaticResource ErrorIconLabelStyle}"
+                                        Text="{StaticResource Error}" />
+                                </Grid>
+                            </border:SfBorder>
+                              
+                             <!--  Label to display error message  -->
+                            <Label
+                                x:Name="TypeValidationLabel"
+                                Margin="15,-3,0,0"
+                                IsVisible="{Binding Type.IsValid, Converter={StaticResource InverseBoolConverter}}"
+                                Style="{StaticResource SimpleLabelStyle}"                                
+                                Text="{Binding  Type.Errors, Converter={StaticResource FirstValidationErrorConverter}}"                                
+                                TextColor="{DynamicResource Red}"
+                                VerticalOptions="FillAndExpand" />
+                        </StackLayout>
+
+                        <!--  Entry to get identifier from user  -->
+                        <StackLayout>                            
+                            <border:SfBorder BorderColor="{Binding Source={x:Reference IdentifierEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=0}" Style="{StaticResource LoginFormBorderlessEntryBorderStyle}">
+                                <Grid ColumnDefinitions="*, Auto">
+
+                                    <control:BorderlessEntry
+                                        x:Name="IdentifierEntry"
+                                        Margin="15,0"
+                                        HeightRequest="40"
+                                        IsPassword="false"
+                                        Placeholder="Student ID"
+                                        PlaceholderColor="{StaticResource EntryPlaceholderColor}"
+                                        Style="{StaticResource BorderlessEntryStyle}"
+                                        Text="{Binding Identifier.Value}"
+                                        TextColor="{StaticResource Gray-White}">
+                                        <Entry.Behaviors>
+                                            <behaviour:EntryLineValidationBehaviour IsValid="{Binding Identifier.IsValid}" />
+                                        </Entry.Behaviors>
+                                    </control:BorderlessEntry>
+
+                                    <!--  Label to display error icon  -->
+                                    <Label
+                                        Grid.Column="1"
+                                        IsVisible="{Binding Path=IsVisible, Source={x:Reference IdentifierValidationLabel}}"
+                                        Style="{StaticResource ErrorIconLabelStyle}"
+                                        Text="{StaticResource Error}" />
+                                </Grid>
+                            </border:SfBorder>
+
+                            <!--  Label to display error message  -->
+                            <Label
+                                x:Name="IdentifierValidationLabel"
+                                Margin="15,-3,0,0"
+                                IsVisible="{Binding Identifier.IsValid, Converter={StaticResource InverseBoolConverter}}"
+                                Style="{StaticResource SimpleLabelStyle}"
+                                Text="{Binding Identifier.Errors, Converter={StaticResource FirstValidationErrorConverter}}"
+                                TextColor="{DynamicResource Red}"
+                                VerticalOptions="FillAndExpand" />
+                        </StackLayout>
+
+                        <!--  Entry to get phone from user  -->
+                        <StackLayout>                            
+                            <border:SfBorder BorderColor="{Binding Source={x:Reference PhoneEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=0}" Style="{StaticResource LoginFormBorderlessEntryBorderStyle}">
+                                <Grid ColumnDefinitions="*, Auto">
+
+                                    <control:BorderlessEntry
+                                        x:Name="PhoneEntry"
+                                        Margin="15,0"
+                                        HeightRequest="40"
+                                        IsPassword="false"
+                                        Placeholder="Phone"
+                                        PlaceholderColor="{StaticResource EntryPlaceholderColor}"
+                                        Style="{StaticResource BorderlessEntryStyle}"
+                                        Text="{Binding Phone.Value}"
+                                        TextColor="{StaticResource Gray-White}">
+                                        <Entry.Behaviors>
+                                            <behaviour:EntryLineValidationBehaviour IsValid="{Binding Phone.IsValid}" />
+                                        </Entry.Behaviors>
+                                    </control:BorderlessEntry>
+
+                                    <!--  Label to display error icon  -->
+                                    <Label
+                                        Grid.Column="1"
+                                        IsVisible="{Binding Path=IsVisible, Source={x:Reference PhoneValidationLabel}}"
+                                        Style="{StaticResource ErrorIconLabelStyle}"
+                                        Text="{StaticResource Error}" />
+                                </Grid>
+                            </border:SfBorder>
+
+                            <!--  Label to display error message  -->
+                            <Label
+                                x:Name="PhoneValidationLabel"
+                                Margin="15,-3,0,0"
+                                IsVisible="{Binding Phone.IsValid, Converter={StaticResource InverseBoolConverter}}"
+                                Style="{StaticResource SimpleLabelStyle}"
+                                Text="{Binding Phone.Errors, Converter={StaticResource FirstValidationErrorConverter}}"
+                                TextColor="{DynamicResource Red}"
+                                VerticalOptions="FillAndExpand" />
+                        </StackLayout>
+                        
+                        <!--  Entry to get birthdate from user  -->
+                        <StackLayout>
+                            <pickers:SfDatePicker x:Name="datePicker"                                          
+                                MinimumDate="1/1/1940"
+                                PickerMode="Dialog"
+                                PickerWidth="310"
+                                PickerHeight="360"
+                                ShowFooter="True"
+                                HeaderTextColor="{DynamicResource Gray-Bg}"
+                                OKButtonBackgroundColor="{DynamicResource Gray-Bg}"
+                                OkButtonClicked="DatePicker_OkButtonClicked"
+                                CancelButtonBackgroundColor="{DynamicResource Gray-Bg}"
+                                ColumnHeaderBackgroundColor="{DynamicResource Gray-Bg}"
+                                ColumnHeaderTextColor="{DynamicResource Gray-900}"
+                                HeaderBackgroundColor="{DynamicResource PrimaryColor}"
+                                OKButtonTextColor="{DynamicResource PrimaryColor}"
+                                CancelButtonTextColor="{DynamicResource PrimaryColor}"
+                                BackgroundColor="{DynamicResource Gray-Bg}"
+                                SelectedItemFontFamily="Montserrat-Regular"
+                                SelectedItemFontSize="16"
+                                SelectedItemTextColor="{DynamicResource PrimaryColor}" 
+                                UnselectedItemFontFamily="Montserrat-Regular"
+                                UnselectedItemFontSize="16"
+                                UnselectedItemTextColor="{DynamicResource Gray-900}"
+                                />
+
+                            <border:SfBorder BorderColor="{Binding Source={x:Reference BirthdateEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=0}" Style="{StaticResource LoginFormBorderlessEntryBorderStyle}">
+                                <Grid ColumnDefinitions="*, Auto">
+
+                        
+                                    <buttons:SfButton x:Name="BirthdateEntry" 
+                                                      Text="{Binding BirthDate.Value, StringFormat='{0:yyyy-MM-dd}', Mode=TwoWay}"
+                                                      TextColor="{StaticResource Gray-White}"
+                                                      FontSize="16"
+                                                      Padding="-5, 0, 0 ,0"                                            
+                                                      FontFamily="Montserrat-Regular"
+                                                      HorizontalOptions="FillAndExpand"
+                                                      HorizontalTextAlignment="Start"                                                     
+                                                      BackgroundColor="Transparent"                                                      
+                                                      Margin="15,0"
+                                                      HeightRequest="40"
+                                                      Clicked="DatePicker_Clicked" />
+
+                                      <!--  Label to display error icon  -->
+                                    <Label
+                                        Grid.Column="1"
+                                        IsVisible="{Binding Path=IsVisible, Source={x:Reference BirthdateValidationLabel}}"
+                                        Style="{StaticResource ErrorIconLabelStyle}"
+                                        Text="{StaticResource Error}" />
+                                </Grid>
+                            </border:SfBorder>
+                            <Label
+                                x:Name="BirthdateValidationLabel"
+                                Margin="15,-3,0,0"
+                                IsVisible="{Binding BirthDate.IsValid, Converter={StaticResource InverseBoolConverter}}"
+                                Style="{StaticResource SimpleLabelStyle}"
+                                Text="{Binding BirthDate.Errors, Converter={StaticResource FirstValidationErrorConverter}}"
+                                TextColor="{DynamicResource Red}"
+                                VerticalOptions="FillAndExpand" />
+                        </StackLayout>
+
+
+                        <busyindicator:SfBusyIndicator x:Name="busyindicator"
+                                HeightRequest="30"
+                                IsBusy="{Binding IsLoading}"
+                                AnimationType="Ball"
+                                TextColor="White"
+                                ViewBoxWidth = "30" 
+                                Title="Loading..."
+                                ViewBoxHeight="30"                                     
+                                Margin="0,16" />
+                        <!--  Sign-up button  -->
+                        <buttons:SfButton
+                            Command="{Binding SignUpCommand}"
+                            HorizontalOptions="FillAndExpand"
+                            Style="{StaticResource GradientButtonStyle}"
+                            Text="REGISTER" />
+                    </StackLayout>
+
+                    <StackLayout
+                        HorizontalOptions="Center"
+                        Orientation="Horizontal"
+                        Spacing="1"
+                        VerticalOptions="End">
+                       
+                        <Label
+                            Style="{StaticResource DescriptionLabelStyle}"
+                            Text="Already have an account?"
+                            TextColor="{DynamicResource Gray-White}"
+                            VerticalTextAlignment="Center" />
+
+                        <buttons:SfButton
+                            Command="{Binding LoginCommand}"
+                            Style="{StaticResource TransparentButtonStyle}"
+                            Text="Log In"
+                            TextColor="{DynamicResource PrimaryColor}" />
+
+                    </StackLayout>
+                </StackLayout>
+                </Grid>
+            </Grid>
+            </ScrollView>
+        
+          
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

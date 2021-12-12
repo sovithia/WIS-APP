@@ -1,0 +1,146 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2244" />  
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
+    <PackageReference Include="Syncfusion.Xamarin.Core" Version="19.3.0.57" />
+    <PackageReference Include="Syncfusion.Xamarin.Buttons" Version="19.3.0.57" />
+    <PackageReference Include="Syncfusion.Xamarin.SfListView" Version="19.3.0.57" />
+    <PackageReference Include="Syncfusion.Xamarin.SfRating" Version="19.3.0.57" />
+    <PackageReference Include="Syncfusion.Xamarin.SfComboBox" Version="19.3.0.57" />
+    <PackageReference Include="Syncfusion.Xamarin.Cards" Version="19.3.0.57" />
+    <PackageReference Include="Syncfusion.Xamarin.SfBadgeView" Version="19.3.0.57" />
+    <PackageReference Include="Syncfusion.Xamarin.SfSchedule" Version="19.3.0.57" />
+    <PackageReference Include="Plugin.AudioRecorder" Version="1.1.0" />
+    <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Syncfusion.Xamarin.SfDataForm" Version="19.3.0.57" />
+    <PackageReference Include="Xam.Plugin.Media" Version="5.0.1" />
+    <PackageReference Include="Syncfusion.Xamarin.SfPullToRefresh" Version="19.3.0.57" />
+    <PackageReference Include="Plugin.MediaManager.Forms" Version="1.0.9" />
+    <PackageReference Include="LibVLCSharp.Forms" Version="3.6.3" />
+    <PackageReference Include="Syncfusion.Xamarin.SfSignaturePad" Version="19.3.0.57" />
+    <PackageReference Include="Xam.Plugin.Connectivity" Version="3.2.0" />
+    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="4.4.0" />
+    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="4.4.0" />
+    <PackageReference Include="Syncfusion.Xamarin.SfPicker" Version="19.3.0.57" />
+    <PackageReference Include="Syncfusion.Xamarin.SfBusyIndicator" Version="19.3.0.57" />
+    <PackageReference Include="SkiaSharp.Views.Forms" Version="2.80.3" />
+  </ItemGroup>
+  
+
+  <ItemGroup>
+    <EmbededResource Include="Styles\AvatarViewStyles.xaml" />
+    <EmbededResource Include="Styles\BorderStyles.xaml" />
+    <EmbededResource Include="Styles\BoxViewStyles.xaml" />
+    <EmbededResource Include="Styles\ButtonStyles.xaml" />
+    <EmbededResource Include="Styles\CheckBoxStyles.xaml" />
+    <EmbededResource Include="Styles\Colors.xaml" />
+    <EmbededResource Include="Styles\ComboBoxStyles.xaml" />
+    <EmbededResource Include="Styles\EditorStyles.xaml" />
+    <EmbededResource Include="Styles\EntryStyles.xaml" />
+    <EmbededResource Include="Styles\FontIcons.xaml" />
+    <EmbededResource Include="Styles\FrameStyles.xaml" />
+    <EmbededResource Include="Styles\GradientViewStyles.xaml" />
+    <EmbededResource Include="Styles\LabelStyles.xaml" />
+    <EmbededResource Include="Styles\ListViewStyles.xaml" />
+    <EmbededResource Include="Styles\RadioButtonStyles.xaml" />
+    <EmbededResource Include="Styles\RatingStyles.xaml" />
+    <EmbededResource Include="Styles\SegmentedControlStyles.xaml" />
+    <EmbededResource Include="Styles\TextInputLayoutStyles.xaml" />
+    <EmbededResource Include="Themes\LightTheme.xaml" />
+    <EmbededResource Include="Themes\DarkTheme.xaml" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Folder Include="Styles\" />
+    <Folder Include="Resources\" />
+    <Folder Include="Resources\Fonts\" />
+    <Folder Include="Controls\" />
+    <Folder Include="Converters\" />
+    <Folder Include="Themes\" />
+    <Folder Include="Data\" />
+    <Folder Include="Behaviors\" />
+    <Folder Include="Validators\" />
+    <Folder Include="Validators\Rules\" />
+    <Folder Include="Views\Templates\" />
+    <Folder Include="Views\Selectors\" />
+    <Folder Include="Helpers\" />
+    <Folder Include="Views\SigninSignup\" />
+    <Folder Include="Views\Invoice\" />
+    <Folder Include="Views\Controls\" />
+    <Folder Include="Views\Schedule\" />
+    <Folder Include="Views\Attendance\" />
+    <Folder Include="Views\Payment\" />
+    <Folder Include="Interfaces\" />
+    <Folder Include="Views\Modals\" />
+    <Folder Include="Views\Push\" />
+  </ItemGroup>
+  
+  
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Fonts\UIFontIcons.ttf" />
+    <EmbeddedResource Include="Resources\Fonts\Montserrat-Regular.ttf" />
+    <EmbeddedResource Include="Resources\Fonts\Montserrat-Bold.ttf" />
+    <EmbeddedResource Include="Resources\Fonts\Montserrat-Medium.ttf" />
+    <EmbeddedResource Include="Resources\Fonts\Montserrat-SemiBold.ttf" />
+    <EmbeddedResource Include="Data\about.json" />
+    <EmbeddedResource Include="Data\chat.json" />
+    <EmbeddedResource Include="Data\profile.json" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\Signin Signup\ForgotPasswordPage.xaml.cs">
+      <DependentUpon>ForgotPasswordPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\Support\SupportDetailPage.xaml.cs">
+      <DependentUpon>SupportDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\Support\SupportPage.xaml.cs">
+      <DependentUpon>SupportPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\Invoice\InvoiceListPage.xaml.cs">
+      <DependentUpon>InvoiceListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\Controls\EmailEntry.xaml.cs">
+      <DependentUpon>EmailEntry.xaml</DependentUpon>
+    </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\Schedule\SchedulePage.xaml.cs">
+      <DependentUpon>SchedulePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\Signin Signup\ResetPasswordPage.xaml.cs">
+      <DependentUpon>ResetPasswordPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\Signin Signup\LoginPage.xaml.cs">
+      <DependentUpon>LoginPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\Attendance\AbsenceListPage.xaml.cs">
+      <DependentUpon>AttendanceListPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Interfaces\" />
+    <None Remove="Xam.Plugin.Media" />
+    <None Remove="Syncfusion.Xamarin.SfPullToRefresh" />
+    <None Remove="Plugin.MediaManager.Forms" />
+    <None Remove="LibVLCSharp.Forms" />
+    <None Remove="Views\Modals\" />
+    <None Remove="Data\profile.json" />
+    <None Remove="Syncfusion.Xamarin.SfSignaturePad" />
+    <None Remove="Plugin.Permissions" />
+    <None Remove="Xam.Plugin.Connectivity" />
+    <None Remove="Microsoft.AppCenter.Analytics" />
+    <None Remove="Microsoft.AppCenter.Crashes" />
+    <None Remove="Bindings\TODO.txt" />
+    <None Remove="Syncfusion.Xamarin.SfPicker" />
+    <None Remove="Syncfusion.Xamarin.SfBusyIndicator" />
+    <None Remove="SkiaSharp.Views.Forms" />
+    <None Remove="Views\Push\" />
+  </ItemGroup>
+</Project>

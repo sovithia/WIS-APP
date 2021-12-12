@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "231188628538",
+    "project_id": "w-i-s-dcd7d",
+    "storage_bucket": "w-i-s-dcd7d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:231188628538:android:969f0e8a0e39eb1ff92103",
+        "android_client_info": {
+          "package_name": "kh.edu.western"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "231188628538-j9vdivps5tk3cvjrb56d8fklng8819c6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtJO65W4cfOYpbWyJjiRmuIpyiRqZzOCc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "231188628538-j9vdivps5tk3cvjrb56d8fklng8819c6.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "231188628538-kr6ricqjcb63e4njd13o8v252adsvf6g.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "kh.edu.western"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

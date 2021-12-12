@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"    
+    xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+    xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+    xmlns:behaviour="clr-namespace:WIS.Behaviors"
+    x:Class="WIS.Views.AttendanceListHistoryPage"
+    xmlns:viewModel="clr-namespace:WIS.ViewModels"
+    xmlns:gradient="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"    
+    >
+
+       <ContentPage.BindingContext>
+        <viewModel:AttendanceListHistoryPageViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <Grid>
+            <gradient:SfGradientView Style="{StaticResource BlueGradientStyle}" />
+
+            <StackLayout>
+              <listView:SfListView
+                    x:Name="OurTeam"
+                    Grid.Row="1"                  
+                    AutoFitMode="Height"
+                    ItemsSource="{Binding Absences}"
+                    SelectionMode="None"
+                    TapCommand="{Binding ItemSelectedCommand}"
+                    VerticalOptions="FillAndExpand">
+
+                    <listView:SfListView.HeaderTemplate>
+                        <DataTemplate>
+                            <!--  Header  -->
+                            <Label
+                                Margin="0,20,0,5"
+                                FontSize="20"
+                                LineHeight="{OnPlatform Android=1.25,
+                                                        Default=-1}"
+                                Style="{StaticResource TitleLabelStyle}"
+                                Text="Absences"
+                                TextColor="{DynamicResource Gray-White}" />
+                        </DataTemplate>
+                    </listView:SfListView.HeaderTemplate>
+
+                    <listView:SfListView.ItemTemplate>
+                        <DataTemplate>
+                            <border:SfBorder                                    
+                                    Margin="15,10,15,10"
+                                    BorderColor="{DynamicResource Gray-Bg}"
+                                    BorderWidth="0"
+                                    CornerRadius="25"
+                                    HasShadow="True"
+                                    Style="{DynamicResource ThemeBorderStyle}">
+
+                            
+                            <StackLayout  Spacing="0" BackgroundColor="{DynamicResource InfoBlue}">
+                             
+                                <!--  Student name  -->
+                                <Label
+                                    FontSize="14"
+                                    Style="{StaticResource TitleLabelStyle}"
+                                    Text="{Binding student}"
+                                    TextColor="{DynamicResource Gray-White}" />                               
+                                <!--  From  -->
+                                <Label
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    Style="{StaticResource SimpleLabelStyle}"
+                                    Text="{Binding Start}"
+                                    TextColor="White"
+                                    VerticalOptions="Start"
+                                    VerticalTextAlignment="Start" />
+
+                                <!--  To  -->
+                                <Label
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    Style="{StaticResource SimpleLabelStyle}"
+                                    Text="{Binding End}"
+                                    TextColor="White"
+                                    VerticalOptions="Start"
+                                    VerticalTextAlignment="Start" />
+
+                                 
+
+                            </StackLayout>
+                               </border:SfBorder>
+                        </DataTemplate>
+                    </listView:SfListView.ItemTemplate>                   
+
+                    <!--  Behavior added to handle scrolling of ListView  -->
+                    <listView:SfListView.Behaviors>
+                        <behaviour:SfListViewExtendHeightBehavior />
+                    </listView:SfListView.Behaviors>
+                </listView:SfListView>
+
+        </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

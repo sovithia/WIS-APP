@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"       
+       xmlns:sys="clr-namespace:System;assembly=netstandard"
+       xmlns:views="clr-namespace:WIS.Views"
+       x:Class="WIS.AppShell"
+       x:Name="shell"      
+       FlyoutHeaderBehavior="CollapseOnScroll"
+       BackgroundColor="Black"
+       FlyoutBackgroundColor="Black" >
+    
+    <Shell.Resources>
+        <Style x:Key="BaseStyle"
+               TargetType="Element">
+            <Setter Property="Shell.BackgroundColor"
+                    Value="#1746A0" />
+            <Setter Property="Shell.ForegroundColor"
+                    Value="White" />
+            <Setter Property="Shell.TitleColor"
+                    Value="White" />            
+            <Setter Property="Shell.DisabledColor"
+                    Value="#B4FFFFFF" />
+            <Setter Property="Shell.UnselectedColor"
+                    Value="#95FFFFFF" />            
+        </Style>
+        <Style TargetType="ShellItem" 
+               BasedOn="{StaticResource BaseStyle}" />
+
+        <Style x:Key="RegistrarShell"
+               x:Name="RegistrarShell"
+               TargetType="Element"
+               BasedOn="{StaticResource BaseStyle}">
+            <Setter Property="Shell.BackgroundColor"
+                    Value="#ED3B3B" />            
+        </Style>
+
+        <Style x:Key="ParentShell"
+               x:Name="ParentShell"
+               TargetType="Element"
+               BasedOn="{StaticResource BaseStyle}">
+            <Setter Property="Shell.BackgroundColor"
+                    Value="#A63DBD" />            
+            
+        </Style>
+
+        <Style x:Key="TeacherShell"
+               x:Name="TeacherShell"
+               TargetType="Element"
+               BasedOn="{StaticResource BaseStyle}">
+            <Setter Property="Shell.BackgroundColor"
+                    Value="#689F39" />
+        </Style>
+
+        <Style x:Key="StudentShell"
+               x:Name="StudentShell"
+               TargetType="Element"               
+               BasedOn="{StaticResource BaseStyle}">            
+            <Setter Property="Shell.BackgroundColor"
+                    Value="#1746A0" />
+        </Style>
+    </Shell.Resources>
+
+    <Shell.FlyoutHeaderTemplate>
+        <DataTemplate>
+            <StackLayout BackgroundColor="White" HeightRequest="80" Padding="0,20,0,0">
+
+                <Image                   
+                    HeightRequest="60"
+                    Source="LogoColor"
+                    VerticalOptions="Center" />
+            </StackLayout>
+                      
+        </DataTemplate>
+    </Shell.FlyoutHeaderTemplate>
+    
+    <Shell.FlyoutFooterTemplate>
+        <DataTemplate>
+            <StackLayout Padding="0,0,0,20">
+                <Label Text="WIS"
+                       TextColor="GhostWhite"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Center" />
+
+                <Label Text="{Binding Source={x:Static sys:DateTime.Now}, StringFormat='{0:MMMM dd, yyyy}'}"
+                       TextColor="GhostWhite"
+                       HorizontalOptions="Center" />
+            </StackLayout>
+        </DataTemplate>
+    </Shell.FlyoutFooterTemplate>
+   
+    <FlyoutItem  FlyoutDisplayOptions="AsMultipleItems" x:Name="itemContainer">           
+    </FlyoutItem>
+
+    <ShellContent Route="Logout"                  
+                  Title="Logout"
+                  Icon="LogoutPage"
+                  ContentTemplate="{DataTemplate views:LogoutPage}" />
+    
+</Shell>

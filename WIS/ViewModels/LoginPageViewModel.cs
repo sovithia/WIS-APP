@@ -1,0 +1,231 @@
+using WIS.Validators;
+using WIS.Validators.Rules;
+using Xamarin.Forms;
+using Xamarin.Forms.Internals;
+using WIS.Views;
+using Xamarin.Essentials;
+using WIS.Services;
+using Plugin.Connectivity;
+
+namespace WIS.ViewModels
+{
+    /// <summary>
+    /// ViewModel for login page.
+    /// </summary>
+    [Preserve(AllMembers = true)]
+    public class LoginPageViewModel : BaseViewModel
+    {
+        #region Fields
+
+        private ValidatableObject<string> phone;
+        private ValidatableObject<string> password;
+        private bool isLoading;
+
+        #endregion
+
+        #region Constructor
+        /// <summary>
+        /// Initializes a new instance for the <see cref="LoginViewModel" /> class.
+        /// </summary>
+        public LoginPageViewModel()
+        {
+            
+            this.InitializeProperties();
+            this.AddValidationRules();
+            this.LoginCommand = new Command(this.LoginClicked);
+            this.SignUpCommand = new Command(this.SignUpClicked);
+            this.ForgotPasswordCommand = new Command(this.ForgotPasswordClicked);
+        }
+
+        #endregion
+
+        #region Property
+        
+        public bool IsLoading
+        {
+            get
+            {
+                return this.isLoading;
+            }
+
+            set
+            {
+                if (this.isLoading == value)
+                {
+                    return;
+                }
+
+                this.SetProperty(ref this.isLoading, value);
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the property that bounds with an entry that gets the email ID from user in the login page.
+        /// </summary>
+        public ValidatableObject<string> Phone
+        {
+            get
+            {
+                return this.phone;
+            }
+
+            set
+            {
+                if (this.phone == value)
+                {
+                    return;
+                }
+
+                this.SetProperty(ref this.phone, value);
+            }
+        }
+
+        public ValidatableObject<string> Password
+        {
+            get
+            {
+                return this.password;
+            }
+
+            set
+            {
+                if (this.password == value)
+                {
+                    return;
+                }
+
+                this.SetProperty(ref this.password, value);
+            }
+        }
+
+        
+        #endregion
+
+        #region Command
+
+        /// <summary>
+        /// Gets or sets the command that is executed when the Log In button is clicked.
+        /// </summary>
+        public Command LoginCommand { get; set; }
+
+        /// <summary>
+        /// Gets or sets the command that is executed when the Sign Up button is clicked.
+        /// </summary>
+        public Command SignUpCommand { get; set; }
+
+        /// <summary>
+        /// Gets or sets the command that is executed when the Forgot Password button is clicked.
+        /// </summary>
+        public Command ForgotPasswordCommand { get; set; }
+
+        #endregion
+
+        #region Methods
+
+        /// <summary>
+        /// Initializing the properties.
+        /// </summary>
+        private void InitializeProperties()
+        {
+            this.IsLoading = false;
+            this.Phone = new ValidatableObject<string>();
+            this.Password = new ValidatableObject<string>();
+
+            this.Phone.Value = "012771335";
+            this.Password.Value = "1234";
+            
+        }
+
+        /// <summary>
+        /// Validation rule for password
+        /// </summary>
+        private void AddValidationRules()
+        {
+            this.Phone.Validations.Add(new IsValidPhoneRule<string> { ValidationMessage = "Phone blank or invalid" });
+            this.Password.Validations.Add(new IsNotNullOrEmptyRule<string> { ValidationMessage = "Password Required" });
+            
+        }
+
+        /// <summary>
+        /// Check the password is null or empty
+        /// </summary>
+        /// <returns>Returns the fields are valid or not</returns>
+        public bool AreFieldsValid()
+        {            
+            bool isPasswordValid = this.Password.Validate();
+            bool isPhoneValid = this.Phone.Validate();
+            return isPhoneValid && isPasswordValid;
+        }
+
+
+        /// <summary>
+        /// Invoked when the Log In button is clicked.
+        /// </summary>
+        /// <param name="obj">The Object</param>
+        private void LoginClicked(object obj)
+        {
+            if (!this.AreFieldsValid())
+            {
+                return;
+            }
+
+            /*
+            if (CrossConnectivity.Current.IsConnected == false)
+            {
+                Application.Current.MainPage.DisplayAlert("ERROR", "No internet connection", "OK");
+                return;
+            }
+            */
+
+            // RETRIEVE INFO FROM BACKOFFICE
+            IsLoading = true;
+            DataService.Instance.Login(Phone.Value, Password.Value, (user) =>
+            {            
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    IsLoading = false;
+                    DataService.Instance.CurrentUser = user;
+                    if (user != null)
+                    {
+                        string type = user.usertype;
+                        Preferences.Set("TYPE", user.usertype);
+                        AppShell page = null;
+                        if (type == "STUDENT")
+                            page = new AppShell(USERTYPE.STUDENT);
+                        else if (type == "PARENT")
+                            page = new AppShell(USERTYPE.PARENT);
+                        else if (type == "TEACHER")
+                            page = new AppShell(USERTYPE.TEACHER);
+                        else if (type == "REGISTRAR")
+                            page = new AppShell(USERTYPE.REGISTRAR);
+                        Application.Current.MainPage = page;                        
+                    }                    
+                });                
+            });                       
+        }
+
+        /// <summary>
+        /// Invoked when the Sign Up button is clicked.
+        /// </summary>
+        /// <param name="obj">The Object</param>
+        private void SignUpClicked(object obj)
+        {
+            SignUpPage page = new SignUpPage();
+            Application.Current.MainPage.Navigation.PushModalAsync(page);
+            // Do Something
+        }
+
+        /// <summary>
+        /// Invoked when the Forgot Password button is clicked.
+        /// </summary>
+        /// <param name="obj">The Object</param>
+        private void ForgotPasswordClicked(object obj)
+        {
+            ForgotPasswordPage page = new ForgotPasswordPage();
+            Application.Current.MainPage.Navigation.PushModalAsync(page);
+            // Do something
+        }
+  
+        #endregion
+    }
+}

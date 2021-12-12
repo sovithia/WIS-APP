@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="WIS.Views.ProfilePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+    xmlns:button="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:controls="clr-namespace:WIS.Controls"
+    xmlns:helper="clr-namespace:WIS.Helpers"
+    xmlns:syncEffectsView="clr-namespace:Syncfusion.XForms.EffectsView;assembly=Syncfusion.Core.XForms"
+    Title="Profile Page"
+    NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.Content>
+        <ScrollView>
+
+            <StackLayout  BackgroundColor="{DynamicResource Gray-Bg}" Spacing="0" Padding="0,10,0,20">
+
+                <Image Source="LogoColor"  HeightRequest="100" />
+
+                <Grid  BackgroundColor="#2196F3" VerticalOptions="FillAndExpand" RowDefinitions="auto,*">
+                                    
+                    <Image
+                        x:Name="ProfileImage"
+                        Grid.Row="0"
+                        HeightRequest="400"
+                        Source="{Binding ProfilePicture}"
+                        VerticalOptions="Center">                        
+                    </Image>
+                                      
+                    <!--  Profile name and status with border  -->
+                    <border:SfBorder
+                        x:Name="ProfileNameLabel"
+                        Grid.Row="1"
+                        
+                        Margin="0,0,0,-1"
+                        helper:RTLHelper.CornerRadius="{OnIdiom Default='32,32,0,0'}"
+                        BackgroundColor="{DynamicResource Gray-Bg}"
+                        BorderWidth="0"
+                        VerticalOptions="End">
+                        <border:SfBorder.Content>
+                            <controls:TapAnimationGrid
+                                Padding="16,32,16,7"
+                                ColumnDefinitions="Auto, *, Auto"
+                                ColumnSpacing="8"
+                                Command="{Binding StatusCommand}"
+                                RowDefinitions="*, *"
+                                RowSpacing="0">
+                             
+                                <!--  Profile Name  -->
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    FontFamily="Montserrat-Bold"
+                                    HorizontalOptions="Start"
+                                    HorizontalTextAlignment="Start"
+                                    Style="{StaticResource TitleLabelStyle}"
+                                    TextColor="{DynamicResource Gray-800}"
+                                    Text="{Binding DisplayName}"
+                                    VerticalOptions="Center"
+                                    VerticalTextAlignment="Center" />
+
+                                <!--  Status  -->
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    Margin="{OnPlatform Default='0',
+                                                        iOS='0,6,0,0'}"
+                                    Style="{StaticResource SimpleLabelStyle}"
+                                    Text="{Binding UserTitle}"
+                                    TextColor="{DynamicResource Gray-900}" />
+                              
+                            </controls:TapAnimationGrid>
+                        </border:SfBorder.Content>
+                    </border:SfBorder>
+                </Grid>
+
+
+                <BoxView Style="{StaticResource HorizontalSeparatorStyle}" />
+
+                <!--  Grid for mobile number label and icon  -->
+                <Grid
+                    Padding="16"
+                    ColumnDefinitions="Auto, *"
+                    ColumnSpacing="16">
+
+                    <Label
+                        Grid.Column="0"
+                        Margin="0,5,0,0"
+                        Style="{StaticResource IconLabelStyle}"
+                        Text="{StaticResource Phone}" />
+
+                    <Label
+                        Grid.Column="1"
+                        FontFamily="Montserrat-Medium"
+                        HorizontalOptions="Start"
+                        Style="{StaticResource TitleLabelStyle}"
+                        TextColor="{DynamicResource Gray-800}"
+                        Text="{Binding Phone}"
+                        VerticalOptions="Center" />
+
+                </Grid>
+
+                <BoxView Style="{StaticResource HorizontalSeparatorStyle}" />
+                 <!--  Grid for birthdate label and icon  -->
+                <Grid
+                    Padding="16"
+                    ColumnDefinitions="Auto, *"
+                    ColumnSpacing="16">
+
+                    <Label
+                        Grid.Column="0"
+                        Margin="0,5,0,0"
+                        Style="{StaticResource IconLabelStyle}"
+                        Text="{StaticResource Calendar}" />
+
+                    <Label
+                        Grid.Column="1"
+                        FontFamily="Montserrat-Medium"
+                        HorizontalOptions="Start"
+                        Style="{StaticResource TitleLabelStyle}"
+                        Text="{Binding Birthdate}"
+                        TextColor="{DynamicResource Gray-800}"
+                        VerticalOptions="Center" />
+
+                </Grid>
+                <BoxView Style="{StaticResource HorizontalSeparatorStyle}" />
+
+                <StackLayout Padding="16,16,8,0" Orientation="Horizontal">
+
+                   
+                </StackLayout>
+
+                <!--  ScrollView for shared media  -->
+                <ScrollView
+                    x:Name="ScrollView"
+                    Padding="16,8,16,16"
+                    HorizontalScrollBarVisibility="Never"
+                    Orientation="Horizontal">
+                    <StackLayout>
+                        <Label Text="{Binding Bio}" />                                                                      
+                    </StackLayout>
+                </ScrollView>
+
+            </StackLayout>
+
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
