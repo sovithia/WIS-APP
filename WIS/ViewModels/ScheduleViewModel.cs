@@ -72,7 +72,7 @@ namespace WIS.ViewModels
                 var tmpList = new ObservableCollection<SFSCHEDULEDATA>();
 
                 var firstday = args.visibleDates[0];
-                firstday = firstday.AddHours(-5);
+                firstday = firstday.AddHours(-5); // Need to adjust with layout
                 Console.WriteLine("First Visible " + firstday.Day);
 
                 if (firstday > schedule.dStartdate && schedule.dEndDate > firstday)

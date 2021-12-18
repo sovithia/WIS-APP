@@ -60,7 +60,7 @@
                                     Style="{StaticResource TitleLabelStyle}"
                                     Text="{Binding dID}"
                                     TextColor="{DynamicResource Gray-White}" />
-
+                                
                                 <!--  Student  -->
                                 <Label
                                     FontSize="14"
@@ -73,7 +73,7 @@
                                     HorizontalOptions="Center"
                                     HorizontalTextAlignment="Center"
                                     Style="{StaticResource SimpleLabelStyle}"
-                                    Text="{Binding invoice_number}"
+                                    Text="{Binding invoice_date}"
                                     TextColor="White"
                                     VerticalOptions="Start"
                                     VerticalTextAlignment="Start" />

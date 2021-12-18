@@ -27,7 +27,7 @@ namespace WIS.ViewModels
        
         private Command editCommand;
 
-        private USER currentUser;
+        private APPUSER currentUser;
         
 
         #endregion
@@ -37,10 +37,10 @@ namespace WIS.ViewModels
         /// <summary>
         /// Initializes a new instance for the <see cref="ProfileViewModel" /> class.
         /// </summary>
-        public ProfileViewModel(USER user)
+        public ProfileViewModel(APPUSER user)
         {
             if (user == null)
-                currentUser = new USER();
+                currentUser = new APPUSER();
             else
                 currentUser = user;
         }

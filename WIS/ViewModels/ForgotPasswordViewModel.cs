@@ -31,6 +31,7 @@ namespace WIS.ViewModels
         }
 
         #endregion
+
         #region Fields
 
         private ValidatableObject<string> phone;
@@ -40,7 +41,6 @@ namespace WIS.ViewModels
             {
                 return this.phone;
             }
-
             set
             {
                 if (this.phone == value)

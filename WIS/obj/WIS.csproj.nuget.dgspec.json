@@ -1,0 +1,161 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/sovi/Projects/WIS-APP/WIS/WIS.csproj": {}
+  },
+  "projects": {
+    "/Users/sovi/Projects/WIS-APP/WIS/WIS.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/sovi/Projects/WIS-APP/WIS/WIS.csproj",
+        "projectName": "WIS",
+        "projectPath": "/Users/sovi/Projects/WIS-APP/WIS/WIS.csproj",
+        "packagesPath": "/Users/sovi/.nuget/packages/",
+        "outputPath": "/Users/sovi/Projects/WIS-APP/WIS/obj/",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "/Users/sovi/.config/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "dependencies": {
+            "Microsoft.AppCenter.Analytics": {
+              "target": "Package",
+              "version": "[4.4.0, )"
+            },
+            "Microsoft.AppCenter.Crashes": {
+              "target": "Package",
+              "version": "[4.4.0, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
+            "Plugin.AudioRecorder": {
+              "target": "Package",
+              "version": "[1.1.0, )"
+            },
+            "Plugin.MediaManager.Forms": {
+              "target": "Package",
+              "version": "[1.0.9, )"
+            },
+            "SkiaSharp.Views.Forms": {
+              "target": "Package",
+              "version": "[2.80.3, )"
+            },
+            "Syncfusion.Xamarin.Buttons": {
+              "target": "Package",
+              "version": "[19.4.0.38, )"
+            },
+            "Syncfusion.Xamarin.Cards": {
+              "target": "Package",
+              "version": "[19.4.0.38, )"
+            },
+            "Syncfusion.Xamarin.Core": {
+              "target": "Package",
+              "version": "[19.4.0.38, )"
+            },
+            "Syncfusion.Xamarin.SfBadgeView": {
+              "target": "Package",
+              "version": "[19.4.0.38, )"
+            },
+            "Syncfusion.Xamarin.SfBusyIndicator": {
+              "target": "Package",
+              "version": "[19.4.0.38, )"
+            },
+            "Syncfusion.Xamarin.SfComboBox": {
+              "target": "Package",
+              "version": "[19.4.0.38, )"
+            },
+            "Syncfusion.Xamarin.SfDataForm": {
+              "target": "Package",
+              "version": "[19.4.0.38, )"
+            },
+            "Syncfusion.Xamarin.SfListView": {
+              "target": "Package",
+              "version": "[19.4.0.38, )"
+            },
+            "Syncfusion.Xamarin.SfPicker": {
+              "target": "Package",
+              "version": "[19.4.0.38, )"
+            },
+            "Syncfusion.Xamarin.SfPullToRefresh": {
+              "target": "Package",
+              "version": "[19.4.0.38, )"
+            },
+            "Syncfusion.Xamarin.SfRating": {
+              "target": "Package",
+              "version": "[19.4.0.38, )"
+            },
+            "Syncfusion.Xamarin.SfSchedule": {
+              "target": "Package",
+              "version": "[19.4.0.38, )"
+            },
+            "Syncfusion.Xamarin.SfSignaturePad": {
+              "target": "Package",
+              "version": "[19.4.0.38, )"
+            },
+            "Xam.Plugin.Connectivity": {
+              "target": "Package",
+              "version": "[3.2.0, )"
+            },
+            "Xam.Plugin.Media": {
+              "target": "Package",
+              "version": "[5.0.1, )"
+            },
+            "Xamarin.Essentials": {
+              "target": "Package",
+              "version": "[1.7.0, )"
+            },
+            "Xamarin.Forms": {
+              "target": "Package",
+              "version": "[5.0.0.2291, )"
+            },
+            "sqlite-net-pcl": {
+              "target": "Package",
+              "version": "[1.8.116, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.404/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

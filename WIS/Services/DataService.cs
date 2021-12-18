@@ -9,16 +9,13 @@ using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace WIS.Services
-{
-    
-
+{    
     public class DataService
     {        
         private string BaseURL;
         private Dictionary<string, string> headers;
 
-
-        public USER CurrentUser { get; set; }
+        public APPUSER CurrentUser { get; set; }
 
         private static DataService instance;
         public static DataService Instance
@@ -29,7 +26,6 @@ namespace WIS.Services
                 return instance;
             }
         }
-
 
         public DataService()
         {
@@ -86,7 +82,21 @@ namespace WIS.Services
             this.BaseURL + "/forgetpassword", data, null);
         }
 
-        public void Login(string phone, string password, responseDelegate<USER> del)
+        public void EditPassword(string userid, string newpassword, string token)
+        {
+            Dictionary<string, string> data = new Dictionary<string, string>();
+            data["userid"] = userid;
+            data["password"] = newpassword;
+            data["token"] = token;
+
+            RESTEngine.HttpPost(result =>
+            {                
+                Shell.Current.DisplayAlert("OK", "Password changed", "Ok");                
+            },
+            this.BaseURL + "/editPassword", data, null);
+        }
+
+        public void Login(string phone, string password, responseDelegate<APPUSER> del)
         {
             Dictionary<string, string> data = new Dictionary<string, string>();
             data["phone"] = phone;
@@ -96,7 +106,7 @@ namespace WIS.Services
             {
                 if (data != null)
                 {
-                    USER user = JsonConvert.DeserializeObject<USER>(data,
+                    APPUSER user = JsonConvert.DeserializeObject<APPUSER>(data,
                         new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore });
                     CurrentUser = user;
                     headers["token"] = user.access_token;
@@ -137,7 +147,6 @@ namespace WIS.Services
             }, this.BaseURL + "/attendancedetails/" + ID,headers);
         }
 
-
         public void ValidateAttendance(string absenceID, responseDelegate<bool> del)
         {
             Dictionary<string, string> data = new Dictionary<string, string>();                      
@@ -147,8 +156,6 @@ namespace WIS.Services
             }, this.BaseURL + "/attendance/" + absenceID, data, headers);
         }
         
-
-
         // Invoice
         public void GetInvoiceList(responseDelegate<List<INVOICE>> del)
         {
@@ -197,6 +204,9 @@ namespace WIS.Services
             }, this.BaseURL + "/invoice/" + invoiceID, data, headers);
         }
 
+
+                
+
         // Schedule
         public void GetSchedule(responseDelegate<SCHEDULE> del)
         {
@@ -214,16 +224,20 @@ namespace WIS.Services
             }, this.BaseURL + "/schedule", headers);
         }
 
-        // Support
-        public void GetSupportList(responseDelegate<List<CHATLINK>> del)
+        
+
+
+        // Register Push
+        public void RegisterFCMToken(string fcmtoken)
         {
             Dictionary<string, string> data = new Dictionary<string, string>();
-            RESTEngine.HttpGet(data => {                
-                del(JsonConvert.DeserializeObject<List<CHATLINK>>(data,
-                    new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }));
-            }, this.BaseURL + "/support",headers);
+            data["token"] = fcmtoken;               
+            RESTEngine.HttpPost(data =>
+            {
+                if (data != null)
+                    Console.WriteLine("fcm token registered");
+            }, this.BaseURL + "/registertoken", data, null, true);
         }
-
     }
 
 }

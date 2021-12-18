@@ -17,7 +17,7 @@ namespace WIS.Views
     {
         public ProfilePage()
         {          
-            USER user = DataService.Instance.CurrentUser;
+            APPUSER user = DataService.Instance.CurrentUser;
             this.BindingContext = new ProfileViewModel(user);
             try
             {

@@ -1,0 +1,38 @@
+﻿<Properties StartupConfiguration="{D5F23FAD-2906-4CA5-B308-3D7789659D25}|Default">
+  <MonoDevelop.Ide.ItemProperties.WIS.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.57B0CB48-CC85-4317-AE3F-6634F67BE7B7" />
+  <MonoDevelop.Ide.ItemProperties.WIS.Android PreferredExecutionTarget="Android.Nexus_6_API_28" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="WIS/Models/DISPLAY/Product.cs">
+    <Files>
+      <File FileName="WIS/Models/DISPLAY/Product.cs" Line="10" Column="39" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="WIS" expanded="True">
+            <Node name="WIS" expanded="True">
+              <Node name="Dependencies" expanded="True" />
+              <Node name="Models" expanded="True">
+                <Node name="DISPLAY" expanded="True">
+                  <Node name="Product.cs" selected="True" />
+                </Node>
+              </Node>
+              <Node name="App.xaml" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/sovi/Projects/WIS-APP/WIS.iOS/AppDelegate.cs" relfile="WIS.iOS/AppDelegate.cs" line="135" column="1" />
+      <Breakpoint file="/Users/sovi/Projects/WIS-APP/WIS.iOS/AppDelegate.cs" relfile="WIS.iOS/AppDelegate.cs" line="141" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

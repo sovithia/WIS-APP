@@ -2,7 +2,7 @@
 using Android.Content;
 using Firebase.Iid;
 using System;
-
+using Xamarin.Essentials;
 
 namespace WIS.Droid
 {
@@ -17,6 +17,7 @@ namespace WIS.Droid
         [Obsolete]
         public override void OnTokenRefresh()
         {
+            
             // Get updated InstanceID token.
             var refreshedToken = FirebaseInstanceId.Instance.Token;
             Android.Util.Log.Debug(TAG, "Refreshed token: " + refreshedToken);

@@ -1,0 +1,5 @@
+WIS.Android/obj/*
+WIS.Android/bin/*
+WIS.iOS/obj/*
+WIS.iOS/bin/*
+.DS_Store

@@ -42,6 +42,7 @@ namespace WIS.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            Firebase.Core.App.Configure();
             global::Xamarin.Forms.Forms.Init();
             SfEffectsViewRenderer.Init();
             SfDatePickerRenderer.Init();
@@ -82,49 +83,41 @@ namespace WIS.iOS
             }
 
             // PUSH
+            
             RegisterForRemoteNotifications();
             Messaging.SharedInstance.Delegate = this;
             if (UNUserNotificationCenter.Current != null)
             {
                 UNUserNotificationCenter.Current.Delegate = new UserNotificationCenterDelegate();
             }
-            Firebase.Core.App.Configure();
-
+            
+            
             return base.FinishedLaunching(app, options);
         }
 
         private void RegisterForRemoteNotifications()
-
         {
 
             // Register your app for remote notifications.
-
             if (UIDevice.CurrentDevice.CheckSystemVersion(10, 0))
-
             {
 
                 // For iOS 10 display notification (sent via APNS)
-
                 UNUserNotificationCenter.Current.Delegate = this;
 
                 var authOptions = UNAuthorizationOptions.Alert | UNAuthorizationOptions.Badge | UNAuthorizationOptions.Sound;
-
-                UNUserNotificationCenter.Current.RequestAuthorization(authOptions, async (granted, error) =>
-                {
+                UNUserNotificationCenter.Current.RequestAuthorization(authOptions, (granted, error) => {
                     Console.WriteLine(granted);
-                    await System.Threading.Tasks.Task.Delay(500);
                 });
             }
             else
             {
-
                 // iOS 9 or before
                 var allNotificationTypes = UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound;
                 var settings = UIUserNotificationSettings.GetSettingsForTypes(allNotificationTypes, null);
                 UIApplication.SharedApplication.RegisterUserNotificationSettings(settings);
             }
             UIApplication.SharedApplication.RegisterForRemoteNotifications();
-            Messaging.SharedInstance.ShouldEstablishDirectChannel = true;
 
         }
 
@@ -134,8 +127,7 @@ namespace WIS.iOS
         }
 
         public override void FailedToRegisterForRemoteNotifications(UIApplication application, NSError error)
-        {
-            base.FailedToRegisterForRemoteNotifications(application, error);
+        {            
         }
 
         public override void DidReceiveRemoteNotification(UIApplication application, NSDictionary userInfo, Action<UIBackgroundFetchResult> completionHandler)
@@ -143,7 +135,7 @@ namespace WIS.iOS
             completionHandler(UIBackgroundFetchResult.NewData);
         }
 
-        [Export("messaging: didReceiveRegistrationToken:")]
+        [Export("messaging:didReceiveRegistrationToken:")]
         public void DidReceiveRegistrationToken(Messaging messaging, string fcmToken)
         {
             Xamarin.Forms.Application.Current.Properties["Fcmtocken"] = Messaging.SharedInstance.FcmToken ?? "";

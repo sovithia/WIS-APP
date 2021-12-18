@@ -180,25 +180,37 @@ namespace WIS.ViewModels
             // RETRIEVE INFO FROM BACKOFFICE
             IsLoading = true;
             DataService.Instance.Login(Phone.Value, Password.Value, (user) =>
-            {            
+            {
+                string token = (string)Application.Current.Properties["Fcmtocken"];
+                DataService.Instance.RegisterFCMToken(token);
+
                 Device.BeginInvokeOnMainThread(() =>
                 {
                     IsLoading = false;
                     DataService.Instance.CurrentUser = user;
                     if (user != null)
                     {
-                        string type = user.usertype;
-                        Preferences.Set("TYPE", user.usertype);
-                        AppShell page = null;
-                        if (type == "STUDENT")
-                            page = new AppShell(USERTYPE.STUDENT);
-                        else if (type == "PARENT")
-                            page = new AppShell(USERTYPE.PARENT);
-                        else if (type == "TEACHER")
-                            page = new AppShell(USERTYPE.TEACHER);
-                        else if (type == "REGISTRAR")
-                            page = new AppShell(USERTYPE.REGISTRAR);
-                        Application.Current.MainPage = page;                        
+                        if(user.reset_requested == true)
+                        {
+                            var page = new ChangePasswordPage();
+                            Application.Current.MainPage.Navigation.PushModalAsync()
+                        }
+                        else
+                        {
+                            string type = user.usertype;
+                            Preferences.Set("TYPE", user.usertype);
+                            AppShell page = null;
+                            if (type == "STUDENT")
+                                page = new AppShell(USERTYPE.STUDENT);
+                            else if (type == "PARENT")
+                                page = new AppShell(USERTYPE.PARENT);
+                            else if (type == "TEACHER")
+                                page = new AppShell(USERTYPE.TEACHER);
+                            else if (type == "REGISTRAR")
+                                page = new AppShell(USERTYPE.REGISTRAR);
+                            Application.Current.MainPage = page;
+                        }
+                        
                     }                    
                 });                
             });                       

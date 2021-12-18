@@ -3,7 +3,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using WIS.Services;
 using WIS.Views;
-using LibVLCSharp.Shared;
+
 using Xamarin.Essentials;
 using WIS.Models;
 using System.Collections.Generic;
@@ -32,9 +32,8 @@ namespace WIS
 
         }
         public App()
-        {
-            Core.Initialize();              
-            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NTIwMjMyQDMxMzkyZTMzMmUzMElQcjliQXZNenJmREZaSVoxb0h3VU9IbzVqcjhabFFqNjFSYmFjK0h1L0U9");
+        {         
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NTQ5NzgyQDMxMzkyZTM0MmUzMGZiT3RsdmFkQlpuSFFrd1owQnNsWWRwNEs5WU1kaEpJcXdSN01DMmJreDA9");
 
             AppCenter.Start("ios=17461fcb-db55-4ab1-9523-9bda0d63418f;" +
                   "uwp={Your UWP App secret here};" +
