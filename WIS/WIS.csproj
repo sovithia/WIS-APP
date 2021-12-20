@@ -67,8 +67,6 @@
     <Folder Include="Behaviors\" />
     <Folder Include="Validators\" />
     <Folder Include="Validators\Rules\" />
-    <Folder Include="Views\Templates\" />
-    <Folder Include="Views\Selectors\" />
     <Folder Include="Helpers\" />
     <Folder Include="Views\SigninSignup\" />
     <Folder Include="Views\Invoice\" />

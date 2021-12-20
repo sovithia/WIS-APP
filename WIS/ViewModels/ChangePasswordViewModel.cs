@@ -18,31 +18,31 @@ namespace WIS.ViewModels
         public ChangePasswordViewModel()
         {            
             this.SendCommand = new Command(this.SendClicked);
-            phone = new ValidatableObject<string>();
+            password = new ValidatableObject<string>();
             
-            this.Phone.Validations.Add(new IsNotNullOrEmptyRule<string> { ValidationMessage = "Phone Required" });
-            this.Phone.Validations.Add(new IsValidPhoneRule<string> { ValidationMessage = "Invalid Phone" });
+            this.Password.Validations.Add(new IsNotNullOrEmptyRule<string> { ValidationMessage = "Password empty" });
+            this.Password.Validations.Add(new IsValidPhoneRule<string> { ValidationMessage = "Passwords does not match" });
         }
 
         #endregion
         #region Fields
 
-        private ValidatableObject<string> phone;
-        public ValidatableObject<string> Phone
+        private ValidatableObject<string> password;
+        public ValidatableObject<string> Password
         {
             get
             {
-                return this.phone;
+                return this.password;
             }
 
             set
             {
-                if (this.phone == value)
+                if (this.password == value)
                 {
                     return;
                 }
 
-                this.SetProperty(ref this.phone, value);
+                this.SetProperty(ref this.password, value);
             }
         }
 
@@ -61,7 +61,7 @@ namespace WIS.ViewModels
         #region Methods
         public bool AreFieldsValid()
         {
-            bool isPhoneValid = this.Phone.Validate();
+            bool isPhoneValid = this.Password.Validate();
             return isPhoneValid;
         }
 
@@ -77,14 +77,13 @@ namespace WIS.ViewModels
             if (!AreFieldsValid())
                 return;
             APPUSER user = DataService.Instance.CurrentUser;
-            DataService.Instance.EditPassword(user.id, "",user.remember_me_token, (response) =>
+            DataService.Instance.EditPassword(user.id, password.Value, user.remember_me_token, (response) =>
             {
                 Device.BeginInvokeOnMainThread(() =>
                 {
                     if (response == true)
                     {
-                       //var page = new PasswordSentPage();
-                       //Application.Current.MainPage.Navigation.PushModalAsync(page);
+                        Shell.Current.DisplayAlert("OK", "Password changed", "Ok");                        
                     }
                     else{
                         Application.Current.MainPage.DisplayAlert("ERROR", "Phone number not found", "OK");

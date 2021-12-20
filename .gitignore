@@ -1,3 +1,5 @@
+WIS/obj/*
+WIS/bin/*
 WIS.Android/obj/*
 WIS.Android/bin/*
 WIS.iOS/obj/*

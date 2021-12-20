@@ -2,9 +2,8 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="WIS.Views.ModalVideoPage"
-    xmlns:vlc="clr-namespace:LibVLCSharp.Forms.Shared;assembly=LibVLCSharp.Forms" >
+    x:Class="WIS.Views.TeacherSchedulePage">
     <ContentPage.Content>
-        <vlc:MediaPlayerElement x:Name="mediaPlayerElement"/> 
+        
     </ContentPage.Content>
 </ContentPage>

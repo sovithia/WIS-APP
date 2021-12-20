@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using SQLite;
 
-namespace WIS.Models.DISPLAY
+namespace WIS.Models
 {
     public class Product
     {
@@ -13,39 +13,31 @@ namespace WIS.Models.DISPLAY
     public class InvoicePromotion
     {
         public InvoicePromotion(){}
-
         string amount { get; set; }
+        string note { get; set; }
+        string detail { get; set; }
     }
 
     public class InvoiceElement
     {
         public string amount { get; set; } // invoice_fees amount
-        public Product product { get; set; }
-         // invoice_fees -> product -> name 
-        public string promotion { get; set; } // invoice_promotion amount         
+        public Product productname { get; set; } // COMPUTED         
+        //public string promotion { get; set; } // invoice_promotion amount         
     }
 
     public class Invoice
     {
-
+        public string id { get; set; }
         public string doc { get; set; } // Invoice  doc 
         public DateTime date { get; set; } // Invoice date 
         public DateTime date_due { get; set; } // Invoice date_due
 
-        public StudentProfile studentprofile  { get; set;}         
-
-        public List<InvoiceElement> invoicefeeList { get; set; }
+        public string studentdisplayname {get;set;}
+        public List<InvoicePromotion> invoicepromotionList { get; set; }
+        public List<InvoiceElement> invoiceelementList { get; set; }
         
 
-        [JsonIgnore, Ignore]
-        public string student
-        {
-            get
-            {
-                return studentprofile.firstname + " " + studentprofile.lastname;
-            }
-        }
-
+        
         [JsonIgnore, Ignore]
         public string dID
         {

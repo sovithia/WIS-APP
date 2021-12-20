@@ -222,9 +222,6 @@
     <PackageReference Include="Plugin.MediaManager.Forms">
       <Version>1.0.9</Version>
     </PackageReference>
-    <PackageReference Include="VideoLAN.LibVLC.iOS">
-      <Version>3.3.17</Version>
-    </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfSignaturePad">
       <Version>19.4.0.38</Version>
     </PackageReference>

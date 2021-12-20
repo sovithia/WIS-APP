@@ -10,7 +10,7 @@ namespace WIS.ViewModels
     public class InvoiceListHistoryPageViewModel : BaseViewModel
     {
 
-        public ObservableCollection<INVOICE> Invoices { get; set; }
+        public ObservableCollection<Invoice> Invoices { get; set; }
 
 
         public Command ItemSelectedCommand { get; set; }
@@ -18,7 +18,7 @@ namespace WIS.ViewModels
 
         public InvoiceListHistoryPageViewModel()
         {
-            Invoices = new ObservableCollection<INVOICE>();
+            Invoices = new ObservableCollection<Invoice>();
             ItemSelectedCommand = new Command(ItemSelected);
         }
 
@@ -28,7 +28,7 @@ namespace WIS.ViewModels
             Invoices.Clear();
             DataService.Instance.GetInvoiceHistory((invoices) =>
             {
-                foreach (INVOICE invoice in invoices)
+                foreach (Invoice invoice in invoices)
                 {
                     Invoices.Add(invoice);
                 }
@@ -40,7 +40,7 @@ namespace WIS.ViewModels
         private void ItemSelected(object selectedItem)
         {
             Analytics.TrackEvent(this.GetType().ToString() + " ItemSelected");
-            INVOICE invoice = (INVOICE)((Syncfusion.ListView.XForms.ItemTappedEventArgs)selectedItem).ItemData;
+            Invoice invoice = (Invoice)((Syncfusion.ListView.XForms.ItemTappedEventArgs)selectedItem).ItemData;
             Shell.Current.GoToAsync($"InvoiceDetails?ID={invoice.id}");
         }
     }

@@ -11,7 +11,8 @@ namespace WIS
         STUDENT,
         PARENT,
         TEACHER,
-        REGISTRAR
+        REGISTRAR,
+        ADMIN
     };
 
 
@@ -23,7 +24,8 @@ namespace WIS
         Tab attendance;
         Tab invoices;
         ShellContent schedule;
-        ShellContent support;
+        ShellContent teacherschedule;
+        ShellContent push;
 
         public void initShells(Style style)
         {
@@ -43,7 +45,6 @@ namespace WIS
                 Route = "Attendance",
                 Icon = "AttendanceListPage"
             };
-
             this.attendance.Items.Add(new ShellContent()
             {
                 Route = "AttendanceNew",
@@ -52,7 +53,6 @@ namespace WIS
                 ContentTemplate = new DataTemplate(typeof(AttendanceListPage)),
                 Style = style
             });
-
             this.attendance.Items.Add(new ShellContent()
             {
                 Route = "AttendanceHistory",
@@ -77,7 +77,6 @@ namespace WIS
                 ContentTemplate = new DataTemplate(typeof(InvoiceListPage)),
                 Style = style
             });
-
             this.invoices.Items.Add(new ShellContent()
             {
                 Route = "InvoiceHistory",
@@ -86,14 +85,29 @@ namespace WIS
                 ContentTemplate = new DataTemplate(typeof(InvoiceListHistoryPage)),
                 Style = style
             });
-
-           
+            // SCHEDULE
             this.schedule = new ShellContent()
             {
                 Route = "Schedule",
                 Title = "Schedule",
                 Icon = nameof(SchedulePage),
                 ContentTemplate = new DataTemplate(typeof(SchedulePage)),
+                Style = style
+            };
+            // TEACHERSCHEDULE
+            this.teacherschedule = new ShellContent()
+            {
+                Route = "TeacherSchedule",
+                Title = "TeacherSchedule",
+                ContentTemplate = new DataTemplate(typeof(TeacherSchedulePage)),
+                Style = style
+            };
+
+            this.push = new ShellContent()
+            {
+                Route = "Push",
+                Title = "Push",
+                ContentTemplate = new DataTemplate(typeof(SendPushNotificationPage)),
                 Style = style
             };
             
@@ -104,8 +118,6 @@ namespace WIS
             
             Routing.RegisterRoute("AttendanceDetails", typeof(AttendanceDetailsPage));
             Routing.RegisterRoute("InvoiceDetails", typeof(InvoiceDetailsPage));                        
-            //Routing.RegisterRoute("SupportDetails", typeof(SupportDetailPage));
-
        
             Style style = null;
             style = StudentShell;
@@ -118,27 +130,32 @@ namespace WIS
             {                                
                 itemContainer.Items.Add(attendance);
                 itemContainer.Items.Add(invoices);
-                itemContainer.Items.Add(support);
                 itemContainer.Items.Add(profile);                
             }                
             else if (type == USERTYPE.STUDENT)
             {                                
                 itemContainer.Items.Add(schedule);
-                itemContainer.Items.Add(support);
                 itemContainer.Items.Add(profile);
-                
             }                
             else if (type == USERTYPE.TEACHER)
             {                                                
-                itemContainer.Items.Add(schedule);
-                itemContainer.Items.Add(support);
+                itemContainer.Items.Add(teacherschedule);
                 itemContainer.Items.Add(profile);                
             }                
             else if (type == USERTYPE.REGISTRAR)
             {                
-                itemContainer.Items.Add(support);
                 itemContainer.Items.Add(invoices);
                 itemContainer.Items.Add(profile);                
+            }
+            else if(type == USERTYPE.ADMIN)
+            {
+                itemContainer.Items.Add(attendance);
+                itemContainer.Items.Add(invoices);
+                itemContainer.Items.Add(schedule);
+                itemContainer.Items.Add(teacherschedule);
+                itemContainer.Items.Add(push);
+                itemContainer.Items.Add(profile);
+
             }
             CurrentItem = profile;                       
         }

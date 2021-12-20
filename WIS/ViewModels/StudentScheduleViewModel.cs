@@ -10,17 +10,9 @@ using WIS.Services;
 using Xamarin.Forms;
 
 namespace WIS.ViewModels
-{
-    public class COURSEDATA
-    {
-        public string day;
-        public string startHour;
-        public string endHour;
-        public string coursename;
-        public string teachername;
-    }
+{  
 
-    public class ScheduleViewModel : BaseViewModel
+    public class StudentScheduleViewModel : BaseViewModel
     {
         /// <summary>
         /// collecions for meetings.
@@ -80,8 +72,8 @@ namespace WIS.ViewModels
                     DateTime theDay = firstday;
                     for (int i = 0; i < 5; i++)
                     {                                                
-                        List<SCHEDULELINE> oneday = schedule.courses.Where(line => line.day == days[i]).ToList();
-                        foreach (SCHEDULELINE sline in oneday)
+                         List< StudentScheduleCourse> oneday = schedule.courses.Where(line => line.day == days[i]).ToList();
+                        foreach (StudentScheduleCourse sline in oneday)
                         {
                              SFSCHEDULEDATA data = sline.toSFDATA(theDay);                            
                              tmpList.Add(data);                          
@@ -94,7 +86,7 @@ namespace WIS.ViewModels
         }
        
 
-        public ScheduleViewModel()
+        public StudentScheduleViewModel()
         {
             mondayDistance = new Dictionary<DayOfWeek, int>()
             {

@@ -82,7 +82,7 @@ namespace WIS.Services
             this.BaseURL + "/forgetpassword", data, null);
         }
 
-        public void EditPassword(string userid, string newpassword, string token)
+        public void EditPassword(string userid, string newpassword, string token, responseDelegate<bool> del)
         {
             Dictionary<string, string> data = new Dictionary<string, string>();
             data["userid"] = userid;
@@ -90,8 +90,9 @@ namespace WIS.Services
             data["token"] = token;
 
             RESTEngine.HttpPost(result =>
-            {                
-                Shell.Current.DisplayAlert("OK", "Password changed", "Ok");                
+            {               
+                
+                del(true);
             },
             this.BaseURL + "/editPassword", data, null);
         }
@@ -157,28 +158,28 @@ namespace WIS.Services
         }
         
         // Invoice
-        public void GetInvoiceList(responseDelegate<List<INVOICE>> del)
+        public void GetInvoiceList(responseDelegate<List<Invoice>> del)
         {
             RESTEngine.HttpGet(data => {                
-               del(JsonConvert.DeserializeObject<List<INVOICE>>(data,
+               del(JsonConvert.DeserializeObject<List<Invoice>>(data,
                         new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }));
             }, this.BaseURL + "/invoice", headers);
         }
 
         // Invoice History
-        public void GetInvoiceHistory(responseDelegate<List<INVOICE>> del)
+        public void GetInvoiceHistory(responseDelegate<List<Invoice>> del)
         {
             RESTEngine.HttpGet(data => {
-                del(JsonConvert.DeserializeObject<List<INVOICE>>(data,
+                del(JsonConvert.DeserializeObject<List<Invoice>>(data,
                          new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }));
             }, this.BaseURL + "/invoicehistory", headers);
         }
 
-        public void GetInvoiceDetails(string invoiceID,responseDelegate<INVOICE> del)
+        public void GetInvoiceDetails(string invoiceID,responseDelegate<Invoice> del)
         {
             RESTEngine.HttpGet(data =>
             {                
-               del(JsonConvert.DeserializeObject<INVOICE>(data,
+               del(JsonConvert.DeserializeObject<Invoice>(data,
                         new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }));
             }, this.BaseURL + "/invoicedetails/" + invoiceID, headers);
         }
@@ -207,24 +208,42 @@ namespace WIS.Services
 
                 
 
-        // Schedule
-        public void GetSchedule(responseDelegate<SCHEDULE> del)
+        // Student Schedule
+        public void GetStudentSchedule(responseDelegate<TeacherSchedule> del)
         {
             Dictionary<string, string> data = new Dictionary<string, string>();
             RESTEngine.HttpGet(data => {
                 try
                 {
-                    del(JsonConvert.DeserializeObject<SCHEDULE>(data,
+                    del(JsonConvert.DeserializeObject<TeacherSchedule>(data,
                     new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }));
                 }catch(Exception ex)
                 {
                     int i = 2;
                 }
                 
-            }, this.BaseURL + "/schedule", headers);
+            }, this.BaseURL + "/studentschedule", headers);
         }
 
-        
+        // Teacher Schedule
+        public void GetTeacherSchedule(responseDelegate<TeacherSchedule> del)
+        {
+            Dictionary<string, string> data = new Dictionary<string, string>();
+            RESTEngine.HttpGet(data => {
+                try
+                {
+                    del(JsonConvert.DeserializeObject<TeacherSchedule>(data,
+                    new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }));
+                }
+                catch (Exception ex)
+                {
+                    int i = 2;
+                }
+
+            }, this.BaseURL + "/teacherschedule", headers);
+        }
+
+
 
 
         // Register Push

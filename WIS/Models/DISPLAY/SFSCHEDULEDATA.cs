@@ -8,6 +8,17 @@ namespace WIS.Models
         public string EventName { get; set; }
         public DateTime From { get; set; }
         public DateTime To { get; set; }
+
+
+        public DateTime starttime { get; set; }               
+        public DateTime endtime
+        {
+            get{
+                return starttime.AddMinutes(minute);
+            }                
+        }
+        public int minute { get; set; }
+
         public Color Color { get; set; }
         public string District { get; set; }
         public string City { get; set; }

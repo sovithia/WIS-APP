@@ -21,8 +21,8 @@ namespace WIS.ViewModels
 
         public bool IsSubmitable { get; set; }
 
-        private ObservableCollection<INVOICELINE> invoiceLines;
-        public ObservableCollection<INVOICELINE> InvoiceLines
+        private ObservableCollection<InvoiceElement> invoiceLines;
+        public ObservableCollection<InvoiceElement> InvoiceLines
         {
             get {
                 return invoiceLines;
@@ -98,7 +98,7 @@ namespace WIS.ViewModels
         SfSignaturePad signaturePad;
 
 
-        private INVOICE currentInvoice;
+        private Invoice currentInvoice;
 
 
         private ImageSource proofImageIn;
@@ -163,17 +163,10 @@ namespace WIS.ViewModels
             float amt = 0;
             DataService.Instance.GetInvoiceDetails(_invoiceID, (invoice) =>
              {
-                 if (invoice.proof != null && invoice.proof != "")
-                    ProofImageIn =  ImageSource.FromStream(() => new MemoryStream(Convert.FromBase64String(invoice.proof)));
+                
 
-                 if (invoice.sigparent != null && invoice.sigparent != "")
-                    ParentSigImageIn = ImageSource.FromStream(() => new MemoryStream(Convert.FromBase64String(invoice.sigparent)));
-
-                 if (invoice.sigregistrar != null && invoice.sigregistrar != "")
-                    RegistrarSigImageIn = ImageSource.FromStream(() => new MemoryStream(Convert.FromBase64String(invoice.sigregistrar)));
-
-                 ObservableCollection<INVOICELINE> tmp = new ObservableCollection<INVOICELINE>();
-                 foreach (INVOICELINE line in invoice.lines)
+                 ObservableCollection<InvoiceElement> tmp = new ObservableCollection<InvoiceElement>();
+                 foreach (InvoiceElement line in invoice.invoiceelementList)
                  {
                      amt += float.Parse(line.amount);
                      tmp.Add(line);

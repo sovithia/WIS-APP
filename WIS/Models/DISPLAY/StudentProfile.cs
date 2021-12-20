@@ -1,5 +1,5 @@
 ﻿using System;
-namespace WIS.Models.DISPLAY
+namespace WIS.Models
 {
     public class StudentProfile
     {

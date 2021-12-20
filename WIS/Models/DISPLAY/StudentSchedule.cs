@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Xamarin.Forms;
 
-namespace WIS.Models.DISPLAY
+namespace WIS.Models
 {
 
     public class StudentScheduleCourse
@@ -14,6 +14,10 @@ namespace WIS.Models.DISPLAY
         public string endhour { get; set; } // schedule_layout_times  minutes
         public string day { get; set; }  // schedule_session day  MON,TUE,WED etc.. -> 1,2,3
 
+
+        public DateTime starttime { get; set; }
+        public int minute { get; set; }
+
         public SFSCHEDULEDATA toSFDATA(DateTime theday)
         {
             SFSCHEDULEDATA data = new SFSCHEDULEDATA();
@@ -22,9 +26,10 @@ namespace WIS.Models.DISPLAY
             int mstart = int.Parse(starthour.Split(':')[1]);
             int hend = int.Parse(endhour.Split(':')[0]);
             int mend = int.Parse(endhour.Split(':')[1]);
-
+           
             data.From = theday.AddHours(hstart).AddMinutes(mstart);
             data.To = theday.AddHours(hend).AddMinutes(mstart);
+
             data.EventName = coursename + "\n" + starthour + "-" + endhour + "\n" + teachername + "\n" + roomname;
 
             data.Color = Color.FromHex("1746A0");

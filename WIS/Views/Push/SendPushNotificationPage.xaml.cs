@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Xamarin.Forms;
 
-namespace WIS.Views.Push
+namespace WIS.Views
 {
     public partial class SendPushNotificationPage : ContentPage
     {

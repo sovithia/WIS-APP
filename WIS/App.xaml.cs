@@ -41,7 +41,7 @@ namespace WIS
                   typeof(Analytics), typeof(Crashes));
 
             InitializeComponent();
-            //DependencyService.Register<MockDataStore>();
+            
             //MainPage = new SupportDetailPage();
             //Preferences.Set("TYPE", "STUDENT");
 

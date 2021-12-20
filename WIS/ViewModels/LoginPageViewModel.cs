@@ -193,7 +193,7 @@ namespace WIS.ViewModels
                         if(user.reset_requested == true)
                         {
                             var page = new ChangePasswordPage();
-                            Application.Current.MainPage.Navigation.PushModalAsync()
+                            Application.Current.MainPage.Navigation.PushModalAsync(page);
                         }
                         else
                         {

@@ -1,5 +1,5 @@
 ﻿using System;
-namespace WIS.Views.Push
+namespace WIS.Views
 {
     public class FCMBody
 

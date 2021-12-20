@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Xamarin.Forms;
 
-namespace WIS.Models.DISPLAY
+namespace WIS.Models
 {
 
     public class TeacherScheduleCourse
