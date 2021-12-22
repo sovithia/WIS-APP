@@ -14,7 +14,7 @@ namespace WIS.Views
         {
             set
             {
-                this.BindingContext = new InvoiceDetailsPageViewModel(value, signaturePad);                
+                this.BindingContext = new InvoiceDetailsPageViewModel(value);                
             }
         }
 

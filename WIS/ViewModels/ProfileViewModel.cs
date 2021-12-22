@@ -4,6 +4,7 @@ using System.Reflection;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
 using WIS.Models;
+using WIS.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using Model = WIS.Models.UserProfile;
@@ -26,6 +27,7 @@ namespace WIS.ViewModels
         private string profileImage;
        
         private Command editCommand;
+        private Command logoutCommand;
 
         private APPUSER currentUser;
         
@@ -43,6 +45,7 @@ namespace WIS.ViewModels
                 currentUser = new APPUSER();
             else
                 currentUser = user;
+            logoutCommand = new Command(LogoutClicked);
         }
 
         #endregion
@@ -89,7 +92,7 @@ namespace WIS.ViewModels
 
         public string UserTitle
         {
-            get { return currentUser.usertype; }
+            get { return currentUser.user_type; }
         }
         public string Email
         {
@@ -108,7 +111,7 @@ namespace WIS.ViewModels
 
         public string Bio
         {
-            get { return currentUser.usertype; }
+            get { return currentUser.user_type; }
         }
 
         public Color colorFromName(string name)
@@ -182,6 +185,10 @@ namespace WIS.ViewModels
             // Do something
         }
 
+        private void LogoutClicked(object obj)
+        {
+            Application.Current.MainPage = new LoginPage();
+        }
       
 
         #endregion

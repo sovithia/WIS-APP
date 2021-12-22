@@ -39,7 +39,7 @@ namespace WIS.ViewModels
         {
             Analytics.TrackEvent(this.GetType().ToString() + " ItemSelected");
             ABSENCE absence = (ABSENCE)((Syncfusion.ListView.XForms.ItemTappedEventArgs)selectedItem).ItemData;             
-            Shell.Current.GoToAsync($"AttendanceDetails?ID={absence.ID}&IsSubmitable=true");                        
+            Shell.Current.GoToAsync($"AttendanceDetails?ID={absence.id}&IsSubmitable=true");                        
         }
     }
 }

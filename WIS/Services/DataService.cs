@@ -29,15 +29,15 @@ namespace WIS.Services
 
         public DataService()
         {
-            //this.BaseURL = "http://localhost:3000";
-            this.BaseURL = "http://119.82.252.226:3000";
+            this.BaseURL = "http://127.0.0.1:3333/api";
+            //this.BaseURL = "http://119.82.252.226:3000";
             this.headers = new Dictionary<string, string>();
         }
 
-        public void PreSignup(PRESIGNUPREQUEST signup, responseDelegate<bool> del)
+        public void PreRegister(PRESIGNUPREQUEST signup, responseDelegate<bool> del)
         {
             Dictionary<string, string> data = new Dictionary<string, string>();
-            data["type"] = signup.type;
+            data["usertype"] = signup.type;
             data["phone"] = signup.phone.Replace(" ",string.Empty);
             data["identifier"] = signup.identifier;
             data["birthdate"] = signup.birthdate;
@@ -48,13 +48,13 @@ namespace WIS.Services
                 else
                     del(true);
             },
-            this.BaseURL + "/presignup",data,this.headers,true);
+            this.BaseURL + "/preregister",data,this.headers,true);
         }
 
-        public void Signup(SIGNUPREQUEST signup, responseDelegate<bool> del)
+        public void Register(SIGNUPREQUEST signup, responseDelegate<bool> del)
         {
             Dictionary<string, string> data = new Dictionary<string, string>();
-            data["type"] = signup.type;
+            data["usertype"] = signup.type;
             data["phone"] = signup.phone.Replace(" ", string.Empty);
             data["identifier"] = signup.identifier;
             data["birthdate"] = signup.birthdate;
@@ -67,7 +67,7 @@ namespace WIS.Services
                 else
                     del(true);
             },
-            this.BaseURL + "/signup", data, null);
+            this.BaseURL + "/register", data, null);
         }
 
         public void ForgotPassword(string phone, responseDelegate<bool> del)
@@ -75,9 +75,18 @@ namespace WIS.Services
             Dictionary<string, string> data = new Dictionary<string, string>();
             RESTEngine.HttpPost(result =>
             {
-                Dictionary<string, string> res = JsonConvert.DeserializeObject<Dictionary<string, string>>(result,
+                try
+                {
+                    Dictionary<string, string> res = JsonConvert.DeserializeObject<Dictionary<string, string>>(result,
                     new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore });
-                del(res["result"] == "OK");
+                    del(res["result"] == "OK");
+                }
+                catch(Exception ex){
+                    Device.BeginInvokeOnMainThread(() => {
+                        Application.Current.MainPage.DisplayAlert("ERROR", ex.Message, "OK");
+                    });
+                }
+                
             },
             this.BaseURL + "/forgetpassword", data, null);
         }
@@ -90,9 +99,17 @@ namespace WIS.Services
             data["token"] = token;
 
             RESTEngine.HttpPost(result =>
-            {               
-                
-                del(true);
+            {
+                try
+                {
+                    Dictionary<string, string> res = JsonConvert.DeserializeObject<Dictionary<string, string>>(result,
+                    new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore });
+                    del(res["result"] == "OK");
+                }catch(Exception ex){
+                    Device.BeginInvokeOnMainThread(() => {
+                        Application.Current.MainPage.DisplayAlert("ERROR", ex.Message, "OK");
+                    });
+                }                
             },
             this.BaseURL + "/editPassword", data, null);
         }
@@ -107,11 +124,22 @@ namespace WIS.Services
             {
                 if (data != null)
                 {
-                    APPUSER user = JsonConvert.DeserializeObject<APPUSER>(data,
+                    Dictionary<string, object> json = JsonConvert.DeserializeObject<Dictionary<string, object>>(data);
+                    try
+                    {
+                        APPUSER user = JsonConvert.DeserializeObject<APPUSER>(json["user"].ToString(),
                         new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore });
-                    CurrentUser = user;
-                    headers["token"] = user.access_token;
-                    del(user);
+                        CurrentUser = user;
+                        Dictionary<string, string> token = JsonConvert.DeserializeObject<Dictionary<string, string>>(json["token"].ToString());
+                        headers["Authorization"] = "bearer " + token["token"];
+                        del(user);
+                    }
+                    catch(Exception ex){
+                        Device.BeginInvokeOnMainThread(() => {
+                            Application.Current.MainPage.DisplayAlert("ERROR", ex.Message, "OK");
+                        });
+                    }
+                    
                 }
                 else
                     del(null);
@@ -123,9 +151,18 @@ namespace WIS.Services
         // Attendance
         public void GetAttendance(responseDelegate<List<ABSENCE>> del)
         {
-            RESTEngine.HttpGet(data => {                
-               del(JsonConvert.DeserializeObject<List<ABSENCE>>(data,
-                        new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }));
+            RESTEngine.HttpGet(data => {
+                try
+                {
+                    var obj = JsonConvert.DeserializeObject<List<ABSENCE>>(data,
+                        new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore });
+                    del(obj);
+                }catch(Exception ex){
+                    Device.BeginInvokeOnMainThread(() => {
+                        Application.Current.MainPage.DisplayAlert("ERROR", ex.Message, "OK");
+                    });
+                }
+               
                 
             }, this.BaseURL + "/attendance",headers);
         }
@@ -133,8 +170,16 @@ namespace WIS.Services
         public void GetAttendanceHistory(responseDelegate<List<ABSENCE>> del)
         {
             RESTEngine.HttpGet(data => {
-                del(JsonConvert.DeserializeObject<List<ABSENCE>>(data,
+                try
+                {
+                    del(JsonConvert.DeserializeObject<List<ABSENCE>>(data,
                          new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }));
+                }catch (Exception ex){
+                    Device.BeginInvokeOnMainThread(() => {
+                        Application.Current.MainPage.DisplayAlert("ERROR", ex.Message, "OK");
+                    });
+                }
+
 
             }, this.BaseURL + "/attendancehistory", headers);
         }
@@ -143,26 +188,35 @@ namespace WIS.Services
         {
             RESTEngine.HttpGet(data =>
             {
-                del(JsonConvert.DeserializeObject<ABSENCE>(data,
+                try
+                {
+                    del(JsonConvert.DeserializeObject<ABSENCE>(data,
                         new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }));
+                }catch (Exception ex){
+                    Device.BeginInvokeOnMainThread(() => {
+                        Application.Current.MainPage.DisplayAlert("ERROR", ex.Message, "OK");
+                    });
+                }
             }, this.BaseURL + "/attendancedetails/" + ID,headers);
         }
 
-        public void ValidateAttendance(string absenceID, responseDelegate<bool> del)
-        {
-            Dictionary<string, string> data = new Dictionary<string, string>();                      
-            RESTEngine.HttpPut(result =>
-            {                
-                del(true);
-            }, this.BaseURL + "/attendance/" + absenceID, data, headers);
-        }
+        
         
         // Invoice
         public void GetInvoiceList(responseDelegate<List<Invoice>> del)
         {
-            RESTEngine.HttpGet(data => {                
-               del(JsonConvert.DeserializeObject<List<Invoice>>(data,
-                        new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }));
+            RESTEngine.HttpGet(data => {
+                try
+                {
+                    var obj = JsonConvert.DeserializeObject<List<Invoice>>(data,
+                        new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore });
+                    del(obj);
+                }catch(Exception ex){
+                    Device.BeginInvokeOnMainThread(() =>{
+                        Application.Current.MainPage.DisplayAlert("ERROR", ex.Message, "OK");}
+                    );
+                }
+               
             }, this.BaseURL + "/invoice", headers);
         }
 
@@ -170,56 +224,52 @@ namespace WIS.Services
         public void GetInvoiceHistory(responseDelegate<List<Invoice>> del)
         {
             RESTEngine.HttpGet(data => {
-                del(JsonConvert.DeserializeObject<List<Invoice>>(data,
-                         new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }));
+                try
+                {
+                    var obj =  JsonConvert.DeserializeObject<List<Invoice>>(data,
+                         new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore });
+                    del(obj);
+                }catch(Exception ex){
+                    Device.BeginInvokeOnMainThread(() => {
+                        Application.Current.MainPage.DisplayAlert("ERROR", ex.Message, "OK");
+                    });
+                }
+                
             }, this.BaseURL + "/invoicehistory", headers);
         }
 
         public void GetInvoiceDetails(string invoiceID,responseDelegate<Invoice> del)
         {
             RESTEngine.HttpGet(data =>
-            {                
-               del(JsonConvert.DeserializeObject<Invoice>(data,
-                        new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }));
+            {
+                try
+                {
+                    var obj = JsonConvert.DeserializeObject<Invoice>(data,
+                         new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore });
+                    del(obj);
+                }catch(Exception ex){
+                    Device.BeginInvokeOnMainThread(() => {
+                        Application.Current.MainPage.DisplayAlert("ERROR", ex.Message, "OK");
+                    });
+                }
+                
             }, this.BaseURL + "/invoicedetails/" + invoiceID, headers);
         }
-
-        public void SubmitInvoice(string invoiceID, string B64Signature, string B64proof, responseDelegate<bool> del)
-        {
-
-            Dictionary<string, string> data = new Dictionary<string, string>();
-            data["signature"] = B64Signature;
-            data["proof"] = B64proof;
-            RESTEngine.HttpPut(result => {              
-                del(true);               
-            }, this.BaseURL + "/invoice/" + invoiceID,data, headers);
-        }
-        
-        public void ValidateInvoice(string invoiceID, string B64Signature,  responseDelegate<bool> del)
-        {
-            Dictionary<string, string> data = new Dictionary<string, string>();
-            data["signature"] = B64Signature;
-            
-            RESTEngine.HttpPut(result => {                
-                del(true);
-            }, this.BaseURL + "/invoice/" + invoiceID, data, headers);
-        }
-
-
+ 
                 
-
         // Student Schedule
-        public void GetStudentSchedule(responseDelegate<TeacherSchedule> del)
+        public void GetStudentSchedule(responseDelegate<StudentSchedule> del)
         {
             Dictionary<string, string> data = new Dictionary<string, string>();
             RESTEngine.HttpGet(data => {
                 try
                 {
-                    del(JsonConvert.DeserializeObject<TeacherSchedule>(data,
+                    del(JsonConvert.DeserializeObject<StudentSchedule>(data,
                     new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }));
-                }catch(Exception ex)
-                {
-                    int i = 2;
+                }catch(Exception ex){
+                    Device.BeginInvokeOnMainThread(() => {
+                        Application.Current.MainPage.DisplayAlert("ERROR", ex.Message, "OK");
+                    });
                 }
                 
             }, this.BaseURL + "/studentschedule", headers);
@@ -230,21 +280,18 @@ namespace WIS.Services
         {
             Dictionary<string, string> data = new Dictionary<string, string>();
             RESTEngine.HttpGet(data => {
-                try
-                {
+                try{
                     del(JsonConvert.DeserializeObject<TeacherSchedule>(data,
                     new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }));
                 }
-                catch (Exception ex)
-                {
-                    int i = 2;
+                catch (Exception ex){
+                    Device.BeginInvokeOnMainThread(() => {
+                        Application.Current.MainPage.DisplayAlert("ERROR", ex.Message, "OK");
+                    });
                 }
 
             }, this.BaseURL + "/teacherschedule", headers);
         }
-
-
-
 
         // Register Push
         public void RegisterFCMToken(string fcmtoken)

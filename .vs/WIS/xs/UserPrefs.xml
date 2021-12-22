@@ -1,27 +1,38 @@
 ﻿<Properties StartupConfiguration="{D5F23FAD-2906-4CA5-B308-3D7789659D25}|Default">
   <MonoDevelop.Ide.ItemProperties.WIS.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.9F4D140B-03CD-4242-A83C-6CE99F4C68D4" />
   <MonoDevelop.Ide.ItemProperties.WIS.Android PreferredExecutionTarget="Android.Nexus_6_API_28" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="WIS/Services/RESTEngine.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="WIS/Services/DataService.cs">
     <Files>
-      <File FileName="WIS/Services/RESTEngine.cs" Line="6" Column="9" />
+      <File FileName="WIS/Services/DataService.cs" Line="256" Column="24" />
+      <File FileName="WIS/Services/RESTEngine.cs" Line="64" Column="113" />
+      <File FileName="WIS/Models/DISPLAY/Invoice.cs" Line="27" Column="6" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="WIS" expanded="True">
             <Node name="WIS" expanded="True">
-              <Node name="Data" expanded="True" />
-              <Node name="Services" expanded="True">
-                <Node name="RESTEngine.cs" selected="True" />
+              <Node name="Models" expanded="True">
+                <Node name="DISPLAY" expanded="True" />
               </Node>
-              <Node name="ViewModels" expanded="True" />
+              <Node name="Services" expanded="True">
+                <Node name="DataService.cs" selected="True" />
+              </Node>
               <Node name="Views" expanded="True">
-                <Node name="Schedule" expanded="True" />
+                <Node name="Attendance" expanded="True" />
+                <Node name="Invoice" expanded="True">
+                  <Node name="InvoiceDetailsPage.xaml" expanded="True" />
+                </Node>
               </Node>
             </Node>
-            <Node name="WIS.Android" expanded="True" />
             <Node name="WIS.iOS" expanded="True" />
           </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State>
+          <Value>JsonConvert.DeserializeObject&lt;Invoice&gt;(data)</Value>
+          <Value>ex.Message</Value>
         </State>
       </Pad>
     </Pads>

@@ -213,7 +213,7 @@ namespace WIS.ViewModels
                 signupRequest.phone = Phone.Value;
                 signupRequest.birthdate = BirthDate.Value;
                 IsLoading = true;
-                DataService.Instance.PreSignup(signupRequest, (success) =>
+                DataService.Instance.PreRegister(signupRequest, (success) =>
                 {                    
                     Device.BeginInvokeOnMainThread(() =>
                     {

@@ -59,7 +59,7 @@
                                 <Label
                                     FontSize="14"
                                     Style="{StaticResource TitleLabelStyle}"
-                                    Text="{Binding student}"
+                                    Text="{Binding studentdisplayname}"
                                     TextColor="{DynamicResource Gray-White}" />                               
                                 <!--  From  -->
                                 <Label

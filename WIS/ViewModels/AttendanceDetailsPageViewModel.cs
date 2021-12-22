@@ -36,8 +36,7 @@ namespace WIS.ViewModels
                 
 
         public AttendanceDetailsPageViewModel(string absenceID)
-        {
-            SubmitCommand = new Command(submitClick);            
+        {         
             DataService.Instance.GetAttendanceDetails(absenceID, (absence) =>
              {
                  Absence = absence;
@@ -46,29 +45,6 @@ namespace WIS.ViewModels
 
    
         public Command SubmitCommand { get; set; }
-
-        private void submitClick(object obj)
-        {
-            Analytics.TrackEvent(this.GetType().ToString() + " ItemSelected");
-            DataService.Instance.ValidateAttendance(Absence.ID,  (success) =>
-            {
-                if (success)
-                {
-                    Device.BeginInvokeOnMainThread(async () =>
-                    {
-                        await AppShell.Current.DisplayAlert("Success", "Attendance validated", "OK");
-                        await AppShell.Current.Navigation.PopAsync();
-                    });
-                    
-                }
-                else
-                {
-                    Device.BeginInvokeOnMainThread(async () =>
-                    {
-                        await AppShell.Current.DisplayAlert("Error", "Error validating attendance", "OK");
-                    });
-                }
-            });
-        }
+     
     }
 }

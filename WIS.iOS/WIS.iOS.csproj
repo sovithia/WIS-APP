@@ -162,6 +162,8 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\76x76.png" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\152x152.png" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\167x167.png" />
+    <ImageAsset Include="Assets.xcassets\PushPage.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\PushPage.imageset\PushPage.pdf" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -271,5 +273,6 @@
     <Folder Include="Assets.xcassets\Gallery.imageset\" />
     <Folder Include="Assets.xcassets\AttendanceListPage.imageset\" />
     <Folder Include="Assets.xcassets\LogoutPage.imageset\" />
+    <Folder Include="Assets.xcassets\PushPage.imageset\" />
   </ItemGroup>
 </Project>

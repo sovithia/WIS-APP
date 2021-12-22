@@ -23,7 +23,8 @@ namespace WIS.Views
                 "STUDENT",
                 "PARENT",
                 "TEACHER",
-                "REGISTRAR"
+                "REGISTRAR",
+                "ADMIN"
 
             };
         }
@@ -58,6 +59,9 @@ namespace WIS.Views
                 BirthdateEntry.Text = "Birthdate";
             }
             else if (val == "REGISTRAR"){
+                IdentifierEntry.Placeholder = "Employee Number";
+                BirthdateEntry.Text = "Birthdate";
+            }else if (val == "ADMIN"){
                 IdentifierEntry.Placeholder = "Employee Number";
                 BirthdateEntry.Text = "Birthdate";
             }

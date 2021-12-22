@@ -138,7 +138,7 @@ namespace WIS.ViewModels
                 signupRequest.birthdate = presignup.birthdate;
                 signupRequest.password = Password.Item1.Value;
                 IsLoading = true;
-                DataService.Instance.Signup(signupRequest, (success) =>
+                DataService.Instance.Register(signupRequest, (success) =>
                 {                    
                     Device.BeginInvokeOnMainThread(() =>
                     {

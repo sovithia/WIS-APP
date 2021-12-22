@@ -5,23 +5,21 @@ using SQLite;
 
 namespace WIS.Models
 {
-    public class Product
-    {
-        public string description { get; set; }
-    }
+    
    
     public class InvoicePromotion
     {
         public InvoicePromotion(){}
-        string amount { get; set; }
-        string note { get; set; }
-        string detail { get; set; }
+        public string amount { get; set; }
+        public string note { get; set; }
+        public string detail { get; set; }
     }
 
     public class InvoiceElement
     {
         public string amount { get; set; } // invoice_fees amount
-        public Product productname { get; set; } // COMPUTED         
+        public string productname { get; set; } // COMPUTED         
+
         //public string promotion { get; set; } // invoice_promotion amount         
     }
 
@@ -33,8 +31,8 @@ namespace WIS.Models
         public DateTime date_due { get; set; } // Invoice date_due
 
         public string studentdisplayname {get;set;}
-        public List<InvoicePromotion> invoicepromotionList { get; set; }
-        public List<InvoiceElement> invoiceelementList { get; set; }
+        //public List<InvoicePromotion> invoicepromotionList { get; set; }
+        public List<InvoiceElement> invoicefeeList { get; set; }
         
 
         

@@ -10,7 +10,7 @@ namespace WIS.Models
         public string lastname { get; set; }
         public string dob { get; set; }
         public string gender { get; set; }
-        public string usertype { get; set; }
+        public string user_type { get; set; }
 
         public string phone_1 { get; set; }
         public string identifier { get; set; }

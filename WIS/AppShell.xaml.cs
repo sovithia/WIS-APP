@@ -23,7 +23,7 @@ namespace WIS
         ShellContent profile;
         Tab attendance;
         Tab invoices;
-        ShellContent schedule;
+        ShellContent studentschedule;
         ShellContent teacherschedule;
         ShellContent push;
 
@@ -86,19 +86,21 @@ namespace WIS
                 Style = style
             });
             // SCHEDULE
-            this.schedule = new ShellContent()
+            this.studentschedule = new ShellContent()
             {
-                Route = "Schedule",
+                Route = "StudentSchedule",
                 Title = "Schedule",
-                Icon = nameof(SchedulePage),
-                ContentTemplate = new DataTemplate(typeof(SchedulePage)),
+                Icon = "SchedulePage",
+                //ContentTemplate = new DataTemplate(typeof(StudentSchedulePage)),
+                ContentTemplate = new DataTemplate(typeof(Page)),
                 Style = style
             };
             // TEACHERSCHEDULE
             this.teacherschedule = new ShellContent()
             {
                 Route = "TeacherSchedule",
-                Title = "TeacherSchedule",
+                Title = "Schedule",
+                Icon = "SchedulePage",
                 ContentTemplate = new DataTemplate(typeof(TeacherSchedulePage)),
                 Style = style
             };
@@ -107,6 +109,7 @@ namespace WIS
             {
                 Route = "Push",
                 Title = "Push",
+                Icon = "PushPage",
                 ContentTemplate = new DataTemplate(typeof(SendPushNotificationPage)),
                 Style = style
             };
@@ -115,8 +118,7 @@ namespace WIS
         public AppShell(USERTYPE type)
         {
             InitializeComponent();
-            
-            Routing.RegisterRoute("AttendanceDetails", typeof(AttendanceDetailsPage));
+                        
             Routing.RegisterRoute("InvoiceDetails", typeof(InvoiceDetailsPage));                        
        
             Style style = null;
@@ -134,7 +136,7 @@ namespace WIS
             }                
             else if (type == USERTYPE.STUDENT)
             {                                
-                itemContainer.Items.Add(schedule);
+                itemContainer.Items.Add(studentschedule);
                 itemContainer.Items.Add(profile);
             }                
             else if (type == USERTYPE.TEACHER)
@@ -151,7 +153,7 @@ namespace WIS
             {
                 itemContainer.Items.Add(attendance);
                 itemContainer.Items.Add(invoices);
-                itemContainer.Items.Add(schedule);
+                itemContainer.Items.Add(studentschedule);
                 itemContainer.Items.Add(teacherschedule);
                 itemContainer.Items.Add(push);
                 itemContainer.Items.Add(profile);

@@ -4,9 +4,9 @@
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:viewmodel="clr-namespace:WIS.ViewModels"
              xmlns:schedule="clr-namespace:Syncfusion.SfSchedule.XForms;assembly=Syncfusion.SfSchedule.XForms"
-             x:Class="WIS.Views.SchedulePage">
+             x:Class="WIS.Views.StudentSchedulePage">
       <ContentPage.BindingContext>
-        <viewmodel:ScheduleViewModel/>
+        <viewmodel:StudentScheduleViewModel/>
     </ContentPage.BindingContext>
       
 
@@ -34,7 +34,7 @@
                   <RowDefinition Height="700" />
               </Grid.RowDefinitions>  
             
-            <schedule:SfSchedule x:Name="Schedule"
+            <schedule:SfSchedule x:Name="schedule"
                                  Grid.Column="0"
                                  Grid.Row="0"
                                  DataSource="{Binding Courses}"

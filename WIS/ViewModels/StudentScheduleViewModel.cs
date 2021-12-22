@@ -59,7 +59,7 @@ namespace WIS.ViewModels
         {
             //this.courses.Clear();
             
-            DataService.Instance.GetSchedule((schedule) =>
+            DataService.Instance.GetStudentSchedule((schedule) =>
             {
                 var tmpList = new ObservableCollection<SFSCHEDULEDATA>();
 

@@ -6,14 +6,18 @@ namespace WIS.Models
 {
     public class ABSENCE
     {
-        public string ID { get; set; }        
-        public string start { get; set; }
-        public string end { get; set; }
-        public string student { get; set; }
+        public string id { get; set; }
+        public string note { get; set; }
 
+
+        public int starttimestamp { get; set; }
+        public int endtimestamp { get; set; }
+
+        public string studentdisplayname { get; set; }
         // full
-        public string teacher { get; set; }
-        public string coursename { get; set; }
+        //public string teacher { get; set; }// Unavailable
+        //public string coursename { get; set; }// Unavailable
+
 
         [JsonIgnore,Ignore]
         public DateTime Start
@@ -22,7 +26,7 @@ namespace WIS.Models
             {
                 // Unix timestamp is seconds past epoch
                 DateTime dateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
-                dateTime = dateTime.AddSeconds(int.Parse(start)).ToLocalTime();
+                dateTime = dateTime.AddSeconds(starttimestamp).ToLocalTime();
                 return dateTime;
             }
         }
@@ -34,7 +38,7 @@ namespace WIS.Models
             {
                 // Unix timestamp is seconds past epoch
                 DateTime dateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
-                dateTime = dateTime.AddSeconds(int.Parse(end)).ToLocalTime();
+                dateTime = dateTime.AddSeconds(endtimestamp).ToLocalTime();
                 return dateTime;
             }
         }

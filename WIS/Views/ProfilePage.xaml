@@ -6,6 +6,7 @@
     xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
     xmlns:button="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
     xmlns:controls="clr-namespace:WIS.Controls"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
     xmlns:helper="clr-namespace:WIS.Helpers"
     xmlns:syncEffectsView="clr-namespace:Syncfusion.XForms.EffectsView;assembly=Syncfusion.Core.XForms"
     Title="Profile Page"
@@ -142,6 +143,16 @@
                     </StackLayout>
                 </ScrollView>
 
+                <buttons:SfButton
+                            x:Name="logout"
+                            Grid.Row="4"
+                            Margin="0,16"
+                            Command="{Binding LogoutCommand}"
+                            FontSize="12"
+                            HorizontalOptions="End"
+                            Style="{StaticResource TransparentButtonStyle}"
+                            Text="Logout"
+                            TextColor="{DynamicResource Gray-White}" />
             </StackLayout>
 
         </ScrollView>

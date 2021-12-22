@@ -131,8 +131,8 @@ namespace WIS.ViewModels
             this.Phone = new ValidatableObject<string>();
             this.Password = new ValidatableObject<string>();
 
-            this.Phone.Value = "012771335";
-            this.Password.Value = "1234";
+            this.Phone.Value = "0964222816";
+            this.Password.Value = "1111";
             
         }
 
@@ -181,9 +181,7 @@ namespace WIS.ViewModels
             IsLoading = true;
             DataService.Instance.Login(Phone.Value, Password.Value, (user) =>
             {
-                string token = (string)Application.Current.Properties["Fcmtocken"];
-                DataService.Instance.RegisterFCMToken(token);
-
+                             
                 Device.BeginInvokeOnMainThread(() =>
                 {
                     IsLoading = false;
@@ -197,8 +195,8 @@ namespace WIS.ViewModels
                         }
                         else
                         {
-                            string type = user.usertype;
-                            Preferences.Set("TYPE", user.usertype);
+                            string type = user.user_type;
+                            Preferences.Set("TYPE", user.user_type);
                             AppShell page = null;
                             if (type == "STUDENT")
                                 page = new AppShell(USERTYPE.STUDENT);
@@ -208,7 +206,14 @@ namespace WIS.ViewModels
                                 page = new AppShell(USERTYPE.TEACHER);
                             else if (type == "REGISTRAR")
                                 page = new AppShell(USERTYPE.REGISTRAR);
+                            else if (type == "ADMIN")
+                                page = new AppShell(USERTYPE.ADMIN);
                             Application.Current.MainPage = page;
+                            if (Application.Current.Properties.ContainsKey("Fcmtocken"))
+                            {
+                                string token = (string)Application.Current.Properties["Fcmtocken"];
+                                DataService.Instance.RegisterFCMToken(token);
+                            }
                         }
                         
                     }                    

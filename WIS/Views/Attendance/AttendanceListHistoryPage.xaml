@@ -48,7 +48,7 @@
                                     Margin="15,10,15,10"
                                     BorderColor="{DynamicResource Gray-Bg}"
                                     BorderWidth="0"
-                                    CornerRadius="25"
+                                    CornerRadius="10"
                                     HasShadow="True"
                                     Style="{DynamicResource ThemeBorderStyle}">
 
@@ -59,7 +59,7 @@
                                 <Label
                                     FontSize="14"
                                     Style="{StaticResource TitleLabelStyle}"
-                                    Text="{Binding student}"
+                                    Text="{Binding studentdisplayname}"
                                     TextColor="{DynamicResource Gray-White}" />                               
                                 <!--  From  -->
                                 <Label
