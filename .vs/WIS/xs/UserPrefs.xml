@@ -1,27 +1,26 @@
 ﻿<Properties StartupConfiguration="{D5F23FAD-2906-4CA5-B308-3D7789659D25}|Default">
   <MonoDevelop.Ide.ItemProperties.WIS.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.9F4D140B-03CD-4242-A83C-6CE99F4C68D4" />
   <MonoDevelop.Ide.ItemProperties.WIS.Android PreferredExecutionTarget="Android.Nexus_6_API_28" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="WIS/Services/DataService.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="WIS/Views/SigninSignup/LoginPage.xaml">
     <Files>
-      <File FileName="WIS/Services/DataService.cs" Line="256" Column="24" />
-      <File FileName="WIS/Services/RESTEngine.cs" Line="64" Column="113" />
-      <File FileName="WIS/Models/DISPLAY/Invoice.cs" Line="27" Column="6" />
+      <File FileName="WIS/Views/Push/SendPushNotificationPage.xaml" Line="90" Column="60" />
+      <File FileName="WIS/ViewModels/SendPushNotificationPageViewModel.cs" Line="38" Column="14" />
+      <File FileName="WIS.iOS/Main.cs" Line="26" Column="1" />
+      <File FileName="WIS/Views/SigninSignup/LoginPage.xaml" Line="19" Column="6" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="WIS" expanded="True">
             <Node name="WIS" expanded="True">
-              <Node name="Models" expanded="True">
-                <Node name="DISPLAY" expanded="True" />
-              </Node>
-              <Node name="Services" expanded="True">
-                <Node name="DataService.cs" selected="True" />
-              </Node>
+              <Node name="Models" expanded="True" />
+              <Node name="ViewModels" expanded="True" />
               <Node name="Views" expanded="True">
-                <Node name="Attendance" expanded="True" />
-                <Node name="Invoice" expanded="True">
-                  <Node name="InvoiceDetailsPage.xaml" expanded="True" />
+                <Node name="Push" expanded="True">
+                  <Node name="SendPushNotificationPage.xaml" expanded="True" />
+                </Node>
+                <Node name="SigninSignup" expanded="True">
+                  <Node name="LoginPage.xaml" selected="True" />
                 </Node>
               </Node>
             </Node>
@@ -31,8 +30,7 @@
       </Pad>
       <Pad Id="MonoDevelop.Debugger.WatchPad">
         <State>
-          <Value>JsonConvert.DeserializeObject&lt;Invoice&gt;(data)</Value>
-          <Value>ex.Message</Value>
+          <Value>args.visibleDates</Value>
         </State>
       </Pad>
     </Pads>

@@ -255,8 +255,27 @@ namespace WIS.Services
                 
             }, this.BaseURL + "/invoicedetails/" + invoiceID, headers);
         }
- 
-                
+
+
+        public void GetTest(responseDelegate<StudentSchedule> del)
+        {
+            Dictionary<string, string> data = new Dictionary<string, string>();
+            RESTEngine.HttpGet(data => {
+                try
+                {
+                    del(JsonConvert.DeserializeObject<StudentSchedule>(data,
+                    new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }));
+                }
+                catch (Exception ex)
+                {
+                    Device.BeginInvokeOnMainThread(() => {
+                        Application.Current.MainPage.DisplayAlert("ERROR", ex.Message, "OK");
+                    });
+                }
+
+            }, this.BaseURL + "/test", headers);
+        }
+
         // Student Schedule
         public void GetStudentSchedule(responseDelegate<StudentSchedule> del)
         {
@@ -303,6 +322,19 @@ namespace WIS.Services
                 if (data != null)
                     Console.WriteLine("fcm token registered");
             }, this.BaseURL + "/registertoken", data, null, true);
+        }
+
+        public void SendPushNotification(string message, responseDelegate<bool> del)
+        {
+            Dictionary<string, string> data = new Dictionary<string, string>();
+            data["message"] = message;
+            RESTEngine.HttpPost(data =>
+            {
+                Dictionary<string, string> res = JsonConvert.DeserializeObject<Dictionary<string, string>>(data,
+                    new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore });
+                del(res["result"] == "OK");
+                //Application.Current.MainPage.DisplayAlert("Ok", "Phone number not found", "OK");                
+            }, this.BaseURL + "/pushsend", data, null, true);
         }
     }
 

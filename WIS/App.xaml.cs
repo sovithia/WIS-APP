@@ -41,7 +41,7 @@ namespace WIS
                   typeof(Analytics), typeof(Crashes));
 
             InitializeComponent();
-            
+
             //MainPage = new SupportDetailPage();
             //Preferences.Set("TYPE", "STUDENT");
 
@@ -49,7 +49,7 @@ namespace WIS
             //MainPage = new SchedulePage();
             //MainPage = new RecentChatPage();
             //MainPage = new ChatMessagePage();
-            MainPage = new LoginPage();
+
             //MainPage = new AppShell(USERTYPE.STUDENT);
             //MainPage = new SignupValidatedPage(null);
             //MainPage = new ForgotPasswordPage();
@@ -60,6 +60,8 @@ namespace WIS
             //MainPage = new ProfilePage();
             //MainPage = new TelegramLoggedPage();
 
+            MainPage = new LoginPage();
+            //MainPage = new DemoPage();
             /*
             INVOICE invoice = new INVOICE();
             invoice.issuedate = DateTime.Now;

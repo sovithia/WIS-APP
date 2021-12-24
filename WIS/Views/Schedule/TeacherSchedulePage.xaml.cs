@@ -9,7 +9,38 @@ namespace WIS.Views
     {
         public TeacherSchedulePage()
         {
+            isWeekView = false;
             InitializeComponent();
         }
+
+        bool isWeekView;
+        void switchView(System.Object sender, System.EventArgs e)
+        {
+            if (isWeekView == true)
+            {
+                switchBtn.Text = "Week View";
+
+                schedule.ScheduleView = Syncfusion.SfSchedule.XForms.ScheduleView.DayView;
+                schedule.WorkWeekViewSettings = new Syncfusion.SfSchedule.XForms.WorkWeekViewSettings()
+                {
+                    StartHour = 7,
+                    EndHour = 17
+                };
+            }
+
+            else
+            {
+                switchBtn.Text = "Day View";
+                schedule.ScheduleView = Syncfusion.SfSchedule.XForms.ScheduleView.WorkWeekView;
+                schedule.WorkWeekViewSettings = new Syncfusion.SfSchedule.XForms.WorkWeekViewSettings()
+                {
+                    StartHour = 7,
+                    EndHour = 17
+                };
+            }
+
+            isWeekView = !isWeekView;
+        }
+
     }
 }

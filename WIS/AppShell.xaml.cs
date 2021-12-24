@@ -91,8 +91,7 @@ namespace WIS
                 Route = "StudentSchedule",
                 Title = "Schedule",
                 Icon = "SchedulePage",
-                //ContentTemplate = new DataTemplate(typeof(StudentSchedulePage)),
-                ContentTemplate = new DataTemplate(typeof(Page)),
+                ContentTemplate = new DataTemplate(typeof(StudentSchedulePage)),                
                 Style = style
             };
             // TEACHERSCHEDULE

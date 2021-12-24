@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using WIS.Services;
 using Xamarin.Forms;
 
 namespace WIS.Views
@@ -14,8 +15,9 @@ namespace WIS.Views
             InitializeComponent();
         }
 
+        /*
         void BtnSend_Clicked(System.Object sender, System.EventArgs e)
-        {
+        {            
             try
             {
                 var FCMToken = Application.Current.Properties.Keys.Contains("Fcmtocken");
@@ -81,5 +83,6 @@ namespace WIS.Views
                 return false;
             }
         }
+        */
     }
 }
