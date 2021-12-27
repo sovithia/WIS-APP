@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Text.RegularExpressions;
+
 namespace WIS.Validators.Rules
 {
     public class IsValidPhoneRule<T> : IValidationRule<T>
@@ -29,16 +31,25 @@ namespace WIS.Validators.Rules
             //        System.Globalization.DateTimeStyles.None, out fromDateValue))
             if (value == null)
                 return false;
-            value = (T)(object) value.ToString().Replace(" ", string.Empty);
-            int outint;
-            
-            if (int.TryParse(value.ToString(),out outint))                    
+            value = (T)(object) value.ToString().Replace(" ", string.Empty);            
+            if (Regex.IsMatch(value.ToString(), @"^\d+$"))                
             {
                 return true;
             }
             else
             {
-                return false;
+                if (value.ToString().Substring(0, 1) == "+")
+                {
+
+                    
+                    string onlynumber = value.ToString().Substring(1);
+                    if (Regex.IsMatch(onlynumber, @"^\d+$"))                                    
+                        return true;
+                    else
+                        return false;
+                }
+                else
+                    return false;
             }
         }
         #endregion

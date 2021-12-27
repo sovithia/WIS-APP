@@ -24,6 +24,7 @@ using Syncfusion.SfPicker.XForms.iOS;
 using Syncfusion.SfBusyIndicator.XForms.iOS;
 using UserNotifications;
 using Firebase.CloudMessaging;
+using Plugin.FirebasePushNotification;
 
 namespace WIS.iOS
 {
@@ -71,7 +72,7 @@ namespace WIS.iOS
             new SfBusyIndicatorRenderer();
 
             LoadApplication(new App());
-
+            
 
             if (UIDevice.CurrentDevice.CheckSystemVersion(15, 0))
             {
@@ -83,15 +84,15 @@ namespace WIS.iOS
             }
 
             // PUSH
-            
             RegisterForRemoteNotifications();
             Messaging.SharedInstance.Delegate = this;
             if (UNUserNotificationCenter.Current != null)
             {
                 UNUserNotificationCenter.Current.Delegate = new UserNotificationCenterDelegate();
             }
-            
-            
+
+            FirebasePushNotificationManager.Initialize(options, true);
+
             return base.FinishedLaunching(app, options);
         }
 
@@ -118,20 +119,25 @@ namespace WIS.iOS
                 UIApplication.SharedApplication.RegisterUserNotificationSettings(settings);
             }
             UIApplication.SharedApplication.RegisterForRemoteNotifications();
+            
 
         }
 
         public override void RegisteredForRemoteNotifications(UIApplication application, NSData deviceToken)
         {
             Messaging.SharedInstance.ApnsToken = deviceToken;
+            FirebasePushNotificationManager.DidRegisterRemoteNotifications(deviceToken);
         }
 
         public override void FailedToRegisterForRemoteNotifications(UIApplication application, NSError error)
-        {            
+        {
+            FirebasePushNotificationManager.RemoteNotificationRegistrationFailed(error);
         }
 
         public override void DidReceiveRemoteNotification(UIApplication application, NSDictionary userInfo, Action<UIBackgroundFetchResult> completionHandler)
         {
+            FirebasePushNotificationManager.DidReceiveMessage(userInfo);            
+            System.Console.WriteLine(userInfo); // 
             completionHandler(UIBackgroundFetchResult.NewData);
         }
 

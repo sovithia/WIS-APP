@@ -1,3 +1,5 @@
+using Plugin.FirebasePushNotification;
+using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
 
@@ -16,6 +18,7 @@ namespace WIS.Views
         public LoginPage()
         {
             this.InitializeComponent();
+            
         }
     }
 }

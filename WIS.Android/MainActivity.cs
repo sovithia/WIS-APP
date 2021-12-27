@@ -17,6 +17,7 @@ using Firebase.Messaging;
 using Firebase.Iid;
 using Android.Util;
 using Firebase;
+using Plugin.FirebasePushNotification;
 
 namespace WIS.Droid
 {
@@ -30,6 +31,22 @@ namespace WIS.Droid
             FirebaseApp.InitializeApp(this);
             base.OnCreate(savedInstanceState);
 
+            // Handle Push Notification
+            //Set the default notification channel for your app when running Android Oreo
+            if (Build.VERSION.SdkInt >= Android.OS.BuildVersionCodes.O){
+                //Change for your default notification channel id here
+                FirebasePushNotificationManager.DefaultNotificationChannelId = "FirebasePushNotificationChannel";
+                //Change for your default notification channel name here
+                FirebasePushNotificationManager.DefaultNotificationChannelName = "General";
+            }
+            
+#if DEBUG
+            FirebasePushNotificationManager.Initialize(this, true);
+#else
+            FirebasePushNotificationManager.Initialize(this,false);
+#endif
+     
+
             CrossMediaManager.Current.Init(this);
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
@@ -38,6 +55,8 @@ namespace WIS.Droid
                 ActivityCompat.RequestPermissions(this, new String[] { Manifest.Permission.RecordAudio }, 1);
 
             LoadApplication(new App());
+            FirebasePushNotificationManager.ProcessIntent(this, Intent);
+
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {

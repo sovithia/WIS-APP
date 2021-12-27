@@ -6,6 +6,7 @@ using WIS.Views;
 using Xamarin.Essentials;
 using WIS.Services;
 using Plugin.Connectivity;
+using Plugin.FirebasePushNotification;
 
 namespace WIS.ViewModels
 {
@@ -130,9 +131,8 @@ namespace WIS.ViewModels
             this.IsLoading = false;
             this.Phone = new ValidatableObject<string>();
             this.Password = new ValidatableObject<string>();
-
-            this.Phone.Value = "0964222816";
-            this.Password.Value = "1111";
+            this.Phone.Value = "+66644547802";
+            this.Password.Value = "2222";
             
         }
 
@@ -186,6 +186,8 @@ namespace WIS.ViewModels
                 {
                     IsLoading = false;
                     DataService.Instance.CurrentUser = user;
+                    
+                    
                     if (user != null)
                     {
                         if(user.reset_requested == true)
@@ -212,8 +214,19 @@ namespace WIS.ViewModels
                             if (Application.Current.Properties.ContainsKey("Fcmtocken"))
                             {
                                 string token = (string)Application.Current.Properties["Fcmtocken"];
-                                DataService.Instance.RegisterFCMToken(token);
-                            }
+                                if (CrossFirebasePushNotification.Current != null)
+                                {
+                                    CrossFirebasePushNotification.Current.OnNotificationOpened += (s, p) => {
+                                        if (Application.Current != null)
+                                            Application.Current.MainPage.DisplayAlert(p.Data["aps.alert.title"].ToString(), p.Data["aps.alert.body"].ToString(), "OK");
+                                    };
+
+                                    CrossFirebasePushNotification.Current.OnNotificationReceived += (s, p) => {
+                                        if (Application.Current != null)
+                                            Application.Current.MainPage.DisplayAlert(p.Data["aps.alert.title"].ToString(), p.Data["aps.alert.body"].ToString(), "OK");
+                                    };
+                                }
+                            }                            
                         }
                         
                     }                    

@@ -245,6 +245,9 @@
     <PackageReference Include="Xamarin.Firebase.iOS.CloudMessaging">
       <Version>4.7.1</Version>
     </PackageReference>
+    <PackageReference Include="Plugin.FirebasePushNotification">
+      <Version>3.3.10</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>

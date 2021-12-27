@@ -73,13 +73,12 @@ namespace WIS.Services
         public void ForgotPassword(string phone, responseDelegate<bool> del)
         {
             Dictionary<string, string> data = new Dictionary<string, string>();
+            data["username"] = phone;
             RESTEngine.HttpPost(result =>
             {
                 try
-                {
-                    Dictionary<string, string> res = JsonConvert.DeserializeObject<Dictionary<string, string>>(result,
-                    new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore });
-                    del(res["result"] == "OK");
+                {                    
+                    del(result != null);
                 }
                 catch(Exception ex){
                     Device.BeginInvokeOnMainThread(() => {
@@ -88,30 +87,30 @@ namespace WIS.Services
                 }
                 
             },
-            this.BaseURL + "/forgetpassword", data, null);
+            this.BaseURL + "/resetrequest", data, null);
         }
 
-        public void EditPassword(string userid, string newpassword, string token, responseDelegate<bool> del)
+        public void EditPassword(string username, string newpassword,responseDelegate<bool> del)
         {
             Dictionary<string, string> data = new Dictionary<string, string>();
-            data["userid"] = userid;
-            data["password"] = newpassword;
-            data["token"] = token;
-
+            data["username"] = username;
+            data["password"] = newpassword;            
+            
             RESTEngine.HttpPost(result =>
             {
                 try
                 {
                     Dictionary<string, string> res = JsonConvert.DeserializeObject<Dictionary<string, string>>(result,
                     new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore });
-                    del(res["result"] == "OK");
-                }catch(Exception ex){
+                    del(result != null);
+                }
+                catch(Exception ex){
                     Device.BeginInvokeOnMainThread(() => {
                         Application.Current.MainPage.DisplayAlert("ERROR", ex.Message, "OK");
                     });
                 }                
             },
-            this.BaseURL + "/editPassword", data, null);
+            this.BaseURL + "/changepassword", data, null);
         }
 
         public void Login(string phone, string password, responseDelegate<APPUSER> del)

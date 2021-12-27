@@ -89,16 +89,16 @@ namespace WIS.ViewModels
                 return;
             DataService.Instance.ForgotPassword(Phone.Value, (response) =>
             {
-                Device.BeginInvokeOnMainThread(() =>
+                Device.BeginInvokeOnMainThread(async () =>
                 {
-                    if (response == true)
+                    if (response != false)
                     {
-                        var page = new PasswordSentPage();
-                        Application.Current.MainPage.Navigation.PushModalAsync(page);
+                        await Application.Current.MainPage.DisplayAlert("OK", "A reset link have been sent to you by sms", "OK");
+                        await Application.Current.MainPage.Navigation.PopModalAsync();                        
                     }
                     else
                     {
-                        Application.Current.MainPage.DisplayAlert("ERROR", "Phone number not found", "OK");
+                        await Application.Current.MainPage.DisplayAlert("ERROR", "Phone number not found", "OK");
                     }                                          
                 });
                

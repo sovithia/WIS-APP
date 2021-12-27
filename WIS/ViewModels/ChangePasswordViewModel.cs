@@ -4,6 +4,7 @@ using WIS.Models;
 using WIS.Services;
 using WIS.Validators;
 using WIS.Validators.Rules;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace WIS.ViewModels
@@ -18,17 +19,18 @@ namespace WIS.ViewModels
         public ChangePasswordViewModel()
         {            
             this.SendCommand = new Command(this.SendClicked);
-            password = new ValidatableObject<string>();
+            password = new ValidatablePair<string>();
+
+            this.Password.Item1.Validations.Add(new IsPinCodeRule<string> { ValidationMessage = "Password need to be 4 digits" });
+            this.Password.Item2.Validations.Add(new IsPinCodeRule<string> { ValidationMessage = "Password need to be 4 digits" });
             
-            this.Password.Validations.Add(new IsNotNullOrEmptyRule<string> { ValidationMessage = "Password empty" });
-            this.Password.Validations.Add(new IsValidPhoneRule<string> { ValidationMessage = "Passwords does not match" });
         }
 
         #endregion
         #region Fields
 
-        private ValidatableObject<string> password;
-        public ValidatableObject<string> Password
+        private ValidatablePair<string> password;
+        public ValidatablePair<string> Password
         {
             get
             {
@@ -77,16 +79,35 @@ namespace WIS.ViewModels
             if (!AreFieldsValid())
                 return;
             APPUSER user = DataService.Instance.CurrentUser;
-            DataService.Instance.EditPassword(user.id, password.Value, user.remember_me_token, (response) =>
+            DataService.Instance.EditPassword(user.username, password.Item2.Value, (response) =>
             {
-                Device.BeginInvokeOnMainThread(() =>
+                Device.BeginInvokeOnMainThread( async () =>
                 {
                     if (response == true)
-                    {
-                        Shell.Current.DisplayAlert("OK", "Password changed", "Ok");                        
+                    {                        
+                        string type = user.user_type;
+                        Preferences.Set("TYPE", user.user_type);
+                        AppShell page = null;
+                        if (type == "STUDENT")
+                            page = new AppShell(USERTYPE.STUDENT);
+                        else if (type == "PARENT")
+                            page = new AppShell(USERTYPE.PARENT);
+                        else if (type == "TEACHER")
+                            page = new AppShell(USERTYPE.TEACHER);
+                        else if (type == "REGISTRAR")
+                            page = new AppShell(USERTYPE.REGISTRAR);
+                        else if (type == "ADMIN")
+                            page = new AppShell(USERTYPE.ADMIN);
+                        Application.Current.MainPage = page;
+                        await Shell.Current.DisplayAlert("OK", "Password changed", "Ok");
+                        if (Application.Current.Properties.ContainsKey("Fcmtocken"))
+                        {
+                            string token = (string)Application.Current.Properties["Fcmtocken"];
+                            DataService.Instance.RegisterFCMToken(token);
+                        }
                     }
                     else{
-                        Application.Current.MainPage.DisplayAlert("ERROR", "Phone number not found", "OK");
+                        await Application.Current.MainPage.DisplayAlert("ERROR", "Phone number not found", "OK");
                     }
                 });
 

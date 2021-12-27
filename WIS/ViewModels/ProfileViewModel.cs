@@ -101,7 +101,7 @@ namespace WIS.ViewModels
 
         public string Phone
         {
-            get { return currentUser.phone_1; }
+            get { return currentUser.username; }
         }
         
         public string Birthdate
