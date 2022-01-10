@@ -131,8 +131,8 @@ namespace WIS.ViewModels
             this.IsLoading = false;
             this.Phone = new ValidatableObject<string>();
             this.Password = new ValidatableObject<string>();
-            this.Phone.Value = "+66644547802";
-            this.Password.Value = "2222";
+            this.Phone.Value = "+855964222816";
+            this.Password.Value = "1111";
             
         }
 

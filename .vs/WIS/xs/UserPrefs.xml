@@ -1,23 +1,22 @@
-﻿<Properties StartupConfiguration="{D5F23FAD-2906-4CA5-B308-3D7789659D25}|Default">
+﻿<Properties StartupConfiguration="{1D9F4196-4160-421B-9C34-A46D8EC09BC0}|Default">
   <MonoDevelop.Ide.ItemProperties.WIS.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.9F4D140B-03CD-4242-A83C-6CE99F4C68D4" />
-  <MonoDevelop.Ide.ItemProperties.WIS.Android PreferredExecutionTarget="Android.Nexus_6_API_28" />
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.WIS.Android AndroidDesignerPreferredTheme="MainTheme" PreferredExecutionTarget="Android.Nexus_6_API_28" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="WIS.Android/SplashActivity.cs">
+    <Files>
+      <File FileName="WIS.Android/SplashActivity.cs" Line="16" Column="43" />
+      <File FileName="WIS.Android/Resources/values/styles.xml" Line="20" Column="1" />
+      <File FileName="WIS.Android/Properties/AndroidManifest.xml" />
+      <File FileName="WIS.Android/Resources/layout/splash.axml" Line="1" Column="1" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="WIS" expanded="True">
-            <Node name="WIS" expanded="True">
-              <Node name="ViewModels" expanded="True">
-                <Node name="LoginPageViewModel.cs" selected="True" />
-              </Node>
-              <Node name="Views" expanded="True">
-                <Node name="SigninSignup" expanded="True">
-                  <Node name="LoginPage.xaml" expanded="True" />
-                </Node>
-              </Node>
-              <Node name="App.xaml" expanded="True" />
+            <Node name="WIS.Android" expanded="True">
+              <Node name="Properties" expanded="True" />
+              <Node name="Resources" expanded="True" />
+              <Node name="SplashActivity.cs" selected="True" />
             </Node>
-            <Node name="WIS.Android" expanded="True" />
             <Node name="WIS.iOS" expanded="True" />
           </Node>
         </State>

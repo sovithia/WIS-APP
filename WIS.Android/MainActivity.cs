@@ -11,7 +11,6 @@ using System.Threading.Tasks;
 using System.IO;
 using Android.Content;
 using MediaManager;
-
 using Android.Gms.Common;
 using Firebase.Messaging;
 using Firebase.Iid;
@@ -21,7 +20,7 @@ using Plugin.FirebasePushNotification;
 
 namespace WIS.Droid
 {
-    [Activity(Label = "WIS", Icon = "@mipmap/icon", LaunchMode = LaunchMode.SingleTop, Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize)]
+    [Activity(Label = "WIS", Icon = "@mipmap/icon", LaunchMode = LaunchMode.SingleTop, Theme = "@style/MainTheme", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         internal static MainActivity Instance { get; private set; }

@@ -1,16 +1,15 @@
 using System;
 using Xamarin.Forms;
+using WIS.Views;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
 using Xamarin.Forms.Xaml;
 using WIS.Services;
-using WIS.Views;
-
 using Xamarin.Essentials;
 using WIS.Models;
 using System.Collections.Generic;
 
-using Microsoft.AppCenter;
-using Microsoft.AppCenter.Analytics;
-using Microsoft.AppCenter.Crashes;
 
 [assembly: ExportFont("Montserrat-Bold.ttf",Alias="Montserrat-Bold")]
      [assembly: ExportFont("Montserrat-Medium.ttf", Alias = "Montserrat-Medium")]
@@ -33,7 +32,7 @@ namespace WIS
         }
         public App()
         {         
-            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NTQ5NzgyQDMxMzkyZTM0MmUzMGZiT3RsdmFkQlpuSFFrd1owQnNsWWRwNEs5WU1kaEpJcXdSN01DMmJreDA9");
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NTYxNTAyQDMxMzkyZTM0MmUzMFRZN2ZBeDkwUWo3b09xL1F1UmhKTnhKbFcxZlVTR3hnL20yN1dRcmtaMkU9");
 
             AppCenter.Start("ios=17461fcb-db55-4ab1-9523-9bda0d63418f;" +
                   "uwp={Your UWP App secret here};" +

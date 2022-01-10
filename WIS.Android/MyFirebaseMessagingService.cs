@@ -7,6 +7,7 @@ using AndroidX.Core.App;
 using Firebase.Messaging;
 using System;
 using System.Text.RegularExpressions;
+using NotificationCompat = AndroidX.Core.App.NotificationCompat;
 
 namespace WIS.Droid
 {

@@ -71,55 +71,55 @@
             },
             "Syncfusion.Xamarin.Buttons": {
               "target": "Package",
-              "version": "[19.4.0.38, )"
+              "version": "[19.4.0.41, )"
             },
             "Syncfusion.Xamarin.Cards": {
               "target": "Package",
-              "version": "[19.4.0.38, )"
+              "version": "[19.4.0.41, )"
             },
             "Syncfusion.Xamarin.Core": {
               "target": "Package",
-              "version": "[19.4.0.38, )"
+              "version": "[19.4.0.41, )"
             },
             "Syncfusion.Xamarin.SfBadgeView": {
               "target": "Package",
-              "version": "[19.4.0.38, )"
+              "version": "[19.4.0.41, )"
             },
             "Syncfusion.Xamarin.SfBusyIndicator": {
               "target": "Package",
-              "version": "[19.4.0.38, )"
+              "version": "[19.4.0.41, )"
             },
             "Syncfusion.Xamarin.SfComboBox": {
               "target": "Package",
-              "version": "[19.4.0.38, )"
+              "version": "[19.4.0.41, )"
             },
             "Syncfusion.Xamarin.SfDataForm": {
               "target": "Package",
-              "version": "[19.4.0.38, )"
+              "version": "[19.4.0.41, )"
             },
             "Syncfusion.Xamarin.SfListView": {
               "target": "Package",
-              "version": "[19.4.0.38, )"
+              "version": "[19.4.0.41, )"
             },
             "Syncfusion.Xamarin.SfPicker": {
               "target": "Package",
-              "version": "[19.4.0.38, )"
+              "version": "[19.4.0.41, )"
             },
             "Syncfusion.Xamarin.SfPullToRefresh": {
               "target": "Package",
-              "version": "[19.4.0.38, )"
+              "version": "[19.4.0.41, )"
             },
             "Syncfusion.Xamarin.SfRating": {
               "target": "Package",
-              "version": "[19.4.0.38, )"
+              "version": "[19.4.0.41, )"
             },
             "Syncfusion.Xamarin.SfSchedule": {
               "target": "Package",
-              "version": "[19.4.0.38, )"
+              "version": "[19.4.0.41, )"
             },
             "Syncfusion.Xamarin.SfSignaturePad": {
               "target": "Package",
-              "version": "[19.4.0.38, )"
+              "version": "[19.4.0.41, )"
             },
             "Xam.Plugin.Connectivity": {
               "target": "Package",

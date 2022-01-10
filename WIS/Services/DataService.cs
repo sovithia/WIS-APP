@@ -29,8 +29,21 @@ namespace WIS.Services
 
         public DataService()
         {
-            this.BaseURL = "http://127.0.0.1:3333/api";
-            //this.BaseURL = "http://119.82.252.226:3000";
+            string realServer = "http://western.edu.kh/api";
+            if(Device.RuntimePlatform == Device.iOS)
+            {
+                if (DeviceInfo.DeviceType == DeviceType.Virtual)
+                    this.BaseURL = "http://127.0.0.1:3333/api";
+                else
+                    this.BaseURL = realServer;
+            }
+            else if (Device.RuntimePlatform == Device.Android)
+            {
+                if (DeviceInfo.DeviceType == DeviceType.Virtual)
+                    this.BaseURL = "http://10.0.2.2:3333/api";
+                else
+                    this.BaseURL = realServer;
+            }           
             this.headers = new Dictionary<string, string>();
         }
 

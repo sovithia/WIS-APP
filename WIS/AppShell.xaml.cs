@@ -34,7 +34,7 @@ namespace WIS
                 Route = "Profile",
                 Title = "Profile",
                 Icon = nameof(ProfilePage),
-                ContentTemplate = new DataTemplate(typeof(ProfilePage)),
+                ContentTemplate = new DataTemplate(typeof(ProfilePage)),                
                 Style = style
             };
 
@@ -89,7 +89,7 @@ namespace WIS
             this.studentschedule = new ShellContent()
             {
                 Route = "StudentSchedule",
-                Title = "Schedule",
+                Title = "Schedule(S)",
                 Icon = "SchedulePage",
                 ContentTemplate = new DataTemplate(typeof(StudentSchedulePage)),                
                 Style = style
@@ -98,7 +98,7 @@ namespace WIS
             this.teacherschedule = new ShellContent()
             {
                 Route = "TeacherSchedule",
-                Title = "Schedule",
+                Title = "Schedule(T)",
                 Icon = "SchedulePage",
                 ContentTemplate = new DataTemplate(typeof(TeacherSchedulePage)),
                 Style = style
@@ -121,11 +121,11 @@ namespace WIS
             Routing.RegisterRoute("InvoiceDetails", typeof(InvoiceDetailsPage));                        
        
             Style style = null;
-            style = StudentShell;
+            style = CommonShell;
             initShells(style);
-            //FlyoutBackgroundColor = Color.FromHex("1746A0");
-            FlyoutBackgroundColor = Color.Red;
-            BackgroundColor = Color.Red;
+            FlyoutBackgroundColor = Color.FromHex("1746A0");
+            BackgroundColor = Color.FromHex("1746A0");
+            
             
             if (type == USERTYPE.PARENT)
             {                                

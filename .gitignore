@@ -5,3 +5,4 @@ WIS.Android/bin/*
 WIS.iOS/obj/*
 WIS.iOS/bin/*
 .DS_Store
+test_sams_db 2021-11-12.sql
