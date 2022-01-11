@@ -48,7 +48,6 @@ namespace WIS
             //MainPage = new SchedulePage();
             //MainPage = new RecentChatPage();
             //MainPage = new ChatMessagePage();
-
             //MainPage = new AppShell(USERTYPE.STUDENT);
             //MainPage = new SignupValidatedPage(null);
             //MainPage = new ForgotPasswordPage();
@@ -58,7 +57,6 @@ namespace WIS
             //Preferences.Set("TYPE","STUDENT");
             //MainPage = new ProfilePage();
             //MainPage = new TelegramLoggedPage();
-
             MainPage = new LoginPage();
             //MainPage = new DemoPage();
             /*

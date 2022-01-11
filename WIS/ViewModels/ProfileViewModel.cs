@@ -75,6 +75,7 @@ namespace WIS.ViewModels
             }
         }
 
+
         /// <summary>
         /// Gets or sets the image path.
         /// </summary>
