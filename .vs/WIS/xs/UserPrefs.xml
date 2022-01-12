@@ -1,22 +1,33 @@
 ﻿<Properties StartupConfiguration="{D5F23FAD-2906-4CA5-B308-3D7789659D25}|Default">
   <MonoDevelop.Ide.ItemProperties.WIS.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.9F4D140B-03CD-4242-A83C-6CE99F4C68D4" />
   <MonoDevelop.Ide.ItemProperties.WIS.Android AndroidDesignerPreferredTheme="MainTheme" PreferredExecutionTarget="Android.Nexus_6_API_28" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="WIS/Services/DataService.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="WIS/Views/Attendance/AttendanceListHistoryPage.xaml">
     <Files>
-      <File FileName="WIS/Models/APPUSER.cs" Line="28" Column="1" />
-      <File FileName="WIS/Services/DataService.cs" Line="142" Column="1" />
+      <File FileName="WIS/ViewModels/InvoiceDetailsPageViewModel.cs" Line="132" Column="17" />
+      <File FileName="WIS/Views/Invoice/InvoiceListPage.xaml" Line="28" Column="14" />
+      <File FileName="WIS/Views/Invoice/InvoiceListHistoryPage.xaml" Line="38" Column="52" />
+      <File FileName="WIS/ViewModels/AttendanceListHistoryPageViewModel.cs" Line="1" Column="1" />
+      <File FileName="WIS/Views/Attendance/AttendanceListHistoryPage.xaml" Line="41" Column="33" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="WIS" expanded="True">
             <Node name="WIS" expanded="True">
-              <Node name="Models" expanded="True" />
-              <Node name="Services" expanded="True">
-                <Node name="DataService.cs" selected="True" />
+              <Node name="Models" expanded="True">
+                <Node name="DISPLAY" expanded="True" />
               </Node>
+              <Node name="Services" expanded="True" />
               <Node name="ViewModels" expanded="True" />
-              <Node name="Views" expanded="True" />
+              <Node name="Views" expanded="True">
+                <Node name="Attendance" expanded="True">
+                  <Node name="AttendanceListHistoryPage.xaml" selected="True" />
+                </Node>
+                <Node name="Invoice" expanded="True">
+                  <Node name="InvoiceListHistoryPage.xaml" expanded="True" />
+                  <Node name="InvoiceListPage.xaml" expanded="True" />
+                </Node>
+              </Node>
             </Node>
             <Node name="WIS.Android" expanded="True" />
           </Node>
@@ -33,7 +44,6 @@
     <BreakpointStore>
       <Breakpoint file="/Users/sovi/Projects/WIS-APP/WIS.iOS/AppDelegate.cs" relfile="WIS.iOS/AppDelegate.cs" line="141" column="1" />
       <Breakpoint file="/Users/sovi/Projects/WIS-APP/WIS.iOS/AppDelegate.cs" relfile="WIS.iOS/AppDelegate.cs" line="147" column="1" />
-      <Breakpoint file="/Users/sovi/Projects/WIS-APP/WIS/Services/DataService.cs" relfile="WIS/Services/DataService.cs" line="139" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />

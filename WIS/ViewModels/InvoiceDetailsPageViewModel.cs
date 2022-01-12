@@ -141,7 +141,7 @@ namespace WIS.ViewModels
                      amt += float.Parse(line.amount);
                      tmp.Add(line);
                  }
-                 Total = "$ " + amt.ToString();    
+                 Total = amt.ToString() + " $";    
                  InvoiceLines = tmp;
                  
              });

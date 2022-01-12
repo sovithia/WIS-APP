@@ -7,8 +7,7 @@
     xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"    
     xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
     xmlns:viewModel="clr-namespace:WIS.ViewModels"
-    xmlns:gradient="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
-    BackgroundImageSource="LoginBackground"    
+    xmlns:gradient="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"      
     >
 
     <ContentPage.BindingContext>
@@ -18,15 +17,14 @@
     <ContentPage.Content>
         <Grid>
             <gradient:SfGradientView Style="{StaticResource BlueGradientStyle}" />
-            <StackLayout >
-            <listView:SfListView
-                    x:Name="OurTeam"
+            <StackLayout>
+            <listView:SfListView                    
                     Grid.Row="1"
                     AutoFitMode="Height"
                     ItemsSource="{Binding Invoices}"
                     SelectionMode="None"
                     TapCommand="{Binding ItemSelectedCommand}"
-                    VerticalOptions="FillAndExpand">
+                    >
 
                     <listView:SfListView.HeaderTemplate>
                         <DataTemplate>
@@ -37,9 +35,8 @@
                                 LineHeight="{OnPlatform Android=1.25,
                                                         Default=-1}"
                                 Style="{StaticResource TitleLabelStyle}"
-                                Text="Invoice List"
-                                
-                                TextColor="{DynamicResource Gray-White}" />
+                                Text="Invoice History"                               
+                                 />
                         </DataTemplate>
                     </listView:SfListView.HeaderTemplate>
 
@@ -49,7 +46,7 @@
                                     Margin="15,10,15,10"
                                     BorderColor="{DynamicResource Gray-Bg}"
                                     BorderWidth="0"
-                                    CornerRadius="25"
+                                    CornerRadius="5"
                                     HasShadow="True"
                                     Style="{DynamicResource ThemeBorderStyle}">
 
@@ -67,7 +64,7 @@
                                 <Label
                                     FontSize="14"
                                     Style="{StaticResource TitleLabelStyle}"
-                                    Text="{Binding student}"
+                                    Text="{Binding studentdisplayname}"
                                     TextColor="{DynamicResource Gray-White}" />
 
                                 <!--  Date  -->
@@ -75,7 +72,7 @@
                                     HorizontalOptions="Center"
                                     HorizontalTextAlignment="Center"
                                     Style="{StaticResource SimpleLabelStyle}"
-                                    Text="{Binding Issued}"
+                                    Text="{Binding date}"
                                     TextColor="White"
                                     VerticalOptions="Start"
                                     VerticalTextAlignment="Start" />

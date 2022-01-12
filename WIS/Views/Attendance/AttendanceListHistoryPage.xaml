@@ -37,8 +37,8 @@
                                 LineHeight="{OnPlatform Android=1.25,
                                                         Default=-1}"
                                 Style="{StaticResource TitleLabelStyle}"
-                                Text="Absences"
-                                TextColor="{DynamicResource Gray-White}" />
+                                Text="Absences history"
+                                />
                         </DataTemplate>
                     </listView:SfListView.HeaderTemplate>
 

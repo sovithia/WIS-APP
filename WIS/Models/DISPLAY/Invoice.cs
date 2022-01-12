@@ -17,8 +17,17 @@ namespace WIS.Models
 
     public class InvoiceElement
     {
+
+        public string damount {
+            get
+            {
+                return  amount + " $";
+            }
+        }
         public string amount { get; set; } // invoice_fees amount
-        public string productname { get; set; } // COMPUTED         
+        public string productname { get; set; } // COMPUTED
+                                                
+                                                
 
         //public string promotion { get; set; } // invoice_promotion amount         
     }
@@ -29,7 +38,7 @@ namespace WIS.Models
         public string doc { get; set; } // Invoice  doc 
         public DateTime date { get; set; } // Invoice date 
         public DateTime date_due { get; set; } // Invoice date_due
-
+        
         public string studentdisplayname {get;set;}
         //public List<InvoicePromotion> invoicepromotionList { get; set; }
         public List<InvoiceElement> invoicefeeList { get; set; }

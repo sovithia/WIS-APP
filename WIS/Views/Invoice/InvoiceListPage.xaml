@@ -18,15 +18,14 @@
         <Grid>
             <gradient:SfGradientView Style="{StaticResource BlueGradientStyle}" />
             <StackLayout>
-            <listView:SfListView
-                    x:Name="OurTeam"
+            <listView:SfListView                    
                     Grid.Row="1"
                     AutoFitMode="Height"
                     ItemsSource="{Binding Invoices}"
                     SelectionMode="None"
                     TapCommand="{Binding ItemSelectedCommand}"
-                    VerticalOptions="FillAndExpand">
-
+                    >
+             
                     <listView:SfListView.HeaderTemplate>
                         <DataTemplate>
                             <!--  Header  -->
@@ -47,7 +46,7 @@
                                     Margin="15,10,15,10"
                                     BorderColor="{DynamicResource Gray-Bg}"
                                     BorderWidth="0"
-                                    CornerRadius="10"
+                                    CornerRadius="5"
                                     HasShadow="True"
                                     Style="{DynamicResource ThemeBorderStyle}">
 
@@ -65,7 +64,7 @@
                                 <Label
                                     FontSize="14"
                                     Style="{StaticResource TitleLabelStyle}"
-                                    Text="{Binding student}"
+                                    Text="{Binding studentdisplayname}"
                                     TextColor="{DynamicResource Gray-White}" />
 
                                 <!--  Date  -->
@@ -73,7 +72,7 @@
                                     HorizontalOptions="Center"
                                     HorizontalTextAlignment="Center"
                                     Style="{StaticResource SimpleLabelStyle}"
-                                    Text="{Binding invoice_date}"
+                                    Text="{Binding date}"
                                     TextColor="White"
                                     VerticalOptions="Start"
                                     VerticalTextAlignment="Start" />
