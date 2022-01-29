@@ -11,7 +11,8 @@
       
 
     <ContentPage.Content>
-        <StackLayout>            
+            
+        <StackLayout >            
             <StackLayout.Padding>
             <OnIdiom x:TypeArguments="Thickness">
                 <OnIdiom.Phone>

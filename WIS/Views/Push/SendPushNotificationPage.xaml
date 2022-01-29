@@ -137,7 +137,7 @@
                                         x:Name="BodyEntry"
                                         Margin="15,0"
                                         HeightRequest="40"
-                                        IsPassword="True"
+                                        IsPassword="False"
                                         Placeholder="Body"
                                         PlaceholderColor="{StaticResource EntryPlaceholderColor}"
                                         Style="{StaticResource BorderlessEntryStyle}"

@@ -1,21 +1,28 @@
 ﻿<Properties StartupConfiguration="{D5F23FAD-2906-4CA5-B308-3D7789659D25}|Default">
   <MonoDevelop.Ide.ItemProperties.WIS.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.9F4D140B-03CD-4242-A83C-6CE99F4C68D4" />
   <MonoDevelop.Ide.ItemProperties.WIS.Android AndroidDesignerPreferredTheme="MainTheme" PreferredExecutionTarget="Android.Nexus_6_API_28" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="WIS/ViewModels/StudentScheduleViewModel.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="WIS/Views/Invoice/InvoiceListPage.xaml">
     <Files>
-      <File FileName="WIS/ViewModels/TeacherScheduleViewModel.cs" Line="88" Column="1" />
-      <File FileName="WIS/ViewModels/StudentScheduleViewModel.cs" Line="93" Column="1" />
+      <File FileName="WIS/ViewModels/InvoiceListPageViewModel.cs" Line="23" Column="17" />
+      <File FileName="WIS/Views/Invoice/InvoiceListPage.xaml" Line="17" Column="26" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="WIS" expanded="True">
             <Node name="WIS" expanded="True">
-              <Node name="ViewModels" expanded="True">
-                <Node name="StudentScheduleViewModel.cs" selected="True" />
+              <Node name="ViewModels" expanded="True" />
+              <Node name="Views" expanded="True">
+                <Node name="Invoice" expanded="True">
+                  <Node name="InvoiceListHistoryPage.xaml" expanded="True" />
+                  <Node name="InvoiceListPage.xaml" expanded="True" selected="True" />
+                </Node>
+                <Node name="Push" expanded="True">
+                  <Node name="SendPushNotificationPage.xaml" expanded="True" />
+                </Node>
+                <Node name="Schedule" expanded="True" />
               </Node>
             </Node>
-            <Node name="WIS.Android" expanded="True" />
           </Node>
         </State>
       </Pad>

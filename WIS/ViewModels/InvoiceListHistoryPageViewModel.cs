@@ -24,18 +24,18 @@ namespace WIS.ViewModels
 
 
         public void OnAppearing()
-        {
-            Invoices.Clear();
-            DataService.Instance.GetInvoiceHistory((invoices) =>
+        {         
+            if (Invoices.Count == 0)
             {
-                foreach (Invoice invoice in invoices)
+                DataService.Instance.GetInvoiceHistory((invoices) =>
                 {
-                    Invoices.Add(invoice);
-                }
-            });
+                    foreach (Invoice invoice in invoices)
+                    {
+                        Invoices.Add(invoice);
+                    }
+                });
+            }            
         }
-
-
 
         private void ItemSelected(object selectedItem)
         {

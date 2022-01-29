@@ -7,33 +7,25 @@
     xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"    
     xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
     xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
-    xmlns:signature="clr-namespace:Syncfusion.XForms.SignaturePad;assembly=Syncfusion.SfSignaturePad.XForms"
-    BackgroundImageSource="LoginBackground"
-    xmlns:gradient="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
-    >
+    xmlns:signature="clr-namespace:Syncfusion.XForms.SignaturePad;assembly=Syncfusion.SfSignaturePad.XForms"    
+    xmlns:gradient="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms">
     <ContentPage.Content>
 
         <Grid>
             <gradient:SfGradientView Style="{StaticResource BlueGradientStyle}" />
-
             <Grid Padding="5,20,5,20" RowSpacing="5">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="30" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="30" />
-                <RowDefinition Height="30" />
-                <RowDefinition Height="130" />
-                <RowDefinition Height="120" />
-                <RowDefinition Height="30" />
-                <RowDefinition Height="30" />
-            </Grid.RowDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="30" />
+                    
+                </Grid.RowDefinitions>
 
-            <Label Grid.Row="0" Text="{Binding InvoiceID}" FontFamily="Montserrat-SemiBold"   HorizontalTextAlignment="Center" TextColor="{DynamicResource Gray-White}" FontSize="Medium"/>
-            <Frame Margin="10" Grid.Row="1" VerticalOptions="Fill" 
-                    BackgroundColor="White">
-                <listView:SfListView                                            
+                <Label Grid.Row="0" Text="{Binding InvoiceID}" FontFamily="Montserrat-SemiBold"   HorizontalTextAlignment="Center" TextColor="{DynamicResource Gray-White}" FontSize="Medium"/>
+                <Frame Margin="10" Grid.Row="1" VerticalOptions="Fill" BackgroundColor="White">
+                    <listView:SfListView                                            
                         AutoFitMode="Height"
-                        ItemsSource="{Binding InvoiceLines}"
+                        ItemsSource="{Binding InvoiceLines}"                        
                         SelectionMode="None">
 
                         <listView:SfListView.ItemTemplate>
@@ -63,24 +55,18 @@
                             <behaviour:SfListViewExtendHeightBehavior />
                         </listView:SfListView.Behaviors>
                  </listView:SfListView>
-             </Frame>
+                </Frame>
         
-            <Grid Grid.Row="2" Padding="5,0,5,0" Margin="10,0,10,0" BackgroundColor="{DynamicResource InfoBlue}" >
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="80"/>
-                </Grid.ColumnDefinitions>
+                <Grid Grid.Row="2" Padding="5,0,5,0" Margin="10,0,10,0" BackgroundColor="{DynamicResource InfoBlue}" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="80"/>
+                    </Grid.ColumnDefinitions>
                     
-                <Label  Grid.Column="0" Grid.Row="0" Text="Total" HorizontalTextAlignment="Start" FontFamily="Montserrat-SemiBold"     TextColor="{DynamicResource Gray-White}" FontSize="Large"   />
-                <Label  Grid.Column="1" Grid.Row="0" Text="{Binding Total}"  TextColor="{DynamicResource Gray-White}" Style="{StaticResource TitleLabelStyle}"  FontSize="Large" />
+                    <Label  Grid.Column="0" Grid.Row="0" Text="Total" HorizontalTextAlignment="Start" FontFamily="Montserrat-SemiBold"     TextColor="{DynamicResource Gray-White}" FontSize="Large"   />
+                    <Label  Grid.Column="1" Grid.Row="0" Text="{Binding Total}"  TextColor="{DynamicResource Gray-White}" Style="{StaticResource TitleLabelStyle}"  FontSize="Large" />
+                </Grid>                                             
             </Grid>
-            
-
-
-           
-                
-        
-        </Grid>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

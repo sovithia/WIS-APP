@@ -22,18 +22,19 @@ namespace WIS.ViewModels
             Invoices = new ObservableCollection<Invoice>();            
             ItemSelectedCommand = new Command(ItemSelected);
         }
-
         
         public void OnAppearing()
-        {
-            Invoices.Clear();
-            DataService.Instance.GetInvoiceList((invoices) =>
+        {            
+            if (Invoices.Count == 0)
             {
-                foreach (Invoice invoice in invoices)
+                DataService.Instance.GetInvoiceList((invoices) =>
                 {
-                    Invoices.Add(invoice);
-                }
-            });
+                    foreach (Invoice invoice in invoices)
+                    {
+                        Invoices.Add(invoice);
+                    }
+                });
+            }            
         }
 
         private void ItemSelected(object selectedItem)

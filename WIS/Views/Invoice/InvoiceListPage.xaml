@@ -22,7 +22,7 @@
                     Grid.Row="1"
                     AutoFitMode="Height"
                     ItemsSource="{Binding Invoices}"
-                    SelectionMode="None"
+                    SelectionMode="None"                
                     TapCommand="{Binding ItemSelectedCommand}"
                     >
              
