@@ -17,6 +17,7 @@ namespace WIS.Views
             base.OnAppearing();
             InvoiceListHistoryPageViewModel vm = (InvoiceListHistoryPageViewModel)this.BindingContext;
             vm.OnAppearing();
+            
         }
     }
 }

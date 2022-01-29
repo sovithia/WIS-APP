@@ -21,9 +21,12 @@ namespace WIS.Models
             int mstart = int.Parse(t_starttime.Split(':')[1]);
             data.From = theday.AddHours(hstart).AddMinutes(mstart);
             data.To = data.From.AddMinutes(t_minute);
-            data.EventName = t_coursename + "\n" + data.From.ToString() + "-" + data.To.ToString() + "\n" + t_gradename + "\n" + t_roomname;
-            data.Color = Color.FromHex("1746A0");
-            //data.Color = Color.Red;
+
+            string fromHours = data.From.Hour.ToString() + ":" + data.From.Minute.ToString();
+            string toHours = data.To.Hour.ToString() + ":" + data.To.Minute.ToString();
+            
+            data.EventName = t_coursename + "\n" + fromHours + "-" + toHours + "\n" + t_gradename + "\n" + t_roomname;
+            data.Color = Color.FromHex("1746A0");            
             return data;
         }
     }

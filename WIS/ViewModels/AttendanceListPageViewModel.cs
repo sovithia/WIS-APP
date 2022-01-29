@@ -15,31 +15,36 @@ namespace WIS.ViewModels
 
         public AttendanceListPageViewModel()
         {
-            Absences = new ObservableCollection<ABSENCE>();
-            
-            ItemSelectedCommand = new Command(ItemSelected);
+            Absences = new ObservableCollection<ABSENCE>();            
+            //ItemSelectedCommand = new Command(ItemSelected);
         }
+
+        
+
 
         public void OnAppearing()
         {
-            Absences.Clear();
-            DataService.Instance.GetAttendance((absences) =>
+            if(Absences.Count == 0)
             {
-                foreach (ABSENCE absence in absences)
+                DataService.Instance.GetAttendance((absences) =>
                 {
-                    Absences.Add(absence);
-                }
-            });
+                    foreach (ABSENCE absence in absences)
+                    {
+                        Absences.Add(absence);
+                    }
+                });
+            }            
         }
 
-
+        // NO DETAILS
+        /*
         public Command ItemSelectedCommand { get; set; }
-
         private void ItemSelected(object selectedItem)
         {
             Analytics.TrackEvent(this.GetType().ToString() + " ItemSelected");
             ABSENCE absence = (ABSENCE)((Syncfusion.ListView.XForms.ItemTappedEventArgs)selectedItem).ItemData;             
             Shell.Current.GoToAsync($"AttendanceDetails?ID={absence.id}&IsSubmitable=true");                        
         }
+        */
     }
 }

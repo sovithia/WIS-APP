@@ -30,9 +30,11 @@ namespace WIS
             return dt;
 
         }
+
+      
         public App()
         {         
-            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NTYxNTAyQDMxMzkyZTM0MmUzMFRZN2ZBeDkwUWo3b09xL1F1UmhKTnhKbFcxZlVTR3hnL20yN1dRcmtaMkU9");
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NTcxODE1QDMxMzkyZTM0MmUzMG4zdmRmYzRGbXhFWHo2emhPanB0MFRaRW5YSXlTR0t5Z3YxM0hxSC9za1E9");
 
             AppCenter.Start("ios=17461fcb-db55-4ab1-9523-9bda0d63418f;" +
                   "uwp={Your UWP App secret here};" +

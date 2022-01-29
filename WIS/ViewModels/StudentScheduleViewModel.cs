@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using Syncfusion.SfSchedule.XForms;
+using WIS.Extensions;
 using WIS.Models;
 using WIS.Services;
 using Xamarin.Forms;
@@ -40,7 +41,7 @@ namespace WIS.ViewModels
                 { DayOfWeek.Saturday, "6" },
                 { DayOfWeek.Sunday, "7" }
             };
-            VisibleDateChanged = new Command<VisibleDatesChangedEventArgs>(onVisibleDateChanged);
+            //VisibleDateChanged = new Command<VisibleDatesChangedEventArgs>(onVisibleDateChanged);
             
         }
 
@@ -59,51 +60,35 @@ namespace WIS.ViewModels
                 this.RaiseOnPropertyChanged("Courses");
             }
         }
-        
-        private Dictionary<DayOfWeek, int> mondayDistance;
-        
-        public Command VisibleDateChanged { get; set; }
 
-        private void onVisibleDateChanged(VisibleDatesChangedEventArgs args)
-        {                              
-            DataService.Instance.GetStudentSchedule((schedule) =>
-            {                                
-                this.courses = new ObservableCollection<SFSCHEDULEDATA>();                
-                var firstday = args.visibleDates[0];
-                firstday = firstday.Date;                
-                if (firstday > schedule.dStartdate && schedule.dEndDate > firstday)
+        public void OnAppearing()
+        {
+            if (this.courses == null)
+            {
+                DataService.Instance.GetStudentSchedule((schedule) =>
                 {
-                    if (args.visibleDates.Count == 1) // single day view
+                    this.courses = new ObservableCollection<SFSCHEDULEDATA>();
+
+                    var firstday = DateTime.Today.StartOfWeek(DayOfWeek.Monday);
+                    firstday = firstday.Date;
+                    DateTime theDay = firstday;
+                    for (int i = 0; i < 5; i++)
                     {
-                        string day = daysOfWeek[firstday.DayOfWeek];
-                        List<StudentScheduleCourse> oneday = schedule.schedulesessionList.Where(line => line.day == day).ToList();
+                        List<StudentScheduleCourse> oneday = schedule.schedulesessionList.Where(line => line.day == days[i]).ToList();
                         foreach (StudentScheduleCourse sline in oneday)
                         {
-                            SFSCHEDULEDATA data = sline.toSFDATA(firstday);
+                            SFSCHEDULEDATA data = sline.toSFDATA(theDay);
                             this.courses.Add(data);
 
                         }
+                        theDay = theDay.AddDays(1);
                     }
-                    else // weekview
-                    {
-                        DateTime theDay = firstday;
-                        for (int i = 0; i < 5; i++)
-                        {
-                            List<StudentScheduleCourse> oneday = schedule.schedulesessionList.Where(line => line.day == days[i]).ToList();
-                            foreach (StudentScheduleCourse sline in oneday)
-                            {
-                                SFSCHEDULEDATA data = sline.toSFDATA(theDay);
-                                this.courses.Add(data);
-
-                            }
-                            theDay = theDay.AddDays(1);
-                        }
-                    }                  
                     this.RaiseOnPropertyChanged("Courses");
-                }                
-            });
-        }
 
+                });
+            }
+           
+        }
         /// <summary>
         /// Occurs when property changed.
         /// </summary>

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using WIS.ViewModels;
 using Xamarin.Forms;
 
 namespace WIS.Views
@@ -26,8 +26,7 @@ namespace WIS.Views
                     StartHour = 7,
                     EndHour = 17
                 };
-            }
-
+            }            
             else
             {
                 switchBtn.Text = "Day View";
@@ -41,6 +40,15 @@ namespace WIS.Views
 
             isWeekView = !isWeekView;
         }
+
+
+        override protected void OnAppearing()
+        {
+            base.OnAppearing();
+            TeacherScheduleViewModel vm = (TeacherScheduleViewModel)this.BindingContext;
+            vm.OnAppearing();
+        }
+
 
     }
 }

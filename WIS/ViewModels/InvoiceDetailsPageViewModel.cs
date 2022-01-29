@@ -21,6 +21,7 @@ namespace WIS.ViewModels
 
         public bool IsSubmitable { get; set; }
 
+        /*
         private ObservableCollection<InvoiceElement> invoiceLines;
         public ObservableCollection<InvoiceElement> InvoiceLines
         {
@@ -32,6 +33,8 @@ namespace WIS.ViewModels
                 this.SetProperty(ref this.invoiceLines, value);
             }
         }
+        */
+        public ObservableCollection<InvoiceElement> InvoiceLines { get; set; }
 
         private string total;
         public string Total
@@ -67,49 +70,10 @@ namespace WIS.ViewModels
                 return !IsParent;
             }
         }
+        
         #endregion
 
 
-        SfSignaturePad signaturePad;
-
-
-        private Invoice currentInvoice;
-
-
-        private ImageSource proofImageIn;
-        public ImageSource ProofImageIn
-        {
-            get{
-                return proofImageIn;  
-            }
-            set{
-                this.SetProperty(ref this.proofImageIn, value);
-            }
-            
-        }
-
-        private ImageSource parentsigImageIn;
-        public ImageSource ParentSigImageIn{
-            get{
-                return parentsigImageIn;
-            }
-            set{
-                this.SetProperty(ref this.parentsigImageIn, value);
-            }
-        }
-
-        private ImageSource registrarsigImageIn;
-        public ImageSource RegistrarSigImageIn
-        {
-            get{
-                return registrarsigImageIn;
-            }
-            set{
-                this.SetProperty(ref this.registrarsigImageIn, value);
-            }
-        }
-
-      
 
         public string AcknowledgmentText { get; set; }
         public InvoiceDetailsPageViewModel(string _invoiceID)
@@ -128,27 +92,76 @@ namespace WIS.ViewModels
             {
                 IsParent = false;
                 AcknowledgmentText = "I verified the payment and validate it.";                
-            }
-                
-            float amt = 0;
-            DataService.Instance.GetInvoiceDetails(_invoiceID, (invoice) =>
-             {
-                
-
-                 ObservableCollection<InvoiceElement> tmp = new ObservableCollection<InvoiceElement>();
-                 foreach (InvoiceElement line in invoice.invoicefeeList)
-                 {
-                     amt += float.Parse(line.amount);
-                     tmp.Add(line);
-                 }
-                 Total = amt.ToString() + " $";    
-                 InvoiceLines = tmp;
-                 
-             });
-                     
+            }                            
+            InvoiceLines = new ObservableCollection<InvoiceElement>();
         }
-   
-        
+
+
+
+        public void OnAppearing()
+        {
+            if (InvoiceLines.Count == 0)
+            {                
+                DataService.Instance.GetInvoiceDetails(invoiceID, (invoice) =>
+                {
+                        float amt = 0;
+                        foreach (InvoiceElement line in invoice.invoicefeeList)
+                        {
+                            amt += float.Parse(line.amount);
+                            InvoiceLines.Add(line);
+                        }
+                        Total = amt.ToString() + " $";                                        
+                });              
+            }
+        }
+
+
+        // ALL THIS PART IS NOT USED FOR THE MOMENT
+        // IT's THE CODE TO MANAGE PAYMENT PPROF UPLOAD 
+        /*
+        private Invoice currentInvoice;
+
+        SfSignaturePad signaturePad;
+        private ImageSource proofImageIn;
+        public ImageSource ProofImageIn
+        {
+            get
+            {
+                return proofImageIn;
+            }
+            set
+            {
+                this.SetProperty(ref this.proofImageIn, value);
+            }
+
+        }
+
+        private ImageSource parentsigImageIn;
+        public ImageSource ParentSigImageIn
+        {
+            get
+            {
+                return parentsigImageIn;
+            }
+            set
+            {
+                this.SetProperty(ref this.parentsigImageIn, value);
+            }
+        }
+
+        private ImageSource registrarsigImageIn;
+        public ImageSource RegistrarSigImageIn
+        {
+            get
+            {
+                return registrarsigImageIn;
+            }
+            set
+            {
+                this.SetProperty(ref this.registrarsigImageIn, value);
+            }
+        }
+        */
 
 
     }

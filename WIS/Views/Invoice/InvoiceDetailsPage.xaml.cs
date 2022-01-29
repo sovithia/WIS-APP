@@ -19,21 +19,22 @@ namespace WIS.Views
         }
 
         public InvoiceDetailsPage(){
-            try
-            {
-                InitializeComponent();
-            }catch(Exception ex)
-            {
-                int i = 2;
-            }
             
-
+            InitializeComponent();            
         }
 
         void Button_Clicked(System.Object sender, System.EventArgs e)
         {
            // signaturePad.Clear();
-        } 
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            InvoiceDetailsPageViewModel vm = (InvoiceDetailsPageViewModel)this.BindingContext;
+            vm.OnAppearing();
+
+        }
 
     }
 }

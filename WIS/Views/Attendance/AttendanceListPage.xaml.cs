@@ -14,6 +14,7 @@ namespace WIS.Views
 
         protected override void OnAppearing()
         {
+
             base.OnAppearing();
             AttendanceListPageViewModel vm = (AttendanceListPageViewModel)this.BindingContext;
             vm.OnAppearing();

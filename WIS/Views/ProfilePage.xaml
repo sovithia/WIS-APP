@@ -24,7 +24,7 @@
                     <Image
                         x:Name="ProfileImage"
                         Grid.Row="0"
-                        HeightRequest="400"
+                        HeightRequest="200"
                         Source="{Binding ProfilePicture}"
                         VerticalOptions="Center">                        
                     </Image>

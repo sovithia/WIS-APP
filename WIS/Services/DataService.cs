@@ -29,8 +29,10 @@ namespace WIS.Services
 
         public DataService()
         {
-            string realServer = "http://western.edu.kh/api";
-            if(Device.RuntimePlatform == Device.iOS)
+            string realServer = "http://test.sams.api.westec.com/api";
+            
+            
+            if (Device.RuntimePlatform == Device.iOS)
             {
                 if (DeviceInfo.DeviceType == DeviceType.Virtual)
                     this.BaseURL = "http://127.0.0.1:3333/api";
@@ -43,7 +45,9 @@ namespace WIS.Services
                     this.BaseURL = "http://10.0.2.2:3333/api";
                 else
                     this.BaseURL = realServer;
-            }           
+            }
+
+            //this.BaseURL = realServer;
             this.headers = new Dictionary<string, string>();
         }
 
@@ -108,7 +112,7 @@ namespace WIS.Services
             Dictionary<string, string> data = new Dictionary<string, string>();
             data["username"] = username;
             data["password"] = newpassword;            
-            
+          
             RESTEngine.HttpPost(result =>
             {
                 try
@@ -255,7 +259,7 @@ namespace WIS.Services
             RESTEngine.HttpGet(data =>
             {
                 try
-                {
+                {                 
                     var obj = JsonConvert.DeserializeObject<Invoice>(data,
                          new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore });
                     del(obj);

@@ -43,23 +43,19 @@
           "dependencies": {
             "Microsoft.AppCenter.Analytics": {
               "target": "Package",
-              "version": "[4.4.0, )"
+              "version": "[4.5.0, )"
             },
             "Microsoft.AppCenter.Crashes": {
               "target": "Package",
-              "version": "[4.4.0, )"
+              "version": "[4.5.0, )"
             },
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.1, )"
             },
-            "Plugin.AudioRecorder": {
-              "target": "Package",
-              "version": "[1.1.0, )"
-            },
             "Plugin.FirebasePushNotification": {
               "target": "Package",
-              "version": "[3.3.10, )"
+              "version": "[3.4.1, )"
             },
             "Plugin.MediaManager.Forms": {
               "target": "Package",
@@ -71,55 +67,55 @@
             },
             "Syncfusion.Xamarin.Buttons": {
               "target": "Package",
-              "version": "[19.4.0.41, )"
+              "version": "[19.4.0.47, )"
             },
             "Syncfusion.Xamarin.Cards": {
               "target": "Package",
-              "version": "[19.4.0.41, )"
+              "version": "[19.4.0.47, )"
             },
             "Syncfusion.Xamarin.Core": {
               "target": "Package",
-              "version": "[19.4.0.41, )"
+              "version": "[19.4.0.47, )"
             },
             "Syncfusion.Xamarin.SfBadgeView": {
               "target": "Package",
-              "version": "[19.4.0.41, )"
+              "version": "[19.4.0.47, )"
             },
             "Syncfusion.Xamarin.SfBusyIndicator": {
               "target": "Package",
-              "version": "[19.4.0.41, )"
+              "version": "[19.4.0.47, )"
             },
             "Syncfusion.Xamarin.SfComboBox": {
               "target": "Package",
-              "version": "[19.4.0.41, )"
+              "version": "[19.4.0.47, )"
             },
             "Syncfusion.Xamarin.SfDataForm": {
               "target": "Package",
-              "version": "[19.4.0.41, )"
+              "version": "[19.4.0.47, )"
             },
             "Syncfusion.Xamarin.SfListView": {
               "target": "Package",
-              "version": "[19.4.0.41, )"
+              "version": "[19.4.0.47, )"
             },
             "Syncfusion.Xamarin.SfPicker": {
               "target": "Package",
-              "version": "[19.4.0.41, )"
+              "version": "[19.4.0.47, )"
             },
             "Syncfusion.Xamarin.SfPullToRefresh": {
               "target": "Package",
-              "version": "[19.4.0.41, )"
+              "version": "[19.4.0.47, )"
             },
             "Syncfusion.Xamarin.SfRating": {
               "target": "Package",
-              "version": "[19.4.0.41, )"
+              "version": "[19.4.0.47, )"
             },
             "Syncfusion.Xamarin.SfSchedule": {
               "target": "Package",
-              "version": "[19.4.0.41, )"
+              "version": "[19.4.0.47, )"
             },
             "Syncfusion.Xamarin.SfSignaturePad": {
               "target": "Package",
-              "version": "[19.4.0.41, )"
+              "version": "[19.4.0.47, )"
             },
             "Xam.Plugin.Connectivity": {
               "target": "Package",
@@ -131,11 +127,11 @@
             },
             "Xamarin.Essentials": {
               "target": "Package",
-              "version": "[1.7.0, )"
+              "version": "[1.7.1, )"
             },
             "Xamarin.Forms": {
               "target": "Package",
-              "version": "[5.0.0.2291, )"
+              "version": "[5.0.0.2337, )"
             },
             "sqlite-net-pcl": {
               "target": "Package",

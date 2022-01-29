@@ -51,7 +51,7 @@
                                     <ColumnDefinition Width="60" />
                                 </Grid.ColumnDefinitions>
                             
-                                <Label Grid.Row="0" Grid.Column="0" Text="{Binding productname}" FontFamily="Montserrat-SemiBold"       TextColor="{DynamicResource Gray-White}" FontSize="18" />
+                                <Label Grid.Row="0" Grid.Column="0" Text="{Binding productname}" FontFamily="Montserrat-SemiBold"  TextColor="{DynamicResource Gray-White}" FontSize="18" />
                                 <Label Grid.Row="0" Grid.Column="1" Text="{Binding damount}" FontFamily="Montserrat-SemiBold"      TextColor="{DynamicResource Gray-White}" FontSize="15" VerticalTextAlignment="Center" HorizontalTextAlignment="End"/>
                             </Grid>
                             </border:SfBorder>

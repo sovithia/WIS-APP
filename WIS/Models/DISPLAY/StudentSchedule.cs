@@ -23,9 +23,13 @@ namespace WIS.Models
             SFSCHEDULEDATA data = new SFSCHEDULEDATA();
             int hstart = int.Parse(starttime.Split(':')[0]);
             int mstart = int.Parse(starttime.Split(':')[1]);           
-            data.From = theday.AddHours(hstart).AddMinutes(mstart);
+            data.From = theday.AddHours(hstart).AddMinutes(mstart);            
             data.To = data.From.AddMinutes(minute);
-            data.EventName = coursename + "\n" + data.From.ToString() + "-" + data.To.ToString() + "\n" + teacherdisplayname + "\n" + roomname;
+
+            string fromHours = data.From.Hour.ToString() + ":" + data.From.Minute.ToString();            
+            string toHours = data.To.Hour.ToString() + ":" + data.To.Minute.ToString();
+
+            data.EventName = coursename + "\n" + fromHours + "\n" + toHours + "\n" + teacherdisplayname + "\n" + roomname;
             data.Color = Color.FromHex("1746A0");
             
             return data;

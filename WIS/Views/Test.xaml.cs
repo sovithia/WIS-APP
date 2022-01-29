@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Plugin.AudioRecorder;
 using WIS.Interfaces;
 using WIS.Models;
 using Xamarin.Forms;

@@ -169,13 +169,12 @@ namespace WIS.ViewModels
                 return;
             }
 
-            /*
+            
             if (CrossConnectivity.Current.IsConnected == false)
             {
                 Application.Current.MainPage.DisplayAlert("ERROR", "No internet connection", "OK");
                 return;
-            }
-            */
+            }            
 
             // RETRIEVE INFO FROM BACKOFFICE
             IsLoading = true;

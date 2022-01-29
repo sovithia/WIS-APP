@@ -27215,37 +27215,34 @@ namespace WIS.Droid
 			public const int secondary_text_disabled_material_light = 2131034331;
 			
 			// aapt resource value: 0x7F0500DC
-			public const int splash_background = 2131034332;
+			public const int switch_thumb_disabled_material_dark = 2131034332;
 			
 			// aapt resource value: 0x7F0500DD
-			public const int switch_thumb_disabled_material_dark = 2131034333;
+			public const int switch_thumb_disabled_material_light = 2131034333;
 			
 			// aapt resource value: 0x7F0500DE
-			public const int switch_thumb_disabled_material_light = 2131034334;
+			public const int switch_thumb_material_dark = 2131034334;
 			
 			// aapt resource value: 0x7F0500DF
-			public const int switch_thumb_material_dark = 2131034335;
+			public const int switch_thumb_material_light = 2131034335;
 			
 			// aapt resource value: 0x7F0500E0
-			public const int switch_thumb_material_light = 2131034336;
+			public const int switch_thumb_normal_material_dark = 2131034336;
 			
 			// aapt resource value: 0x7F0500E1
-			public const int switch_thumb_normal_material_dark = 2131034337;
+			public const int switch_thumb_normal_material_light = 2131034337;
 			
 			// aapt resource value: 0x7F0500E2
-			public const int switch_thumb_normal_material_light = 2131034338;
+			public const int test_mtrl_calendar_day = 2131034338;
 			
 			// aapt resource value: 0x7F0500E3
-			public const int test_mtrl_calendar_day = 2131034339;
+			public const int test_mtrl_calendar_day_selected = 2131034339;
 			
 			// aapt resource value: 0x7F0500E4
-			public const int test_mtrl_calendar_day_selected = 2131034340;
+			public const int tooltip_background_dark = 2131034340;
 			
 			// aapt resource value: 0x7F0500E5
-			public const int tooltip_background_dark = 2131034341;
-			
-			// aapt resource value: 0x7F0500E6
-			public const int tooltip_background_light = 2131034342;
+			public const int tooltip_background_light = 2131034341;
 			
 			static Color()
 			{

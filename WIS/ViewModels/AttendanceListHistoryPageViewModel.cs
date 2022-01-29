@@ -8,28 +8,35 @@ using Xamarin.Forms;
 namespace WIS.ViewModels
 {
     public class AttendanceListHistoryPageViewModel : BaseViewModel
-    {        
+    {
 
+        /*
+        public ObservableCollection<ABSENCE> absences;
+        public ObservableCollection<ABSENCE> Absences {
+            get { return absences; }
+            set { this.SetProperty(ref this.absences, value); }
+        }
+        */
         public ObservableCollection<ABSENCE> Absences { get; set; }
-
 
         public AttendanceListHistoryPageViewModel()
         {
             Absences = new ObservableCollection<ABSENCE>();
-
             ItemSelectedCommand = new Command(ItemSelected);
         }
 
         public void OnAppearing()
         {
-            Absences.Clear();
-            DataService.Instance.GetAttendanceHistory((absences) =>
+            if (Absences.Count == 0)
             {
-                foreach (ABSENCE absence in absences)
+                DataService.Instance.GetAttendanceHistory((absences) =>
                 {
-                    Absences.Add(absence);
-                }
-            });
+                    foreach (ABSENCE absence in absences)
+                    {
+                        Absences.Add(absence);
+                    }
+                });
+            }            
         }
 
 

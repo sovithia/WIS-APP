@@ -6,31 +6,30 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2291" />  
-    <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
-    <PackageReference Include="Syncfusion.Xamarin.Core" Version="19.4.0.41" />
-    <PackageReference Include="Syncfusion.Xamarin.Buttons" Version="19.4.0.41" />
-    <PackageReference Include="Syncfusion.Xamarin.SfListView" Version="19.4.0.41" />
-    <PackageReference Include="Syncfusion.Xamarin.SfRating" Version="19.4.0.41" />
-    <PackageReference Include="Syncfusion.Xamarin.SfComboBox" Version="19.4.0.41" />
-    <PackageReference Include="Syncfusion.Xamarin.Cards" Version="19.4.0.41" />
-    <PackageReference Include="Syncfusion.Xamarin.SfBadgeView" Version="19.4.0.41" />
-    <PackageReference Include="Syncfusion.Xamarin.SfSchedule" Version="19.4.0.41" />
-    <PackageReference Include="Plugin.AudioRecorder" Version="1.1.0" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2337" />  
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.1" />
+    <PackageReference Include="Syncfusion.Xamarin.Core" Version="19.4.0.47" />
+    <PackageReference Include="Syncfusion.Xamarin.Buttons" Version="19.4.0.47" />
+    <PackageReference Include="Syncfusion.Xamarin.SfListView" Version="19.4.0.47" />
+    <PackageReference Include="Syncfusion.Xamarin.SfRating" Version="19.4.0.47" />
+    <PackageReference Include="Syncfusion.Xamarin.SfComboBox" Version="19.4.0.47" />
+    <PackageReference Include="Syncfusion.Xamarin.Cards" Version="19.4.0.47" />
+    <PackageReference Include="Syncfusion.Xamarin.SfBadgeView" Version="19.4.0.47" />
+    <PackageReference Include="Syncfusion.Xamarin.SfSchedule" Version="19.4.0.47" />
     <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="Syncfusion.Xamarin.SfDataForm" Version="19.4.0.41" />
+    <PackageReference Include="Syncfusion.Xamarin.SfDataForm" Version="19.4.0.47" />
     <PackageReference Include="Xam.Plugin.Media" Version="5.0.1" />
-    <PackageReference Include="Syncfusion.Xamarin.SfPullToRefresh" Version="19.4.0.41" />
+    <PackageReference Include="Syncfusion.Xamarin.SfPullToRefresh" Version="19.4.0.47" />
     <PackageReference Include="Plugin.MediaManager.Forms" Version="1.0.9" />
-    <PackageReference Include="Syncfusion.Xamarin.SfSignaturePad" Version="19.4.0.41" />
+    <PackageReference Include="Syncfusion.Xamarin.SfSignaturePad" Version="19.4.0.47" />
     <PackageReference Include="Xam.Plugin.Connectivity" Version="3.2.0" />
-    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="4.4.0" />
-    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="4.4.0" />
-    <PackageReference Include="Syncfusion.Xamarin.SfPicker" Version="19.4.0.41" />
-    <PackageReference Include="Syncfusion.Xamarin.SfBusyIndicator" Version="19.4.0.41" />
+    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="4.5.0" />
+    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="4.5.0" />
+    <PackageReference Include="Syncfusion.Xamarin.SfPicker" Version="19.4.0.47" />
+    <PackageReference Include="Syncfusion.Xamarin.SfBusyIndicator" Version="19.4.0.47" />
     <PackageReference Include="SkiaSharp.Views.Forms" Version="2.80.3" />
-    <PackageReference Include="Plugin.FirebasePushNotification" Version="3.3.10" />
+    <PackageReference Include="Plugin.FirebasePushNotification" Version="3.4.1" />
   </ItemGroup>
   
 
@@ -81,6 +80,7 @@
     <Folder Include="Models\SAMS\" />
     <Folder Include="Models\DISPLAY\" />
     <Folder Include="Models\REQUEST\" />
+    <Folder Include="Extensions\" />
   </ItemGroup>
   
   
@@ -147,5 +147,6 @@
     <None Remove="Models\DISPLAY\" />
     <None Remove="Models\REQUEST\" />
     <None Remove="Plugin.FirebasePushNotification" />
+    <None Remove="Extensions\" />
   </ItemGroup>
 </Project>

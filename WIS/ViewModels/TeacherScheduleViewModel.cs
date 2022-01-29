@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using Syncfusion.SfSchedule.XForms;
+using WIS.Extensions;
 using WIS.Models;
 using WIS.Services;
 using Xamarin.Forms;
@@ -27,7 +28,7 @@ namespace WIS.ViewModels
                 { DayOfWeek.Saturday, "6" },
                 { DayOfWeek.Sunday, "7" }
             };
-            VisibleDateChanged = new Command<VisibleDatesChangedEventArgs>(onVisibleDateChanged);            
+            //VisibleDateChanged = new Command<VisibleDatesChangedEventArgs>(onVisibleDateChanged);            
         }
 
         /// <summary>
@@ -49,58 +50,42 @@ namespace WIS.ViewModels
         /// <summary>
         /// color collection.
         /// </summary>
-        private List<Color> colorCollection;
+        //private List<Color> colorCollection;
         /// <summary>
         /// current day meeting.
         /// </summary>
-        private List<string> currentDayMeetings;     
-        private Dictionary<DayOfWeek, int> mondayDistance;
-        
+        //private List<string> currentDayMeetings;     
+        //private Dictionary<DayOfWeek, int> mondayDistance;
 
-        public Command VisibleDateChanged { get; set; }
-
-        private void onVisibleDateChanged(VisibleDatesChangedEventArgs args)
+        public void OnAppearing()
         {
-            //this.courses.Clear();
-            DataService.Instance.GetTeacherSchedule((schedule) =>
+            if (this.courses == null)
             {
-                this.courses = new ObservableCollection<SFSCHEDULEDATA>();
-                var firstday = args.visibleDates[0].Date;
-                
-                if (firstday > schedule.dStartdate && schedule.dEndDate > firstday)
+                DataService.Instance.GetTeacherSchedule((schedule) =>
                 {
-                    if (args.visibleDates.Count == 1) // single day view
+                    this.courses = new ObservableCollection<SFSCHEDULEDATA>();
+
+                    var firstday = DateTime.Today.StartOfWeek(DayOfWeek.Monday);
+                    firstday = firstday.Date;
+                    DateTime theDay = firstday;
+                    for (int i = 0; i < 5; i++)
                     {
-                        string day = daysOfWeek[firstday.DayOfWeek];
-                        List<TeacherScheduleCourse> oneday = schedule.schedulesessionList.Where(line => line.day == day).ToList();
+                        List<TeacherScheduleCourse> oneday = schedule.schedulesessionList.Where(line => line.day == days[i]).ToList();
                         foreach (TeacherScheduleCourse sline in oneday)
                         {
-                            SFSCHEDULEDATA data = sline.toSFDATA(firstday);
+                            SFSCHEDULEDATA data = sline.toSFDATA(theDay);
                             this.courses.Add(data);
 
                         }
-                    }
-                    else // weekview
-                    {                        
-                        DateTime theDay = firstday;
-                        for (int i = 0; i < 5; i++)
-                        {
-                            List<TeacherScheduleCourse> oneday = schedule.schedulesessionList.Where(line => line.day == days[i]).ToList();
-                            foreach (TeacherScheduleCourse sline in oneday)
-                            {
-                                SFSCHEDULEDATA data = sline.toSFDATA(theDay);
-                                this.courses.Add(data);
-
-                            }
-                            theDay = theDay.AddDays(1);
-                        }
+                        theDay = theDay.AddDays(1);
                     }
                     this.RaiseOnPropertyChanged("Courses");
-                }
-            });
 
+                });
+            }
 
         }
+
 
         /// <summary>
         /// Occurs when property changed.
@@ -111,6 +96,7 @@ namespace WIS.ViewModels
         /// Invoke method when property changed.
         /// </summary>
         /// <param name="propertyName">property name</param>
+        /// 
         private void RaiseOnPropertyChanged(string propertyName)
         {
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
