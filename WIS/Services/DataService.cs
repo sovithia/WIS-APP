@@ -47,7 +47,7 @@ namespace WIS.Services
                     this.BaseURL = realServer;
             }
 
-            //this.BaseURL = realServer;
+            this.BaseURL = realServer;
             this.headers = new Dictionary<string, string>();
         }
 
@@ -313,7 +313,7 @@ namespace WIS.Services
         // Teacher Schedule
         public void GetTeacherSchedule(responseDelegate<TeacherSchedule> del)
         {
-            Dictionary<string, string> data = new Dictionary<string, string>();
+            
             RESTEngine.HttpGet(data => {
                 try{
                     del(JsonConvert.DeserializeObject<TeacherSchedule>(data,
@@ -328,6 +328,26 @@ namespace WIS.Services
             }, this.BaseURL + "/teacherschedule", headers);
         }
 
+        // Parent Schedule (all children schedule
+        public void GetParentSchedule(responseDelegate<Dictionary<string,StudentSchedule>> del)
+        {
+            RESTEngine.HttpGet(data => {
+                try
+                {
+                    del(JsonConvert.DeserializeObject<Dictionary<string, StudentSchedule>>(data,
+                    new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }));
+                }
+                catch (Exception ex)
+                {
+                    Device.BeginInvokeOnMainThread(() => {
+                        Application.Current.MainPage.DisplayAlert("ERROR", ex.Message, "OK");
+                    });
+                }
+
+            }, this.BaseURL + "/parentschedule", headers);
+        }
+
+
         // Register Push
         public void RegisterFCMToken(string fcmtoken)
         {
@@ -337,20 +357,22 @@ namespace WIS.Services
             {
                 if (data != null)
                     Console.WriteLine("fcm token registered");
-            }, this.BaseURL + "/registertoken", data, null, true);
+            }, this.BaseURL + "/pushregister", data, null, true);
         }
 
-        public void SendPushNotification(string message, responseDelegate<bool> del)
+        public void SendPushNotification(string title,string message, responseDelegate<bool> del)
         {
             Dictionary<string, string> data = new Dictionary<string, string>();
             data["message"] = message;
-            RESTEngine.HttpPost(data =>
+            data["title"] = title;
+            // TODO TRY TO DO IN POST
+            RESTEngine.HttpGet(data =>
             {
-                Dictionary<string, string> res = JsonConvert.DeserializeObject<Dictionary<string, string>>(data,
-                    new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore });
-                del(res["result"] == "OK");
-                //Application.Current.MainPage.DisplayAlert("Ok", "Phone number not found", "OK");                
-            }, this.BaseURL + "/pushsend", data, null, true);
+                if (data != null)
+                    del(true);                
+                else
+                    del(false);                                            
+            }, this.BaseURL + "/pushsend?title=" + message + "&body=" + message, headers);
         }
     }
 

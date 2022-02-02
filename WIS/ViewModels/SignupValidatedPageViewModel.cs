@@ -116,9 +116,11 @@ namespace WIS.ViewModels
         /// this method contains the validation rules
         /// </summary>
         private void AddValidationRules()
-        {            
+        {
+            
             this.Password.Item1.Validations.Add(new IsPinCodeRule<string> { ValidationMessage = "Password need to be 4 digits" });
             this.Password.Item2.Validations.Add(new IsPinCodeRule<string> { ValidationMessage = "Password need to be 4 digits" });
+           
         }
 
         /// <summary>
@@ -131,27 +133,33 @@ namespace WIS.ViewModels
             
             if (this.AreFieldsValid())
             {
-                SIGNUPREQUEST signupRequest = new SIGNUPREQUEST();
-                signupRequest.type = presignup.type;
-                signupRequest.identifier = presignup.identifier;
-                signupRequest.phone = presignup.phone;
-                signupRequest.birthdate = presignup.birthdate;
-                signupRequest.password = Password.Item1.Value;
-                IsLoading = true;
-                DataService.Instance.Register(signupRequest, (success) =>
-                {                    
-                    Device.BeginInvokeOnMainThread(() =>
+                if (!Password.Item1.Value.Equals(Password.Item2.Value))                
+                    Application.Current.MainPage.DisplayAlert("ERROR", "Passwords does not match", "OK");                
+                else
+                {
+                    SIGNUPREQUEST signupRequest = new SIGNUPREQUEST();
+                    signupRequest.type = presignup.type;
+                    signupRequest.identifier = presignup.identifier;
+                    signupRequest.phone = presignup.phone;
+                    signupRequest.birthdate = presignup.birthdate;
+                    signupRequest.password = Password.Item1.Value;
+                    IsLoading = true;
+                    DataService.Instance.Register(signupRequest, (success) =>
                     {
-                        IsLoading = false;
-                        if (success == true)
+                        Device.BeginInvokeOnMainThread(() =>
                         {
-                            var page = new SuccessfulSignupPage();
-                            Application.Current.MainPage.Navigation.PushModalAsync(page);
-                        }
-                        else
-                            Application.Current.MainPage.DisplayAlert("ERROR", "Wrong information on signup, please check again", "OK");
+                            IsLoading = false;
+                            if (success == true)
+                            {
+                                var page = new SuccessfulSignupPage();
+                                Application.Current.MainPage.Navigation.PushModalAsync(page);
+                            }
+                            else
+                                Application.Current.MainPage.DisplayAlert("ERROR", "Wrong information on signup, please check again", "OK");
+                        });
                     });
-                });
+                }
+               
             }
             
         }
@@ -162,8 +170,8 @@ namespace WIS.ViewModels
         /// <param name="obj">The Object</param>
         private void LoginClicked(object obj)
         {
-            AppShell.Current.Navigation.PopToRootAsync();            
-
+            Application.Current.MainPage.Navigation.PopModalAsync();
+            Application.Current.MainPage.Navigation.PopModalAsync();            
         }
         #endregion
     }

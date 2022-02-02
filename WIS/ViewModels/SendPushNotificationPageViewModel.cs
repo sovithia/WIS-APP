@@ -130,9 +130,16 @@ namespace WIS.ViewModels
 
         private void SendClicked(object obj)
         {
-            DataService.Instance.SendPushNotification("", (response) =>{
-                if (response)                
-                    Shell.Current.DisplayAlert("OK", "Push Notification sent", "Ok");                
+            DataService.Instance.SendPushNotification(this.pushtitle.Value,this.pushbody.Value, (response) =>{
+                
+                if (response)
+                {
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        Shell.Current.DisplayAlert("OK", "Push Notification sent", "Ok");
+                    });
+                }
+                    
             });
         }
         #endregion

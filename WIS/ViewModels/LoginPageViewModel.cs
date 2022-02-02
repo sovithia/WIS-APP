@@ -65,11 +65,9 @@ namespace WIS.ViewModels
         /// </summary>
         public ValidatableObject<string> Phone
         {
-            get
-            {
+            get{
                 return this.phone;
-            }
-
+            }          
             set
             {
                 if (this.phone == value)
@@ -131,9 +129,8 @@ namespace WIS.ViewModels
             this.IsLoading = false;
             this.Phone = new ValidatableObject<string>();
             this.Password = new ValidatableObject<string>();
-            this.Phone.Value = "+855964222816";
-            this.Password.Value = "1111";
-            
+            //this.Phone.Value = "0964222816";
+            //this.Password.Value = "2222";            
         }
 
         /// <summary>
@@ -209,6 +206,7 @@ namespace WIS.ViewModels
                                 page = new AppShell(USERTYPE.REGISTRAR);
                             else if (type == "ADMIN")
                                 page = new AppShell(USERTYPE.ADMIN);
+                            
                             Application.Current.MainPage = page;
                             if (Application.Current.Properties.ContainsKey("Fcmtocken"))
                             {

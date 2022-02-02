@@ -23,8 +23,7 @@
                     AutoFitMode="Height"
                     ItemsSource="{Binding Invoices}"
                     SelectionMode="None"                
-                    TapCommand="{Binding ItemSelectedCommand}"
-                    >
+                    TapCommand="{Binding ItemSelectedCommand}">
              
                     <listView:SfListView.HeaderTemplate>
                         <DataTemplate>

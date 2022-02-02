@@ -38,18 +38,11 @@ namespace WIS.Validators.Rules
             }
             else
             {
-                if (value.ToString().Substring(0, 1) == "+")
-                {
-
-                    
-                    string onlynumber = value.ToString().Substring(1);
-                    if (Regex.IsMatch(onlynumber, @"^\d+$"))                                    
-                        return true;
-                    else
-                        return false;
-                }
+                string onlynumber = value.ToString().Substring(1);
+                if (Regex.IsMatch(onlynumber, @"^\d+$"))
+                    return true;
                 else
-                    return false;
+                    return false;                
             }
         }
         #endregion

@@ -19,7 +19,7 @@ namespace WIS.Views
         {          
             APPUSER user = DataService.Instance.CurrentUser;
             this.BindingContext = new ProfileViewModel(user);
-            this.InitializeComponent();                        
+            InitializeComponent();                        
         }
     }
 }

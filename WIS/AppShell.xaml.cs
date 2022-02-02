@@ -25,6 +25,7 @@ namespace WIS
         Tab invoices;
         ShellContent studentschedule;
         ShellContent teacherschedule;
+        ShellContent parentschedule;
         ShellContent push;
 
         public void initShells(Style style)
@@ -72,7 +73,7 @@ namespace WIS
             this.invoices.Items.Add(new ShellContent()
             {
                 Route = "InvoiceNew",
-                Title = "New",
+                Title = "Unpaid",
                 Icon = nameof(InvoiceListPage),
                 ContentTemplate = new DataTemplate(typeof(InvoiceListPage)),
                 Style = style
@@ -80,7 +81,7 @@ namespace WIS
             this.invoices.Items.Add(new ShellContent()
             {
                 Route = "InvoiceHistory",
-                Title = "History",
+                Title = "Paid",
                 Icon = nameof(InvoiceListHistoryPage),
                 ContentTemplate = new DataTemplate(typeof(InvoiceListHistoryPage)),
                 Style = style
@@ -103,6 +104,16 @@ namespace WIS
                 ContentTemplate = new DataTemplate(typeof(TeacherSchedulePage)),
                 Style = style
             };
+            // PARENTSCHEDULE
+            this.parentschedule = new ShellContent()
+            {
+                Route = "ParentSchedule",
+                Title = "Schedule(P)",
+                Icon = "SchedulePage",
+                ContentTemplate = new DataTemplate(typeof(ParentSchedulePage)),
+                Style = style
+            };
+
 
             this.push = new ShellContent()
             {
@@ -126,17 +137,17 @@ namespace WIS
             FlyoutBackgroundColor = Color.FromHex("1746A0");
             BackgroundColor = Color.FromHex("1746A0");
             
-            
             if (type == USERTYPE.PARENT)
             {                                
                 itemContainer.Items.Add(attendance);
+                itemContainer.Items.Add(parentschedule);
                 itemContainer.Items.Add(invoices);
                 itemContainer.Items.Add(profile);                
             }                
             else if (type == USERTYPE.STUDENT)
-            {                                
+            {
                 itemContainer.Items.Add(studentschedule);
-                itemContainer.Items.Add(profile);
+                itemContainer.Items.Add(profile);                
             }                
             else if (type == USERTYPE.TEACHER)
             {                                                
@@ -154,6 +165,7 @@ namespace WIS
                 itemContainer.Items.Add(invoices);
                 itemContainer.Items.Add(studentschedule);
                 itemContainer.Items.Add(teacherschedule);
+                itemContainer.Items.Add(parentschedule);
                 itemContainer.Items.Add(push);
                 itemContainer.Items.Add(profile);
 

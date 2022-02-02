@@ -60,7 +60,7 @@ namespace WIS.Services
                 if (res["result"].ToString() == "KO")
                 {
                     Device.BeginInvokeOnMainThread(() => {
-                        if (res["message"] != null)
+                        if (res.ContainsKey("message"))
                             Application.Current.MainPage.DisplayAlert("ERROR", res["message"].ToString(), "OK");
                         else
                             Application.Current.MainPage.DisplayAlert("ERROR", "API call error (" + url + ")", "OK");
@@ -210,7 +210,7 @@ namespace WIS.Services
                             if (res["result"].ToString() == "KO")
                             {
                                 Device.BeginInvokeOnMainThread(() => {
-                                    if (res["message"] != null)
+                                    if (res.ContainsKey("message"))
                                         Application.Current.MainPage.DisplayAlert("ERROR", res["message"].ToString(), "OK");
                                     else
                                         Application.Current.MainPage.DisplayAlert("ERROR", "API call error (" + url + ")", "OK");
@@ -296,7 +296,7 @@ namespace WIS.Services
                             if (res["result"].ToString() == "KO")
                             {
                                 Device.BeginInvokeOnMainThread(() => {
-                                    if (res["message"] != null)
+                                    if (res.ContainsKey("message"))
                                         Application.Current.MainPage.DisplayAlert("ERROR", res["message"].ToString(), "OK");
                                     else
                                         Application.Current.MainPage.DisplayAlert("ERROR", "API call error (" + url + ")", "OK");
@@ -361,7 +361,7 @@ namespace WIS.Services
                 {
 
                     Device.BeginInvokeOnMainThread(() => {
-                        if (res["message"] != null)
+                        if (res.ContainsKey("message"))
                             Application.Current.MainPage.DisplayAlert("ERROR", res["message"].ToString(), "OK");
                         else
                             Application.Current.MainPage.DisplayAlert("ERROR", "API call error (" + url + ")", "OK");

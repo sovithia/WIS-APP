@@ -24,25 +24,13 @@ namespace WIS.ViewModels
 
     
     public class StudentScheduleViewModel : INotifyPropertyChanged
-    {
-        Dictionary<DayOfWeek, string> daysOfWeek;
+    {    
         private List<string> days;
         public StudentScheduleViewModel()
         {                      
             days = new List<string>(){         
                 "1","2","3","4","5","6","7"
-            };
-            daysOfWeek = new Dictionary<DayOfWeek, string>() {
-                { DayOfWeek.Monday , "1" },
-                { DayOfWeek.Tuesday, "2" },
-                { DayOfWeek.Wednesday, "3" },
-                { DayOfWeek.Thursday, "4" },
-                { DayOfWeek.Friday, "5" },
-                { DayOfWeek.Saturday, "6" },
-                { DayOfWeek.Sunday, "7" }
-            };
-            //VisibleDateChanged = new Command<VisibleDatesChangedEventArgs>(onVisibleDateChanged);
-            
+            };                     
         }
 
 
@@ -72,19 +60,21 @@ namespace WIS.ViewModels
                     var firstday = DateTime.Today.StartOfWeek(DayOfWeek.Monday);
                     firstday = firstday.Date;
                     DateTime theDay = firstday;
-                    for (int i = 0; i < 5; i++)
+                    if (schedule.schedulesessionList != null)
                     {
-                        List<StudentScheduleCourse> oneday = schedule.schedulesessionList.Where(line => line.day == days[i]).ToList();
-                        foreach (StudentScheduleCourse sline in oneday)
+                        for (int i = 0; i < 5; i++)
                         {
-                            SFSCHEDULEDATA data = sline.toSFDATA(theDay);
-                            this.courses.Add(data);
+                            List<StudentScheduleCourse> oneday = schedule.schedulesessionList.Where(line => line.day == days[i]).ToList();
+                            foreach (StudentScheduleCourse sline in oneday)
+                            {
+                                SFSCHEDULEDATA data = sline.toSFDATA(theDay);
+                                this.courses.Add(data);
 
+                            }
+                            theDay = theDay.AddDays(1);
                         }
-                        theDay = theDay.AddDays(1);
+                        this.RaiseOnPropertyChanged("Courses");
                     }
-                    this.RaiseOnPropertyChanged("Courses");
-
                 });
             }
            

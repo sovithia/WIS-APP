@@ -94,6 +94,7 @@ namespace WIS.Validators
             }
 
             this.IsValid = !this.Item1.Errors.Any() && !this.Item2.Errors.Any();
+            
             return this.IsValid;
         }
 

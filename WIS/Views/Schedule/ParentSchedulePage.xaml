@@ -1,17 +1,19 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
-             xmlns:viewmodel="clr-namespace:WIS.ViewModels"
-             xmlns:schedule="clr-namespace:Syncfusion.SfSchedule.XForms;assembly=Syncfusion.SfSchedule.XForms"
-             x:Class="WIS.Views.StudentSchedulePage">
-      <ContentPage.BindingContext>
-        <viewmodel:StudentScheduleViewModel/>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="WIS.Views.ParentSchedulePage"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:viewmodel="clr-namespace:WIS.ViewModels"
+    xmlns:schedule="clr-namespace:Syncfusion.SfSchedule.XForms;assembly=Syncfusion.SfSchedule.XForms"
+    Visual="Material"
+    >
+    <ContentPage.BindingContext>
+        <viewmodel:ParentScheduleViewModel/>
     </ContentPage.BindingContext>
       
 
-    <ContentPage.Content>
-            
+    <ContentPage.Content>            
         <StackLayout >            
             <StackLayout.Padding>
             <OnIdiom x:TypeArguments="Thickness">
@@ -24,14 +26,11 @@
                 </OnIdiom>
             </StackLayout.Padding>
 
-            <buttons:SfButton x:Name="switchBtn"                           
-                            Clicked="switchView"
-                            Text="Switch View" BackgroundColor="#1746A0" />
-            
-            <Grid >
+            <Picker Title="Children" x:Name="ChildrenPicker" SelectedItem="{Binding SelectedChildren}" ItemsSource="{Binding Children}"  SelectedIndexChanged="Picker_SelectedIndexChanged"/>
+            <buttons:SfButton  x:Name="switchBtn" Clicked="switchView" Text="Switch View" BackgroundColor="#1746A0" />
            
+            <Grid>          
               <Grid.RowDefinitions>
-
                   <RowDefinition Height="700" />
               </Grid.RowDefinitions>  
             
@@ -42,8 +41,7 @@
                                  ScheduleView="DayView"                                 
                                  TimeIntervalHeight="55"                                 
                                  VisibleDatesChangedCommand="{Binding VisibleDateChanged}"
-                                 BackgroundColor="Red"
-                                 >
+                                 BackgroundColor="Red">
 
                 <schedule:SfSchedule.WeekViewSettings>
                     <schedule:WeekViewSettings StartHour="7" EndHour="17" WorkStartHour="7"   WorkEndHour="17" />
@@ -81,5 +79,3 @@
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
-
-
