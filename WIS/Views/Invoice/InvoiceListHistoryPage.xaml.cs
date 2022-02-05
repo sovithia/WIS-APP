@@ -11,13 +11,5 @@ namespace WIS.Views
         {
             InitializeComponent();
         }
-
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-            InvoiceListHistoryPageViewModel vm = (InvoiceListHistoryPageViewModel)this.BindingContext;
-            vm.OnAppearing();
-            
-        }
     }
 }

@@ -28,7 +28,27 @@ namespace WIS.ViewModels
                 { DayOfWeek.Saturday, "6" },
                 { DayOfWeek.Sunday, "7" }
             };
-            //VisibleDateChanged = new Command<VisibleDatesChangedEventArgs>(onVisibleDateChanged);            
+            DataService.Instance.GetTeacherSchedule((schedule) =>
+            {
+                this.courses = new ObservableCollection<SFSCHEDULEDATA>();
+
+                var firstday = DateTime.Today.StartOfWeek(DayOfWeek.Monday);
+                firstday = firstday.Date;
+                DateTime theDay = firstday;
+                for (int i = 0; i < 5; i++)
+                {
+                    List<TeacherScheduleCourse> oneday = schedule.schedulesessionList.Where(line => line.day == days[i]).ToList();
+                    foreach (TeacherScheduleCourse sline in oneday)
+                    {
+                        SFSCHEDULEDATA data = sline.toSFDATA(theDay);
+                        this.courses.Add(data);
+
+                    }
+                    theDay = theDay.AddDays(1);
+                }
+                this.RaiseOnPropertyChanged("Courses");
+
+            });           
         }
 
         /// <summary>
@@ -61,31 +81,10 @@ namespace WIS.ViewModels
         {
             if (this.courses == null)
             {
-                DataService.Instance.GetTeacherSchedule((schedule) =>
-                {
-                    this.courses = new ObservableCollection<SFSCHEDULEDATA>();
-
-                    var firstday = DateTime.Today.StartOfWeek(DayOfWeek.Monday);
-                    firstday = firstday.Date;
-                    DateTime theDay = firstday;
-                    for (int i = 0; i < 5; i++)
-                    {
-                        List<TeacherScheduleCourse> oneday = schedule.schedulesessionList.Where(line => line.day == days[i]).ToList();
-                        foreach (TeacherScheduleCourse sline in oneday)
-                        {
-                            SFSCHEDULEDATA data = sline.toSFDATA(theDay);
-                            this.courses.Add(data);
-
-                        }
-                        theDay = theDay.AddDays(1);
-                    }
-                    this.RaiseOnPropertyChanged("Courses");
-
-                });
+                
             }
 
         }
-
 
         /// <summary>
         /// Occurs when property changed.

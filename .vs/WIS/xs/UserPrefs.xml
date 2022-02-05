@@ -1,31 +1,32 @@
 ﻿<Properties StartupConfiguration="{D5F23FAD-2906-4CA5-B308-3D7789659D25}|Default">
   <MonoDevelop.Ide.ItemProperties.WIS.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.9F4D140B-03CD-4242-A83C-6CE99F4C68D4" />
   <MonoDevelop.Ide.ItemProperties.WIS.Android AndroidDesignerPreferredTheme="MainTheme" PreferredExecutionTarget="Android.Nexus_6_API_28" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="WIS/Services/DataService.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="WIS/ViewModels/StudentScheduleViewModel.cs">
     <Files>
-      <File FileName="WIS/Services/DataService.cs" Line="50" Column="13" />
-      <File FileName="WIS/Views/Push/SendPushNotificationPage.xaml" Line="28" Column="22" />
+      <File FileName="WIS/Services/RESTEngine.cs" Line="256" Column="1" />
+      <File FileName="WIS/Services/DataService.cs" Line="302" Column="1" />
+      <File FileName="WIS/ViewModels/StudentScheduleViewModel.cs" Line="37" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="WIS" expanded="True">
             <Node name="WIS" expanded="True">
-              <Node name="Data" expanded="True" />
-              <Node name="Services" expanded="True">
-                <Node name="DataService.cs" selected="True" />
-              </Node>
-              <Node name="ViewModels" expanded="True" />
-              <Node name="Views" expanded="True">
-                <Node name="Push" expanded="True" />
+              <Node name="Services" expanded="True" />
+              <Node name="ViewModels" expanded="True">
+                <Node name="StudentScheduleViewModel.cs" selected="True" />
               </Node>
             </Node>
-            <Node name="WIS.iOS" expanded="True" />
           </Node>
         </State>
       </Pad>
       <Pad Id="MonoDevelop.Debugger.WatchPad">
-        <State />
+        <State>
+          <Value>Application.Current.MainPage</Value>
+          <Value>ex.Message </Value>
+          <Value>url</Value>
+          <Value>Application.Current.MainPage</Value>
+        </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
@@ -37,6 +38,8 @@
       <Breakpoint file="/Users/sovi/Projects/WIS-APP/WIS.iOS/AppDelegate.cs" relfile="WIS.iOS/AppDelegate.cs" line="147" column="1" />
       <Breakpoint file="/Users/sovi/Projects/WIS-APP/WIS/ViewModels/ParentScheduleViewModel.cs" relfile="WIS/ViewModels/ParentScheduleViewModel.cs" line="21" column="1" />
       <Breakpoint file="/Users/sovi/Projects/WIS-APP/WIS/Services/DataService.cs" relfile="WIS/Services/DataService.cs" line="371" column="1" />
+      <Breakpoint file="/Users/sovi/Projects/WIS-APP/WIS.iOS/Main.cs" relfile="WIS.iOS/Main.cs" line="31" column="1" />
+      <Breakpoint file="/Users/sovi/Projects/WIS-APP/WIS/ViewModels/StudentScheduleViewModel.cs" relfile="WIS/ViewModels/StudentScheduleViewModel.cs" line="37" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />

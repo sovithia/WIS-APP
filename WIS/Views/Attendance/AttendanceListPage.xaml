@@ -18,7 +18,7 @@
         <Grid>
             <gradient:SfGradientView Style="{StaticResource BlueGradientStyle}" />
 
-            <StackLayout>
+            <StackLayout>             
               <listView:SfListView
                     x:Name="OurTeam"
                     Grid.Row="1"                  

@@ -30,7 +30,29 @@ namespace WIS.ViewModels
         {                      
             days = new List<string>(){         
                 "1","2","3","4","5","6","7"
-            };                     
+            };
+            this.courses = new ObservableCollection<SFSCHEDULEDATA>();
+            DataService.Instance.GetStudentSchedule((schedule) =>
+            {                
+                var firstday = DateTime.Today.StartOfWeek(DayOfWeek.Monday);
+                firstday = firstday.Date;
+                DateTime theDay = firstday;
+                if (schedule.schedulesessionList != null)
+                {
+                    for (int i = 0; i < 5; i++)
+                    {
+                        List<StudentScheduleCourse> oneday = schedule.schedulesessionList.Where(line => line.day == days[i]).ToList();
+                        foreach (StudentScheduleCourse sline in oneday)
+                        {
+                            SFSCHEDULEDATA data = sline.toSFDATA(theDay);
+                            this.courses.Add(data);
+
+                        }
+                        theDay = theDay.AddDays(1);
+                    }
+                    this.RaiseOnPropertyChanged("Courses");
+                }
+            });
         }
 
 
@@ -49,33 +71,12 @@ namespace WIS.ViewModels
             }
         }
 
+        
         public void OnAppearing()
         {
             if (this.courses == null)
             {
-                DataService.Instance.GetStudentSchedule((schedule) =>
-                {
-                    this.courses = new ObservableCollection<SFSCHEDULEDATA>();
-
-                    var firstday = DateTime.Today.StartOfWeek(DayOfWeek.Monday);
-                    firstday = firstday.Date;
-                    DateTime theDay = firstday;
-                    if (schedule.schedulesessionList != null)
-                    {
-                        for (int i = 0; i < 5; i++)
-                        {
-                            List<StudentScheduleCourse> oneday = schedule.schedulesessionList.Where(line => line.day == days[i]).ToList();
-                            foreach (StudentScheduleCourse sline in oneday)
-                            {
-                                SFSCHEDULEDATA data = sline.toSFDATA(theDay);
-                                this.courses.Add(data);
-
-                            }
-                            theDay = theDay.AddDays(1);
-                        }
-                        this.RaiseOnPropertyChanged("Courses");
-                    }
-                });
+                
             }
            
         }

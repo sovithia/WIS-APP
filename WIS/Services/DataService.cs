@@ -47,7 +47,7 @@ namespace WIS.Services
                     this.BaseURL = realServer;
             }
 
-            this.BaseURL = realServer;
+            //this.BaseURL = realServer;
             this.headers = new Dictionary<string, string>();
         }
 

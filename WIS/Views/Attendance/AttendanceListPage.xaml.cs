@@ -10,14 +10,6 @@ namespace WIS.Views
         public AttendanceListPage()
         {
             InitializeComponent();
-        }
-
-        protected override void OnAppearing()
-        {
-
-            base.OnAppearing();
-            AttendanceListPageViewModel vm = (AttendanceListPageViewModel)this.BindingContext;
-            vm.OnAppearing();
-        }
+        }      
     }
 }

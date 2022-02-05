@@ -7,7 +7,8 @@
     xmlns:behaviour="clr-namespace:WIS.Behaviors"
     x:Class="WIS.Views.AttendanceListHistoryPage"
     xmlns:viewModel="clr-namespace:WIS.ViewModels"
-    xmlns:gradient="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"    
+    xmlns:gradient="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
+    
     >
 
        <ContentPage.BindingContext>
@@ -19,6 +20,8 @@
             <gradient:SfGradientView Style="{StaticResource BlueGradientStyle}" />
 
             <StackLayout>
+                   
+
               <listView:SfListView
                     x:Name="OurTeam"
                     Grid.Row="1"                  

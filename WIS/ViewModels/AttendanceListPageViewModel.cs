@@ -9,7 +9,7 @@ using Xamarin.Forms;
 namespace WIS.ViewModels
 {
     public class AttendanceListPageViewModel : BaseViewModel
-    {
+    {        
         public ObservableCollection<ABSENCE> Absences { get; set; }
 
 
@@ -17,11 +17,18 @@ namespace WIS.ViewModels
         {
             Absences = new ObservableCollection<ABSENCE>();            
             //ItemSelectedCommand = new Command(ItemSelected);
+            DataService.Instance.GetAttendance((absences) =>
+            {
+                foreach (ABSENCE absence in absences)
+                {
+                    Absences.Add(absence);
+                }               
+            });
         }
 
         
 
-
+        /*
         public void OnAppearing()
         {
             if(Absences.Count == 0)
@@ -32,19 +39,11 @@ namespace WIS.ViewModels
                     {
                         Absences.Add(absence);
                     }
+                    IsLoading = false;
                 });
             }            
         }
-
-        // NO DETAILS
-        /*
-        public Command ItemSelectedCommand { get; set; }
-        private void ItemSelected(object selectedItem)
-        {
-            Analytics.TrackEvent(this.GetType().ToString() + " ItemSelected");
-            ABSENCE absence = (ABSENCE)((Syncfusion.ListView.XForms.ItemTappedEventArgs)selectedItem).ItemData;             
-            Shell.Current.GoToAsync($"AttendanceDetails?ID={absence.id}&IsSubmitable=true");                        
-        }
         */
+     
     }
 }

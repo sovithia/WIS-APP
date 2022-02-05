@@ -46,11 +46,12 @@ namespace WIS.Services
                 catch (Exception ex)
                 {
                     Device.BeginInvokeOnMainThread(() => {
+
                         Application.Current.MainPage.DisplayAlert("ERROR", "error happened(" + url + ") (" + ex.Message + ")", "OK");
                         if (returnNullOnError)
                             del(null);
                     });
-
+                    return;
                 }
                 string result = "";
                 using (var reader = new StreamReader(httpWebResponse.GetResponseStream()))
@@ -201,6 +202,7 @@ namespace WIS.Services
                                 if (returnNullOnError)
                                     del(null);
                             });
+                            return;
                         }
                         using (StreamReader httpWebStreamReader = new StreamReader(response2.GetResponseStream()))
                         {
@@ -287,6 +289,7 @@ namespace WIS.Services
                                 if (returnNullOnError)
                                     del(null);
                             });
+                            return;
                         }
                         using (StreamReader httpWebStreamReader = new StreamReader(response2.GetResponseStream()))
                         {
@@ -351,6 +354,7 @@ namespace WIS.Services
                     Device.BeginInvokeOnMainThread(() => {
                         Application.Current.MainPage.DisplayAlert("ERROR", "error happened(" + url + ") (" + ex.Message + ")", "OK");
                     });
+                    return;
                 }
                 string result = "";
                 using (var reader = new StreamReader(httpWebResponse.GetResponseStream()))

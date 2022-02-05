@@ -11,15 +11,5 @@ namespace WIS.Views
         {
             InitializeComponent();
         }
-
-
-        protected override void OnAppearing()
-        {
-       
-            base.OnAppearing();
-            AttendanceListHistoryPageViewModel vm = (AttendanceListHistoryPageViewModel)this.BindingContext;
-            vm.OnAppearing();
-            
-        }
     }
 }

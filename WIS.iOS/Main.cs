@@ -20,10 +20,17 @@ namespace WIS.iOS
         {
             // if you want to use a different Application Delegate class from "AppDelegate"
             // you can specify it here.
-
-            AppDomain currentDomain = AppDomain.CurrentDomain;
-            currentDomain.UnhandledException += new UnhandledExceptionEventHandler(MyHandler);
-            UIApplication.Main(args, null, "AppDelegate");
+            try
+            {
+                //AppDomain currentDomain = AppDomain.CurrentDomain;
+                //currentDomain.UnhandledException += new UnhandledExceptionEventHandler(MyHandler);
+                UIApplication.Main(args, null, "AppDelegate");
+            }
+            catch(Exception ex)
+            {
+                int i = 2;
+            }
+            
 
         }
 

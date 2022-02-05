@@ -42,11 +42,6 @@ namespace WIS.Views
             isWeekView = !isWeekView;
         }
 
-        override protected void OnAppearing()
-        {
-            base.OnAppearing();
-            StudentScheduleViewModel vm = (StudentScheduleViewModel)this.BindingContext;
-            vm.OnAppearing();
-        }
+       
     }
 }

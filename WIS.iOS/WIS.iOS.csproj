@@ -60,9 +60,10 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <MtouchArch>ARM64</MtouchArch>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignKey>iPhone Distribution</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchLink>SdkOnly</MtouchLink>
+    <CodesignProvision>WIS_PROD</CodesignProvision>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
@@ -164,7 +165,6 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\76x76.png" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\167x167.png" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\152x152.png" />
-    <BundleResource Include="Resources\.DS_Store" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

@@ -12,8 +12,7 @@ namespace WIS.Views
 
         public string ID
         {
-            set
-            {
+            set{
                 this.BindingContext = new InvoiceDetailsPageViewModel(value);                
             }
         }
@@ -22,19 +21,7 @@ namespace WIS.Views
             
             InitializeComponent();            
         }
-
-        void Button_Clicked(System.Object sender, System.EventArgs e)
-        {
-           // signaturePad.Clear();
-        }
-
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-            InvoiceDetailsPageViewModel vm = (InvoiceDetailsPageViewModel)this.BindingContext;
-            vm.OnAppearing();
-
-        }
+      
 
     }
 }
