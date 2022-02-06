@@ -13,19 +13,6 @@ namespace WIS.Views
         }
 
 
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-            /*
-            ParentScheduleViewModel vm = (ParentScheduleViewModel)this.BindingContext;
-            vm.OnAppearing(() =>{
-                if (ChildrenPicker.ItemsSource.Count > 0)
-                    ChildrenPicker.SelectedIndex = 0;
-            });
-            */
-        }
-
-
         void Picker_SelectedIndexChanged(System.Object sender, System.EventArgs e)
         {
             Picker picker = (Picker)sender;

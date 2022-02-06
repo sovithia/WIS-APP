@@ -10,7 +10,7 @@ using Xamarin.Forms;
 
 namespace WIS.ViewModels
 {
-    public class ParentScheduleViewModel
+    public class ParentScheduleViewModel : INotifyPropertyChanged
     {
         private ObservableCollection<string> children;
         public ObservableCollection<string> Children {
@@ -43,10 +43,45 @@ namespace WIS.ViewModels
         private List<string> days;
         public ParentScheduleViewModel()
         {
-
             days = new List<string>() { "1", "2", "3", "4", "5", "6", "7" };
             scheduleList = new Dictionary<string, ObservableCollection<SFSCHEDULEDATA>>();
             children = new ObservableCollection<string>();
+            DataService.Instance.GetParentSchedule((schedules) =>
+            {
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    foreach (string child in schedules.Keys.ToList()){
+                        children.Add(child);
+                    }                    
+                    foreach (KeyValuePair<string, StudentSchedule> schedule in schedules)
+                    {
+
+                        var firstday = DateTime.Today.StartOfWeek(DayOfWeek.Monday);
+                        firstday = firstday.Date;
+                        DateTime theDay = firstday;
+
+                        ObservableCollection<SFSCHEDULEDATA> tmp = new ObservableCollection<SFSCHEDULEDATA>();
+                        if (schedule.Value.schedulesessionList != null)
+                        {
+                            for (int i = 0; i < 5; i++)
+                            {
+
+                                List<StudentScheduleCourse> oneday = schedule.Value.schedulesessionList.Where(line => line.day == days[i]).ToList();
+                                foreach (StudentScheduleCourse sline in oneday)
+                                {
+                                    SFSCHEDULEDATA data = sline.toSFDATA(theDay);
+                                    tmp.Add(data);
+                                }
+                                theDay = theDay.AddDays(1);
+                            }
+                        }
+                        scheduleList[schedule.Key] = tmp;
+                    }
+                    this.RaiseOnPropertyChanged("Children");
+                    SelectedChildren = children.ElementAt(0);                    
+                });
+
+            });
         }
 
         /// <summary>
@@ -75,59 +110,11 @@ namespace WIS.ViewModels
         //private List<string> currentDayMeetings;     
         //private Dictionary<DayOfWeek, int> mondayDistance;
 
-        public void OnAppearing(readyDelegate done)
-        {
-            if (this.courses == null)
-            {
-                DataService.Instance.GetParentSchedule((schedules) =>
-                {
-                    Device.BeginInvokeOnMainThread(() =>
-                    {
-                        foreach (string child in schedules.Keys.ToList())
-                        {
-                            children.Add(child);
-                        }
-                        this.RaiseOnPropertyChanged("Children");
-                        SelectedChildren = children.ElementAt(0);
-
-                        foreach (KeyValuePair<string, StudentSchedule> schedule in schedules)
-                        {
-
-                            var firstday = DateTime.Today.StartOfWeek(DayOfWeek.Monday);
-                            firstday = firstday.Date;
-                            DateTime theDay = firstday;
-
-                            ObservableCollection<SFSCHEDULEDATA> tmp = new ObservableCollection<SFSCHEDULEDATA>();
-                            if (schedule.Value.schedulesessionList != null)
-                            {
-                                for (int i = 0; i < 5; i++)
-                                {
-
-                                    List<StudentScheduleCourse> oneday = schedule.Value.schedulesessionList.Where(line => line.day == days[i]).ToList();
-                                    foreach (StudentScheduleCourse sline in oneday)
-                                    {
-                                        SFSCHEDULEDATA data = sline.toSFDATA(theDay);
-                                        tmp.Add(data);
-                                    }
-                                    theDay = theDay.AddDays(1);
-                                }
-                            }
-                            scheduleList[schedule.Key] = tmp;
-                        }
-                        done();                        
-                    });
-                                                                            
-                });
-           
-            }            
-        }
-
         public void SelectChildren(int index)
         {
          
             ObservableCollection<SFSCHEDULEDATA> selectedSchedule =  scheduleList[scheduleList.Keys.ElementAt(index)];
-            this.courses = selectedSchedule;
-            this.RaiseOnPropertyChanged("Courses");            
+            this.Courses = selectedSchedule;            
         }
 
 

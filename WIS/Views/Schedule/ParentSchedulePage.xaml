@@ -16,12 +16,12 @@
     <ContentPage.Content>            
         <StackLayout >            
             <StackLayout.Padding>
-            <OnIdiom x:TypeArguments="Thickness">
-                <OnIdiom.Phone>
-                    <OnPlatform x:TypeArguments="Thickness" iOS="0,0,0,0" Android="0,20,0,0"  />
-                </OnIdiom.Phone>
-                <OnIdiom.Tablet>
-                    <OnPlatform x:TypeArguments="Thickness" iOS="0,0,0,0" Android="0,0,0,0" />
+                <OnIdiom x:TypeArguments="Thickness">
+                    <OnIdiom.Phone>
+                        <OnPlatform x:TypeArguments="Thickness" iOS="0,0,0,0" Android="0,20,0,0"  />
+                    </OnIdiom.Phone>
+                    <OnIdiom.Tablet>
+                        <OnPlatform x:TypeArguments="Thickness" iOS="0,0,0,0" Android="0,0,0,0" />
                     </OnIdiom.Tablet>
                 </OnIdiom>
             </StackLayout.Padding>
