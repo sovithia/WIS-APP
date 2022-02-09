@@ -27,11 +27,13 @@ namespace WIS.ViewModels
     {    
         private List<string> days;
         public StudentScheduleViewModel()
-        {                      
+        {
+            
             days = new List<string>(){         
                 "1","2","3","4","5","6","7"
             };
-            this.courses = new ObservableCollection<SFSCHEDULEDATA>();
+
+            ObservableCollection<SFSCHEDULEDATA> tmp = new ObservableCollection<SFSCHEDULEDATA>();            
             DataService.Instance.GetStudentSchedule((schedule) =>
             {                
                 var firstday = DateTime.Today.StartOfWeek(DayOfWeek.Monday);
@@ -45,41 +47,26 @@ namespace WIS.ViewModels
                         foreach (StudentScheduleCourse sline in oneday)
                         {
                             SFSCHEDULEDATA data = sline.toSFDATA(theDay);
-                            this.courses.Add(data);
-
+                            tmp.Add(data);                            
                         }
                         theDay = theDay.AddDays(1);
                     }
+                    this.Courses = tmp;
                     this.RaiseOnPropertyChanged("Courses");
                 }
             });
+            
         }
 
 
         /// <summary>
         /// collecions for meetings.
         /// </summary>
-        private ObservableCollection<SFSCHEDULEDATA> courses;
-        public ObservableCollection<SFSCHEDULEDATA> Courses
-        {
-            get{
-                return courses;
-            }
-            set{
-                this.courses = value;
-                this.RaiseOnPropertyChanged("Courses");
-            }
-        }
+        //private ObservableCollection<SFSCHEDULEDATA> courses;
+        public ObservableCollection<SFSCHEDULEDATA> Courses { get; set; }
+      
 
-        
-        public void OnAppearing()
-        {
-            if (this.courses == null)
-            {
-                
-            }
-           
-        }
+   
         /// <summary>
         /// Occurs when property changed.
         /// </summary>

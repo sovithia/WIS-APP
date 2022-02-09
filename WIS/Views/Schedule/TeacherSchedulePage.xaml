@@ -39,9 +39,9 @@
                                  Grid.Row="0"
                                  DataSource="{Binding Courses}"
                                  ScheduleView="DayView"                                 
-                                 TimeIntervalHeight="55"                                 
-                                 VisibleDatesChangedCommand="{Binding VisibleDateChanged}"
-                                 BackgroundColor="Red"
+                                 TimeIntervalHeight="145"
+                                 ViewHeaderHeight="130"                               
+                                 VisibleDatesChangedCommand="{Binding VisibleDateChanged}"                               
                                  >
 
                 <schedule:SfSchedule.WeekViewSettings>

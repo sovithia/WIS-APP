@@ -87,18 +87,9 @@ namespace WIS.ViewModels
         /// <summary>
         /// collecions for meetings.
         /// </summary>
-        private ObservableCollection<SFSCHEDULEDATA> courses;
-        public ObservableCollection<SFSCHEDULEDATA> Courses
-        {
-            get{
-                return courses;
-            }
-            set{
-                this.courses = value;
-                this.RaiseOnPropertyChanged("Courses");                
-            }
-        }
-
+        ///
+        public ObservableCollection<SFSCHEDULEDATA> Courses { get; set; }
+        
 
         /// <summary>
         /// color collection.
@@ -114,7 +105,8 @@ namespace WIS.ViewModels
         {
          
             ObservableCollection<SFSCHEDULEDATA> selectedSchedule =  scheduleList[scheduleList.Keys.ElementAt(index)];
-            this.Courses = selectedSchedule;            
+            this.Courses = selectedSchedule;
+            this.RaiseOnPropertyChanged("Courses");
         }
 
 

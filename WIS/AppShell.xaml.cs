@@ -42,7 +42,7 @@ namespace WIS
             // ATTENDANCE 
             this.attendance = new Tab()
             {
-                Title = "Attendance",
+                Title = "ATN",
                 Route = "Attendance",
                 Icon = "AttendanceListPage"
             };
@@ -66,7 +66,7 @@ namespace WIS
             // INVOICE
             this.invoices = new Tab()
             {
-                Title = "Invoices",
+                Title = "INV",
                 Route = "Invoices",
                 Icon = "InvoiceListPage"
             };
@@ -90,7 +90,7 @@ namespace WIS
             this.studentschedule = new ShellContent()
             {
                 Route = "StudentSchedule",
-                Title = "Schedule(S)",
+                Title = "SCH(S)",
                 Icon = "SchedulePage",
                 ContentTemplate = new DataTemplate(typeof(StudentSchedulePage)),                
                 Style = style
@@ -99,7 +99,7 @@ namespace WIS
             this.teacherschedule = new ShellContent()
             {
                 Route = "TeacherSchedule",
-                Title = "Schedule(T)",
+                Title = "SCH(T)",
                 Icon = "SchedulePage",
                 ContentTemplate = new DataTemplate(typeof(TeacherSchedulePage)),
                 Style = style
@@ -108,7 +108,7 @@ namespace WIS
             this.parentschedule = new ShellContent()
             {
                 Route = "ParentSchedule",
-                Title = "Schedule(P)",
+                Title = "SCH(P)",
                 Icon = "SchedulePage",
                 ContentTemplate = new DataTemplate(typeof(ParentSchedulePage)),
                 Style = style

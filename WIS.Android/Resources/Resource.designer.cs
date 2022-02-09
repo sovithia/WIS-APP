@@ -29218,7 +29218,7 @@ namespace WIS.Droid
 			public const int LoginBackground = 2131165406;
 			
 			// aapt resource value: 0x7F0700DF
-			public const int logo = 2131165407;
+			public const int Logo = 2131165407;
 			
 			// aapt resource value: 0x7F0700E0
 			public const int LogoutPage = 2131165408;

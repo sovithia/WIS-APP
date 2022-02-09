@@ -31,7 +31,6 @@
             <Grid >
            
               <Grid.RowDefinitions>
-
                   <RowDefinition Height="700" />
               </Grid.RowDefinitions>  
             
@@ -40,16 +39,19 @@
                                  Grid.Row="0"
                                  DataSource="{Binding Courses}"
                                  ScheduleView="DayView"                                 
-                                 TimeIntervalHeight="55"                                 
+                                 TimeIntervalHeight="145"
+                                 ViewHeaderHeight="130"                          
                                  VisibleDatesChangedCommand="{Binding VisibleDateChanged}"
-                                 BackgroundColor="Red">
+                                 >
+
+              
 
                 <schedule:SfSchedule.WeekViewSettings>
                     <schedule:WeekViewSettings StartHour="7" EndHour="17" WorkStartHour="7"   WorkEndHour="17" />
                 </schedule:SfSchedule.WeekViewSettings>
 
                 <schedule:SfSchedule.DayViewSettings  >                    
-                    <schedule:DayViewSettings StartHour="7" EndHour="17"  WorkStartHour="7" WorkEndHour="17"  >                                                
+                    <schedule:DayViewSettings StartHour="7" EndHour="17" TimeRulerSize="200"  WorkStartHour="7" WorkEndHour="17"  >                                                
                         <schedule:DayViewSettings.DayLabelSettings>
                             <schedule:DayLabelSettings TimeFormat="hh:mm"  TimeLabelColor="#1746A0"/>
                         </schedule:DayViewSettings.DayLabelSettings>
@@ -58,7 +60,7 @@
 
                 <schedule:SfSchedule.AppointmentStyle>
                     <schedule:AppointmentStyle
-                        FontSize="8"
+                        FontSize="10"
                         />
 
                 </schedule:SfSchedule.AppointmentStyle>

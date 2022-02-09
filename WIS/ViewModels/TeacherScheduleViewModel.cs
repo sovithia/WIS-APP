@@ -28,10 +28,9 @@ namespace WIS.ViewModels
                 { DayOfWeek.Saturday, "6" },
                 { DayOfWeek.Sunday, "7" }
             };
+            ObservableCollection<SFSCHEDULEDATA> tmp = new ObservableCollection<SFSCHEDULEDATA>();
             DataService.Instance.GetTeacherSchedule((schedule) =>
-            {
-                this.courses = new ObservableCollection<SFSCHEDULEDATA>();
-
+            {            
                 var firstday = DateTime.Today.StartOfWeek(DayOfWeek.Monday);
                 firstday = firstday.Date;
                 DateTime theDay = firstday;
@@ -41,11 +40,12 @@ namespace WIS.ViewModels
                     foreach (TeacherScheduleCourse sline in oneday)
                     {
                         SFSCHEDULEDATA data = sline.toSFDATA(theDay);
-                        this.courses.Add(data);
+                        tmp.Add(data);
 
                     }
                     theDay = theDay.AddDays(1);
                 }
+                this.Courses = tmp;
                 this.RaiseOnPropertyChanged("Courses");
 
             });           
@@ -54,6 +54,8 @@ namespace WIS.ViewModels
         /// <summary>
         /// collecions for meetings.
         /// </summary>
+        public ObservableCollection<SFSCHEDULEDATA> Courses {get;set;}
+        /*
         private ObservableCollection<SFSCHEDULEDATA> courses;
         public ObservableCollection<SFSCHEDULEDATA> Courses
         {
@@ -65,6 +67,7 @@ namespace WIS.ViewModels
                 this.RaiseOnPropertyChanged("Courses");
             }
         }
+        */
 
 
         /// <summary>
@@ -77,14 +80,6 @@ namespace WIS.ViewModels
         //private List<string> currentDayMeetings;     
         //private Dictionary<DayOfWeek, int> mondayDistance;
 
-        public void OnAppearing()
-        {
-            if (this.courses == null)
-            {
-                
-            }
-
-        }
 
         /// <summary>
         /// Occurs when property changed.

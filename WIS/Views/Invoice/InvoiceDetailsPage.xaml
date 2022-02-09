@@ -21,7 +21,7 @@
                     
                 </Grid.RowDefinitions>
 
-                <Label Grid.Row="0" Text="{Binding InvoiceID}" FontFamily="Montserrat-SemiBold"   HorizontalTextAlignment="Center" TextColor="{DynamicResource Gray-White}" FontSize="Medium"/>
+                <Label Grid.Row="0" Text="{Binding InvoiceID}" FontFamily="Montserrat-SemiBold"   HorizontalTextAlignment="Center" TextColor="{DynamicResource Gray-White}" FontSize="18"/>
                 <Frame Margin="10" Grid.Row="1" VerticalOptions="Fill" BackgroundColor="White">
                     <listView:SfListView                                            
                         AutoFitMode="Height"
@@ -40,10 +40,10 @@
                             <Grid Padding="5" BackgroundColor="{DynamicResource InfoBlue}">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="60" />
+                                    <ColumnDefinition Width="70" />
                                 </Grid.ColumnDefinitions>
                             
-                                <Label Grid.Row="0" Grid.Column="0" Text="{Binding productname}" FontFamily="Montserrat-SemiBold"  TextColor="{DynamicResource Gray-White}" FontSize="18" />
+                                <Label Grid.Row="0" Grid.Column="0" Text="{Binding productname}" FontFamily="Montserrat-SemiBold"  TextColor="{DynamicResource Gray-White}" FontSize="15" />
                                 <Label Grid.Row="0" Grid.Column="1" Text="{Binding damount}" FontFamily="Montserrat-SemiBold"      TextColor="{DynamicResource Gray-White}" FontSize="15" VerticalTextAlignment="Center" HorizontalTextAlignment="End"/>
                             </Grid>
                             </border:SfBorder>
@@ -63,8 +63,8 @@
                         <ColumnDefinition Width="80"/>
                     </Grid.ColumnDefinitions>
                     
-                    <Label  Grid.Column="0" Grid.Row="0" Text="Total" HorizontalTextAlignment="Start" FontFamily="Montserrat-SemiBold"     TextColor="{DynamicResource Gray-White}" FontSize="Large"   />
-                    <Label  Grid.Column="1" Grid.Row="0" Text="{Binding Total}"  TextColor="{DynamicResource Gray-White}" Style="{StaticResource TitleLabelStyle}"  FontSize="Large" />
+                    <Label  Grid.Column="0" Grid.Row="0" Text="Total" HorizontalTextAlignment="Start" FontFamily="Montserrat-SemiBold"     TextColor="{DynamicResource Gray-White}" FontSize="16"   />
+                    <Label  Grid.Column="1" Grid.Row="0" Text="{Binding Total}"  TextColor="{DynamicResource Gray-White}" Style="{StaticResource TitleLabelStyle}"  FontSize="16" />
                 </Grid>                                             
             </Grid>
         </Grid>

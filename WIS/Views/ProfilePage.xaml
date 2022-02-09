@@ -14,14 +14,12 @@
 
     <ContentPage.Content>
         <ScrollView>
+            <StackLayout  BackgroundColor="{DynamicResource Gray-Bg}" Spacing="0" Padding="0,0,0,20">
 
-            <StackLayout  BackgroundColor="{DynamicResource Gray-Bg}" Spacing="0" Padding="0,10,0,20">
-
-                <Image Source="LogoColor"  HeightRequest="100" />
-
+                <Image Source="Logo"  HeightRequest="100" />
                 <Grid  BackgroundColor="#2196F3" VerticalOptions="FillAndExpand" RowDefinitions="auto,*">
                                     
-                    <Image
+                    <Image                        
                         x:Name="ProfileImage"
                         Grid.Row="0"
                         HeightRequest="200"
