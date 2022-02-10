@@ -11,6 +11,8 @@ namespace WIS.Views
         {
             isWeekView = false;
             InitializeComponent();
+            
+            schedule.TimeIntervalHeight = 145;
         }
         
         bool isWeekView;

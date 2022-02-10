@@ -38,11 +38,16 @@
                                  Grid.Column="0"
                                  Grid.Row="0"
                                  DataSource="{Binding Courses}"
-                                 ScheduleView="DayView"                                 
-                                 TimeIntervalHeight="145"
-                                 ViewHeaderHeight="140"                             
+                                 ScheduleView="DayView"                                                                  
                                  VisibleDatesChangedCommand="{Binding VisibleDateChanged}"
                                  >
+                <schedule:SfSchedule.TimeIntervalHeight>
+                    <OnPlatform x:TypeArguments="x:Double" iOS="75" Android="145" />
+                </schedule:SfSchedule.TimeIntervalHeight>
+
+                <schedule:SfSchedule.ViewHeaderHeight>
+                    <OnPlatform x:TypeArguments="x:Double" iOS="60" Android="130" />
+                </schedule:SfSchedule.ViewHeaderHeight>
 
                 <schedule:SfSchedule.WeekViewSettings>
                     <schedule:WeekViewSettings StartHour="7" EndHour="17" WorkStartHour="7"   WorkEndHour="17" />

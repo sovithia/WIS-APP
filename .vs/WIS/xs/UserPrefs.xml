@@ -1,25 +1,22 @@
 ﻿<Properties StartupConfiguration="{1D9F4196-4160-421B-9C34-A46D8EC09BC0}|Default">
-  <MonoDevelop.Ide.ItemProperties.WIS.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget" />
-  <MonoDevelop.Ide.ItemProperties.WIS.Android AndroidDesignerPreferredTheme="MainTheme" PreferredExecutionTarget="Android.192.168.57.101:5555" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="WIS/ViewModels/TeacherScheduleViewModel.cs">
+  <MonoDevelop.Ide.ItemProperties.WIS.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.9F4D140B-03CD-4242-A83C-6CE99F4C68D4" />
+  <MonoDevelop.Ide.ItemProperties.WIS.Android AndroidDesignerPreferredTheme="MainTheme" PreferredExecutionTarget="Android.Nexus_6_API_28" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="WIS/Views/Schedule/ParentSchedulePage.xaml">
     <Files>
-      <File FileName="WIS/Views/Schedule/StudentSchedulePage.xaml" Line="42" Column="34" IsPinned="True" />
-      <File FileName="WIS/ViewModels/TeacherScheduleViewModel.cs" Line="42" Column="58" />
+      <File FileName="WIS/Views/Schedule/ParentSchedulePage.xaml" Line="57" Column="41" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="WIS" expanded="True">
             <Node name="WIS" expanded="True">
-              <Node name="ViewModels" expanded="True">
-                <Node name="TeacherScheduleViewModel.cs" selected="True" />
-              </Node>
               <Node name="Views" expanded="True">
                 <Node name="Schedule" expanded="True">
-                  <Node name="StudentSchedulePage.xaml" expanded="True" />
+                  <Node name="ParentSchedulePage.xaml" selected="True" />
                 </Node>
               </Node>
             </Node>
+            <Node name="WIS.iOS" expanded="True" />
           </Node>
         </State>
       </Pad>
