@@ -72,7 +72,7 @@
                                     HorizontalOptions="Center"
                                     HorizontalTextAlignment="Center"
                                     Style="{StaticResource SimpleLabelStyle}"
-                                    Text="{Binding date}"
+                                    Text="{Binding date,StringFormat='{0:MMMM dd, yyyy}'}"
                                     TextColor="White"
                                     VerticalOptions="Start"
                                     VerticalTextAlignment="Start" />

@@ -40,11 +40,11 @@
                             <Grid Padding="5" BackgroundColor="{DynamicResource InfoBlue}">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="70" />
+                                    <ColumnDefinition Width="100" />
                                 </Grid.ColumnDefinitions>
                             
-                                <Label Grid.Row="0" Grid.Column="0" Text="{Binding productname}" FontFamily="Montserrat-SemiBold"  TextColor="{DynamicResource Gray-White}" FontSize="15" />
-                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding damount}" FontFamily="Montserrat-SemiBold"      TextColor="{DynamicResource Gray-White}" FontSize="15" VerticalTextAlignment="Center" HorizontalTextAlignment="End"/>
+                                <Label Grid.Row="0" Grid.Column="0" Text="{Binding productname}" FontFamily="Montserrat-SemiBold"  TextColor="{DynamicResource Gray-White}" FontSize="12" />
+                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding amount,StringFormat='${0:#,0.#0}'}"   FontFamily="Montserrat-SemiBold"      TextColor="{DynamicResource Gray-White}" FontSize="12" VerticalTextAlignment="Center" HorizontalTextAlignment="End"/>
                             </Grid>
                             </border:SfBorder>
                         </DataTemplate>
@@ -57,14 +57,14 @@
                  </listView:SfListView>
                 </Frame>
         
-                <Grid Grid.Row="2" Padding="5,0,5,0" Margin="10,0,10,0" BackgroundColor="{DynamicResource InfoBlue}" >
+                <Grid Grid.Row="2" Padding="5,0,5,0" Margin="10,0,10,0" VerticalOptions="Center" BackgroundColor="{DynamicResource InfoBlue}" >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="80"/>
+                        <ColumnDefinition Width="120"/>
                     </Grid.ColumnDefinitions>
                     
-                    <Label  Grid.Column="0" Grid.Row="0" Text="Total" HorizontalTextAlignment="Start" FontFamily="Montserrat-SemiBold"     TextColor="{DynamicResource Gray-White}" FontSize="16"   />
-                    <Label  Grid.Column="1" Grid.Row="0" Text="{Binding Total}"  TextColor="{DynamicResource Gray-White}" Style="{StaticResource TitleLabelStyle}"  FontSize="16" />
+                    <Label  Grid.Column="0"  Grid.Row="0" Text="Total" HorizontalTextAlignment="Start" FontFamily="Montserrat-SemiBold"     TextColor="{DynamicResource Gray-White}" FontSize="16"   />
+                    <Label Grid.Column="1" Grid.Row="0" Text="{Binding Total,StringFormat='${0:#,0.#0}'}"  TextColor="{DynamicResource Gray-White}" Style="{StaticResource TitleLabelStyle}" HorizontalOptions="End"   FontSize="16" />
                 </Grid>                                             
             </Grid>
         </Grid>

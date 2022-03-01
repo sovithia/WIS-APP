@@ -18,13 +18,8 @@ namespace WIS.Models
     public class InvoiceElement
     {
 
-        public string damount {
-            get
-            {
-                return  amount + " $";
-            }
-        }
-        public string amount { get; set; } // invoice_fees amount
+        
+        public float amount { get; set; } // invoice_fees amount
         public string productname { get; set; } // COMPUTED
                                                 
                                                 

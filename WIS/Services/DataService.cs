@@ -29,9 +29,7 @@ namespace WIS.Services
 
         public DataService()
         {
-            string realServer = "http://test.sams.api.westec.com/api";
-            
-            
+            string realServer = "http://test.sams.api.westec.com/api";                        
             if (Device.RuntimePlatform == Device.iOS)
             {
                 if (DeviceInfo.DeviceType == DeviceType.Virtual)
@@ -47,7 +45,7 @@ namespace WIS.Services
                     this.BaseURL = realServer;
             }
 
-            this.BaseURL = realServer;
+            //this.BaseURL = realServer;
             this.headers = new Dictionary<string, string>();
         }
 

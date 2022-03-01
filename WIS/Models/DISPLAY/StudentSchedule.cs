@@ -29,7 +29,7 @@ namespace WIS.Models
             string fromHours = data.From.Hour.ToString() + ":" + data.From.Minute.ToString();            
             string toHours = data.To.Hour.ToString() + ":" + data.To.Minute.ToString();
 
-            data.EventName = coursename + "\n" + fromHours + "\n" + toHours + "\n" + teacherdisplayname + "\n" + roomname;
+            data.EventName = coursename + "\n" + fromHours + "\n" + toHours + "\n" + teacherdisplayname + "\nRoom:" + roomname;
             data.Color = Color.FromHex("1746A0");
             
             return data;

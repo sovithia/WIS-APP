@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using WIS.Models;
 using WIS.ViewModels;
 using Xamarin.Forms;
@@ -18,7 +19,9 @@ namespace WIS.Views
         }
 
         public InvoiceDetailsPage(){
-            
+
+            CultureInfo myCurrency = new CultureInfo("en-US");
+            CultureInfo.DefaultThreadCurrentCulture = myCurrency;
             InitializeComponent();            
         }
       

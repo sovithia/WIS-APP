@@ -69,7 +69,7 @@
                                     HorizontalOptions="Center"
                                     HorizontalTextAlignment="Center"
                                     Style="{StaticResource SimpleLabelStyle}"
-                                    Text="{Binding Start}"
+                                    Text="{Binding Start,StringFormat='{0:dd MMM yyyy HH:mm}'}"
                                     TextColor="White"
                                     VerticalOptions="Start"
                                     VerticalTextAlignment="Start" />
@@ -79,7 +79,7 @@
                                     HorizontalOptions="Center"
                                     HorizontalTextAlignment="Center"
                                     Style="{StaticResource SimpleLabelStyle}"
-                                    Text="{Binding End}"
+                                    Text="{Binding End,StringFormat='{0:dd MMM yyyy HH:mm}'}"
                                     TextColor="White"
                                     VerticalOptions="Start"
                                     VerticalTextAlignment="Start" />

@@ -37,10 +37,14 @@ namespace WIS.ViewModels
                 for (int i = 0; i < 5; i++)
                 {
                     List<TeacherScheduleCourse> oneday = schedule.schedulesessionList.Where(line => line.day == days[i]).ToList();
+                    List<DateTime> times = new List<DateTime>();
                     foreach (TeacherScheduleCourse sline in oneday)
                     {
                         SFSCHEDULEDATA data = sline.toSFDATA(theDay);
+                        if (times.Contains(data.From)) // Dirty fix to contain double data
+                            continue;
                         tmp.Add(data);
+                        times.Add(data.From);                        
 
                     }
                     theDay = theDay.AddDays(1);

@@ -41,13 +41,17 @@ namespace WIS.ViewModels
                 DateTime theDay = firstday;
                 if (schedule.schedulesessionList != null)
                 {
+                    List<DateTime> times = new List<DateTime>();
                     for (int i = 0; i < 5; i++)
                     {
                         List<StudentScheduleCourse> oneday = schedule.schedulesessionList.Where(line => line.day == days[i]).ToList();
                         foreach (StudentScheduleCourse sline in oneday)
                         {
                             SFSCHEDULEDATA data = sline.toSFDATA(theDay);
-                            tmp.Add(data);                            
+                            if (times.Contains(data.From)) // Dirty fix to contain double data
+                                continue;
+                            tmp.Add(data);
+                            times.Add(data.From);
                         }
                         theDay = theDay.AddDays(1);
                     }

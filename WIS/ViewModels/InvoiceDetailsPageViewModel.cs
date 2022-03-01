@@ -36,8 +36,8 @@ namespace WIS.ViewModels
         */
         public ObservableCollection<InvoiceElement> InvoiceLines { get; set; }
 
-        private string total;
-        public string Total
+        private float total;
+        public float Total
         {
             get
             {
@@ -82,10 +82,10 @@ namespace WIS.ViewModels
                 float amt = 0;
                 foreach (InvoiceElement line in invoice.invoicefeeList)
                 {
-                    amt += float.Parse(line.amount);
+                    amt += line.amount;
                     InvoiceLines.Add(line);
                 }
-                Total = amt.ToString() + " $";
+                Total = amt;
             });
         }
 

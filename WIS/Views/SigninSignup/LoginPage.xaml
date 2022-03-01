@@ -193,6 +193,7 @@
                         <buttons:SfButton                            
                             Margin="0,16"
                             Command="{Binding LoginCommand}"
+                            IsEnabled="{Binding IsLoading,Converter={StaticResource InverseBoolConverter}}"
                             HorizontalOptions="Fill"
                             Style="{StaticResource GradientButtonStyle}"
                             Text="LOG IN" /> 

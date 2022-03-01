@@ -13,10 +13,8 @@ namespace WIS.ViewModels
 
         public ObservableCollection<Invoice> Invoices { get; set; }
 
-
         public Command ItemSelectedCommand { get; set; }
         
-
         public InvoiceListPageViewModel()
         {
             Invoices = new ObservableCollection<Invoice>();            

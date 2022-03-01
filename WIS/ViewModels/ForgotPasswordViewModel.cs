@@ -33,6 +33,16 @@ namespace WIS.ViewModels
         #endregion
 
         #region Fields
+        private bool isloading;
+        public bool ISLOADING {
+            get{
+                return isloading;
+            }
+            set{
+                this.SetProperty(ref this.isloading, value);
+            }
+
+        }
 
         private ValidatableObject<string> phone;
         public ValidatableObject<string> Phone
