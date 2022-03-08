@@ -10,34 +10,38 @@ namespace WIS.Views
         public StudentSchedulePage()
         {
             isWeekView = false;
-            InitializeComponent();
-            
-            schedule.TimeIntervalHeight = 145;
+            InitializeComponent();                        
         }
         
         bool isWeekView;
         void switchView(System.Object sender, System.EventArgs e)
         {
-            if (isWeekView == true)
+            if (isWeekView == true) // Change to DayView
             {
                 switchBtn.Text = "Week View";                
-                schedule.ScheduleView = Syncfusion.SfSchedule.XForms.ScheduleView.DayView;
-                schedule.WorkWeekViewSettings = new Syncfusion.SfSchedule.XForms.WorkWeekViewSettings()
+                
+                schedule.DayViewSettings = new Syncfusion.SfSchedule.XForms.DayViewSettings()
                 {
                     StartHour = 7,
-                    EndHour = 17                    
+                    EndHour = 19,
+                    WorkStartHour = 7,
+                    WorkEndHour = 19,
                 };
-            }
+                schedule.ScheduleView = Syncfusion.SfSchedule.XForms.ScheduleView.DayView;
 
-            else
+            }
+            else // Change to Week View
             {
                 switchBtn.Text = "Day View";
-                schedule.ScheduleView = Syncfusion.SfSchedule.XForms.ScheduleView.WorkWeekView;
-                schedule.WorkWeekViewSettings = new Syncfusion.SfSchedule.XForms.WorkWeekViewSettings()
+                
+                schedule.WeekViewSettings = new Syncfusion.SfSchedule.XForms.WeekViewSettings()
                 {
                     StartHour = 7,
-                    EndHour = 17
+                    EndHour = 19,
+                    WorkStartHour = 7,
+                    WorkEndHour = 19,
                 };
+                schedule.ScheduleView = Syncfusion.SfSchedule.XForms.ScheduleView.WorkWeekView;
             }
 
             isWeekView = !isWeekView;

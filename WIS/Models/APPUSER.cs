@@ -15,23 +15,24 @@ namespace WIS.Models
         public string id { get; set; }
         public string firstname { get; set; }
         public string lastname { get; set; }
-        public string dob { get; set; }
+        public DateTime dob { get; set; }
         public string gender { get; set; }
         public string user_type { get; set; }
 
-        
         public string identifier { get; set; }
         public string password { get; set; }
 
         public string username { get; set; }
         public string phone { get; set; }
-
+        
         public string email { get; set; }
         public string access_token { get; set; }
         public string imageurl;
         public bool reset_requested { get; set; }
 
         public string remember_me_token { get; set; }
+
+        public string bio { get; set; }
 
         public StreamImageSource ProfilePicture{
             get

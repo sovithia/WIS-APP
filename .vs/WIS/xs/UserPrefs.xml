@@ -1,30 +1,24 @@
 ﻿<Properties StartupConfiguration="{D5F23FAD-2906-4CA5-B308-3D7789659D25}|Default">
   <MonoDevelop.Ide.ItemProperties.WIS.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.9F4D140B-03CD-4242-A83C-6CE99F4C68D4" />
   <MonoDevelop.Ide.ItemProperties.WIS.Android AndroidDesignerPreferredTheme="MainTheme" PreferredExecutionTarget="Android.Nexus_6_API_28" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="WIS/Models/DISPLAY/TeacherSchedule.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="WIS/ViewModels/StudentScheduleViewModel.cs">
     <Files>
-      <File FileName="WIS/Services/DataService.cs" Line="48" Column="15" />
-      <File FileName="WIS/ViewModels/StudentScheduleViewModel.cs" Line="50" Column="61" />
-      <File FileName="WIS/ViewModels/TeacherScheduleViewModel.cs" />
-      <File FileName="WIS/ViewModels/ParentScheduleViewModel.cs" Line="76" Column="51" />
-      <File FileName="WIS/Models/DISPLAY/StudentSchedule.cs" Line="30" Column="43" />
-      <File FileName="WIS/Models/DISPLAY/TeacherSchedule.cs" Line="28" Column="107" />
+      <File FileName="WIS/Services/DataService.cs" Line="313" Column="44" />
+      <File FileName="WIS/Services/RESTEngine.cs" Line="57" Column="1" />
+      <File FileName="WIS/ViewModels/StudentScheduleViewModel.cs" Line="51" Column="27" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="WIS" expanded="True">
             <Node name="WIS" expanded="True">
-              <Node name="Models" expanded="True">
-                <Node name="DISPLAY" expanded="True">
-                  <Node name="TeacherSchedule.cs" selected="True" />
-                </Node>
+              <Node name="ViewModels" expanded="True">
+                <Node name="StudentScheduleViewModel.cs" selected="True" />
               </Node>
-              <Node name="Services" expanded="True" />
-              <Node name="ViewModels" expanded="True" />
               <Node name="Views" expanded="True">
-                <Node name="Schedule" expanded="True">
-                  <Node name="StudentSchedulePage.xaml" expanded="True" />
+                <Node name="Invoice" expanded="True" />
+                <Node name="SigninSignup" expanded="True">
+                  <Node name="LoginPage.xaml" expanded="True" />
                 </Node>
               </Node>
             </Node>
@@ -33,10 +27,7 @@
       </Pad>
       <Pad Id="MonoDevelop.Debugger.WatchPad">
         <State>
-          <Value>Application.Current.MainPage</Value>
-          <Value>ex.Message </Value>
-          <Value>url</Value>
-          <Value>Application.Current.MainPage</Value>
+          <Value>json["user"]</Value>
         </State>
       </Pad>
     </Pads>
@@ -50,7 +41,7 @@
       <Breakpoint file="/Users/sovi/Projects/WIS-APP/WIS.iOS/AppDelegate.cs" relfile="WIS.iOS/AppDelegate.cs" line="141" column="1" />
       <Breakpoint file="/Users/sovi/Projects/WIS-APP/WIS.iOS/AppDelegate.cs" relfile="WIS.iOS/AppDelegate.cs" line="147" column="1" />
       <Breakpoint file="/Users/sovi/Projects/WIS-APP/WIS.iOS/Main.cs" relfile="WIS.iOS/Main.cs" line="31" column="1" />
-      <Breakpoint file="/Users/sovi/Projects/WIS-APP/WIS/Services/DataService.cs" relfile="WIS/Services/DataService.cs" line="369" column="1" />
+      <Breakpoint file="/Users/sovi/Projects/WIS-APP/WIS/Services/DataService.cs" relfile="WIS/Services/DataService.cs" line="370" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />

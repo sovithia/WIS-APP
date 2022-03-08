@@ -51,11 +51,11 @@
                 </schedule:SfSchedule.ViewHeaderHeight>
 
                 <schedule:SfSchedule.WeekViewSettings>
-                    <schedule:WeekViewSettings StartHour="7" EndHour="17" WorkStartHour="7"   WorkEndHour="17" />
+                    <schedule:WeekViewSettings StartHour="7" EndHour="19" WorkStartHour="7"   WorkEndHour="17" />
                 </schedule:SfSchedule.WeekViewSettings>
 
                 <schedule:SfSchedule.DayViewSettings  >                    
-                    <schedule:DayViewSettings StartHour="7" EndHour="17"  WorkStartHour="7" WorkEndHour="17"  >                                                
+                    <schedule:DayViewSettings StartHour="7" EndHour="19"  WorkStartHour="7" WorkEndHour="17"  >                                                
                         <schedule:DayViewSettings.DayLabelSettings>
                             <schedule:DayLabelSettings TimeFormat="hh:mm"  TimeLabelColor="#1746A0"/>
                         </schedule:DayViewSettings.DayLabelSettings>

@@ -40,7 +40,6 @@ namespace WIS.Views
         {
             typePicker.IsOpen = true;
 
-
         }
 
         private void Typepicker_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
@@ -71,7 +70,7 @@ namespace WIS.Views
 
         private void DatePicker_OkButtonClicked(object sender, Syncfusion.XForms.Pickers.DateChangedEventArgs e)
         {
-            BirthdateEntry.Text = string.Format("{0:yyyy-MM-dd}", e.NewValue);
+            BirthdateEntry.Text = string.Format("{0:dd MMM yyyy}", e.NewValue);
         }
 
         

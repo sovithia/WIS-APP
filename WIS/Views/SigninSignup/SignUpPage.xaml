@@ -222,6 +222,7 @@
                         <StackLayout>
                             <pickers:SfDatePicker x:Name="datePicker"                                          
                                 MinimumDate="1/1/1940"
+                                Format="dd_MMM_yyyy"
                                 PickerMode="Dialog"
                                 PickerWidth="310"
                                 PickerHeight="360"

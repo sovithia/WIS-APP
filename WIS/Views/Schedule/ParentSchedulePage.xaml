@@ -26,9 +26,16 @@
                 </OnIdiom>
             </StackLayout.Padding>
 
-            <Picker Title="Children" x:Name="ChildrenPicker" SelectedItem="{Binding SelectedChildren}" ItemsSource="{Binding Children}"  SelectedIndexChanged="Picker_SelectedIndexChanged"/>
+            
+            <Picker Grid.Column="1" Title="Children" x:Name="ChildrenPicker" SelectedItem="{Binding SelectedChildren}" ItemsSource="{Binding Children}"  SelectedIndexChanged="Picker_SelectedIndexChanged"/>
             <buttons:SfButton  x:Name="switchBtn" Clicked="switchView" Text="Switch View" BackgroundColor="#1746A0" />
-           
+
+             <Label Margin="0,20,0,5" FontSize="20"
+                                LineHeight="{OnPlatform Android=1.25,Default=-1}"
+                                Style="{StaticResource TitleLabelStyle}"
+                                TextColor="Black"
+                                Text="{Binding GradeName,StringFormat='Grade:{0}'}"/>
+
             <Grid>          
               <Grid.RowDefinitions>
                   <RowDefinition Height="700" />
@@ -50,11 +57,11 @@
                 </schedule:SfSchedule.ViewHeaderHeight>
 
                 <schedule:SfSchedule.WeekViewSettings>
-                    <schedule:WeekViewSettings StartHour="7" EndHour="17" WorkStartHour="7"   WorkEndHour="17" />
+                    <schedule:WeekViewSettings StartHour="7" EndHour="19" WorkStartHour="7"   WorkEndHour="19" />
                 </schedule:SfSchedule.WeekViewSettings>
 
                 <schedule:SfSchedule.DayViewSettings  >                    
-                    <schedule:DayViewSettings StartHour="7" EndHour="17"  WorkStartHour="7" WorkEndHour="17"  >                                                
+                    <schedule:DayViewSettings StartHour="7" EndHour="19"  WorkStartHour="7" WorkEndHour="19"  >                                                
                         <schedule:DayViewSettings.DayLabelSettings>
                             <schedule:DayLabelSettings TimeFormat="hh:mm"  TimeLabelColor="#1746A0"/>
                         </schedule:DayViewSettings.DayLabelSettings>

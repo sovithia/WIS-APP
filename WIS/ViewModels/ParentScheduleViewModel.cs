@@ -39,12 +39,16 @@ namespace WIS.ViewModels
         }        
 
 
-        Dictionary<string, ObservableCollection<SFSCHEDULEDATA>> scheduleList;        
+        Dictionary<string, ObservableCollection<SFSCHEDULEDATA>> scheduleList;
+        Dictionary<string, string> gradeList;
+
         private List<string> days;
         public ParentScheduleViewModel()
         {
             days = new List<string>() { "1", "2", "3", "4", "5", "6", "7" };
             scheduleList = new Dictionary<string, ObservableCollection<SFSCHEDULEDATA>>();
+            gradeList = new Dictionary<string, string>();
+
             children = new ObservableCollection<string>();
             DataService.Instance.GetParentSchedule((schedules) =>
             {
@@ -78,11 +82,21 @@ namespace WIS.ViewModels
                                 }
                                 theDay = theDay.AddDays(1);
                             }
+                            scheduleList[schedule.Key] = tmp;
+                            gradeList[schedule.Key] = schedule.Value.schedulesessionList[0].gradename + "-" + schedule.Value.schedulesessionList[0].roomname;
+
+                            
                         }
-                        scheduleList[schedule.Key] = tmp;
+                        
                     }
-                    this.RaiseOnPropertyChanged("Children");
-                    SelectedChildren = children.ElementAt(0);                    
+                    if (children.Count > 0)
+                    {
+                        this.RaiseOnPropertyChanged("Children");
+                        SelectedChildren = children.ElementAt(0);
+                        GradeName = gradeList[scheduleList.Keys.ElementAt(0)];
+                        this.RaiseOnPropertyChanged("GradeName");
+                    }
+                    
                 });
 
             });
@@ -93,7 +107,8 @@ namespace WIS.ViewModels
         /// </summary>
         ///
         public ObservableCollection<SFSCHEDULEDATA> Courses { get; set; }
-        
+
+        public string GradeName { get; set; }
 
         /// <summary>
         /// color collection.
@@ -109,8 +124,12 @@ namespace WIS.ViewModels
         {
          
             ObservableCollection<SFSCHEDULEDATA> selectedSchedule =  scheduleList[scheduleList.Keys.ElementAt(index)];
-            this.Courses = selectedSchedule;
+            GradeName = gradeList[scheduleList.Keys.ElementAt(index)];
+            this.RaiseOnPropertyChanged("GradeName");
+            this.Courses = selectedSchedule;            
             this.RaiseOnPropertyChanged("Courses");
+
+                        
         }
 
 

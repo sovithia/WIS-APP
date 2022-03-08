@@ -24,7 +24,7 @@ namespace WIS.Validators.Rules
         {
 
             DateTime fromDateValue;
-            var formats = new[] { "yyyy-MM-dd" };
+            var formats = new[] { "dd MMM yyyy" };
             if (DateTime.TryParseExact(value.ToString(), formats,
                     System.Globalization.CultureInfo.InvariantCulture,
                     System.Globalization.DateTimeStyles.None, out fromDateValue))

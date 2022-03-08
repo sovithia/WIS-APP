@@ -13,16 +13,14 @@ namespace WIS.ViewModels
 
         public Command LogoutCommand { get; set; }
 
-        public  void logout(Object obj)
-        {
-            Application.Current.MainPage = new LoginPage();
-            /*
-            var answer = AppShell.Current.DisplayAlert("Confirmation", "Do you want to Log out?", "Yes", "No");
+        public async void logout(Object obj)
+        {                        
+            var answer = await Application.Current.MainPage.DisplayAlert("Confirmation", "Do you want to Log out?", "Yes", "No");
             if (answer)
             {
-            
+                Application.Current.MainPage = new LoginPage();
             }
-            */
+            
         }
     }
 }

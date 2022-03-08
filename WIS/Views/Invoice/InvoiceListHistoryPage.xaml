@@ -19,7 +19,7 @@
             <gradient:SfGradientView Style="{StaticResource BlueGradientStyle}" />
             <StackLayout>
             <listView:SfListView                    
-                    Grid.Row="1"
+                    
                     AutoFitMode="Height"
                     ItemsSource="{Binding Invoices}"
                     SelectionMode="None"
@@ -80,14 +80,7 @@
                             </border:SfBorder>
                         </DataTemplate>
 
-
-                    </listView:SfListView.ItemTemplate>
-                   
-
-                    <!--  Behavior added to handle scrolling of ListView  -->
-                    <listView:SfListView.Behaviors>
-                        <behaviour:SfListViewExtendHeightBehavior />
-                    </listView:SfListView.Behaviors>
+                    </listView:SfListView.ItemTemplate>                   
                 </listView:SfListView>
 
         </StackLayout>

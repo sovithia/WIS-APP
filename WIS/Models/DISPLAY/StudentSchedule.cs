@@ -15,6 +15,7 @@ namespace WIS.Models
         public string starttime { get; set; } // schedule_layout_times starttime 
         public int minute { get; set; } // schedule_layout_times  minutes        
         public string day { get; set; }  // schedule_session day  MON,TUE,WED etc.. -> 1,2,3
+        public string gradename { get; set; }
 
 
         public SFSCHEDULEDATA toSFDATA(DateTime theday)
@@ -25,11 +26,15 @@ namespace WIS.Models
             int mstart = int.Parse(starttime.Split(':')[1]);           
             data.From = theday.AddHours(hstart).AddMinutes(mstart);            
             data.To = data.From.AddMinutes(minute);
+            
 
             string fromHours = data.From.Hour.ToString() + ":" + data.From.Minute.ToString();            
             string toHours = data.To.Hour.ToString() + ":" + data.To.Minute.ToString();
+            
+            data.EventName = coursename + "\n" + fromHours + "\n" + toHours;
 
-            data.EventName = coursename + "\n" + fromHours + "\n" + toHours + "\n" + teacherdisplayname + "\nRoom:" + roomname;
+            if (teacherdisplayname != "N/A")
+                data.EventName += "\n" + teacherdisplayname;             
             data.Color = Color.FromHex("1746A0");
             
             return data;

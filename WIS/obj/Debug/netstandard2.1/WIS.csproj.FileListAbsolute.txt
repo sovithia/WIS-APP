@@ -38,6 +38,8 @@
 /Users/sovi/Projects/WIS-APP/WIS/obj/Debug/netstandard2.1/Views/PictureZoomPage.xaml.g.cs
 /Users/sovi/Projects/WIS-APP/WIS/obj/Debug/netstandard2.1/Views/ProfilePage.xaml.g.cs
 /Users/sovi/Projects/WIS-APP/WIS/obj/Debug/netstandard2.1/Views/Push/SendPushNotificationPage.xaml.g.cs
+/Users/sovi/Projects/WIS-APP/WIS/obj/Debug/netstandard2.1/Views/Schedule/ParentSchedulePage.xaml.g.cs
+/Users/sovi/Projects/WIS-APP/WIS/obj/Debug/netstandard2.1/Views/Schedule/StudentSchedulePage.xaml.g.cs
 /Users/sovi/Projects/WIS-APP/WIS/obj/Debug/netstandard2.1/Views/Schedule/TeacherSchedulePage.xaml.g.cs
 /Users/sovi/Projects/WIS-APP/WIS/obj/Debug/netstandard2.1/Views/SigninSignup/ChangePasswordPage.xaml.g.cs
 /Users/sovi/Projects/WIS-APP/WIS/obj/Debug/netstandard2.1/Views/SigninSignup/ForgotPasswordPage.xaml.g.cs
@@ -57,5 +59,3 @@
 /Users/sovi/Projects/WIS-APP/WIS/obj/Debug/netstandard2.1/ref/WIS.dll
 /Users/sovi/Projects/WIS-APP/WIS/obj/Debug/netstandard2.1/WIS.pdb
 /Users/sovi/Projects/WIS-APP/WIS/obj/Debug/netstandard2.1/WIS.csproj.AssemblyReference.cache
-/Users/sovi/Projects/WIS-APP/WIS/obj/Debug/netstandard2.1/Views/Schedule/ParentSchedulePage.xaml.g.cs
-/Users/sovi/Projects/WIS-APP/WIS/obj/Debug/netstandard2.1/Views/Schedule/StudentSchedulePage.xaml.g.cs

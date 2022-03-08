@@ -26,6 +26,7 @@ namespace WIS.ViewModels
     public class StudentScheduleViewModel : INotifyPropertyChanged
     {    
         private List<string> days;
+        
         public StudentScheduleViewModel()
         {
             
@@ -35,7 +36,13 @@ namespace WIS.ViewModels
 
             ObservableCollection<SFSCHEDULEDATA> tmp = new ObservableCollection<SFSCHEDULEDATA>();            
             DataService.Instance.GetStudentSchedule((schedule) =>
-            {                
+            {
+                if (schedule.schedulesessionList.Count > 0)
+                {
+                    GradeName = schedule.schedulesessionList[0].gradename + "-" + schedule.schedulesessionList[0].roomname;
+
+                }
+                    
                 var firstday = DateTime.Today.StartOfWeek(DayOfWeek.Monday);
                 firstday = firstday.Date;
                 DateTime theDay = firstday;
@@ -57,6 +64,7 @@ namespace WIS.ViewModels
                     }
                     this.Courses = tmp;
                     this.RaiseOnPropertyChanged("Courses");
+                    this.RaiseOnPropertyChanged("GradeName");
                 }
             });
             
@@ -68,9 +76,9 @@ namespace WIS.ViewModels
         /// </summary>
         //private ObservableCollection<SFSCHEDULEDATA> courses;
         public ObservableCollection<SFSCHEDULEDATA> Courses { get; set; }
-      
 
-   
+        public string GradeName { get; set; }
+
         /// <summary>
         /// Occurs when property changed.
         /// </summary>

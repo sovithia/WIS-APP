@@ -107,12 +107,18 @@ namespace WIS.ViewModels
         
         public string Birthdate
         {
-            get { return currentUser.dob; }
+            get {
+                if (currentUser.user_type == "STUDENT")                     
+                    return currentUser.dob.ToString("dd MMM yyyy");
+                else
+                    return "";
+
+            }
         }
 
         public string Bio
         {
-            get { return currentUser.user_type; }
+            get { return currentUser.bio; }
         }
 
         public Color colorFromName(string name)

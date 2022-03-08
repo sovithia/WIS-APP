@@ -118,7 +118,7 @@
                         FontFamily="Montserrat-Medium"
                         HorizontalOptions="Start"
                         Style="{StaticResource TitleLabelStyle}"
-                        Text="{Binding Birthdate}"
+                        Text="{Binding Birthdate}"                        
                         TextColor="{DynamicResource Gray-800}"
                         VerticalOptions="Center" />
 
@@ -135,7 +135,7 @@
                     x:Name="ScrollView"
                     Padding="16,8,16,16"
                     HorizontalScrollBarVisibility="Never"
-                    Orientation="Horizontal">
+                    Orientation="Horizontal"> 
                     <StackLayout>
                         <Label Text="{Binding Bio}" />                                                                      
                     </StackLayout>
