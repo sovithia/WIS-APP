@@ -41,11 +41,11 @@ namespace WIS.Models
 
         
         [JsonIgnore, Ignore]
-        public string dID
+        public string ID
         {
             get
             {
-                return "Invoice No: " + doc;
+                return doc;
             }
 
         }

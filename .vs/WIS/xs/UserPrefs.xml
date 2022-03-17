@@ -1,26 +1,17 @@
-﻿<Properties StartupConfiguration="{D5F23FAD-2906-4CA5-B308-3D7789659D25}|Default">
-  <MonoDevelop.Ide.ItemProperties.WIS.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.9F4D140B-03CD-4242-A83C-6CE99F4C68D4" />
+﻿<Properties StartupConfiguration="{1D9F4196-4160-421B-9C34-A46D8EC09BC0}|Default">
+  <MonoDevelop.Ide.ItemProperties.WIS.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.DDB8BAE9-EE59-4D9D-A5F9-1C95A475A697" />
   <MonoDevelop.Ide.ItemProperties.WIS.Android AndroidDesignerPreferredTheme="MainTheme" PreferredExecutionTarget="Android.Nexus_6_API_28" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="WIS/ViewModels/StudentScheduleViewModel.cs">
+  <MonoDevelop.Ide.Workbench>
     <Files>
-      <File FileName="WIS/Services/DataService.cs" Line="313" Column="44" />
-      <File FileName="WIS/Services/RESTEngine.cs" Line="57" Column="1" />
-      <File FileName="WIS/ViewModels/StudentScheduleViewModel.cs" Line="51" Column="27" />
+      <File FileName="WIS.Android/Properties/AndroidManifest.xml" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="WIS" expanded="True">
-            <Node name="WIS" expanded="True">
-              <Node name="ViewModels" expanded="True">
-                <Node name="StudentScheduleViewModel.cs" selected="True" />
-              </Node>
-              <Node name="Views" expanded="True">
-                <Node name="Invoice" expanded="True" />
-                <Node name="SigninSignup" expanded="True">
-                  <Node name="LoginPage.xaml" expanded="True" />
-                </Node>
-              </Node>
+            <Node name="WIS.Android" expanded="True" selected="True">
+              <Node name="DependencyServices" expanded="True" />
+              <Node name="Properties" expanded="True" />
             </Node>
           </Node>
         </State>
@@ -40,8 +31,8 @@
     <BreakpointStore>
       <Breakpoint file="/Users/sovi/Projects/WIS-APP/WIS.iOS/AppDelegate.cs" relfile="WIS.iOS/AppDelegate.cs" line="141" column="1" />
       <Breakpoint file="/Users/sovi/Projects/WIS-APP/WIS.iOS/AppDelegate.cs" relfile="WIS.iOS/AppDelegate.cs" line="147" column="1" />
-      <Breakpoint file="/Users/sovi/Projects/WIS-APP/WIS.iOS/Main.cs" relfile="WIS.iOS/Main.cs" line="31" column="1" />
       <Breakpoint file="/Users/sovi/Projects/WIS-APP/WIS/Services/DataService.cs" relfile="WIS/Services/DataService.cs" line="370" column="1" />
+      <Breakpoint file="/Users/sovi/Projects/WIS-APP/WIS.iOS/Main.cs" relfile="WIS.iOS/Main.cs" line="31" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />

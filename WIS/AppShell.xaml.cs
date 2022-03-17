@@ -129,8 +129,9 @@ namespace WIS
         {
             InitializeComponent();
                         
-            Routing.RegisterRoute("InvoiceDetails", typeof(InvoiceDetailsPage));                        
-       
+            Routing.RegisterRoute("InvoiceDetails", typeof(InvoiceDetailsPage));
+            Routing.RegisterRoute("InvoiceDetailsPaid", typeof(InvoiceDetailsPaidPage));
+
             Style style = null;
             style = CommonShell;
             initShells(style);

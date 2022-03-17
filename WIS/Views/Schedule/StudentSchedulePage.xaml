@@ -55,9 +55,13 @@
                     <OnPlatform x:TypeArguments="x:Double" iOS="50" Android="130" />
                 </schedule:SfSchedule.ViewHeaderHeight>
 
-                <schedule:SfSchedule.WeekViewSettings>
-                    <schedule:WeekViewSettings StartHour="7" EndHour="19"  WorkStartHour="7" WorkEndHour="19"  />
-                </schedule:SfSchedule.WeekViewSettings>
+               <schedule:SfSchedule.ViewHeaderStyle >
+		            <schedule:ViewHeaderStyle DateFontSize="15"/>
+	            </schedule:SfSchedule.ViewHeaderStyle>
+
+                 <schedule:SfSchedule.WorkWeekViewSettings >
+                    <schedule:WorkWeekViewSettings StartHour="7" EndHour="19" WorkStartHour="7"   WorkEndHour="19" ShowAllDay="True"  />
+                </schedule:SfSchedule.WorkWeekViewSettings>
 
                 <schedule:SfSchedule.DayViewSettings  >                    
                     <schedule:DayViewSettings StartHour="7" EndHour="19"  WorkStartHour="7" WorkEndHour="19"  />

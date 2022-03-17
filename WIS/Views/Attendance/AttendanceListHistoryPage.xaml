@@ -84,7 +84,15 @@
                                     VerticalOptions="Start"
                                     VerticalTextAlignment="Start" />
 
-                                 
+                                <!--  Note  -->
+                                <Label
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    Style="{StaticResource SimpleLabelStyle}"
+                                    Text="{Binding note,StringFormat='Reason:[{0}]'}"
+                                    TextColor="White"
+                                    VerticalOptions="Start"
+                                    VerticalTextAlignment="Start" />
 
                             </StackLayout>
                                </border:SfBorder>

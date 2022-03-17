@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using Microsoft.AppCenter.Analytics;
 using WIS.Models;
 using WIS.Services;
@@ -21,6 +22,7 @@ namespace WIS.ViewModels
             ItemSelectedCommand = new Command(ItemSelected);
             DataService.Instance.GetInvoiceList((invoices) =>
             {
+                invoices = invoices.OrderByDescending(i => i.date).ToList();
                 foreach (Invoice invoice in invoices)
                 {
                     Invoices.Add(invoice);

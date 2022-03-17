@@ -55,8 +55,8 @@ namespace WIS.ViewModels
                         foreach (StudentScheduleCourse sline in oneday)
                         {
                             SFSCHEDULEDATA data = sline.toSFDATA(theDay);
-                            if (times.Contains(data.From)) // Dirty fix to contain double data
-                                continue;
+                            //if (times.Contains(data.From)) // Dirty fix to contain double data
+                            //    continue;
                             tmp.Add(data);
                             times.Add(data.From);
                         }

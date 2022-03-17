@@ -55,7 +55,7 @@
                                 <Label
                                     FontSize="14"
                                     Style="{StaticResource TitleLabelStyle}"
-                                    Text="{Binding dID}"
+                                     Text="{Binding ID,StringFormat='Invoice No:{0}'}"
                                     TextColor="{DynamicResource Gray-White}" />
                                 
                                 <!--  Student  -->
@@ -70,7 +70,17 @@
                                     HorizontalOptions="Center"
                                     HorizontalTextAlignment="Center"
                                     Style="{StaticResource SimpleLabelStyle}"
-                                    Text="{Binding date,StringFormat='{0:dd MMM yyyy}'}"
+                                    Text="{Binding date,StringFormat='Issued:{0:dd MMM yyyy}'}"
+                                    TextColor="White"
+                                    VerticalOptions="Start"
+                                    VerticalTextAlignment="Start" />
+
+                                <!--  Due Date  -->
+                                <Label
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    Style="{StaticResource SimpleLabelStyle}"
+                                    Text="{Binding date_due,StringFormat='Due:{0:dd MMM yyyy}'}"
                                     TextColor="White"
                                     VerticalOptions="Start"
                                     VerticalTextAlignment="Start" />

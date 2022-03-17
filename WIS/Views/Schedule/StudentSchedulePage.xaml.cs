@@ -18,29 +18,13 @@ namespace WIS.Views
         {
             if (isWeekView == true) // Change to DayView
             {
-                switchBtn.Text = "Week View";                
-                
-                schedule.DayViewSettings = new Syncfusion.SfSchedule.XForms.DayViewSettings()
-                {
-                    StartHour = 7,
-                    EndHour = 19,
-                    WorkStartHour = 7,
-                    WorkEndHour = 19,
-                };
+                switchBtn.Text = "Week View";                                                
                 schedule.ScheduleView = Syncfusion.SfSchedule.XForms.ScheduleView.DayView;
 
             }
             else // Change to Week View
             {
-                switchBtn.Text = "Day View";
-                
-                schedule.WeekViewSettings = new Syncfusion.SfSchedule.XForms.WeekViewSettings()
-                {
-                    StartHour = 7,
-                    EndHour = 19,
-                    WorkStartHour = 7,
-                    WorkEndHour = 19,
-                };
+                switchBtn.Text = "Day View";                
                 schedule.ScheduleView = Syncfusion.SfSchedule.XForms.ScheduleView.WorkWeekView;
             }
 

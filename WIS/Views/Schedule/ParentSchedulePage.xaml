@@ -45,34 +45,39 @@
                                  Grid.Column="0"
                                  Grid.Row="0"
                                  DataSource="{Binding Courses}"
-                                 ScheduleView="DayView"                                                                  
+                                 ScheduleView="DayView"
+                                 
                                  VisibleDatesChangedCommand="{Binding VisibleDateChanged}"
+                                
                                  >
                 <schedule:SfSchedule.TimeIntervalHeight>
                     <OnPlatform x:TypeArguments="x:Double" iOS="75" Android="145" />
                 </schedule:SfSchedule.TimeIntervalHeight>
 
                 <schedule:SfSchedule.ViewHeaderHeight>
-                    <OnPlatform x:TypeArguments="x:Double" iOS="60" Android="130" />
+                    <OnPlatform x:TypeArguments="x:Double" iOS="60" Android="100" />
                 </schedule:SfSchedule.ViewHeaderHeight>
 
-                <schedule:SfSchedule.WeekViewSettings>
-                    <schedule:WeekViewSettings StartHour="7" EndHour="19" WorkStartHour="7"   WorkEndHour="19" />
-                </schedule:SfSchedule.WeekViewSettings>
 
-                <schedule:SfSchedule.DayViewSettings  >                    
+                <schedule:SfSchedule.ViewHeaderStyle >
+		            <schedule:ViewHeaderStyle DateFontSize="15"/>
+	            </schedule:SfSchedule.ViewHeaderStyle>
+
+                <schedule:SfSchedule.WorkWeekViewSettings >
+                    <schedule:WorkWeekViewSettings StartHour="7" EndHour="19" WorkStartHour="7"   WorkEndHour="19" ShowAllDay="True"  />
+                </schedule:SfSchedule.WorkWeekViewSettings>
+
+                <schedule:SfSchedule.DayViewSettings>                    
                     <schedule:DayViewSettings StartHour="7" EndHour="19"  WorkStartHour="7" WorkEndHour="19"  >                                                
                         <schedule:DayViewSettings.DayLabelSettings>
                             <schedule:DayLabelSettings TimeFormat="hh:mm"  TimeLabelColor="#1746A0"/>
                         </schedule:DayViewSettings.DayLabelSettings>
                     </schedule:DayViewSettings>
                 </schedule:SfSchedule.DayViewSettings>
+               
 
                 <schedule:SfSchedule.AppointmentStyle>
-                    <schedule:AppointmentStyle
-                        FontSize="8"
-                        />
-
+                    <schedule:AppointmentStyle FontSize="10" />
                 </schedule:SfSchedule.AppointmentStyle>
 
                 <schedule:SfSchedule.AppointmentMapping>

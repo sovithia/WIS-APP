@@ -29326,91 +29326,94 @@ namespace WIS.Droid
 			public const int OurTeam = 2131165442;
 			
 			// aapt resource value: 0x7F070103
-			public const int Pause = 2131165443;
+			public const int Paid = 2131165443;
 			
 			// aapt resource value: 0x7F070104
-			public const int Play = 2131165444;
+			public const int Pause = 2131165444;
 			
 			// aapt resource value: 0x7F070105
-			public const int preference_list_divider_material = 2131165445;
+			public const int Play = 2131165445;
 			
 			// aapt resource value: 0x7F070106
-			public const int ProfilePage = 2131165446;
+			public const int preference_list_divider_material = 2131165446;
 			
 			// aapt resource value: 0x7F070107
-			public const int PushPage = 2131165447;
+			public const int ProfilePage = 2131165447;
 			
 			// aapt resource value: 0x7F070108
-			public const int Recurrence = 2131165448;
+			public const int PushPage = 2131165448;
 			
 			// aapt resource value: 0x7F070109
-			public const int SchedulePage = 2131165449;
+			public const int Recurrence = 2131165449;
 			
 			// aapt resource value: 0x7F07010A
-			public const int sfcheckbox_animation = 2131165450;
+			public const int SchedulePage = 2131165450;
 			
 			// aapt resource value: 0x7F07010B
-			public const int sfcheckbox_checked = 2131165451;
+			public const int sfcheckbox_animation = 2131165451;
 			
 			// aapt resource value: 0x7F07010C
-			public const int sfcheckbox_checked_indeterminate = 2131165452;
+			public const int sfcheckbox_checked = 2131165452;
 			
 			// aapt resource value: 0x7F07010D
-			public const int sfcheckbox_checked_unchecked = 2131165453;
+			public const int sfcheckbox_checked_indeterminate = 2131165453;
 			
 			// aapt resource value: 0x7F07010E
-			public const int sfcheckbox_indeterminate = 2131165454;
+			public const int sfcheckbox_checked_unchecked = 2131165454;
 			
 			// aapt resource value: 0x7F07010F
-			public const int sfcheckbox_indeterminate_checked = 2131165455;
+			public const int sfcheckbox_indeterminate = 2131165455;
 			
 			// aapt resource value: 0x7F070110
-			public const int sfcheckbox_indeterminate_unchecked = 2131165456;
+			public const int sfcheckbox_indeterminate_checked = 2131165456;
 			
 			// aapt resource value: 0x7F070111
-			public const int sfcheckbox_unchecked = 2131165457;
+			public const int sfcheckbox_indeterminate_unchecked = 2131165457;
 			
 			// aapt resource value: 0x7F070112
-			public const int sfcheckbox_unchecked_checked = 2131165458;
+			public const int sfcheckbox_unchecked = 2131165458;
 			
 			// aapt resource value: 0x7F070113
-			public const int sfcheckbox_unchecked_indeterminate = 2131165459;
+			public const int sfcheckbox_unchecked_checked = 2131165459;
 			
 			// aapt resource value: 0x7F070114
-			public const int sfclosebutton = 2131165460;
+			public const int sfcheckbox_unchecked_indeterminate = 2131165460;
 			
 			// aapt resource value: 0x7F070115
-			public const int shadow_effect = 2131165461;
+			public const int sfclosebutton = 2131165461;
 			
 			// aapt resource value: 0x7F070116
-			public const int styleinfo = 2131165462;
+			public const int shadow_effect = 2131165462;
 			
 			// aapt resource value: 0x7F070117
-			public const int SupportPage = 2131165463;
+			public const int styleinfo = 2131165463;
 			
 			// aapt resource value: 0x7F070118
-			public const int telegram = 2131165464;
+			public const int SupportPage = 2131165464;
 			
 			// aapt resource value: 0x7F070119
-			public const int test_custom_background = 2131165465;
+			public const int telegram = 2131165465;
 			
 			// aapt resource value: 0x7F07011A
-			public const int tooltip_frame_dark = 2131165466;
+			public const int test_custom_background = 2131165466;
 			
 			// aapt resource value: 0x7F07011B
-			public const int tooltip_frame_light = 2131165467;
+			public const int tooltip_frame_dark = 2131165467;
 			
 			// aapt resource value: 0x7F07011C
-			public const int Trash = 2131165468;
+			public const int tooltip_frame_light = 2131165468;
 			
 			// aapt resource value: 0x7F07011D
-			public const int UpButton = 2131165469;
+			public const int Trash = 2131165469;
 			
 			// aapt resource value: 0x7F07011E
-			public const int Visa = 2131165470;
+			public const int UpButton = 2131165470;
 			
 			// aapt resource value: 0x7F07011F
-			public const int xamarin_logo = 2131165471;
+			public const int Visa = 2131165471;
+			
+			// aapt resource value: 0x7F070120
+			public const int xamarin_logo = 2131165472;
 			
 			static Drawable()
 			{

@@ -30,6 +30,7 @@
 /Users/sovi/Projects/WIS-APP/WIS/obj/Debug/netstandard2.1/Views/Attendance/AttendanceListPage.xaml.g.cs
 /Users/sovi/Projects/WIS-APP/WIS/obj/Debug/netstandard2.1/Views/Controls/EmailEntry.xaml.g.cs
 /Users/sovi/Projects/WIS-APP/WIS/obj/Debug/netstandard2.1/Views/Invoice/InvoiceDetailsPage.xaml.g.cs
+/Users/sovi/Projects/WIS-APP/WIS/obj/Debug/netstandard2.1/Views/Invoice/InvoiceDetailsPaidPage.xaml.g.cs
 /Users/sovi/Projects/WIS-APP/WIS/obj/Debug/netstandard2.1/Views/Invoice/InvoiceListHistoryPage.xaml.g.cs
 /Users/sovi/Projects/WIS-APP/WIS/obj/Debug/netstandard2.1/Views/Invoice/InvoiceListPage.xaml.g.cs
 /Users/sovi/Projects/WIS-APP/WIS/obj/Debug/netstandard2.1/Views/Modals/ModalPicturePage.xaml.g.cs

@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="WIS.Views.InvoiceDetailsPaidPage"
+    xmlns:behaviour="clr-namespace:WIS.Behaviors"
+    xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"    
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+    xmlns:signature="clr-namespace:Syncfusion.XForms.SignaturePad;assembly=Syncfusion.SfSignaturePad.XForms"    
+    xmlns:gradient="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms">
+    <ContentPage.Content>
+
+        <Grid>
+            <gradient:SfGradientView Style="{StaticResource BlueGradientStyle}" />
+            <Grid Padding="5,20,5,20" RowSpacing="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="30" />
+                    
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0" Text="{Binding InvoiceID}" FontFamily="Montserrat-SemiBold"   HorizontalTextAlignment="Center" TextColor="{DynamicResource Gray-White}" FontSize="18"/>
+
+                <Image Source="Paid" Grid.Row="1"/>
+
+                <Frame Margin="10" Grid.Row="2" VerticalOptions="Fill" BackgroundColor="White">
+                    <listView:SfListView                                            
+                        AutoFitMode="Height"
+                        ItemsSource="{Binding InvoiceLines}"                        
+                        SelectionMode="None">
+
+                        <listView:SfListView.ItemTemplate>
+                           <DataTemplate>
+                            <border:SfBorder                                    
+                                        Margin="5,5,5,5"
+                                        BorderColor="{DynamicResource Gray-Bg}"
+                                        BorderWidth="0"
+                                        CornerRadius="5"
+                                        HasShadow="True"
+                                        Style="{DynamicResource ThemeBorderStyle}">
+                            <Grid Padding="5" BackgroundColor="{DynamicResource InfoBlue}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="100" />
+                                </Grid.ColumnDefinitions>
+                            
+                                <Label Grid.Row="0" Grid.Column="0" Text="{Binding productname}" FontFamily="Montserrat-SemiBold"  TextColor="{DynamicResource Gray-White}" FontSize="12" />
+                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding amount,StringFormat='${0:#,0.#0}'}"   FontFamily="Montserrat-SemiBold"      TextColor="{DynamicResource Gray-White}" FontSize="12" VerticalTextAlignment="Center" HorizontalTextAlignment="End"/>
+                            </Grid>
+                            </border:SfBorder>
+                        </DataTemplate>
+                        </listView:SfListView.ItemTemplate>
+                
+                
+                 </listView:SfListView>
+                </Frame>                
+        
+                <Grid Grid.Row="3" Padding="5,0,5,0" Margin="10,0,10,0" VerticalOptions="Center" BackgroundColor="{DynamicResource InfoBlue}" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="120"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <Label  Grid.Column="0"  Grid.Row="0" Text="Total" HorizontalTextAlignment="Start" FontFamily="Montserrat-SemiBold"     TextColor="{DynamicResource Gray-White}" FontSize="16"   />
+                    <Label Grid.Column="1" Grid.Row="0" Text="{Binding Total,StringFormat='${0:#,0.#0}'}"  TextColor="{DynamicResource Gray-White}" Style="{StaticResource TitleLabelStyle}" HorizontalOptions="End"   FontSize="16" />
+                </Grid>                                             
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

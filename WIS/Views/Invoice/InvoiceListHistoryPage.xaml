@@ -35,7 +35,7 @@
                                 LineHeight="{OnPlatform Android=1.25,
                                                         Default=-1}"
                                 Style="{StaticResource TitleLabelStyle}"
-                                Text="Invoice History"                               
+                                Text="Payment History"                               
                                  />
                         </DataTemplate>
                     </listView:SfListView.HeaderTemplate>
@@ -57,7 +57,7 @@
                                 <Label
                                     FontSize="14"
                                     Style="{StaticResource TitleLabelStyle}"
-                                    Text="{Binding dID}"
+                                    Text="{Binding ID,StringFormat='Receipt No:{0}'}"
                                     TextColor="{DynamicResource Gray-White}" />
 
                                 <!--  Student  -->
@@ -72,7 +72,7 @@
                                     HorizontalOptions="Center"
                                     HorizontalTextAlignment="Center"
                                     Style="{StaticResource SimpleLabelStyle}"
-                                    Text="{Binding date,StringFormat='{0:MMMM dd, yyyy}'}"
+                                    Text="{Binding date,StringFormat='{0:dd MMM yyyy}'}"
                                     TextColor="White"
                                     VerticalOptions="Start"
                                     VerticalTextAlignment="Start" />

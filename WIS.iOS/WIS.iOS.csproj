@@ -165,6 +165,7 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\76x76.png" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\167x167.png" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\152x152.png" />
+    <BundleResource Include="Resources\Paid.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

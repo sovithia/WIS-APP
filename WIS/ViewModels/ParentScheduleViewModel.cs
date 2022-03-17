@@ -125,10 +125,9 @@ namespace WIS.ViewModels
          
             ObservableCollection<SFSCHEDULEDATA> selectedSchedule =  scheduleList[scheduleList.Keys.ElementAt(index)];
             GradeName = gradeList[scheduleList.Keys.ElementAt(index)];
-            this.RaiseOnPropertyChanged("GradeName");
+            this.RaiseOnPropertyChanged("GradeName");            
             this.Courses = selectedSchedule;            
             this.RaiseOnPropertyChanged("Courses");
-
                         
         }
 
