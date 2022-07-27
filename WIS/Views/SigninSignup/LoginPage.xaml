@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
     x:Class="WIS.Views.LoginPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
@@ -223,6 +223,27 @@
 
                     </StackLayout>
 
+                     <StackLayout
+                        HorizontalOptions="Center"
+                        Orientation="Horizontal"
+                        Spacing="1"
+                        VerticalOptions="End">
+                        
+                        <Label
+                            Style="{StaticResource DescriptionLabelStyle}"
+                            Text="Open Link"
+                            TextColor="{DynamicResource Gray-White}"
+                            VerticalTextAlignment="Center" />                        
+                        
+                        <buttons:SfButton
+                            Command="{Binding OpenLinkCommand}"
+                            Style="{StaticResource TransparentButtonStyle}"
+                            Text="Sign Up"
+                            TextColor="{DynamicResource PrimaryColor}" />
+
+                    </StackLayout>
+              
+              
                 </StackLayout>
             </ScrollView>
 

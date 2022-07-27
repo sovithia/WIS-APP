@@ -7,6 +7,7 @@ using Xamarin.Essentials;
 using WIS.Services;
 using Plugin.Connectivity;
 using Plugin.FirebasePushNotification;
+using WIS.Interfaces;
 
 namespace WIS.ViewModels
 {
@@ -36,6 +37,8 @@ namespace WIS.ViewModels
             this.LoginCommand = new Command(this.LoginClicked);
             this.SignUpCommand = new Command(this.SignUpClicked);
             this.ForgotPasswordCommand = new Command(this.ForgotPasswordClicked);
+
+            this.OpenLinkCommand = new Command(this.OpenLinkClicked);
         }
 
         #endregion
@@ -116,6 +119,11 @@ namespace WIS.ViewModels
         /// </summary>
         public Command ForgotPasswordCommand { get; set; }
 
+        /// <summary>
+        /// Gets or sets the command that is executed when the Forgot Password button is clicked.
+        /// </summary>
+        public Command OpenLinkCommand { get; set; }
+
         #endregion
 
         #region Methods
@@ -155,6 +163,13 @@ namespace WIS.ViewModels
             return isPhoneValid && isPasswordValid;
         }
 
+
+        private void OpenLinkClicked(object obj)
+        {
+            int i = 2;
+            //DependencyService.Get<IAppHandler>().LaunchApp("safari-https://www.google.com");
+            var result = DependencyService.Get<IAppHandler>().LaunchApp("abamobilebank://ababank.com?type=payway&qrcode=ABA100451256327983181421Foreigner2d2374");
+        }
 
         /// <summary>
         /// Invoked when the Log In button is clicked.

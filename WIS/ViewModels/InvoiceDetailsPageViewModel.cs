@@ -87,6 +87,42 @@ namespace WIS.ViewModels
                 }
                 Total = amt;
             });
+
+            this.ACLEDACommand = new Command(this.ACLEDAClicked);
+            this.ABACommand = new Command(this.ABAClicked);
+        }
+
+        #region Command
+
+        /// <summary>
+        /// Gets or sets the command that is executed when the Log In button is clicked.
+        /// </summary>
+        public Command ACLEDACommand { get; set; }
+
+        /// <summary>
+        /// Gets or sets the command that is executed when the Sign Up button is clicked.
+        /// </summary>
+        public Command ABACommand { get; set; }
+
+        #endregion
+
+        private async void ACLEDAClicked(object obj)
+        {
+            var answer = await Application.Current.MainPage.DisplayAlert("ABA Pay", "Pay in ACLEDA App ?", "Yes", "No");
+            if (answer)
+            {
+
+            }               
+        }
+
+        private async void ABAClicked(object obj)
+        {
+            var answer = await Application.Current.MainPage.DisplayAlert("ABA Pay", "Pay in ABA App ?", "Yes", "No");
+            if (answer)
+            {
+
+            }
+
         }
 
         // ALL THIS PART IS NOT USED FOR THE MOMENT
@@ -159,5 +195,5 @@ namespace WIS.ViewModels
             */
 
 
-        }
+    }
 }

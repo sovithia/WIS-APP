@@ -1,0 +1,311 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="WIS.Views.PaymentListSearchPage"
+    xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+    xmlns:gradient="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
+    xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:picker="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
+    xmlns:pickers="clr-namespace:Syncfusion.XForms.Pickers;assembly=Syncfusion.SfPicker.XForms"
+    xmlns:converter="clr-namespace:WIS.Converters"
+    xmlns:core="clr-namespace:Syncfusion.XForms.Core;assembly=Syncfusion.Core.XForms"
+    xmlns:viewModel="clr-namespace:WIS.ViewModels"
+    Visual="Material">
+
+       <ContentPage.BindingContext>
+        <viewModel:PaymentListSearchViewModel />
+        </ContentPage.BindingContext>
+
+        <ContentPage.Resources>
+            <ResourceDictionary>
+                <converter:BooleanToColorConverter x:Key="ColorConverter" />
+                <converter:InverseBoolConverter x:Key="InverseBoolConverter" />
+                <converter:NameValidationConverter x:Key="FirstValidationErrorConverter" />
+            </ResourceDictionary>
+        </ContentPage.Resources>
+
+        <ContentPage.Content>
+        <Grid > 
+            <gradient:SfGradientView Style="{StaticResource BlueGradientStyle}" />
+
+            <Grid 
+                  Padding="{core:OnPlatformOrientationThickness PhonePortrait='20,32',
+                                                                 PhoneLandscape='150,32',
+                                                                 TabletPortrait='50,150',
+                                                                 TabletLandscape='300,50',
+                                                                 Desktop='30'}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Column="0" Grid.Row="0"
+                       Grid.ColumnSpan="2"
+                                Margin="0,20,0,5"
+                                FontSize="20"
+                                LineHeight="{OnPlatform Android=1.25,Default=-1}"
+                                Style="{StaticResource TitleLabelStyle}"
+                                Text="Search Transaction"
+                                />
+                <StackLayout  Grid.Column="0" Grid.Row="1">
+                                                
+                            <pickers:SfDatePicker x:Name="datePickerFrom"                                          
+                                MinimumDate="1/1/1940"
+                                Format="dd_MMM_yyyy"
+                                PickerMode="Dialog"
+                                PickerWidth="310"
+                                PickerHeight="360"
+                                ShowFooter="True"
+                                HeaderTextColor="{DynamicResource Gray-Bg}"
+                                OKButtonBackgroundColor="{DynamicResource Gray-Bg}"
+                                OkButtonClicked="DatePickerDateFrom_OkButtonClicked"
+                                CancelButtonBackgroundColor="{DynamicResource Gray-Bg}"
+                                ColumnHeaderBackgroundColor="{DynamicResource Gray-Bg}"
+                                ColumnHeaderTextColor="{DynamicResource Gray-900}"
+                                HeaderBackgroundColor="{DynamicResource PrimaryColor}"
+                                OKButtonTextColor="{DynamicResource PrimaryColor}"
+                                CancelButtonTextColor="{DynamicResource PrimaryColor}"
+                                BackgroundColor="{DynamicResource Gray-Bg}"
+                                SelectedItemFontFamily="Montserrat-Regular"
+                                SelectedItemFontSize="16"
+                                SelectedItemTextColor="{DynamicResource PrimaryColor}" 
+                                UnselectedItemFontFamily="Montserrat-Regular"
+                                UnselectedItemFontSize="16"
+                                UnselectedItemTextColor="{DynamicResource Gray-900}"
+                                />
+
+                            <border:SfBorder BorderColor="{Binding Source={x:Reference DateFromEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=0}" Style="{StaticResource LoginFormBorderlessEntryBorderStyle}">
+                                <Grid ColumnDefinitions="*, Auto">
+
+                        
+                                    <buttons:SfButton x:Name="DateFromEntry" 
+                                                      Text="{Binding DateFrom.Value, StringFormat='{0:dd_MMM_yyyy}', Mode=TwoWay}"
+                                                      TextColor="{StaticResource Gray-White}"
+                                                      FontSize="16"
+                                                      Padding="-5, 0, 0 ,0"                                            
+                                                      FontFamily="Montserrat-Regular"
+                                                      HorizontalOptions="FillAndExpand"
+                                                      HorizontalTextAlignment="Start"                                                     
+                                                      BackgroundColor="Transparent"                                                      
+                                                      Margin="15,0"
+                                                      HeightRequest="40"
+                                                      Clicked="DatePickerFrom_Clicked" />
+
+                                      <!--  Label to display error icon  -->
+                                    <Label
+                                        Grid.Column="1"
+                                        IsVisible="{Binding Path=IsVisible, Source={x:Reference DateFromValidationLabel}}"
+                                        Style="{StaticResource ErrorIconLabelStyle}"
+                                        Text="{StaticResource Error}" />
+                                </Grid>
+                            </border:SfBorder>
+                            <Label
+                                x:Name="DateFromValidationLabel"
+                                Margin="15,-3,0,0"
+                                IsVisible="{Binding DateFrom.IsValid, Converter={StaticResource InverseBoolConverter}}"
+                                Style="{StaticResource SimpleLabelStyle}"
+                                Text="{Binding DateFrom.Errors, Converter={StaticResource FirstValidationErrorConverter}}"
+                                TextColor="{DynamicResource Red}"
+                                VerticalOptions="FillAndExpand" />
+                    </StackLayout>
+                <StackLayout Grid.Column="1" Grid.Row="1">
+                            <pickers:SfDatePicker x:Name="datePickerTo"                                          
+                                MinimumDate="1/1/1940"
+                                Format="dd_MMM_yyyy"
+                                PickerMode="Dialog"
+                                PickerWidth="310"
+                                PickerHeight="360"
+                                ShowFooter="True"
+                                HeaderTextColor="{DynamicResource Gray-Bg}"
+                                OKButtonBackgroundColor="{DynamicResource Gray-Bg}"
+                                OkButtonClicked="DatePickerDateTo_OkButtonClicked"
+                                CancelButtonBackgroundColor="{DynamicResource Gray-Bg}"
+                                ColumnHeaderBackgroundColor="{DynamicResource Gray-Bg}"
+                                ColumnHeaderTextColor="{DynamicResource Gray-900}"
+                                HeaderBackgroundColor="{DynamicResource PrimaryColor}"
+                                OKButtonTextColor="{DynamicResource PrimaryColor}"
+                                CancelButtonTextColor="{DynamicResource PrimaryColor}"
+                                BackgroundColor="{DynamicResource Gray-Bg}"
+                                SelectedItemFontFamily="Montserrat-Regular"
+                                SelectedItemFontSize="16"
+                                SelectedItemTextColor="{DynamicResource PrimaryColor}" 
+                                UnselectedItemFontFamily="Montserrat-Regular"
+                                UnselectedItemFontSize="16"
+                                UnselectedItemTextColor="{DynamicResource Gray-900}"
+                                />
+
+                            <border:SfBorder BorderColor="{Binding Source={x:Reference DateToEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=0}" Style="{StaticResource LoginFormBorderlessEntryBorderStyle}">
+                                <Grid ColumnDefinitions="*, Auto">
+
+                        
+                                    <buttons:SfButton x:Name="DateToEntry" 
+                                                      Text="{Binding DateTo.Value, StringFormat='{0:yyyy-MM-dd}', Mode=TwoWay}"
+                                                      TextColor="{StaticResource Gray-White}"
+                                                      FontSize="16"
+                                                      Padding="-5, 0, 0 ,0"                                            
+                                                      FontFamily="Montserrat-Regular"
+                                                      HorizontalOptions="FillAndExpand"
+                                                      HorizontalTextAlignment="Start"                                                     
+                                                      BackgroundColor="Transparent"                                                      
+                                                      Margin="15,0"
+                                                      HeightRequest="40"
+                                                      Clicked="DatePickerTo_Clicked" />
+
+                                      <!--  Label to display error icon  -->
+                                    <Label
+                                        Grid.Column="1"
+                                        IsVisible="{Binding Path=IsVisible, Source={x:Reference DateToValidationLabel}}"
+                                        Style="{StaticResource ErrorIconLabelStyle}"
+                                        Text="{StaticResource Error}" />
+                                </Grid>
+                            </border:SfBorder>
+                            <Label
+                                x:Name="DateToValidationLabel"
+                                Margin="15,-3,0,0"
+                                IsVisible="{Binding DateTo.IsValid, Converter={StaticResource InverseBoolConverter}}"
+                                Style="{StaticResource SimpleLabelStyle}"
+                                Text="{Binding DateTo.Errors, Converter={StaticResource FirstValidationErrorConverter}}"
+                                TextColor="{DynamicResource Red}"
+                                VerticalOptions="FillAndExpand" />
+                    </StackLayout>
+                <Entry BackgroundColor="#1746A0" Grid.Column="0" Grid.Row="2" Placeholder="Amount From" Text="{Binding FromAmount.Value}"/>
+                <Entry BackgroundColor="#1746A0" Grid.Column="1" Grid.Row="2" Placeholder="Amount To" Text="{Binding ToAmount.Value}"/>
+                <StackLayout Grid.Column="0" Grid.Row="3">
+                            
+                             <picker:SfPicker x:Name="statusPicker"
+                                                      PickerMode="Dialog"
+                                                      HeaderText="Select a status"
+                                                      ShowFooter="True"
+                                                      ShowHeader="True"
+                                                      HeaderTextColor="{DynamicResource Gray-Bg}"
+                                                      OKButtonBackgroundColor="{DynamicResource Gray-Bg}"                                                      
+                                                      OkButtonClicked="StatusPicker_OkButtonClicked"
+                                                      CancelButtonBackgroundColor="{DynamicResource Gray-Bg}"
+                                                      ColumnHeaderBackgroundColor="{DynamicResource Gray-Bg}"
+                                                      ColumnHeaderTextColor="{DynamicResource Gray-900}"
+                                                      HeaderBackgroundColor="{DynamicResource PrimaryColor}"
+                                                      OKButtonTextColor="{DynamicResource PrimaryColor}"
+                                                      CancelButtonTextColor="{DynamicResource PrimaryColor}"
+                                                      BackgroundColor="{DynamicResource Gray-Bg}"
+                                                      SelectedItemFontFamily="Montserrat-Regular"
+                                                      SelectedItemFontSize="16"
+                                                      SelectedItemTextColor="{DynamicResource PrimaryColor}" />
+                            <border:SfBorder BorderColor="{Binding Source={x:Reference StatusEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=0}" Style="{StaticResource LoginFormBorderlessEntryBorderStyle}">
+                                <Grid ColumnDefinitions="*, Auto">
+
+                                    <buttons:SfButton x:Name="StatusEntry" 
+                                                      Text="{Binding Status.Value, Mode=TwoWay}"
+                                                      TextColor="{StaticResource Gray-White}"
+                                                      FontSize="16"
+                                                      Padding="-5, 0, 0 ,0"                                            
+                                                      FontFamily="Montserrat-Regular"
+                                                      HorizontalOptions="FillAndExpand"
+                                                      HorizontalTextAlignment="Start"                                                     
+                                                      BackgroundColor="Transparent"                                                      
+                                                      Margin="15,0"
+                                                      HeightRequest="40"
+                                                      Clicked="StatusPicker_Clicked" />
+                                   
+
+                                     <!--  Label to display error icon  -->
+                                    <Label
+                                        Grid.Column="1"
+                                        IsVisible="{Binding Path=IsVisible, Source={x:Reference StatusValidationLabel}}"                                        
+                                        Style="{StaticResource ErrorIconLabelStyle}"
+                                        Text="{StaticResource Error}" />
+                                </Grid>
+                            </border:SfBorder>
+                              
+                             <!--  Label to display error message  -->
+                            <Label
+                                x:Name="StatusValidationLabel"
+                                Margin="15,-3,0,0"
+                                IsVisible="{Binding Status.IsValid, Converter={StaticResource InverseBoolConverter}}"
+                                Style="{StaticResource SimpleLabelStyle}"                                
+                                Text="{Binding  Type.Errors, Converter={StaticResource FirstValidationErrorConverter}}"                                
+                                TextColor="{DynamicResource Red}"
+                                VerticalOptions="FillAndExpand" />
+                        </StackLayout>
+                <buttons:SfButton Grid.Column="1" Grid.Row="3" Text="Search" Command="{Binding SearchCommand}" BackgroundColor="#1746A0" />            
+                <listView:SfListView
+                    Grid.Row="4"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    AutoFitMode="Height"
+                    ItemsSource="{Binding Transactions}"
+                    SelectionMode="None"                
+                    TapCommand="{Binding ItemSelectedCommand}">
+             
+                    <listView:SfListView.HeaderTemplate>
+                        <DataTemplate>
+                            <!--  Header  -->
+                            <Label
+                                Margin="0,20,0,5"
+                                FontSize="20"
+                                LineHeight="{OnPlatform Android=1.25,Default=-1}"
+                                Style="{StaticResource TitleLabelStyle}"
+                                Text="Transaction List"
+                                />
+                        </DataTemplate>
+                    </listView:SfListView.HeaderTemplate>
+
+                    <listView:SfListView.ItemTemplate>
+                        <DataTemplate>
+                              <border:SfBorder                                    
+                                    Margin="15,10,15,10"
+                                    BorderColor="{DynamicResource Gray-Bg}"
+                                    BorderWidth="0"
+                                    CornerRadius="5"
+                                    HasShadow="True"
+                                    Style="{DynamicResource ThemeBorderStyle}">
+
+                            <!--  Details of each employee  -->
+                            <StackLayout Padding="0,5,0,5" Spacing="0" BackgroundColor="{DynamicResource InfoBlue}">
+                               
+                                <!--  Num Invoice  -->
+                                <Label
+                                    FontSize="14"
+                                    Style="{StaticResource TitleLabelStyle}"
+                                     Text="{Binding ID,StringFormat='Invoice No:{0}'}"
+                                    TextColor="{DynamicResource Gray-White}" />
+                                
+                                <!--  Student  -->
+                                <Label
+                                    FontSize="14"
+                                    Style="{StaticResource TitleLabelStyle}"
+                                    Text="{Binding studentdisplayname}"
+                                    TextColor="{DynamicResource Gray-White}" />
+
+                                <!--  Date  -->
+                                <Label
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    Style="{StaticResource SimpleLabelStyle}"
+                                    Text="{Binding date,StringFormat='Issued:{0:dd MMM yyyy}'}"
+                                    TextColor="White"
+                                    VerticalOptions="Start"
+                                    VerticalTextAlignment="Start" />
+
+                                <!--  Due Date  -->
+                                <Label
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    Style="{StaticResource SimpleLabelStyle}"
+                                    Text="{Binding date_due,StringFormat='Due:{0:dd MMM yyyy}'}"
+                                    TextColor="White"
+                                    VerticalOptions="Start"
+                                    VerticalTextAlignment="Start" />
+                            </StackLayout>
+                            </border:SfBorder>
+                        </DataTemplate>
+                    </listView:SfListView.ItemTemplate>                                       
+                </listView:SfListView>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
+

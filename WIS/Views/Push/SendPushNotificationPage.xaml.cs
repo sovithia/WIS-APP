@@ -39,11 +39,11 @@ namespace WIS.Views
                     var isSuccessCall = SendNotification(body).Result;
                     if (isSuccessCall)
                     {
-                        DisplayAlert("Alart", "Notifications Send Successfully", "Ok");
+                        DisplayAlert("Alert", "Notifications Send Successfully", "Ok");
                     }
                     else
                     {
-                        DisplayAlert("Alart", "Notifications Send Failed", "Ok");
+                        DisplayAlert("Alert", "Notifications Send Failed", "Ok");
                     }
                 }
             }

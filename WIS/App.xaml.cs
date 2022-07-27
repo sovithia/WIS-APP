@@ -34,14 +34,16 @@ namespace WIS
       
         public App()
         {         
-            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NTcxODE1QDMxMzkyZTM0MmUzMG4zdmRmYzRGbXhFWHo2emhPanB0MFRaRW5YSXlTR0t5Z3YxM0hxSC9za1E9");
-
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NjgyOTI3QDMyMzAyZTMyMmUzMGNmTFlVa0tTYWhpVlRFRkt5eWpiQjQ2NlRCVS9kUGFhYnBZQUFHbTV3UG89");
+            
             AppCenter.Start("ios=17461fcb-db55-4ab1-9523-9bda0d63418f;" +
                   "uwp={Your UWP App secret here};" +
                   "android=1b61a19a-9cac-477d-a836-31039df8ec20;",
                   typeof(Analytics), typeof(Crashes));
-
+            
             InitializeComponent();
+            //MainPage = new LoginPage();
+            MainPage = new PaymentListSearchPage();
 
             //MainPage = new SupportDetailPage();
             //Preferences.Set("TYPE", "STUDENT");
@@ -59,7 +61,7 @@ namespace WIS
             //Preferences.Set("TYPE","STUDENT");
             //MainPage = new ProfilePage();
             //MainPage = new TelegramLoggedPage();
-            MainPage = new LoginPage();
+
             //MainPage = new DemoPage();
             /*
             INVOICE invoice = new INVOICE();

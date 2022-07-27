@@ -1,0 +1,29 @@
+﻿UI Transaction Search
+UI Transaction to validate
+    List Transaction id from WIS where Status = TOVALIDATE   
+    UI Transaction Detail
+        Validate Payment
+API Change Status on Payment
+    -> Paid
+    -> Confirmed
+
+Find a way to hook Invoice creation (SQL Trigger or WebApp Code)
+to send notification
+    -> Deeplinking open on invoice page
+
+
+Push_notification on new payment creation
+Push reminder
+(local push or back office)
+
+Option :
+Deeplink_back
+
+
+
+Check transaction
+    -> Update Status
+
+
+// Reconcile back office with transaction
+

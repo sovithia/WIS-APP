@@ -42,7 +42,7 @@ namespace WIS
             // ATTENDANCE 
             this.attendance = new Tab()
             {
-                Title = "Attedance",
+                Title = "Attendance",
                 Route = "Attendance",
                 Icon = "AttendanceListPage"
             };

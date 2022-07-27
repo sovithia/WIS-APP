@@ -25,6 +25,7 @@ using Syncfusion.SfBusyIndicator.XForms.iOS;
 using UserNotifications;
 using Firebase.CloudMessaging;
 using Plugin.FirebasePushNotification;
+using Xamarin.Essentials;
 
 namespace WIS.iOS
 {
@@ -91,7 +92,8 @@ namespace WIS.iOS
                 UNUserNotificationCenter.Current.Delegate = new UserNotificationCenterDelegate();
             }
 
-            FirebasePushNotificationManager.Initialize(options, true);
+            if (DeviceInfo.DeviceType != DeviceType.Virtual)
+                FirebasePushNotificationManager.Initialize(options, true);
 
             return base.FinishedLaunching(app, options);
         }

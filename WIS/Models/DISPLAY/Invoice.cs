@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using Newtonsoft.Json;
 using SQLite;
 
@@ -15,15 +17,24 @@ namespace WIS.Models
         public string detail { get; set; }
     }
 
+
+    public class ABAInvoiceElement
+    {
+        public string name { get; set; }
+        public float quantity { get; set; }
+        public float price { get; set; }
+    }
+
     public class InvoiceElement
     {
 
         
-        public float amount { get; set; } // invoice_fees amount
-        public string productname { get; set; } // COMPUTED
+        public float amount { get; set; } 
+        public string productname { get; set; } 
+        public float quantity { get; set; } // ??
+        public float price { get; set; } // ??
                                                 
-                                                
-
+                                                        
         //public string promotion { get; set; } // invoice_promotion amount         
     }
 
@@ -37,8 +48,25 @@ namespace WIS.Models
         public string studentdisplayname {get;set;}
         //public List<InvoicePromotion> invoicepromotionList { get; set; }
         public List<InvoiceElement> invoicefeeList { get; set; }
-        
 
+        
+        public string ABAItems()
+        {
+            List<ABAInvoiceElement> items = new List<ABAInvoiceElement>();
+            foreach(InvoiceElement elem in invoicefeeList)
+            {
+                items.Add(new ABAInvoiceElement()
+                {
+                    name = elem.productname,
+                    quantity = elem.quantity,
+                    price = elem.price
+                });
+            }
+            var binFormatter = new BinaryFormatter();
+            var mStream = new MemoryStream();
+            binFormatter.Serialize(mStream, items);            
+            return Convert.ToBase64String(mStream.ToArray());
+        }
         
         [JsonIgnore, Ignore]
         public string ID

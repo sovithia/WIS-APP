@@ -43,11 +43,11 @@
           "dependencies": {
             "Microsoft.AppCenter.Analytics": {
               "target": "Package",
-              "version": "[4.5.0, )"
+              "version": "[4.5.1, )"
             },
             "Microsoft.AppCenter.Crashes": {
               "target": "Package",
-              "version": "[4.5.0, )"
+              "version": "[4.5.1, )"
             },
             "Newtonsoft.Json": {
               "target": "Package",
@@ -55,67 +55,67 @@
             },
             "Plugin.FirebasePushNotification": {
               "target": "Package",
-              "version": "[3.4.1, )"
+              "version": "[3.4.25, )"
             },
             "Plugin.MediaManager.Forms": {
               "target": "Package",
-              "version": "[1.0.9, )"
+              "version": "[1.1.1, )"
             },
             "SkiaSharp.Views.Forms": {
               "target": "Package",
-              "version": "[2.80.3, )"
+              "version": "[2.88.0, )"
             },
             "Syncfusion.Xamarin.Buttons": {
               "target": "Package",
-              "version": "[19.4.0.47, )"
+              "version": "[20.2.0.39, )"
             },
             "Syncfusion.Xamarin.Cards": {
               "target": "Package",
-              "version": "[19.4.0.47, )"
+              "version": "[20.2.0.39, )"
             },
             "Syncfusion.Xamarin.Core": {
               "target": "Package",
-              "version": "[19.4.0.47, )"
+              "version": "[20.2.0.39, )"
             },
             "Syncfusion.Xamarin.SfBadgeView": {
               "target": "Package",
-              "version": "[19.4.0.47, )"
+              "version": "[20.2.0.39, )"
             },
             "Syncfusion.Xamarin.SfBusyIndicator": {
               "target": "Package",
-              "version": "[19.4.0.47, )"
+              "version": "[20.2.0.39, )"
             },
             "Syncfusion.Xamarin.SfComboBox": {
               "target": "Package",
-              "version": "[19.4.0.47, )"
+              "version": "[20.2.0.39, )"
             },
             "Syncfusion.Xamarin.SfDataForm": {
               "target": "Package",
-              "version": "[19.4.0.47, )"
+              "version": "[20.2.0.39, )"
             },
             "Syncfusion.Xamarin.SfListView": {
               "target": "Package",
-              "version": "[19.4.0.47, )"
+              "version": "[20.2.0.39, )"
             },
             "Syncfusion.Xamarin.SfPicker": {
               "target": "Package",
-              "version": "[19.4.0.47, )"
+              "version": "[20.2.0.39, )"
             },
             "Syncfusion.Xamarin.SfPullToRefresh": {
               "target": "Package",
-              "version": "[19.4.0.47, )"
+              "version": "[20.2.0.39, )"
             },
             "Syncfusion.Xamarin.SfRating": {
               "target": "Package",
-              "version": "[19.4.0.47, )"
+              "version": "[20.2.0.39, )"
             },
             "Syncfusion.Xamarin.SfSchedule": {
               "target": "Package",
-              "version": "[19.4.0.47, )"
+              "version": "[20.2.0.39, )"
             },
             "Syncfusion.Xamarin.SfSignaturePad": {
               "target": "Package",
-              "version": "[19.4.0.47, )"
+              "version": "[20.2.0.39, )"
             },
             "Xam.Plugin.Connectivity": {
               "target": "Package",
@@ -127,11 +127,11 @@
             },
             "Xamarin.Essentials": {
               "target": "Package",
-              "version": "[1.7.1, )"
+              "version": "[1.7.3, )"
             },
             "Xamarin.Forms": {
               "target": "Package",
-              "version": "[5.0.0.2337, )"
+              "version": "[5.0.0.2478, )"
             },
             "sqlite-net-pcl": {
               "target": "Package",
@@ -153,7 +153,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.406/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.408/RuntimeIdentifierGraph.json"
         }
       }
     }

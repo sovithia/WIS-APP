@@ -1,5 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Net;
+using System.Security.Cryptography;
+using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -9,20 +13,25 @@ using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace WIS.Services
-{    
+{
     public class DataService
-    {        
+    {
         private string BaseURL;
+        private string aba_public_key = "d5e1722a2ef703c41ca0c9fbab63275fb67d5ca0";
+        private string aba_merchant_id = "ec002318";
+        //private string aba_baseurl = "https://checkout.payway.com.kh/api/payment-gateway/v1/payments/";
+        private string aba_baseurl = "https://checkout-sandbox.payway.com.kh/api/payment-gateway/v1/payments/";
         private Dictionary<string, string> headers;
 
         public APPUSER CurrentUser { get; set; }
-
+        
         private static DataService instance;
         public static DataService Instance
         {
-            get{               
-                if (instance == null)                
-                    instance = new DataService();                
+            get
+            {
+                if (instance == null)
+                    instance = new DataService();
                 return instance;
             }
         }
@@ -54,17 +63,18 @@ namespace WIS.Services
         {
             Dictionary<string, string> data = new Dictionary<string, string>();
             data["usertype"] = signup.type;
-            data["phone"] = signup.phone.Replace(" ",string.Empty);
+            data["phone"] = signup.phone.Replace(" ", string.Empty);
             data["identifier"] = signup.identifier;
             data["birthdate"] = signup.birthdate;
 
-            RESTEngine.HttpPost(result =>{
+            RESTEngine.HttpPost(result =>
+            {
                 if (result == null)
                     del(false);
                 else
                     del(true);
             },
-            this.BaseURL + "/preregister",data,this.headers,true);
+            this.BaseURL + "/preregister", data, this.headers, true);
         }
 
         public void Register(SIGNUPREQUEST signup, responseDelegate<bool> del)
@@ -93,25 +103,27 @@ namespace WIS.Services
             RESTEngine.HttpPost(result =>
             {
                 try
-                {                    
+                {
                     del(result != null);
                 }
-                catch(Exception ex){
-                    Device.BeginInvokeOnMainThread(() => {
+                catch (Exception ex)
+                {
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
                         Application.Current.MainPage.DisplayAlert("ERROR", ex.Message, "OK");
                     });
                 }
-                
+
             },
             this.BaseURL + "/resetrequest", data, null);
         }
 
-        public void EditPassword(string username, string newpassword,responseDelegate<bool> del)
+        public void EditPassword(string username, string newpassword, responseDelegate<bool> del)
         {
             Dictionary<string, string> data = new Dictionary<string, string>();
             data["username"] = username;
-            data["password"] = newpassword;            
-          
+            data["password"] = newpassword;
+
             RESTEngine.HttpPost(result =>
             {
                 try
@@ -120,11 +132,13 @@ namespace WIS.Services
                     new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore });
                     del(result != null);
                 }
-                catch(Exception ex){
-                    Device.BeginInvokeOnMainThread(() => {
+                catch (Exception ex)
+                {
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
                         Application.Current.MainPage.DisplayAlert("ERROR", ex.Message, "OK");
                     });
-                }                
+                }
             },
             this.BaseURL + "/changepassword", data, null);
         }
@@ -134,7 +148,7 @@ namespace WIS.Services
             Dictionary<string, string> data = new Dictionary<string, string>();
             data["phone"] = phone;
             data["password"] = password;
-       
+
             RESTEngine.HttpPost(data =>
             {
                 if (data != null)
@@ -149,48 +163,58 @@ namespace WIS.Services
                         headers["Authorization"] = "bearer " + token["token"];
                         del(user);
                     }
-                    catch(Exception ex){
-                        Device.BeginInvokeOnMainThread(() => {
+                    catch (Exception ex)
+                    {
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
                             Application.Current.MainPage.DisplayAlert("ERROR", ex.Message, "OK");
                         });
                     }
-                    
+
                 }
                 else
                     del(null);
-                
-                
-            }, this.BaseURL + "/login", data, null,true);
+
+
+            }, this.BaseURL + "/login", data, null, true);
         }
 
         // Attendance
         public void GetAttendance(responseDelegate<List<ABSENCE>> del)
         {
-            RESTEngine.HttpGet(data => {
+            RESTEngine.HttpGet(data =>
+            {
                 try
                 {
                     var obj = JsonConvert.DeserializeObject<List<ABSENCE>>(data,
                         new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore });
                     del(obj);
-                }catch(Exception ex){
-                    Device.BeginInvokeOnMainThread(() => {
+                }
+                catch (Exception ex)
+                {
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
                         Application.Current.MainPage.DisplayAlert("ERROR", ex.Message, "OK");
                     });
                 }
-               
-                
-            }, this.BaseURL + "/attendance",headers);
+
+
+            }, this.BaseURL + "/attendance", headers);
         }
 
         public void GetAttendanceHistory(responseDelegate<List<ABSENCE>> del)
         {
-            RESTEngine.HttpGet(data => {
+            RESTEngine.HttpGet(data =>
+            {
                 try
                 {
                     del(JsonConvert.DeserializeObject<List<ABSENCE>>(data,
                          new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }));
-                }catch (Exception ex){
-                    Device.BeginInvokeOnMainThread(() => {
+                }
+                catch (Exception ex)
+                {
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
                         Application.Current.MainPage.DisplayAlert("ERROR", ex.Message, "OK");
                     });
                 }
@@ -199,7 +223,7 @@ namespace WIS.Services
             }, this.BaseURL + "/attendancehistory", headers);
         }
 
-        public void GetAttendanceDetails(string ID,responseDelegate<ABSENCE> del)
+        public void GetAttendanceDetails(string ID, responseDelegate<ABSENCE> del)
         {
             RESTEngine.HttpGet(data =>
             {
@@ -207,67 +231,82 @@ namespace WIS.Services
                 {
                     del(JsonConvert.DeserializeObject<ABSENCE>(data,
                         new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }));
-                }catch (Exception ex){
-                    Device.BeginInvokeOnMainThread(() => {
+                }
+                catch (Exception ex)
+                {
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
                         Application.Current.MainPage.DisplayAlert("ERROR", ex.Message, "OK");
                     });
                 }
-            }, this.BaseURL + "/attendancedetails/" + ID,headers);
+            }, this.BaseURL + "/attendancedetails/" + ID, headers);
         }
 
-        
-        
+
+
         // Invoice
         public void GetInvoiceList(responseDelegate<List<Invoice>> del)
         {
-            RESTEngine.HttpGet(data => {
+            RESTEngine.HttpGet(data =>
+            {
                 try
                 {
                     var obj = JsonConvert.DeserializeObject<List<Invoice>>(data,
                         new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore });
                     del(obj);
-                }catch(Exception ex){
-                    Device.BeginInvokeOnMainThread(() =>{
-                        Application.Current.MainPage.DisplayAlert("ERROR", ex.Message, "OK");}
+                }
+                catch (Exception ex)
+                {
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        Application.Current.MainPage.DisplayAlert("ERROR", ex.Message, "OK");
+                    }
                     );
                 }
-               
+
             }, this.BaseURL + "/invoice", headers);
         }
 
         // Invoice History
         public void GetInvoiceHistory(responseDelegate<List<Invoice>> del)
         {
-            RESTEngine.HttpGet(data => {
+            RESTEngine.HttpGet(data =>
+            {
                 try
                 {
-                    var obj =  JsonConvert.DeserializeObject<List<Invoice>>(data,
+                    var obj = JsonConvert.DeserializeObject<List<Invoice>>(data,
                          new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore });
                     del(obj);
-                }catch(Exception ex){
-                    Device.BeginInvokeOnMainThread(() => {
+                }
+                catch (Exception ex)
+                {
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
                         Application.Current.MainPage.DisplayAlert("ERROR", ex.Message, "OK");
                     });
                 }
-                
+
             }, this.BaseURL + "/invoicehistory", headers);
         }
 
-        public void GetInvoiceDetails(string invoiceID,responseDelegate<Invoice> del)
+        public void GetInvoiceDetails(string invoiceID, responseDelegate<Invoice> del)
         {
             RESTEngine.HttpGet(data =>
             {
                 try
-                {                 
+                {
                     var obj = JsonConvert.DeserializeObject<Invoice>(data,
                          new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore });
                     del(obj);
-                }catch(Exception ex){
-                    Device.BeginInvokeOnMainThread(() => {
+                }
+                catch (Exception ex)
+                {
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
                         Application.Current.MainPage.DisplayAlert("ERROR", ex.Message, "OK");
                     });
                 }
-                
+
             }, this.BaseURL + "/invoicedetails/" + invoiceID, headers);
         }
 
@@ -275,7 +314,8 @@ namespace WIS.Services
         public void GetTest(responseDelegate<StudentSchedule> del)
         {
             Dictionary<string, string> data = new Dictionary<string, string>();
-            RESTEngine.HttpGet(data => {
+            RESTEngine.HttpGet(data =>
+            {
                 try
                 {
                     del(JsonConvert.DeserializeObject<StudentSchedule>(data,
@@ -283,7 +323,8 @@ namespace WIS.Services
                 }
                 catch (Exception ex)
                 {
-                    Device.BeginInvokeOnMainThread(() => {
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
                         Application.Current.MainPage.DisplayAlert("ERROR", ex.Message, "OK");
                     });
                 }
@@ -295,31 +336,39 @@ namespace WIS.Services
         public void GetStudentSchedule(responseDelegate<StudentSchedule> del)
         {
             Dictionary<string, string> data = new Dictionary<string, string>();
-            RESTEngine.HttpGet(data => {
+            RESTEngine.HttpGet(data =>
+            {
                 try
                 {
                     del(JsonConvert.DeserializeObject<StudentSchedule>(data,
                     new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }));
-                }catch(Exception ex){
-                    Device.BeginInvokeOnMainThread(() => {
+                }
+                catch (Exception ex)
+                {
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
                         Application.Current.MainPage.DisplayAlert("ERROR", ex.Message, "OK");
                     });
                 }
-                
+
             }, this.BaseURL + "/studentschedule", headers);
         }
 
         // Teacher Schedule
         public void GetTeacherSchedule(responseDelegate<TeacherSchedule> del)
         {
-            
-            RESTEngine.HttpGet(data => {
-                try{
+
+            RESTEngine.HttpGet(data =>
+            {
+                try
+                {
                     del(JsonConvert.DeserializeObject<TeacherSchedule>(data,
                     new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }));
                 }
-                catch (Exception ex){
-                    Device.BeginInvokeOnMainThread(() => {
+                catch (Exception ex)
+                {
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
                         Application.Current.MainPage.DisplayAlert("ERROR", ex.Message, "OK");
                     });
                 }
@@ -328,9 +377,10 @@ namespace WIS.Services
         }
 
         // Parent Schedule (all children schedule
-        public void GetParentSchedule(responseDelegate<Dictionary<string,StudentSchedule>> del)
+        public void GetParentSchedule(responseDelegate<Dictionary<string, StudentSchedule>> del)
         {
-            RESTEngine.HttpGet(data => {
+            RESTEngine.HttpGet(data =>
+            {
                 try
                 {
                     del(JsonConvert.DeserializeObject<Dictionary<string, StudentSchedule>>(data,
@@ -338,7 +388,8 @@ namespace WIS.Services
                 }
                 catch (Exception ex)
                 {
-                    Device.BeginInvokeOnMainThread(() => {
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
                         Application.Current.MainPage.DisplayAlert("ERROR", ex.Message, "OK");
                     });
                 }
@@ -351,7 +402,7 @@ namespace WIS.Services
         public void RegisterFCMToken(string fcmtoken)
         {
             Dictionary<string, string> data = new Dictionary<string, string>();
-            data["token"] = fcmtoken;               
+            data["token"] = fcmtoken;
             RESTEngine.HttpPost(data =>
             {
                 if (data != null)
@@ -359,7 +410,7 @@ namespace WIS.Services
             }, this.BaseURL + "/pushregister", data, null, true);
         }
 
-        public void SendPushNotification(string title,string message, responseDelegate<bool> del)
+        public void SendPushNotification(string title, string message, responseDelegate<bool> del)
         {
             Dictionary<string, string> data = new Dictionary<string, string>();
             data["message"] = message;
@@ -368,11 +419,129 @@ namespace WIS.Services
             RESTEngine.HttpGet(data =>
             {
                 if (data != null)
-                    del(true);                
+                    del(true);
                 else
-                    del(false);                                            
+                    del(false);
             }, this.BaseURL + "/pushsend?title=" + message + "&body=" + message, headers);
         }
-    }
 
+
+        public static string HashToString(string message, byte[] key)
+        {
+            byte[] b = new HMACSHA512(key).ComputeHash(Encoding.UTF8.GetBytes(message));
+            return Convert.ToBase64String(b);
+        }
+
+        public string GenerateTransactionId()
+        {
+            string ID = Preferences.Get("ID", "");
+            string date = DateTime.Now.ToString("YYYYmmddHis");
+            // ID-TIMESTAMP
+            return ID + "_" + date;
+        }
+
+        public string GenerateRequesTime()
+        {
+            //YYYYmmddHis 20210123 23 45 59                          
+            return DateTime.Now.ToString("YYYYmmddHis"); ;
+        }
+
+        public void RequestABAPayment(responseDelegate<Dictionary<string, string>> del, string amount,Invoice invoice)
+        {
+            // Generate post objects
+            Dictionary<string, object> data = new Dictionary<string, object>();
+            
+            data["req_time"] = GenerateRequesTime();
+            data["merchant_id"] = "ec002318";
+            data["tran_id"] = GenerateTransactionId();
+            data["amount"] = amount;
+            data["items"] = invoice.ABAItems();
+            data["firstname"] = "";
+            data["lastname"] = "";
+            data["phone"] = "";
+            data["type"] = "purchase";            
+            data["payment_option"] = "abapay_deeplink";            
+            string ID = Preferences.Get("ID", "");
+            string link = "westernschool://western.edu.kh?userid=" + ID + "&transactionid=" + data["tran_id"];
+            string returnDeeplink = "{'ios_scheme':" + link + ",'android_scheme':'" + link + "'}";                                      
+            data["return_deeplink"] = Convert.ToBase64String(Encoding.ASCII.GetBytes(returnDeeplink));
+            string toHash = data["req_time"].ToString()
+                          + data["merchant_id"].ToString()
+                          + data["tran_id"].ToString()
+                          + data["amount"].ToString()
+                          + data["items"].ToString()
+                          + data["firstname"].ToString()
+                          + data["lastname"].ToString()
+                          + data["phone"].ToString()
+                          + data["type"].ToString()
+                          + data["payment_option"].ToString()
+                          + data["return_deeplink"].ToString();
+                          ;
+            data["hash"] = HashToString(toHash, Encoding.ASCII.GetBytes(this.aba_public_key));
+            // Create request and receive response
+            string url = this.aba_baseurl + "purchase";
+            FormEngine.MultipartFormDataPost((response) =>
+            {
+                Dictionary<string, string> responseData = JsonConvert.DeserializeObject<Dictionary<string, string>>(response,
+                    new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore });
+                del(responseData);
+            }, url, data);
+
+          
+        }
+        
+        public void ABAPaymentSearch(responseDelegate<List<ABATransaction>> del,string fromDate,string toDate,string fromAmount,string toAmount, string status){
+            Dictionary<string, object> data = new Dictionary<string, object>();            
+            data["req_time"] = GenerateRequesTime();
+            data["merchant_id"] = aba_merchant_id;
+            data["from_date"] = fromDate;
+            data["to_date"] = toDate;
+            data["from_amount"] = fromDate;
+            data["to_amount"] = toDate;
+            data["status"] = (status == "ALL") ? "" : status;
+
+            string toHash = data["req_time"].ToString()
+                          + data["merchant_id"].ToString()                          
+                          + data["from_date"].ToString()
+                          + data["to_date"].ToString()
+                          + data["from_amount"].ToString()
+                          + data["to_amount"].ToString()
+                          + data["status"].ToString();
+            data["hash"] = HashToString(toHash, Encoding.ASCII.GetBytes(this.aba_public_key));
+
+            string url = this.aba_baseurl + "transaction-list";
+            FormEngine.MultipartFormDataPost((response) =>
+            {
+                if (response == null)
+                    del(null);
+                else
+                {
+                    List<ABATransaction> transactions = JsonConvert.DeserializeObject<List<ABATransaction>>(response,
+                    new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore });
+                    del(transactions);
+                }
+                
+                
+            }, url, data);          
+        }
+
+        public void ABATransactionCheck(responseDelegate<ABAPaymentStatus> del,string transactionID)
+        {
+            Dictionary<string, object> data = new Dictionary<string, object>();
+            data["req_time"] = GenerateRequesTime();
+            data["merchant_id"] = this.aba_merchant_id;
+            data["tran_id"] = transactionID;
+            string toHash = data["req_time"].ToString()
+                          + data["merchant_id"].ToString()
+                          + data["tran_id"].ToString();                          
+            data["hash"] = HashToString(toHash, Encoding.ASCII.GetBytes(this.aba_public_key));
+            string url = this.aba_baseurl + "check-transaction";
+            FormEngine.MultipartFormDataPost((response) =>
+            {
+                ABAPaymentStatus dataresponse = JsonConvert.DeserializeObject<ABAPaymentStatus>(response,
+                    new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore });
+                del(dataresponse);
+            }, url, data);          
+        }
+    }
 }

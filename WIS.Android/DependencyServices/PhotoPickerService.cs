@@ -7,7 +7,6 @@ using WIS.Interfaces;
 [assembly: Xamarin.Forms.Dependency(typeof(WIS.Droid.DependencyServices.PhotoPickerService))]
 namespace WIS.Droid.DependencyServices
 {
-
 	public class PhotoPickerService : IPhotoPickerService
 	{
 		public Task<Stream> GetImageStreamAsync()

@@ -60,3 +60,6 @@
 /Users/sovi/Projects/WIS-APP/WIS/obj/Debug/netstandard2.1/ref/WIS.dll
 /Users/sovi/Projects/WIS-APP/WIS/obj/Debug/netstandard2.1/WIS.pdb
 /Users/sovi/Projects/WIS-APP/WIS/obj/Debug/netstandard2.1/WIS.csproj.AssemblyReference.cache
+/Users/sovi/Projects/WIS-APP/WIS/obj/Debug/netstandard2.1/Views/Payment/PaymentDetailsPage.xaml.g.cs
+/Users/sovi/Projects/WIS-APP/WIS/obj/Debug/netstandard2.1/Views/Payment/PaymentListSearchPage.xaml.g.cs
+/Users/sovi/Projects/WIS-APP/WIS/obj/Debug/netstandard2.1/Views/Payment/PaymentListToValidatePage.xaml.g.cs
