@@ -11,10 +11,12 @@ namespace WIS.Views
     public partial class InvoiceDetailsPage : ContentPage
     {
 
+        InvoiceDetailsPageViewModel vm;
         public string ID
         {
             set{
-                this.BindingContext = new InvoiceDetailsPageViewModel(value);                
+                vm = new InvoiceDetailsPageViewModel(value);
+                this.BindingContext = vm;
             }
         }
 
@@ -26,7 +28,14 @@ namespace WIS.Views
             CultureInfo.DefaultThreadCurrentCulture = myCurrency;
             InitializeComponent();            
         }
-      
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            vm.OnAppearing();
+
+        }
+
 
     }
 }

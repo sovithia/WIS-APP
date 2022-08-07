@@ -200,9 +200,8 @@ namespace WIS.ViewModels
         private void ItemSelected(object selectedItem)
         {
             ABATransaction transaction = (ABATransaction)((Syncfusion.ListView.XForms.ItemTappedEventArgs)selectedItem).ItemData;
-            PaymentDetailsPage page = new PaymentDetailsPage(transaction);
-            Shell.Current.Navigation.PushAsync(page);
-            //Shell.Current.GoToAsync($"InvoiceDetails?ID={transaction.id}&IsSubmitable=true");
+            PaymentABADetailsPage page = new PaymentABADetailsPage(transaction);
+            Shell.Current.Navigation.PushAsync(page);            
         }
 
 

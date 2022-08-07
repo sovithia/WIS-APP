@@ -9,14 +9,17 @@ namespace WIS.iOS.DependencyServices
 {
     public class OpenAppiOS : IAppHandler
     {
-        public Task<bool> LaunchApp(string uri)
+        public Task<bool> LaunchApp(string uri, string fallbackuri)
         {
             try
             {
                 var canOpen = UIApplication.SharedApplication.CanOpenUrl(new NSUrl(uri));
 
                 if (!canOpen)
-                    return Task.FromResult(false);
+                {
+                    return Task.FromResult(UIApplication.SharedApplication.OpenUrl(new NSUrl(fallbackuri)));                    
+                }
+                    
 
                 return Task.FromResult(UIApplication.SharedApplication.OpenUrl(new NSUrl(uri)));
 

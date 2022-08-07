@@ -44,7 +44,9 @@ namespace WIS.Models
         public string doc { get; set; } // Invoice  doc 
         public DateTime date { get; set; } // Invoice date 
         public DateTime date_due { get; set; } // Invoice date_due
-        
+        public string is_paid { get; set; }
+
+
         public string studentdisplayname {get;set;}
         //public List<InvoicePromotion> invoicepromotionList { get; set; }
         public List<InvoiceElement> invoicefeeList { get; set; }
@@ -62,10 +64,13 @@ namespace WIS.Models
                     price = elem.price
                 });
             }
-            var binFormatter = new BinaryFormatter();
-            var mStream = new MemoryStream();
-            binFormatter.Serialize(mStream, items);            
-            return Convert.ToBase64String(mStream.ToArray());
+            // hardcode for test
+            items.Add(new ABAInvoiceElement() { name = "book1", price = 5, quantity = 1 });
+            string json = JsonConvert.SerializeObject(items);
+            //var binFormatter = new BinaryFormatter();
+            //var mStream = new MemoryStream();
+            //binFormatter.Serialize(mStream, items);            
+            return Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(json));
         }
         
         [JsonIgnore, Ignore]

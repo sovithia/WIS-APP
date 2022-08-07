@@ -47,7 +47,7 @@ namespace WIS.ViewModels
             }
         }
 
-        #endregion
+#endregion
 
         public InvoiceDetailsPaidPageViewModel(string _invoiceID)
         {

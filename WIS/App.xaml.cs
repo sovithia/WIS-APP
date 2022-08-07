@@ -42,8 +42,8 @@ namespace WIS
                   typeof(Analytics), typeof(Crashes));
             
             InitializeComponent();
-            //MainPage = new LoginPage();
-            MainPage = new PaymentListSearchPage();
+            MainPage = new LoginPage();
+            //MainPage = new PaymentListSearchPage();
 
             //MainPage = new SupportDetailPage();
             //Preferences.Set("TYPE", "STUDENT");

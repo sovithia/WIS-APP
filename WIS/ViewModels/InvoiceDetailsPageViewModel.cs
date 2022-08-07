@@ -20,6 +20,7 @@ namespace WIS.ViewModels
 #region properties
 
         public bool IsSubmitable { get; set; }
+        public Invoice currentInvoice { get; set; }
 
         /*
         private ObservableCollection<InvoiceElement> invoiceLines;
@@ -79,6 +80,7 @@ namespace WIS.ViewModels
             InvoiceLines = new ObservableCollection<InvoiceElement>();
             DataService.Instance.GetInvoiceDetails(invoiceID, (invoice) =>
             {
+                currentInvoice = invoice;
                 float amt = 0;
                 foreach (InvoiceElement line in invoice.invoicefeeList)
                 {
@@ -90,19 +92,16 @@ namespace WIS.ViewModels
 
             this.ACLEDACommand = new Command(this.ACLEDAClicked);
             this.ABACommand = new Command(this.ABAClicked);
+            this.CreditCardCommand = new Command(this.CreditCardClicked);
         }
 
         #region Command
-
-        /// <summary>
-        /// Gets or sets the command that is executed when the Log In button is clicked.
-        /// </summary>
+        
         public Command ACLEDACommand { get; set; }
-
-        /// <summary>
-        /// Gets or sets the command that is executed when the Sign Up button is clicked.
-        /// </summary>
+        
         public Command ABACommand { get; set; }
+        
+        public Command CreditCardCommand { get; set; }
 
         #endregion
 
@@ -111,8 +110,16 @@ namespace WIS.ViewModels
             var answer = await Application.Current.MainPage.DisplayAlert("ABA Pay", "Pay in ACLEDA App ?", "Yes", "No");
             if (answer)
             {
-
+                
             }               
+        }
+
+        private  void CreditCardClicked(Object obj)
+        {
+            ModalCreditCardPaymentPage page = new ModalCreditCardPaymentPage("10", "firstname", "lastname", "0964222816", currentInvoice);
+            Shell.Current.Navigation.PushModalAsync(page);
+
+            
         }
 
         private async void ABAClicked(object obj)
@@ -120,9 +127,42 @@ namespace WIS.ViewModels
             var answer = await Application.Current.MainPage.DisplayAlert("ABA Pay", "Pay in ABA App ?", "Yes", "No");
             if (answer)
             {
+                DataService.Instance.RequestABAPayment((response) =>
+                {
+                    string fallbackuri = null;
+                    if (Device.RuntimePlatform == Device.iOS)
+                        fallbackuri = response.app_store;
+                    else if (Device.RuntimePlatform == Device.Android)
+                        fallbackuri = response.play_store;
+                    Device.BeginInvokeOnMainThread(async () =>{
 
+                        var supportsUri = await Launcher.CanOpenAsync(response.abapay_deeplink);
+                        if (supportsUri)
+                            await Launcher.OpenAsync(response.abapay_deeplink);                                                    
+                        else                        
+                            await Launcher.OpenAsync(fallbackuri);                                                
+                    });
+                    
+                },"10","firstname","lastname","0964222816",currentInvoice);
             }
 
+        }
+
+        public void OnAppearing()
+        {
+            //this.currentInvoice;
+            DataService.Instance.ABATransactionCheck((status) =>
+            {
+                // Not created yet
+                if (status.status == "6")
+                {
+                    // Do nothing
+                }
+                else if (status.status == "0")
+                {
+                    // Display Current payment info, hide payment button
+                }
+            }, this.currentInvoice);
         }
 
         // ALL THIS PART IS NOT USED FOR THE MOMENT

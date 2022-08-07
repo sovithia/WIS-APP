@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="WIS.Views.PaymentABADetailsPage"
+    Visual="Material">
+    <ContentPage.Content>
+        <StackLayout>
+           <Grid >
+                    <Entry Grid.Column="0" Grid.Row="0" Placeholder="Transaction ID" Text="{Binding TransactionId}" />
+                    <Entry Grid.Column="1" Grid.Row="0" Placeholder="Status" Text="{Binding TransactionDate}" />
+
+                    <Entry Grid.Column="0" Grid.Row="1" Placeholder="Description" Text="{Binding Status}" />
+                    <Entry Grid.Column="0" Grid.Row="1" Placeholder="Date and time" Text="{Binding Datetime}" />
+
+                    <Entry Grid.Column="0" Grid.Row="2" Placeholder="Apv" Text="{Binding Apv}" />
+                    <Entry Grid.Column="1" Grid.Row="2" Placeholder="Original Currency" Text="{Binding OriginalAmount}" />
+
+                    <Entry Grid.Column="0" Grid.Row="3" Placeholder="firstname" Text="{Binding Firstname}" />
+                    <Entry Grid.Column="1" Grid.Row="3" Placeholder="lastname" Text="{Binding Lastname}" />
+
+                    <Entry Grid.Column="0" Grid.Row="4" Placeholder="Phone" Text="{Binding Phone}" />
+                    <Entry Grid.Column="1" Grid.Row="4" Placeholder="Email" Text="{Binding Email}" />
+
+                    <Entry Grid.Column="0" Grid.Row="5" Placeholder="Bank Ref" Text="{Binding BankRef}" />
+                    <Entry Grid.Column="1" Grid.Row="5" Placeholder="Payer Account" Text="{Binding RefundAmount}" />
+
+
+                    <Entry Grid.Column="0" Grid.Row="6" Placeholder="Payment Type" Text="{Binding PaymentType}" />
+                    <Entry Grid.Column="0" Grid.Row="6" Placeholder="Amount" Text="{Binding Amount}" />
+                    
+          </Grid>
+        </StackLayout>
+         
+
+        
+
+
+    </ContentPage.Content>
+</ContentPage>
+

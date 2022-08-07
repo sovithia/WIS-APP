@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="WIS.Views.ModalCreditCardPaymentPage"
+    Visual="Material">
+    <ContentPage.Content>
+        <StackLayout Padding="10,40,10,10" BackgroundColor="Red">
+            <ActivityIndicator x:Name="loader" IsVisible="false"/>
+            <Label Text="Follow all the steps to pay" HorizontalTextAlignment="Center" />
+            <WebView x:Name="webview" HeightRequest="500"></WebView>
+            <Button Text="Back to invoice" Clicked="Button_Clicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
+

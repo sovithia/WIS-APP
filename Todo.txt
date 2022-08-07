@@ -1,11 +1,30 @@
-﻿UI Transaction Search
-UI Transaction to validate
-    List Transaction id from WIS where Status = TOVALIDATE   
+﻿0 = to pay 
+2 = to validate ABA (list payment detail from ABA)
+3 = to validate ACLEDA (list payment detail from ACLEDA)
+1 = Paid(check note, load ABA or ACLEDA)
+
+PaymentDetail to Validate (OK)
+PaymentDetail Paid (ABA or Other) (OK)
+
+
+UI Transaction Search OK
+    
+UI Transaction to validate 
+    -> Api List Invoice To Validate OK
+    List Transaction id from WIS where Status = TOVALIDATE OK
     UI Transaction Detail
         Validate Payment
-API Change Status on Payment
+
+API Change Status on Payment (OK)
     -> Paid
     -> Confirmed
+    -> Denied
+
+Registrar Account
+
+
+Invoice Detail on appear (OK)
+    -> Check ABA Transaction, hide pay if already paid
 
 Find a way to hook Invoice creation (SQL Trigger or WebApp Code)
 to send notification

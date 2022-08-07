@@ -138,8 +138,8 @@ namespace WIS.ViewModels
             this.Password = new ValidatableObject<string>();
             //this.Phone.Value = "015781992"; 
             //this.Password.Value = "1986";
-            //this.Phone.Value = "0964222816";
-            //this.Password.Value = "2222";
+            this.Phone.Value = "0964222816";
+            this.Password.Value = "2222";
         }
 
         /// <summary>
@@ -168,7 +168,7 @@ namespace WIS.ViewModels
         {
             int i = 2;
             //DependencyService.Get<IAppHandler>().LaunchApp("safari-https://www.google.com");
-            var result = DependencyService.Get<IAppHandler>().LaunchApp("abamobilebank://ababank.com?type=payway&qrcode=ABA100451256327983181421Foreigner2d2374");
+            var result = DependencyService.Get<IAppHandler>().LaunchApp("abamobilebank://ababank.com?type=payway&qrcode=ABA100451256327983181421Foreigner2d2374","");
         }
 
         /// <summary>

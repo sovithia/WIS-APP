@@ -39,7 +39,7 @@ namespace WIS.Services
             {"21","Expired production key" }
         };
 
-        public static void MultipartFormDataPost(stringDelegate del, string url, Dictionary<string, object> postParameters,bool returnNullOnError = false)
+        public static void MultipartFormDataPost(stringDelegate del, string url, Dictionary<string, object> postParameters,bool returnUnfiltered = false)
         {
             string formDataBoundary = String.Format("----------{0:N}", Guid.NewGuid());
             string contentType = "multipart/form-data; boundary=" + formDataBoundary;
@@ -84,34 +84,38 @@ namespace WIS.Services
                             using (StreamReader httpWebStreamReader = new StreamReader(response.GetResponseStream()))
                             {
                                 string resp = httpWebStreamReader.ReadToEnd();
-
-                                Dictionary<string, object> res = JsonConvert.DeserializeObject<Dictionary<string, object>>(resp);
-                                ABASTATUS status = JsonConvert.DeserializeObject<ABASTATUS>(res["status"].ToString());
-                                if (status.code != "00" )                                
+                                if (returnUnfiltered == true)
                                 {
-                                    Device.BeginInvokeOnMainThread(() => {
-                                        Application.Current.MainPage.DisplayAlert("Aba Error", errorCode[status.code], "OK");                                      
-                                        if (returnNullOnError)
-                                            del(null);
-                                    });
+                                    del(resp);
                                 }
                                 else
                                 {
-                                    if (res.ContainsKey("data"))
-                                        del(res["data"].ToString());
+                                    Dictionary<string, object> res = JsonConvert.DeserializeObject<Dictionary<string, object>>(resp);
+                                    ABASTATUS status = JsonConvert.DeserializeObject<ABASTATUS>(res["status"].ToString());
+                                    if (status.code != "00")
+                                    {
+                                        Device.BeginInvokeOnMainThread(() => {
+                                            Application.Current.MainPage.DisplayAlert("Aba Error", errorCode[status.code], "OK");
+
+                                        });
+                                    }
                                     else
                                     {
-                                        del("");
+                                        if (res.ContainsKey("data"))
+                                            del(res["data"].ToString());
+                                        else
+                                        {
+                                            del(resp);
+                                        }
                                     }
-                                }
+                                }                                
                             }
                         }
                         catch (Exception ex)
                         {
                             Device.BeginInvokeOnMainThread(() => {
                                 Application.Current.MainPage.DisplayAlert("ERROR", "error happened(" + url + ") (" + ex.Message + ")", "OK");
-                                if (returnNullOnError)
-                                    del(null);
+                               
                             });
                         }
                     }, req1);
@@ -119,9 +123,7 @@ namespace WIS.Services
                 catch (Exception ex)
                 {
                     Device.BeginInvokeOnMainThread(() => {
-                        Application.Current.MainPage.DisplayAlert("ERROR", "error happened(" + url + ") (" + ex.Message + ")", "OK");
-                        if (returnNullOnError)
-                            del(null);
+                        Application.Current.MainPage.DisplayAlert("ERROR", "error happened(" + url + ") (" + ex.Message + ")", "OK");                        
                     });
 
                 }

@@ -171,6 +171,10 @@
     <ImageAsset Include="Assets.xcassets\ACLEDA.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\ACLEDA.imageset\ACLEDA.pdf" />
     <ImageAsset Include="Assets.xcassets\ABA.imageset\ABA.png" />
+    <ImageAsset Include="Assets.xcassets\CreditCard.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\CreditCard.imageset\creditcard.jpeg" />
+    <ImageAsset Include="Assets.xcassets\Search.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Search.imageset\Search.pdf" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -287,5 +291,7 @@
     <Folder Include="Assets.xcassets\IconLogo.imageset\" />
     <Folder Include="Assets.xcassets\ABA.imageset\" />
     <Folder Include="Assets.xcassets\ACLEDA.imageset\" />
+    <Folder Include="Assets.xcassets\CreditCard.imageset\" />
+    <Folder Include="Assets.xcassets\Search.imageset\" />
   </ItemGroup>
 </Project>

@@ -397,7 +397,6 @@ namespace WIS.Services
             }, this.BaseURL + "/parentschedule", headers);
         }
 
-
         // Register Push
         public void RegisterFCMToken(string fcmtoken)
         {
@@ -425,7 +424,6 @@ namespace WIS.Services
             }, this.BaseURL + "/pushsend?title=" + message + "&body=" + message, headers);
         }
 
-
         public static string HashToString(string message, byte[] key)
         {
             byte[] b = new HMACSHA512(key).ComputeHash(Encoding.UTF8.GetBytes(message));
@@ -446,19 +444,61 @@ namespace WIS.Services
             return DateTime.Now.ToString("YYYYmmddHis"); ;
         }
 
-        public void RequestABAPayment(responseDelegate<Dictionary<string, string>> del, string amount,Invoice invoice)
+        public void RequestCreditCardPayment(responseDelegate<string> del, string amount, string firstname, string lastname, string phone, Invoice invoice)
+        {
+            // Generate post objects
+            Dictionary<string, object> data = new Dictionary<string, object>();
+
+            data["req_time"] = GenerateRequesTime();
+            data["merchant_id"] = this.aba_merchant_id;
+            data["tran_id"] = "TRX-" + invoice.ID;
+            data["amount"] = amount;
+            data["items"] = invoice.ABAItems();
+            data["firstname"] = firstname;
+            data["lastname"] = lastname;
+            data["phone"] = phone;
+            data["type"] = "purchase";
+            data["payment_option"] = "cards";
+            string ID = Preferences.Get("ID", "");
+            string link = "westernschool://western.edu.kh?userid=" + ID + "&transactionid=" + data["tran_id"];
+            string returnDeeplink = "{'ios_scheme':" + link + ",'android_scheme':'" + link + "'}";
+            data["return_deeplink"] = Convert.ToBase64String(Encoding.ASCII.GetBytes(returnDeeplink));
+            string toHash = data["req_time"].ToString()
+                          + data["merchant_id"].ToString()
+                          + data["tran_id"].ToString()
+                          + data["amount"].ToString()
+                          + data["items"].ToString()
+                          + data["firstname"].ToString()
+                          + data["lastname"].ToString()
+                          + data["phone"].ToString()
+                          + data["type"].ToString()
+                          + data["payment_option"].ToString()
+                          + data["return_deeplink"].ToString();
+            ;
+            data["hash"] = HashToString(toHash, Encoding.ASCII.GetBytes(this.aba_public_key));
+            // Create request and receive response
+            string url = this.aba_baseurl + "purchase";
+            FormEngine.MultipartFormDataPost((response) =>
+            {                
+                del(response);
+            }, url, data,true);
+
+
+        }
+
+        public void RequestABAPayment(responseDelegate<ABAPaymentRequestResponse> del, string amount,string firstname,string lastname,string phone,Invoice invoice)
         {
             // Generate post objects
             Dictionary<string, object> data = new Dictionary<string, object>();
             
             data["req_time"] = GenerateRequesTime();
-            data["merchant_id"] = "ec002318";
-            data["tran_id"] = GenerateTransactionId();
+            data["merchant_id"] = this.aba_merchant_id;
+            data["tran_id"] = "TRX-" + invoice.ID; 
             data["amount"] = amount;
             data["items"] = invoice.ABAItems();
-            data["firstname"] = "";
-            data["lastname"] = "";
-            data["phone"] = "";
+            data["firstname"] = firstname;
+            data["lastname"] = lastname;
+            data["phone"] = phone;
             data["type"] = "purchase";            
             data["payment_option"] = "abapay_deeplink";            
             string ID = Preferences.Get("ID", "");
@@ -481,8 +521,8 @@ namespace WIS.Services
             // Create request and receive response
             string url = this.aba_baseurl + "purchase";
             FormEngine.MultipartFormDataPost((response) =>
-            {
-                Dictionary<string, string> responseData = JsonConvert.DeserializeObject<Dictionary<string, string>>(response,
+            {                
+                ABAPaymentRequestResponse responseData = JsonConvert.DeserializeObject<ABAPaymentRequestResponse>(response,
                     new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore });
                 del(responseData);
             }, url, data);
@@ -525,12 +565,12 @@ namespace WIS.Services
             }, url, data);          
         }
 
-        public void ABATransactionCheck(responseDelegate<ABAPaymentStatus> del,string transactionID)
+        public void ABATransactionCheck(responseDelegate<ABAPaymentStatus> del,Invoice invoice)
         {
             Dictionary<string, object> data = new Dictionary<string, object>();
             data["req_time"] = GenerateRequesTime();
             data["merchant_id"] = this.aba_merchant_id;
-            data["tran_id"] = transactionID;
+            data["tran_id"] = "TRX-" + invoice.ID;
             string toHash = data["req_time"].ToString()
                           + data["merchant_id"].ToString()
                           + data["tran_id"].ToString();                          
@@ -543,5 +583,65 @@ namespace WIS.Services
                 del(dataresponse);
             }, url, data);          
         }
+
+
+
+
+        public void PaymentListToValidate(responseDelegate<List<Invoice>> del)
+        {
+            RESTEngine.HttpGet(data =>
+            {
+                try
+                {
+                    var obj = JsonConvert.DeserializeObject<List<Invoice>>(data,
+                        new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore });
+                    del(obj);
+                }
+                catch (Exception ex)
+                {
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        Application.Current.MainPage.DisplayAlert("ERROR", ex.Message, "OK");
+                    }
+                    );
+                }
+
+            }, this.BaseURL + "/payment", headers);
+        }
+        // Invoice isPaid 1 = normal paid ,2 = paid but not validated, 0 = unpaid
+        public void InvoiceValidatePayment(responseDelegate<bool> del, string invoiceid)
+        {
+            Dictionary<string, string> data = new Dictionary<string, string>();
+            data["status"] = "1";
+
+            RESTEngine.HttpPut((response) =>
+            {
+                del(true);
+            },this.BaseURL + "/payment",data);
+
+        }
+
+        public void InvoiceSetABAPaidPayment(responseDelegate<bool> del, string invoiceid)
+        {
+            Dictionary<string, string> data = new Dictionary<string, string>();
+            data["status"] = "2";
+            RESTEngine.HttpPut((response) =>
+            {
+                del(true);
+            }, this.BaseURL + "/payment", data);
+        }
+
+        // Turn back to zero
+        public void InvoiceDenyPayment(responseDelegate<bool> del, string invoiceid)
+        {
+            Dictionary<string, string> data = new Dictionary<string, string>();
+            data["status"] = "0";
+            RESTEngine.HttpPut((response) =>
+            {
+                del(true);
+            }, this.BaseURL + "/payment", data);
+
+        }
     }
+
 }

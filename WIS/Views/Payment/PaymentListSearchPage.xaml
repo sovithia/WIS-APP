@@ -172,8 +172,8 @@
                                 TextColor="{DynamicResource Red}"
                                 VerticalOptions="FillAndExpand" />
                     </StackLayout>
-                <Entry BackgroundColor="#1746A0" Grid.Column="0" Grid.Row="2" Placeholder="Amount From" Text="{Binding FromAmount.Value}"/>
-                <Entry BackgroundColor="#1746A0" Grid.Column="1" Grid.Row="2" Placeholder="Amount To" Text="{Binding ToAmount.Value}"/>
+                <Entry BackgroundColor="#1746A0" TextColor="White" Grid.Column="0" Grid.Row="2" Placeholder="Amount From" Text="{Binding FromAmount.Value}"/>
+                <Entry BackgroundColor="#1746A0" TextColor="White" Grid.Column="1" Grid.Row="2" Placeholder="Amount To" Text="{Binding ToAmount.Value}"/>
                 <StackLayout Grid.Column="0" Grid.Row="3">
                             
                              <picker:SfPicker x:Name="statusPicker"

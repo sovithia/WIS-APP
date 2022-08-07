@@ -23,6 +23,7 @@ namespace WIS
         ShellContent profile;
         Tab attendance;
         Tab invoices;
+        Tab invoicesregistrar;
         ShellContent studentschedule;
         ShellContent teacherschedule;
         ShellContent parentschedule;
@@ -35,7 +36,7 @@ namespace WIS
                 Route = "Profile",
                 Title = "Profile",
                 Icon = nameof(ProfilePage),
-                ContentTemplate = new DataTemplate(typeof(ProfilePage)),                
+                ContentTemplate = new DataTemplate(typeof(ProfilePage)),
                 Style = style
             };
 
@@ -63,6 +64,35 @@ namespace WIS
                 Style = style
             });
 
+            // INVOICE (Registrar)
+            this.invoicesregistrar = new Tab()
+            {
+                Title = "Invoices(Registar)",
+                Route = "InvoicesRegistrar",
+                Icon = "InvoiceListPage"
+            };
+
+            this.invoicesregistrar.Items.Add(new ShellContent()
+            {
+                Route = "PaymentListSearch",
+                Title = "Search payments",
+                Icon = "Search",
+                ContentTemplate = new DataTemplate(typeof(PaymentListSearchPage)),
+                Style = style
+            });
+
+            this.invoicesregistrar.Items.Add(new ShellContent()
+            {
+                Route = "PaymentListToValidate",
+                Title = "To validate",
+                Icon = "InvoiceListPage",
+                ContentTemplate = new DataTemplate(typeof(PaymentListToValidatePage)),
+                Style = style
+            });
+
+            
+
+
             // INVOICE
             this.invoices = new Tab()
             {
@@ -70,6 +100,8 @@ namespace WIS
                 Route = "Invoices",
                 Icon = "InvoiceListPage"
             };
+
+            
             this.invoices.Items.Add(new ShellContent()
             {
                 Route = "InvoiceNew",
@@ -132,6 +164,8 @@ namespace WIS
             Routing.RegisterRoute("InvoiceDetails", typeof(InvoiceDetailsPage));
             Routing.RegisterRoute("InvoiceDetailsPaid", typeof(InvoiceDetailsPaidPage));
 
+            Routing.RegisterRoute("PaymentABADetails", typeof(PaymentABADetailsPage));
+
             Style style = null;
             style = CommonShell;
             initShells(style);
@@ -164,6 +198,7 @@ namespace WIS
             {
                 itemContainer.Items.Add(attendance);
                 itemContainer.Items.Add(invoices);
+                itemContainer.Items.Add(invoicesregistrar);
                 itemContainer.Items.Add(studentschedule);
                 itemContainer.Items.Add(teacherschedule);
                 itemContainer.Items.Add(parentschedule);

@@ -18,8 +18,8 @@ namespace WIS.ViewModels
         
         public InvoiceListPageViewModel()
         {
-            Invoices = new ObservableCollection<Invoice>();            
             ItemSelectedCommand = new Command(ItemSelected);
+            Invoices = new ObservableCollection<Invoice>();
             DataService.Instance.GetInvoiceList((invoices) =>
             {
                 invoices = invoices.OrderByDescending(i => i.date).ToList();
@@ -29,7 +29,7 @@ namespace WIS.ViewModels
                 }
             });
         }
-          
+                  
 
         private void ItemSelected(object selectedItem)
         {
@@ -37,5 +37,6 @@ namespace WIS.ViewModels
             Invoice invoice = (Invoice)((Syncfusion.ListView.XForms.ItemTappedEventArgs)selectedItem).ItemData;
             Shell.Current.GoToAsync($"InvoiceDetails?ID={invoice.id}&IsSubmitable=true");                        
         }
+
     }
 }

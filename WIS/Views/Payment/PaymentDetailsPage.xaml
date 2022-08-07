@@ -3,15 +3,97 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="WIS.Views.PaymentDetailsPage"
-    Visual="Material">
+    xmlns:behaviour="clr-namespace:WIS.Behaviors"
+    xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"    
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+    xmlns:signature="clr-namespace:Syncfusion.XForms.SignaturePad;assembly=Syncfusion.SfSignaturePad.XForms"    
+    xmlns:gradient="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms">
     <ContentPage.Content>
+
         <Grid>
+            <gradient:SfGradientView Style="{StaticResource BlueGradientStyle}" />
+            <Grid Padding="5,20,5,20" RowSpacing="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="30" />
+                    
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0" Text="{Binding InvoiceID}" FontFamily="Montserrat-SemiBold"   HorizontalTextAlignment="Center" TextColor="{DynamicResource Gray-White}" FontSize="18"/>
+                      
+                <Grid Grid.Row="1">
+
+                    <Entry Grid.Column="0" Grid.Row="0" Placeholder="Transaction ID" Text="{Binding TranID}" />
+                    <Entry Grid.Column="1" Grid.Row="0" Placeholder="Status" Text="{Binding Status}" />
+
+                    <Entry Grid.Column="0" Grid.Row="1" Placeholder="Description" Text="{Binding Description}" />
+                    <Entry Grid.Column="0" Grid.Row="1" Placeholder="Date and time" Text="{Binding Datetime}" />
+
+                    <Entry Grid.Column="0" Grid.Row="2" Placeholder="Apv" Text="{Binding Apv}" />
+                    <Entry Grid.Column="1" Grid.Row="2" Placeholder="Original Currency" Text="{Binding OriginalCurrency}" />
+
+                    <Entry Grid.Column="0" Grid.Row="3" Placeholder="firstname" Text="{Binding Firstname}" />
+                    <Entry Grid.Column="1" Grid.Row="3" Placeholder="lastname" Text="{Binding Lastname}" />
+
+                    <Entry Grid.Column="0" Grid.Row="4" Placeholder="Phone" Text="{Binding Phone}" />
+                    <Entry Grid.Column="1" Grid.Row="4" Placeholder="Email" Text="{Binding Email}" />
+
+                    <Entry Grid.Column="0" Grid.Row="5" Placeholder="Bank Ref" Text="{Binding BankRef}" />
+                    <Entry Grid.Column="1" Grid.Row="5" Placeholder="Payer Account" Text="{Binding PayerAccount}" />
 
 
+                    <Entry Grid.Column="0" Grid.Row="6" Placeholder="Payment Type" Text="{Binding PaymentType}" />
+                    <Entry Grid.Column="0" Grid.Row="6" Placeholder="Amount" Text="{Binding Amount}" />
 
+                    <Entry Grid.Column="0" Grid.Row="7" Grid.ColumnSpan="2" Placeholder="Total Amount" Text="{Binding TotalAmount}" />
+                </Grid>
+                <Frame Margin="10" Grid.Row="2" VerticalOptions="Fill" BackgroundColor="White">
+                    <listView:SfListView                                            
+                        AutoFitMode="Height"
+                        ItemsSource="{Binding InvoiceLines}"                        
+                        SelectionMode="None">
+
+                        <listView:SfListView.ItemTemplate>
+                           <DataTemplate>
+                            <border:SfBorder                                    
+                                        Margin="5,5,5,5"
+                                        BorderColor="{DynamicResource Gray-Bg}"
+                                        BorderWidth="0"
+                                        CornerRadius="5"
+                                        HasShadow="True"
+                                        Style="{DynamicResource ThemeBorderStyle}">
+                            <Grid Padding="5" BackgroundColor="{DynamicResource InfoBlue}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="100" />
+                                </Grid.ColumnDefinitions>
+                            
+                                <Label Grid.Row="0" Grid.Column="0" Text="{Binding productname}" FontFamily="Montserrat-SemiBold"  TextColor="{DynamicResource Gray-White}" FontSize="12" />
+                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding amount,StringFormat='${0:#,0.#0}'}"   FontFamily="Montserrat-SemiBold"      TextColor="{DynamicResource Gray-White}" FontSize="12" VerticalTextAlignment="Center" HorizontalTextAlignment="End"/>
+                            </Grid>
+                            </border:SfBorder>
+                        </DataTemplate>
+                        </listView:SfListView.ItemTemplate>
+                
+                
+                 </listView:SfListView>
+                </Frame>                
+        
+                <Grid Grid.Row="3" Padding="5,0,5,0" Margin="10,0,10,0" VerticalOptions="Center" BackgroundColor="{DynamicResource InfoBlue}" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="120"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <Label  Grid.Column="0"  Grid.Row="0" Text="Total" HorizontalTextAlignment="Start" FontFamily="Montserrat-SemiBold"     TextColor="{DynamicResource Gray-White}" FontSize="16"   />
+                    <Label Grid.Column="1" Grid.Row="0" Text="{Binding Total,StringFormat='${0:#,0.#0}'}"  TextColor="{DynamicResource Gray-White}" Style="{StaticResource TitleLabelStyle}" HorizontalOptions="End"   FontSize="16" />
+                </Grid>
+
+                <Button Grid.Row="4" Command="{Binding validate}" Text="Validate payment"/>
+            </Grid>
         </Grid>
-
-
     </ContentPage.Content>
 </ContentPage>
-
