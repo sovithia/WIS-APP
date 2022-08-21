@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Syncfusion.XForms.PopupLayout;
 using WIS.Interfaces;
 using WIS.Models;
 using Xamarin.Forms;
@@ -25,16 +26,15 @@ namespace WIS.Views
         {
             InitializeComponent();
 
-            image.Source = new AvatarImageSource("GC", Color.DarkSlateBlue, Color.White, 48);
-            
-            
-
+            /*
+            image.Source = new AvatarImageSource("GC", Color.DarkSlateBlue, Color.White, 48);                       
             UsersListView.ItemsSource = new List<User>()
             {
                 new User() {Name = "Ahmed Fouad"},
                 new User() {Name = "Elif Vo"},
                 new User() {Name = "Nur Byers"}
             };
+            */
             //image.Source = new AvatarImageSource("AA",Color.Red,Color.Yellow);
             /*
             recorder =  new AudioRecorderService
@@ -46,7 +46,10 @@ namespace WIS.Views
             player = new AudioPlayer();
             */
         }
-
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            popUpLayout.Show();
+        }
         /*
 
         void pictureFromCameraBtn(System.Object sender, System.EventArgs e)

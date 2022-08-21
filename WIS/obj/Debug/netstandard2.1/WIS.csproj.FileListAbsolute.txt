@@ -65,3 +65,5 @@
 /Users/sovi/Projects/WIS-APP/WIS/obj/Debug/netstandard2.1/Views/Payment/PaymentListToValidatePage.xaml.g.cs
 /Users/sovi/Projects/WIS-APP/WIS/obj/Debug/netstandard2.1/Views/Payment/ModalCreditCardPaymentPage.xaml.g.cs
 /Users/sovi/Projects/WIS-APP/WIS/obj/Debug/netstandard2.1/Views/Payment/PaymentABADetailsPage.xaml.g.cs
+/Users/sovi/Projects/WIS-APP/WIS/obj/Debug/netstandard2.1/Views/TestPopup.xaml.g.cs
+/Users/sovi/Projects/WIS-APP/WIS/obj/Debug/netstandard2.1/Views/Invoice/InvoiceDetailSample.xaml.g.cs

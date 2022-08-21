@@ -1,41 +1,57 @@
 ﻿<Properties StartupConfiguration="{D5F23FAD-2906-4CA5-B308-3D7789659D25}|Default">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <Xamarin.Addins.Core.Project ActiveDebugTarget="Android.Nexus_6_API_28" />
-  <MonoDevelop.Ide.ItemProperties.WIS.Android PreferredExecutionTarget="Android.Nexus_6_API_28" />
-  <MonoDevelop.Ide.ItemProperties.WIS.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget." />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/sovi/Projects/WIS-APP/WIS.iOS/AppDelegate.cs" relfile="WIS.iOS/AppDelegate.cs" line="143" column="1" />
-      <Breakpoint file="/Users/sovi/Projects/WIS-APP/WIS.iOS/AppDelegate.cs" relfile="WIS.iOS/AppDelegate.cs" line="149" column="1" />
-      <Breakpoint file="/Users/sovi/Projects/WIS-APP/WIS/Services/DataService.cs" relfile="WIS/Services/DataService.cs" line="420" column="1" />
-      <Breakpoint file="/Users/sovi/Projects/WIS-APP/WIS.iOS/Main.cs" relfile="WIS.iOS/Main.cs" line="31" column="1" />
-      <Breakpoint file="/Users/sovi/Projects/WIS-APP/WIS/ViewModels/LoginPageViewModel.cs" relfile="WIS/ViewModels/LoginPageViewModel.cs" line="256" column="1" />
-      <Breakpoint file="/Users/sovi/Projects/WIS-APP/WIS/Views/Payment/ModalCreditCardPaymentPage.xaml.cs" relfile="WIS/Views/Payment/ModalCreditCardPaymentPage.xaml.cs" line="43" column="1" />
-      <Breakpoint file="/Users/sovi/Projects/WIS-APP/WIS/Services/DataService.cs" relfile="WIS/Services/DataService.cs" line="594" column="1" />
-    </BreakpointStore>
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workbench ActiveDocument="WIS/ViewModels/PaymentABADetailsViewModel.cs">
+  <MonoDevelop.Ide.ItemProperties.WIS.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.A327C785-835B-47E1-B988-0FE91C47AB6B" />
+  <Xamarin.Addins.Core.Project ActiveDebugTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.A327C785-835B-47E1-B988-0FE91C47AB6B" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Todo.txt">
     <Files>
-      <File FileName="WIS/Views/Payment/PaymentListSearchPage.xaml" Line="183" Column="25" />
-      <File FileName="Todo.txt" Line="12" Column="27" />
-      <File FileName="WIS/ViewModels/PaymentABADetailsViewModel.cs" Line="22" Column="56" />
+      <File FileName="WIS/Views/Invoice/InvoiceDetailSample.xaml" Line="30" Column="39" />
+      <File FileName="WIS/Services/DataService.cs" Line="489" Column="15" />
+      <File FileName="WIS/Views/Invoice/InvoiceDetailSample.xaml.cs" Line="101" Column="51" />
+      <File FileName="WIS/Views/Payment/ModalCreditCardPaymentPage.xaml" Line="11" Column="14" />
+      <File FileName="Todo.txt" Line="8" Column="20" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="WIS" expanded="True" selected="True">
+          <Node name="WIS" expanded="True">
             <Node name="Solution Items" expanded="True" />
+            <Node name="WIS" expanded="True">
+              <Node name="Services" expanded="True" />
+              <Node name="ViewModels" expanded="True" />
+              <Node name="Views" expanded="True">
+                <Node name="Invoice" expanded="True">
+                  <Node name="InvoiceDetailSample.xaml" expanded="True" />
+                </Node>
+                <Node name="Payment" expanded="True">
+                  <Node name="ModalCreditCardPaymentPage.xaml" expanded="True" />
+                </Node>
+              </Node>
+              <Node name="App.xaml" expanded="True" />
+              <Node name="AppShell.xaml" expanded="True" />
+            </Node>
             <Node name="WIS.iOS" expanded="True" />
           </Node>
         </State>
       </Pad>
       <Pad Id="MonoDevelop.Debugger.WatchPad">
         <State>
-          <Value>res.ToString()</Value>
+          <Value>response.ResponseUri.ToString()</Value>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/sovi/Projects/WIS-APP/WIS.iOS/AppDelegate.cs" relfile="WIS.iOS/AppDelegate.cs" line="144" column="1" />
+      <Breakpoint file="/Users/sovi/Projects/WIS-APP/WIS.iOS/AppDelegate.cs" relfile="WIS.iOS/AppDelegate.cs" line="150" column="1" />
+      <Breakpoint file="/Users/sovi/Projects/WIS-APP/WIS/Services/DataService.cs" relfile="WIS/Services/DataService.cs" line="420" column="1" />
+      <Breakpoint file="/Users/sovi/Projects/WIS-APP/WIS/ViewModels/LoginPageViewModel.cs" relfile="WIS/ViewModels/LoginPageViewModel.cs" line="256" column="1" />
+      <Breakpoint file="/Users/sovi/Projects/WIS-APP/WIS/Services/DataService.cs" relfile="WIS/Services/DataService.cs" line="606" column="1" />
+      <Breakpoint file="/Users/sovi/Projects/WIS-APP/WIS/Services/DataService.cs" relfile="WIS/Services/DataService.cs" line="592" column="1" />
+      <Breakpoint file="/Users/sovi/Projects/WIS-APP/WIS/Views/TestPopup.xaml.cs" relfile="WIS/Views/TestPopup.xaml.cs" line="30" column="1" />
+      <Breakpoint file="/Users/sovi/Projects/WIS-APP/WIS.iOS/AppDelegate.cs" relfile="WIS.iOS/AppDelegate.cs" line="160" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
 </Properties>

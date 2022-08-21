@@ -15,21 +15,21 @@ namespace WIS.ViewModels
         public Command ValidateCommand { get; set; }
 
         
-        public string status { get; set; }
-        public string description { get; set; }
-        public string amount { get; set; }
-        public string totalAmount { get; set; }
-        public string apv { get; set; }
-        public string datetime { get; set; }
-        public string original_currency { get; set; }
-        public string tran_id { get; set; }
-        public string firstname { get; set; }
-        public string lastname { get; set; }
-        public string email { get; set; }
-        public string bank_ref { get; set; }
-        public string payer_account { get; set; }
-        public string phone { get; set; }
-        public string payment_type { get; set; }
+        public string Status { get; set; }
+        public string Description { get; set; }
+        public string Amount { get; set; }
+        public string TotalAmount { get; set; }
+        public string Apv { get; set; }
+        public string Datetime { get; set; }
+        public string OriginalCurrency { get; set; }
+        public string TranId { get; set; }
+        public string Firstname { get; set; }
+        public string Lastname { get; set; }
+        public string Email { get; set; }
+        public string BankRef { get; set; }
+        public string PayerAccount { get; set; }
+        public string Phone { get; set; }
+        public string PaymentType { get; set; }
         
         public PaymentDetailsViewModel(string id)
         {
@@ -40,22 +40,21 @@ namespace WIS.ViewModels
                  {
                      DataService.Instance.ABATransactionCheck((abastatus) =>
                      {
-                         status = abastatus.status;
-                         description = abastatus.description;
-                         amount = abastatus.amount;
-                         totalAmount = abastatus.totalAmount;
-                         apv = abastatus.apv;
-                         datetime = abastatus.datetime;
-                         original_currency = abastatus.original_currency;
-                         tran_id = abastatus.tran_id;
-                         firstname = abastatus.firstname;
-                         lastname = abastatus.lastname;
-                         email = abastatus.email;
-                         bank_ref = abastatus.bank_ref;
-
-                         payer_account = abastatus.payer_account;
-                         phone = abastatus.phone;
-                         payment_type = abastatus.payment_type;
+                         Status = abastatus.status;
+                         Description = abastatus.description;
+                         Amount = abastatus.amount;
+                         TotalAmount = abastatus.totalAmount;
+                         Apv = abastatus.apv;
+                         Datetime = abastatus.datetime;
+                         OriginalCurrency = abastatus.original_currency;
+                         TranId = abastatus.tran_id;
+                         Firstname = abastatus.firstname;
+                         Lastname = abastatus.lastname;
+                         Email = abastatus.email;
+                         BankRef = abastatus.bank_ref;
+                         PayerAccount = abastatus.payer_account;
+                         Phone = abastatus.phone;
+                         PaymentType = abastatus.payment_type;
 
                      }, invoice);
                  }

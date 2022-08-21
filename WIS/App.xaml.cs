@@ -9,7 +9,7 @@ using WIS.Services;
 using Xamarin.Essentials;
 using WIS.Models;
 using System.Collections.Generic;
-
+using System.Text;
 
 [assembly: ExportFont("Montserrat-Bold.ttf",Alias="Montserrat-Bold")]
      [assembly: ExportFont("Montserrat-Medium.ttf", Alias = "Montserrat-Medium")]
@@ -42,7 +42,14 @@ namespace WIS
                   typeof(Analytics), typeof(Crashes));
             
             InitializeComponent();
-            MainPage = new LoginPage();
+
+            //string link = "{'ios_scheme':'http://www.google.com'}";
+            //string b64 = Convert.ToBase64String(Encoding.ASCII.GetBytes(link));
+            //eyAnaW9zX3NjaGVtZSc6J2h0dHA6Ly93d3cuZ29vZ2xlLmNvbSd9
+            MainPage = new InvoiceDetailSample();
+            //MainPage = new LoginPage();
+            //MainPage = new TestPopup();
+
             //MainPage = new PaymentListSearchPage();
 
             //MainPage = new SupportDetailPage();
@@ -101,6 +108,19 @@ namespace WIS
         protected override void OnResume()
         {
         }
-        
+
+        protected override async void OnAppLinkRequestReceived(Uri uri)
+        {
+            string appDomain = "westernschool://western.edu.kh".ToLowerInvariant() + "/";
+            if (!uri.ToString().ToLowerInvariant().StartsWith(appDomain, StringComparison.Ordinal))
+                return;
+
+            // Check if authentified
+            // Launch login page with message if not authentified
+            // else
+            //Shell.Current.GoToAsync($"InvoiceDetails?ID={invoice.id}&IsSubmitable=true");
+            
+            base.OnAppLinkRequestReceived(uri);
+        }
     }
 }

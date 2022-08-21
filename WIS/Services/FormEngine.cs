@@ -39,6 +39,70 @@ namespace WIS.Services
             {"21","Expired production key" }
         };
 
+        public static void MultipartFormDataPostForUrl(stringDelegate del, string url, Dictionary<string, object> postParameters, bool returnUnfiltered = false)
+        {
+            string formDataBoundary = String.Format("----------{0:N}", Guid.NewGuid());
+            string contentType = "multipart/form-data; boundary=" + formDataBoundary;
+            byte[] formData = GetMultipartFormData(postParameters, formDataBoundary);
+            string userAgent = "application";
+            HttpWebRequest request = WebRequest.Create(url) as HttpWebRequest;
+
+            if (request == null)
+            {
+                throw new NullReferenceException("request is not a http request");
+            }
+
+            // Set up the request properties.
+            request.Method = "POST";
+            request.ContentType = contentType;
+            request.UserAgent = userAgent;
+            request.CookieContainer = new CookieContainer();
+            request.ContentLength = formData.Length;
+
+            // You could add authentication here as well if needed:
+            // request.PreAuthenticate = true;
+            // request.AuthenticationLevel = System.Net.Security.AuthenticationLevel.MutualAuthRequested;
+            // request.Headers.Add("Authorization", "Basic " + Convert.ToBase64String(System.Text.Encoding.Default.GetBytes("username" + ":" + "password")));
+
+            // Send the form data to the request.
+            request.BeginGetRequestStream((IAsyncResult ar) =>
+            {
+                try
+                {
+                    HttpWebRequest req1 = (HttpWebRequest)ar.AsyncState;
+                    Stream writeStream = request.EndGetRequestStream(ar);
+
+                    writeStream.Write(formData, 0, formData.Length);
+                    writeStream.Flush();
+                    writeStream.Dispose();
+                    request.BeginGetResponse((IAsyncResult ar2) =>
+                    {
+                        try
+                        {
+                            HttpWebRequest req2 = (HttpWebRequest)ar2.AsyncState;
+                            HttpWebResponse response = (HttpWebResponse)request.EndGetResponse(ar2);
+                            del(response.ResponseUri.ToString());                         
+                        }
+                        catch (Exception ex)
+                        {
+                            Device.BeginInvokeOnMainThread(() => {
+                                Application.Current.MainPage.DisplayAlert("ERROR", "error happened(" + url + ") (" + ex.Message + ")", "OK");
+
+                            });
+                        }
+                    }, req1);
+                }
+                catch (Exception ex)
+                {
+                    Device.BeginInvokeOnMainThread(() => {
+                        Application.Current.MainPage.DisplayAlert("ERROR", "error happened(" + url + ") (" + ex.Message + ")", "OK");
+                    });
+
+                }
+            }, request);
+
+        }
+
         public static void MultipartFormDataPost(stringDelegate del, string url, Dictionary<string, object> postParameters,bool returnUnfiltered = false)
         {
             string formDataBoundary = String.Format("----------{0:N}", Guid.NewGuid());

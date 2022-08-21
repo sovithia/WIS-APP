@@ -43,11 +43,11 @@
           "dependencies": {
             "Microsoft.AppCenter.Analytics": {
               "target": "Package",
-              "version": "[4.5.1, )"
+              "version": "[4.5.3, )"
             },
             "Microsoft.AppCenter.Crashes": {
               "target": "Package",
-              "version": "[4.5.1, )"
+              "version": "[4.5.3, )"
             },
             "Newtonsoft.Json": {
               "target": "Package",
@@ -101,6 +101,10 @@
               "target": "Package",
               "version": "[20.2.0.39, )"
             },
+            "Syncfusion.Xamarin.SfPopupLayout": {
+              "target": "Package",
+              "version": "[20.2.0.39, )"
+            },
             "Syncfusion.Xamarin.SfPullToRefresh": {
               "target": "Package",
               "version": "[20.2.0.39, )"
@@ -131,7 +135,7 @@
             },
             "Xamarin.Forms": {
               "target": "Package",
-              "version": "[5.0.0.2478, )"
+              "version": "[5.0.0.2515, )"
             },
             "sqlite-net-pcl": {
               "target": "Package",

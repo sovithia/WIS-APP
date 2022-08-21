@@ -17,6 +17,7 @@ using Firebase.Iid;
 using Android.Util;
 using Firebase;
 using Plugin.FirebasePushNotification;
+using Syncfusion.XForms.Android.PopupLayout;
 
 namespace WIS.Droid
 {
@@ -52,7 +53,7 @@ namespace WIS.Droid
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             if (ContextCompat.CheckSelfPermission(this, Manifest.Permission.RecordAudio) != Permission.Granted)
                 ActivityCompat.RequestPermissions(this, new String[] { Manifest.Permission.RecordAudio }, 1);
-
+            SfPopupLayoutRenderer.Init();
             LoadApplication(new App());
             FirebasePushNotificationManager.ProcessIntent(this, Intent);
 

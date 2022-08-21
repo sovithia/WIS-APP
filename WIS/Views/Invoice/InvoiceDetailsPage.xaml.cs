@@ -32,10 +32,13 @@ namespace WIS.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            vm.OnAppearing();
+            //vm.OnAppearing();
 
         }
 
+        void TapGestureRecognizer_Tapped(System.Object sender, System.EventArgs e)
+        {
+        }
 
     }
 }

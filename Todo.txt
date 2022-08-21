@@ -1,4 +1,18 @@
-﻿0 = to pay 
+﻿TODO :
+
+->Wire CreditCard Form and test fake card
+Do a static success payment page
+Finalize Return Deeplink
+Do Push reminder logic on backoffice
+    - Daemon system OK
+    - Push logic Todo
+Handle open push to open invoice.
+Check session duration
+Test on Android
+Check Transaction search
+====
+
+0 = to pay 
 2 = to validate ABA (list payment detail from ABA)
 3 = to validate ACLEDA (list payment detail from ACLEDA)
 1 = Paid(check note, load ABA or ACLEDA)
@@ -26,23 +40,14 @@ Registrar Account
 Invoice Detail on appear (OK)
     -> Check ABA Transaction, hide pay if already paid
 
-Find a way to hook Invoice creation (SQL Trigger or WebApp Code)
-to send notification
-    -> Deeplinking open on invoice page
 
+-> Deeplinking open on invoice page
 
-Push_notification on new payment creation
-Push reminder
-(local push or back office)
-
-Option :
-Deeplink_back
-
-
+// On back office, create a daemon that run and push users on a specified time
+// we create a database and store push reminder logic
+// (No local push)
 
 Check transaction
     -> Update Status
 
-
 // Reconcile back office with transaction
-

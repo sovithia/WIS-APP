@@ -26,6 +26,7 @@ using UserNotifications;
 using Firebase.CloudMessaging;
 using Plugin.FirebasePushNotification;
 using Xamarin.Essentials;
+using Syncfusion.XForms.iOS.PopupLayout;
 
 namespace WIS.iOS
 {
@@ -71,7 +72,7 @@ namespace WIS.iOS
             CrossMediaManager.Current.Init();
 
             new SfBusyIndicatorRenderer();
-
+            SfPopupLayoutRenderer.Init();
             LoadApplication(new App());
             
 
@@ -153,6 +154,17 @@ namespace WIS.iOS
 
         }
 
+
+        public override bool OpenUrl(UIApplication app, NSUrl url, NSDictionary options)
+        {
+            NSUrlComponents urlComponents = new NSUrlComponents(url, false);
+            if (urlComponents.Host.EndsWith("westernschool", StringComparison.OrdinalIgnoreCase))
+            {
+                NSUrlQueryItem[] allItems = urlComponents.QueryItems;
+                var apiUrl = allItems?.First()?.Value;                
+            }
+            return true;
+        }
     }
 }
 

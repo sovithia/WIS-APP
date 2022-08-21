@@ -2,8 +2,12 @@
   "version": 3,
   "targets": {
     ".NETStandard,Version=v2.1": {
-      "Microsoft.AppCenter/4.5.1": {
+      "Microsoft.AppCenter/4.5.3": {
         "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.1",
+          "SQLitePCLRaw.bundle_green": "2.1.0"
+        },
         "compile": {
           "lib/netstandard1.0/Microsoft.AppCenter.dll": {}
         },
@@ -11,10 +15,10 @@
           "lib/netstandard1.0/Microsoft.AppCenter.dll": {}
         }
       },
-      "Microsoft.AppCenter.Analytics/4.5.1": {
+      "Microsoft.AppCenter.Analytics/4.5.3": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AppCenter": "4.5.1"
+          "Microsoft.AppCenter": "4.5.3"
         },
         "compile": {
           "lib/netstandard1.0/Microsoft.AppCenter.Analytics.dll": {}
@@ -23,10 +27,10 @@
           "lib/netstandard1.0/Microsoft.AppCenter.Analytics.dll": {}
         }
       },
-      "Microsoft.AppCenter.Crashes/4.5.1": {
+      "Microsoft.AppCenter.Crashes/4.5.3": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AppCenter": "4.5.1"
+          "Microsoft.AppCenter": "4.5.3"
         },
         "compile": {
           "lib/netstandard1.0/Microsoft.AppCenter.Crashes.dll": {}
@@ -398,12 +402,11 @@
           "lib/netstandard2.0/SQLite-net.dll": {}
         }
       },
-      "SQLitePCLRaw.bundle_green/2.0.4": {
+      "SQLitePCLRaw.bundle_green/2.1.0": {
         "type": "package",
         "dependencies": {
-          "SQLitePCLRaw.core": "2.0.4",
-          "SQLitePCLRaw.lib.e_sqlite3": "2.0.4",
-          "SQLitePCLRaw.provider.e_sqlite3": "2.0.4"
+          "SQLitePCLRaw.lib.e_sqlite3": "2.1.0",
+          "SQLitePCLRaw.provider.e_sqlite3": "2.1.0"
         },
         "compile": {
           "lib/netstandard2.0/SQLitePCLRaw.batteries_v2.dll": {}
@@ -412,7 +415,7 @@
           "lib/netstandard2.0/SQLitePCLRaw.batteries_v2.dll": {}
         }
       },
-      "SQLitePCLRaw.core/2.0.4": {
+      "SQLitePCLRaw.core/2.1.0": {
         "type": "package",
         "dependencies": {
           "System.Memory": "4.5.3"
@@ -424,7 +427,7 @@
           "lib/netstandard2.0/SQLitePCLRaw.core.dll": {}
         }
       },
-      "SQLitePCLRaw.lib.e_sqlite3/2.0.4": {
+      "SQLitePCLRaw.lib.e_sqlite3/2.1.0": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/_._": {}
@@ -433,6 +436,14 @@
           "lib/netstandard2.0/_._": {}
         },
         "runtimeTargets": {
+          "runtimes/alpine-arm/native/libe_sqlite3.so": {
+            "assetType": "native",
+            "rid": "alpine-arm"
+          },
+          "runtimes/alpine-arm64/native/libe_sqlite3.so": {
+            "assetType": "native",
+            "rid": "alpine-arm64"
+          },
           "runtimes/alpine-x64/native/libe_sqlite3.so": {
             "assetType": "native",
             "rid": "alpine-x64"
@@ -453,9 +464,21 @@
             "assetType": "native",
             "rid": "linux-mips64"
           },
+          "runtimes/linux-musl-arm/native/libe_sqlite3.so": {
+            "assetType": "native",
+            "rid": "linux-musl-arm"
+          },
+          "runtimes/linux-musl-arm64/native/libe_sqlite3.so": {
+            "assetType": "native",
+            "rid": "linux-musl-arm64"
+          },
           "runtimes/linux-musl-x64/native/libe_sqlite3.so": {
             "assetType": "native",
             "rid": "linux-musl-x64"
+          },
+          "runtimes/linux-s390x/native/libe_sqlite3.so": {
+            "assetType": "native",
+            "rid": "linux-s390x"
           },
           "runtimes/linux-x64/native/libe_sqlite3.so": {
             "assetType": "native",
@@ -464,6 +487,18 @@
           "runtimes/linux-x86/native/libe_sqlite3.so": {
             "assetType": "native",
             "rid": "linux-x86"
+          },
+          "runtimes/maccatalyst-arm64/native/libe_sqlite3.dylib": {
+            "assetType": "native",
+            "rid": "maccatalyst-arm64"
+          },
+          "runtimes/maccatalyst-x64/native/libe_sqlite3.dylib": {
+            "assetType": "native",
+            "rid": "maccatalyst-x64"
+          },
+          "runtimes/osx-arm64/native/libe_sqlite3.dylib": {
+            "assetType": "native",
+            "rid": "osx-arm64"
           },
           "runtimes/osx-x64/native/libe_sqlite3.dylib": {
             "assetType": "native",
@@ -487,10 +522,10 @@
           }
         }
       },
-      "SQLitePCLRaw.provider.e_sqlite3/2.0.4": {
+      "SQLitePCLRaw.provider.e_sqlite3/2.1.0": {
         "type": "package",
         "dependencies": {
-          "SQLitePCLRaw.core": "2.0.4"
+          "SQLitePCLRaw.core": "2.1.0"
         },
         "compile": {
           "lib/netstandard2.0/SQLitePCLRaw.provider.e_sqlite3.dll": {}
@@ -702,6 +737,19 @@
         },
         "runtime": {
           "lib/netstandard2.0/Syncfusion.SfPicker.XForms.dll": {}
+        }
+      },
+      "Syncfusion.Xamarin.SfPopupLayout/20.2.0.39": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Xamarin.Core": "20.2.0.39",
+          "Xamarin.Forms": "5.0.0.2012"
+        },
+        "compile": {
+          "lib/netstandard2.0/Syncfusion.SfPopupLayout.XForms.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Syncfusion.SfPopupLayout.XForms.dll": {}
         }
       },
       "Syncfusion.Xamarin.SfPullToRefresh/20.2.0.39": {
@@ -1772,7 +1820,7 @@
           "lib/netstandard2.0/Xamarin.Essentials.dll": {}
         }
       },
-      "Xamarin.Forms/5.0.0.2478": {
+      "Xamarin.Forms/5.0.0.2515": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/Xamarin.Forms.Core.dll": {},
@@ -1792,10 +1840,10 @@
     }
   },
   "libraries": {
-    "Microsoft.AppCenter/4.5.1": {
-      "sha512": "ISpYsz9log3yba/7vdgI3s9UdHjxlW22j2lBlHLPpjjYYzU44eG5VLblIXqhOdSvAM5KT0fYdEOpE7LnX3t22g==",
+    "Microsoft.AppCenter/4.5.3": {
+      "sha512": "R8bcZsd9aoA6xgZAjACu//4j8c94tH5BV0wCDPIclqnA5upRnRlDqlVtv61E7FCqU+4ibjHkILKHx5+aUGqOfw==",
       "type": "package",
-      "path": "microsoft.appcenter/4.5.1",
+      "path": "microsoft.appcenter/4.5.3",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1822,14 +1870,14 @@
         "lib/netstandard1.0/Microsoft.AppCenter.xml",
         "lib/uap10.0/Microsoft.AppCenter.dll",
         "lib/uap10.0/Microsoft.AppCenter.xml",
-        "microsoft.appcenter.4.5.1.nupkg.sha512",
+        "microsoft.appcenter.4.5.3.nupkg.sha512",
         "microsoft.appcenter.nuspec"
       ]
     },
-    "Microsoft.AppCenter.Analytics/4.5.1": {
-      "sha512": "N/qq1N99q8vFjvWDrh/9lJXIE5Hwo7GW5I5LMKephHvxJMNDxWReSFDpUxXLI8OPLO9dDrPhVQBHhPxA0dtafg==",
+    "Microsoft.AppCenter.Analytics/4.5.3": {
+      "sha512": "9BQAY/M2zXkacpPpdYXv5mR7gnYJubeH1SkKNKiLnvFo2eWyo+ELgXUEKOY4IfdWUFzfTmBgEzEaQ0TZCw1baA==",
       "type": "package",
-      "path": "microsoft.appcenter.analytics/4.5.1",
+      "path": "microsoft.appcenter.analytics/4.5.3",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1856,14 +1904,14 @@
         "lib/netstandard1.0/Microsoft.AppCenter.Analytics.xml",
         "lib/uap10.0/Microsoft.AppCenter.Analytics.dll",
         "lib/uap10.0/Microsoft.AppCenter.Analytics.xml",
-        "microsoft.appcenter.analytics.4.5.1.nupkg.sha512",
+        "microsoft.appcenter.analytics.4.5.3.nupkg.sha512",
         "microsoft.appcenter.analytics.nuspec"
       ]
     },
-    "Microsoft.AppCenter.Crashes/4.5.1": {
-      "sha512": "OoxCR5gBrOYms1g9S0eHRnPIDfUftew9wAPZ/UHCI6o61rVZ9eVmCQZlhImZ42e/zsWlE97K4jUYXjnJ80uuig==",
+    "Microsoft.AppCenter.Crashes/4.5.3": {
+      "sha512": "SF1a37m/eS0HRI3UIpXpxVGL8BT+sWlAO/W9Cy+JRL4UQPJDA7S4Nj1+fwPgCopoPfCqr3fTgELyoOUY+e3Img==",
       "type": "package",
-      "path": "microsoft.appcenter.crashes/4.5.1",
+      "path": "microsoft.appcenter.crashes/4.5.3",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1890,7 +1938,7 @@
         "lib/netstandard1.0/Microsoft.AppCenter.Crashes.xml",
         "lib/uap10.0/Microsoft.AppCenter.Crashes.dll",
         "lib/uap10.0/Microsoft.AppCenter.Crashes.xml",
-        "microsoft.appcenter.crashes.4.5.1.nupkg.sha512",
+        "microsoft.appcenter.crashes.4.5.3.nupkg.sha512",
         "microsoft.appcenter.crashes.nuspec"
       ]
     },
@@ -2496,54 +2544,66 @@
         "sqlite-net-pcl.nuspec"
       ]
     },
-    "SQLitePCLRaw.bundle_green/2.0.4": {
-      "sha512": "ubFgOHDmtTcq2LU7Ss10yHnFVMm2rFVr65Ggi+Mh514KjGx4pal98P2zSvZtWf3wbtJw6G1InBgeozBtnpEfKQ==",
+    "SQLitePCLRaw.bundle_green/2.1.0": {
+      "sha512": "VPLK8FzWwJ1RkAWClYOBmjlzFZbz9ME6pdmz0oCoZw736/oIdKldzTxz8S1YGielxYxGHDdK5FczZTOs8LUbbQ==",
       "type": "package",
-      "path": "sqlitepclraw.bundle_green/2.0.4",
+      "path": "sqlitepclraw.bundle_green/2.1.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "lib/Xamarin.iOS10/SQLitePCLRaw.batteries_v2.dll",
-        "lib/Xamarin.iOS10/SQLitePCLRaw.nativelibrary.dll",
+        "lib/monoandroid90/SQLitePCLRaw.batteries_v2.dll",
         "lib/net461/SQLitePCLRaw.batteries_v2.dll",
-        "lib/net461/SQLitePCLRaw.nativelibrary.dll",
-        "lib/netcoreapp3.1/SQLitePCLRaw.batteries_v2.dll",
-        "lib/netcoreapp3.1/SQLitePCLRaw.nativelibrary.dll",
+        "lib/net6.0-android31.0/SQLitePCLRaw.batteries_v2.dll",
+        "lib/net6.0-android31.0/SQLitePCLRaw.batteries_v2.xml",
+        "lib/net6.0-ios14.0/SQLitePCLRaw.batteries_v2.dll",
+        "lib/net6.0-ios14.2/SQLitePCLRaw.batteries_v2.dll",
+        "lib/net6.0-tvos10.0/SQLitePCLRaw.batteries_v2.dll",
         "lib/netstandard2.0/SQLitePCLRaw.batteries_v2.dll",
-        "sqlitepclraw.bundle_green.2.0.4.nupkg.sha512",
+        "lib/xamarinios10/SQLitePCLRaw.batteries_v2.dll",
+        "sqlitepclraw.bundle_green.2.1.0.nupkg.sha512",
         "sqlitepclraw.bundle_green.nuspec"
       ]
     },
-    "SQLitePCLRaw.core/2.0.4": {
-      "sha512": "4XlDZpDAsboMD6qZQcz9AaKblKDUTVHF+8f3lvbP7QjoqSRr2Xc0Lm34IK2pjRIYnyFLhI3yOJ5YWfOiCid2yg==",
+    "SQLitePCLRaw.core/2.1.0": {
+      "sha512": "6khRuPd6ScBUQzV9bti+OtwqwFsMMgJzibhvbgiAIFVQhrowFOCM/Zq0xm00+nVEgEfPwWEOLhYvxs/5j+zAcg==",
       "type": "package",
-      "path": "sqlitepclraw.core/2.0.4",
+      "path": "sqlitepclraw.core/2.1.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/SQLitePCLRaw.core.dll",
-        "sqlitepclraw.core.2.0.4.nupkg.sha512",
+        "sqlitepclraw.core.2.1.0.nupkg.sha512",
         "sqlitepclraw.core.nuspec"
       ]
     },
-    "SQLitePCLRaw.lib.e_sqlite3/2.0.4": {
-      "sha512": "oetvmtDZOE4Nnrtxd8Trapl9geBiu0rDCUXff46qGYjnUwzaU1mZ3OHnfR402tl32rx8gBWg3n5OBRaPJRbsGw==",
+    "SQLitePCLRaw.lib.e_sqlite3/2.1.0": {
+      "sha512": "7p5ltRKUA/uScNRnd20Rg1c7cC4nWwUQIXRFITIR1G0wNCnJ9bj060VanPh2J352KOHpZ3CEOJKu3dMfyY4YMQ==",
       "type": "package",
-      "path": "sqlitepclraw.lib.e_sqlite3/2.0.4",
+      "path": "sqlitepclraw.lib.e_sqlite3/2.1.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "build/net461/SQLitePCLRaw.lib.e_sqlite3.targets",
+        "buildTransitive/net461/SQLitePCLRaw.lib.e_sqlite3.targets",
+        "buildTransitive/net6.0/SQLitePCLRaw.lib.e_sqlite3.targets",
         "lib/net461/_._",
         "lib/netstandard2.0/_._",
+        "runtimes/alpine-arm/native/libe_sqlite3.so",
+        "runtimes/alpine-arm64/native/libe_sqlite3.so",
         "runtimes/alpine-x64/native/libe_sqlite3.so",
+        "runtimes/browser-wasm/nativeassets/net6.0/e_sqlite3.a",
         "runtimes/linux-arm/native/libe_sqlite3.so",
         "runtimes/linux-arm64/native/libe_sqlite3.so",
         "runtimes/linux-armel/native/libe_sqlite3.so",
         "runtimes/linux-mips64/native/libe_sqlite3.so",
+        "runtimes/linux-musl-arm/native/libe_sqlite3.so",
+        "runtimes/linux-musl-arm64/native/libe_sqlite3.so",
         "runtimes/linux-musl-x64/native/libe_sqlite3.so",
+        "runtimes/linux-s390x/native/libe_sqlite3.so",
         "runtimes/linux-x64/native/libe_sqlite3.so",
         "runtimes/linux-x86/native/libe_sqlite3.so",
+        "runtimes/maccatalyst-arm64/native/libe_sqlite3.dylib",
+        "runtimes/maccatalyst-x64/native/libe_sqlite3.dylib",
+        "runtimes/osx-arm64/native/libe_sqlite3.dylib",
         "runtimes/osx-x64/native/libe_sqlite3.dylib",
         "runtimes/win-arm/native/e_sqlite3.dll",
         "runtimes/win-arm64/native/e_sqlite3.dll",
@@ -2553,20 +2613,21 @@
         "runtimes/win10-arm64/nativeassets/uap10.0/e_sqlite3.dll",
         "runtimes/win10-x64/nativeassets/uap10.0/e_sqlite3.dll",
         "runtimes/win10-x86/nativeassets/uap10.0/e_sqlite3.dll",
-        "sqlitepclraw.lib.e_sqlite3.2.0.4.nupkg.sha512",
+        "sqlitepclraw.lib.e_sqlite3.2.1.0.nupkg.sha512",
         "sqlitepclraw.lib.e_sqlite3.nuspec"
       ]
     },
-    "SQLitePCLRaw.provider.e_sqlite3/2.0.4": {
-      "sha512": "YiqCw+PfiPIuX2aZnEqt1ya5ldGm4ParIqzaRXtztDu8mdzZxOXVYOrKZazXg6nbwYbCP1H5mOYGmBFQ2W0M5g==",
+    "SQLitePCLRaw.provider.e_sqlite3/2.1.0": {
+      "sha512": "OwvGO4R0ujrdtTiIAiCN7C+2yVcLHtaF1ykcVe/Fb5KDqm1vfUxWinNYvw0S7NchpfTvR/9V9yugzqYTIvtTyA==",
       "type": "package",
-      "path": "sqlitepclraw.provider.e_sqlite3/2.0.4",
+      "path": "sqlitepclraw.provider.e_sqlite3/2.1.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
+        "lib/net6.0-windows7.0/SQLitePCLRaw.provider.e_sqlite3.dll",
+        "lib/net6.0/SQLitePCLRaw.provider.e_sqlite3.dll",
         "lib/netstandard2.0/SQLitePCLRaw.provider.e_sqlite3.dll",
-        "lib/uap10.0/SQLitePCLRaw.provider.e_sqlite3.dll",
-        "sqlitepclraw.provider.e_sqlite3.2.0.4.nupkg.sha512",
+        "sqlitepclraw.provider.e_sqlite3.2.1.0.nupkg.sha512",
         "sqlitepclraw.provider.e_sqlite3.nuspec"
       ]
     },
@@ -3055,6 +3116,39 @@
         "lib/uap10.0/Syncfusion.SfPicker.XForms.dll",
         "syncfusion.xamarin.sfpicker.20.2.0.39.nupkg.sha512",
         "syncfusion.xamarin.sfpicker.nuspec",
+        "syncfusion_logo.png"
+      ]
+    },
+    "Syncfusion.Xamarin.SfPopupLayout/20.2.0.39": {
+      "sha512": "4bQzfEFpmRoNKcRTWbgXAHVoZoklS0gestCAwe/fPhK0tNYJXaSv4cr984sj5mrlIvvBEpvlR4A/yTNmCOEkyg==",
+      "type": "package",
+      "path": "syncfusion.xamarin.sfpopuplayout/20.2.0.39",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "README.md",
+        "lib/MonoAndroid10.0/Syncfusion.SfPopupLayout.XForms.Android.dll",
+        "lib/MonoAndroid10.0/Syncfusion.SfPopupLayout.XForms.dll",
+        "lib/MonoAndroid10.0/Syncfusion.SfPopupLayout.XForms.xml",
+        "lib/Xamarin.iOS10/Syncfusion.SfPopupLayout.XForms.dll",
+        "lib/Xamarin.iOS10/Syncfusion.SfPopupLayout.XForms.iOS.dll",
+        "lib/Xamarin.iOS10/Syncfusion.SfPopupLayout.XForms.xml",
+        "lib/netstandard2.0/Syncfusion.SfPopupLayout.XForms.dll",
+        "lib/netstandard2.0/Syncfusion.SfPopupLayout.XForms.xml",
+        "lib/portable-win+net45+wp80+win81+wpa81/Syncfusion.SfPopupLayout.XForms.dll",
+        "lib/portable-win+net45+wp80+win81+wpa81/Syncfusion.SfPopupLayout.XForms.xml",
+        "lib/uap10.0/Syncfusion.SfPopupLayout.XForms.UWP.XML",
+        "lib/uap10.0/Syncfusion.SfPopupLayout.XForms.UWP.dll",
+        "lib/uap10.0/Syncfusion.SfPopupLayout.XForms.UWP.pri",
+        "lib/uap10.0/Syncfusion.SfPopupLayout.XForms.UWP/Properties/Syncfusion.SfPopupLayout.XForms.UWP.rd.xml",
+        "lib/uap10.0/Syncfusion.SfPopupLayout.XForms.UWP/Resources/popup_forms_dark_theme_close_icon.png",
+        "lib/uap10.0/Syncfusion.SfPopupLayout.XForms.UWP/Resources/popup_forms_light_theme_close_icon.png",
+        "lib/uap10.0/Syncfusion.SfPopupLayout.XForms.UWP/Resources/popup_forms_uwp_close_icon.png",
+        "lib/uap10.0/Syncfusion.SfPopupLayout.XForms.dll",
+        "lib/uap10.0/Syncfusion.SfPopupLayout.XForms.xml",
+        "syncfusion.xamarin.sfpopuplayout.20.2.0.39.nupkg.sha512",
+        "syncfusion.xamarin.sfpopuplayout.nuspec",
         "syncfusion_logo.png"
       ]
     },
@@ -6473,10 +6567,10 @@
         "xamarin.essentials.nuspec"
       ]
     },
-    "Xamarin.Forms/5.0.0.2478": {
-      "sha512": "UeOnndxByPTpbExq0jPL5zKYqtHN9ldsgjQfUk9XF1pWSJUIakF3nJkq/tCgCVp5E1yp9Eecgqcthzy6llKiGg==",
+    "Xamarin.Forms/5.0.0.2515": {
+      "sha512": "n/Y/xk1idWRkxk7xItwvNwwda7CHpIk7JxD6tXkGXmTqiVGV1xRkepf5aKXFkQLM9KIQhXXYBxPsdyJysPpktw==",
       "type": "package",
-      "path": "xamarin.forms/5.0.0.2478",
+      "path": "xamarin.forms/5.0.0.2515",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -6685,15 +6779,15 @@
         "lib/uap10.0.16299/Xamarin.Forms.Xaml.dll",
         "lib/uap10.0.16299/Xamarin.Forms.Xaml.pdb",
         "lib/uap10.0.16299/Xamarin.Forms.Xaml.xml",
-        "xamarin.forms.5.0.0.2478.nupkg.sha512",
+        "xamarin.forms.5.0.0.2515.nupkg.sha512",
         "xamarin.forms.nuspec"
       ]
     }
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.1": [
-      "Microsoft.AppCenter.Analytics >= 4.5.1",
-      "Microsoft.AppCenter.Crashes >= 4.5.1",
+      "Microsoft.AppCenter.Analytics >= 4.5.3",
+      "Microsoft.AppCenter.Crashes >= 4.5.3",
       "Newtonsoft.Json >= 13.0.1",
       "Plugin.FirebasePushNotification >= 3.4.25",
       "Plugin.MediaManager.Forms >= 1.1.1",
@@ -6707,6 +6801,7 @@
       "Syncfusion.Xamarin.SfDataForm >= 20.2.0.39",
       "Syncfusion.Xamarin.SfListView >= 20.2.0.39",
       "Syncfusion.Xamarin.SfPicker >= 20.2.0.39",
+      "Syncfusion.Xamarin.SfPopupLayout >= 20.2.0.39",
       "Syncfusion.Xamarin.SfPullToRefresh >= 20.2.0.39",
       "Syncfusion.Xamarin.SfRating >= 20.2.0.39",
       "Syncfusion.Xamarin.SfSchedule >= 20.2.0.39",
@@ -6714,7 +6809,7 @@
       "Xam.Plugin.Connectivity >= 3.2.0",
       "Xam.Plugin.Media >= 5.0.1",
       "Xamarin.Essentials >= 1.7.3",
-      "Xamarin.Forms >= 5.0.0.2478",
+      "Xamarin.Forms >= 5.0.0.2515",
       "sqlite-net-pcl >= 1.8.116"
     ]
   },
@@ -6761,11 +6856,11 @@
         "dependencies": {
           "Microsoft.AppCenter.Analytics": {
             "target": "Package",
-            "version": "[4.5.1, )"
+            "version": "[4.5.3, )"
           },
           "Microsoft.AppCenter.Crashes": {
             "target": "Package",
-            "version": "[4.5.1, )"
+            "version": "[4.5.3, )"
           },
           "Newtonsoft.Json": {
             "target": "Package",
@@ -6819,6 +6914,10 @@
             "target": "Package",
             "version": "[20.2.0.39, )"
           },
+          "Syncfusion.Xamarin.SfPopupLayout": {
+            "target": "Package",
+            "version": "[20.2.0.39, )"
+          },
           "Syncfusion.Xamarin.SfPullToRefresh": {
             "target": "Package",
             "version": "[20.2.0.39, )"
@@ -6849,7 +6948,7 @@
           },
           "Xamarin.Forms": {
             "target": "Package",
-            "version": "[5.0.0.2478, )"
+            "version": "[5.0.0.2515, )"
           },
           "sqlite-net-pcl": {
             "target": "Package",

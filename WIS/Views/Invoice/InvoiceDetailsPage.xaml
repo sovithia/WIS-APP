@@ -8,18 +8,97 @@
     xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
     xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
     xmlns:signature="clr-namespace:Syncfusion.XForms.SignaturePad;assembly=Syncfusion.SfSignaturePad.XForms"    
-    xmlns:gradient="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms">
+    xmlns:gradient="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
+    xmlns:sfPopup="clr-namespace:Syncfusion.XForms.PopupLayout;assembly=Syncfusion.SfPopupLayout.XForms">
+
     <ContentPage.Content>
-        <ScrollView>
-        <Grid>
+
+        
+        <sfPopup:SfPopupLayout x:Name="popUpLayout" >
+            
+            <sfPopup:SfPopupLayout.PopupView>
+                
+                <sfPopup:PopupView HorizontalOptions="FillAndExpand" HeightRequest="250" 
+                           ShowFooter="False">
+                        <sfPopup:PopupView.HeaderTemplate>
+                            <DataTemplate>
+                                <Label Text="Payment" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontAttributes="Bold"/>
+                            </DataTemplate>
+                        </sfPopup:PopupView.HeaderTemplate>
+
+                        <sfPopup:PopupView.ContentTemplate>
+                        <DataTemplate>
+                            <Grid >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="100" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="50" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Grid.RowDefinitions>      
+                                        <RowDefinition Height="20"/>
+                                        <RowDefinition Height="20"/>
+                                        <RowDefinition Height="1"/>
+                                        <RowDefinition Height="20"/>
+                                        <RowDefinition Height="20"/>
+                                        <RowDefinition Height="1"/>
+                                        <RowDefinition Height="20"/>
+                                        <RowDefinition Height="20"/>                                        
+                                     </Grid.RowDefinitions>
+
+                                    <Image HeightRequest="50" VerticalOptions="Center" Source="ABA" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2">
+                                        <Image.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"  /></Image.GestureRecognizers>
+                                    </Image>
+                                    <Label Grid.Column="1" Grid.Row="0" FontSize="12" Text="ABA PAY" >
+                                        <Label.GestureRecognizers><TapGestureRecognizer Command="{Binding ABACommand}" /></Label.GestureRecognizers>
+                                    </Label>
+                                    <Label Grid.Column="1" Grid.Row="1" FontSize="8" Text="Tap to with ABA Mobile" >
+                                        <Label.GestureRecognizers><TapGestureRecognizer Command="{Binding ABACommand}" /></Label.GestureRecognizers>
+                                    </Label>
+                                    <ImageButton   HeightRequest="5" Source="Arrow" Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Command="{Binding ABACommand}" />
+
+
+                                    <Image HeightRequest="50" VerticalOptions="Center" Source="ACLEDA" Grid.Column="0" Grid.Row="3" Grid.RowSpan="2" >
+                                        <Image.GestureRecognizers><TapGestureRecognizer Command="{Binding ACLEDACommand}"/></Image.GestureRecognizers>
+                                    </Image>
+                                    <Label Grid.Column="1" Grid.Row="4" FontSize="8" Text="Tap to with ACLEDA Mobile" >
+                                        <Label.GestureRecognizers><TapGestureRecognizer Command="{Binding ACLEDACommand}"/></Label.GestureRecognizers>
+                                    </Label>
+                                    <Label Grid.Column="1" Grid.Row="3" FontSize="12" Text="ACLEDA PAY">
+                                        <Label.GestureRecognizers><TapGestureRecognizer Command="{Binding ACLEDACommand}"/></Label.GestureRecognizers>
+                                    </Label>
+                                    <ImageButton   HeightRequest="5" Source="Arrow" Grid.Column="2" Grid.Row="3" Grid.RowSpan="2" Command="{Binding ACLEDACommand}" />                                    
+
+
+                                    <Image HeightRequest="50" VerticalOptions="Center" Source="CreditCard" Grid.Column="0" Grid.Row="6" Grid.RowSpan="2" >
+                                       <Image.GestureRecognizers><TapGestureRecognizer Command="{Binding CreditCardCommand}"/></Image.GestureRecognizers>
+                                    </Image>                                
+                                    <Label Grid.Column="1" Grid.Row="6" FontSize="12" Text="Credit/Debit Card" >
+                                        <Label.GestureRecognizers><TapGestureRecognizer Command="{Binding ACLEDACommand}"/></Label.GestureRecognizers>
+                                    </Label>
+                                    <Image HorizontalOptions="Start" Grid.Column="1" Grid.Row="7"  HeightRequest="20" Source="4Cards" >
+                                        <Image.GestureRecognizers><TapGestureRecognizer Command="{Binding CreditCardCommand}"/></Image.GestureRecognizers>
+                                    </Image>                                                                        
+                                    <ImageButton HeightRequest="5" Source="Arrow" Grid.Column="2" Grid.Row="6" Grid.RowSpan="2" Command="{Binding CreditCardCommand}" />
+
+                                    <BoxView BackgroundColor="Black" HeightRequest="1" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3" />
+                                    <BoxView BackgroundColor="Black" HeightRequest="1" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="3" />
+                                </Grid>                                                                               
+                        </DataTemplate>
+                    </sfPopup:PopupView.ContentTemplate>
+                </sfPopup:PopupView>
+                
+            </sfPopup:SfPopupLayout.PopupView>
+            
+            <sfPopup:SfPopupLayout.Content>
+                     <Grid>
             <gradient:SfGradientView Style="{StaticResource BlueGradientStyle}" />
             <Grid Padding="5,20,5,20" RowSpacing="5">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="30" />
                     <RowDefinition Height="*" />
                     <RowDefinition Height="30" />
-                    <RowDefinition Height="120" />
-                    
+                    <RowDefinition Height="120" />                 
                 </Grid.RowDefinitions>
 
                 <Label Grid.Row="0" Text="{Binding InvoiceID}" FontFamily="Montserrat-SemiBold"   HorizontalTextAlignment="Center" TextColor="{DynamicResource Gray-White}" FontSize="18"/>
@@ -56,34 +135,26 @@
                             <behaviour:SfListViewExtendHeightBehavior />
                         </listView:SfListView.Behaviors>
                  </listView:SfListView>
-                </Frame>
-
-               
-
+                </Frame>               
 
                 <Grid Grid.Row="2" Padding="5,0,5,0" Margin="10,0,10,0" VerticalOptions="Center" BackgroundColor="{DynamicResource InfoBlue}" >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="120"/>
-                    </Grid.ColumnDefinitions>
-                    
-                    <Label  Grid.Column="0"  Grid.Row="0" Text="Total" HorizontalTextAlignment="Start" FontSize="16" FontFamily="Montserrat-SemiBold"     TextColor="{DynamicResource Gray-White}"   />
+                    </Grid.ColumnDefinitions>                    
+                    <Label  Grid.Column="0"  Grid.Row="0" Text="Total" HorizontalTextAlignment="Start" FontSize="16" FontFamily="Montserrat-SemiBold" TextColor="{DynamicResource Gray-White}"   />
                     <Label Grid.Column="1" Grid.Row="0" Text="{Binding Total,StringFormat='${0:#,0.#0}'}"  TextColor="{DynamicResource Gray-White}" Style="{StaticResource TitleLabelStyle}" HorizontalOptions="End"   FontSize="16" />
                 </Grid>
-
-                <Grid Grid.Row="3" Padding="5,5,5,5" Margin="10,0,10,0" ColumnSpacing="5" VerticalOptions="Center" BackgroundColor="{DynamicResource InfoBlue}">
-                   <Grid.RowDefinitions>
-                       <RowDefinition Height="*"/>
-                       <RowDefinition Height="2*"/>                      
-                   </Grid.RowDefinitions>
-                   <Label Text="Pay with :" HorizontalTextAlignment="Center" FontSize="20" FontFamily="Montserrat-SemiBold" VerticalOptions="Center" TextColor="{DynamicResource Gray-White}" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" />
-                   <ImageButton Grid.Column="0" Grid.Row="1" x:Name="acledabtn" Command="{Binding ACLEDACommand}"  Source="ACLEDA" BorderWidth="2" BackgroundColor="White" BorderColor="Black" />
-                   <ImageButton Grid.Column="1" Grid.Row="1" x:Name="ababtn" Source="ABA" Command="{Binding ABACommand}" BorderWidth="2" BorderColor="Black" BackgroundColor="#055e7c" />
-                   <ImageButton Grid.Column="2" Grid.Row="1" x:Name="creditcardbrn" Source="CreditCard" Command="{Binding CreditCardCommand}" BorderWidth="2" BorderColor="Black" BackgroundColor="#055e7c" />
-
-               </Grid>
+               
             </Grid>
         </Grid>
-        </ScrollView>
+        
+
+            </sfPopup:SfPopupLayout.Content>
+            
+        </sfPopup:SfPopupLayout>
+
+
+       
     </ContentPage.Content>
 </ContentPage>

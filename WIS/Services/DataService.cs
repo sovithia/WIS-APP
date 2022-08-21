@@ -17,8 +17,8 @@ namespace WIS.Services
     public class DataService
     {
         private string BaseURL;
-        private string aba_public_key = "d5e1722a2ef703c41ca0c9fbab63275fb67d5ca0";
-        private string aba_merchant_id = "ec002318";
+        private string aba_public_key = "2b5e6e0d-73c5-4271-a85c-95940995abca";
+        private string aba_merchant_id = "westernschool";
         //private string aba_baseurl = "https://checkout.payway.com.kh/api/payment-gateway/v1/payments/";
         private string aba_baseurl = "https://checkout-sandbox.payway.com.kh/api/payment-gateway/v1/payments/";
         private Dictionary<string, string> headers;
@@ -452,16 +452,23 @@ namespace WIS.Services
             data["req_time"] = GenerateRequesTime();
             data["merchant_id"] = this.aba_merchant_id;
             data["tran_id"] = "TRX-" + invoice.ID;
+            data["view_type"] = "hosted_view";
             data["amount"] = amount;
             data["items"] = invoice.ABAItems();
             data["firstname"] = firstname;
             data["lastname"] = lastname;
             data["phone"] = phone;
             data["type"] = "purchase";
+
             data["payment_option"] = "cards";
             string ID = Preferences.Get("ID", "");
-            string link = "westernschool://western.edu.kh?userid=" + ID + "&transactionid=" + data["tran_id"];
-            string returnDeeplink = "{'ios_scheme':" + link + ",'android_scheme':'" + link + "'}";
+
+            //base64_encode('{"ios_scheme":"https://uat-epayment.com.kh/app/?value={\"bankRefId\":\"###BANK_REF###\",
+            //    \"msgDesc\":\"###MSG_DESC###\",\"msgCode\":\"###MSG_CODE###\",\"transactionId\":\"###TRAN_ID###\"}"}') ?> "/>
+
+            string link = "westernschool://western.edu.kh?userid=" + ID + "&transactionid=" + data["tran_id"];            
+            //string link = "http://google.com";
+            string returnDeeplink = "{'ios_scheme':'" + link + "','android_scheme':'" + link + "'}";
             data["return_deeplink"] = Convert.ToBase64String(Encoding.ASCII.GetBytes(returnDeeplink));
             string toHash = data["req_time"].ToString()
                           + data["merchant_id"].ToString()
@@ -478,7 +485,7 @@ namespace WIS.Services
             data["hash"] = HashToString(toHash, Encoding.ASCII.GetBytes(this.aba_public_key));
             // Create request and receive response
             string url = this.aba_baseurl + "purchase";
-            FormEngine.MultipartFormDataPost((response) =>
+            FormEngine.MultipartFormDataPostForUrl((response) =>
             {                
                 del(response);
             }, url, data,true);
@@ -502,9 +509,13 @@ namespace WIS.Services
             data["type"] = "purchase";            
             data["payment_option"] = "abapay_deeplink";            
             string ID = Preferences.Get("ID", "");
-            string link = "westernschool://western.edu.kh?userid=" + ID + "&transactionid=" + data["tran_id"];
-            string returnDeeplink = "{'ios_scheme':" + link + ",'android_scheme':'" + link + "'}";                                      
+            //string link = "westernschool://western.edu.kh?userid=" + ID + "&transactionid=" + data["tran_id"];            
+            //string returnDeeplink = "{'ios_scheme':" + link + ",'android_scheme':'" + link + "'}";
+            //string link = "westernschool://";
+            //string returnDeeplink = "{'ios_scheme':'" + link + "'}";
+            string returnDeeplink = "{\"ios_scheme\":\"http://www.google.com\"}";
             data["return_deeplink"] = Convert.ToBase64String(Encoding.ASCII.GetBytes(returnDeeplink));
+            //data["return_deeplink"] = "eyJpb3Nfc2NoZW1lIjoiaHR0cDovL3d3dy5nb29nbGUuY29tIn0=";
             string toHash = data["req_time"].ToString()
                           + data["merchant_id"].ToString()
                           + data["tran_id"].ToString()
