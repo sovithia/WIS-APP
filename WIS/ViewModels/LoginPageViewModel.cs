@@ -230,8 +230,17 @@ namespace WIS.ViewModels
                                 if (CrossFirebasePushNotification.Current != null)
                                 {
                                     CrossFirebasePushNotification.Current.OnNotificationOpened += (s, p) => {
-                                        if (Application.Current != null)
-                                            Application.Current.MainPage.DisplayAlert(p.Data["aps.alert.title"].ToString(), p.Data["aps.alert.body"].ToString(), "OK");
+                                        if (p.Data.ContainsKey("aps.alert.data"))
+                                        {
+                                            string invoiceID = "";
+                                            Shell.Current.GoToAsync($"InvoiceDetails?ID={invoiceID}&IsSubmitable=true");
+                                        }
+                                        else
+                                        {
+                                            if (Application.Current != null)
+                                                Application.Current.MainPage.DisplayAlert(p.Data["aps.alert.title"].ToString(), p.Data["aps.alert.body"].ToString(), "OK");
+                                        }
+
                                     };
 
                                     CrossFirebasePushNotification.Current.OnNotificationReceived += (s, p) => {

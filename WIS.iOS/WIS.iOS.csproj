@@ -193,28 +193,28 @@
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2515" />
     <PackageReference Include="Xamarin.Essentials" Version="1.7.3" />
     <PackageReference Include="Syncfusion.Xamarin.Core">
-      <Version>20.2.0.39</Version>
+      <Version>20.2.0.45</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.Buttons">
-      <Version>20.2.0.39</Version>
+      <Version>20.2.0.45</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfListView">
-      <Version>20.2.0.39</Version>
+      <Version>20.2.0.45</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfRating">
-      <Version>20.2.0.39</Version>
+      <Version>20.2.0.45</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfComboBox">
-      <Version>20.2.0.39</Version>
+      <Version>20.2.0.45</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.Cards">
-      <Version>20.2.0.39</Version>
+      <Version>20.2.0.45</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfBadgeView">
-      <Version>20.2.0.39</Version>
+      <Version>20.2.0.45</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfSchedule">
-      <Version>20.2.0.39</Version>
+      <Version>20.2.0.45</Version>
     </PackageReference>
     <PackageReference Include="sqlite-net-pcl">
       <Version>1.8.116</Version>
@@ -223,22 +223,22 @@
       <Version>13.0.1</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfDataForm">
-      <Version>20.2.0.39</Version>
+      <Version>20.2.0.45</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfPicker">
-      <Version>20.2.0.39</Version>
+      <Version>20.2.0.45</Version>
     </PackageReference>
     <PackageReference Include="Xam.Plugin.Media">
       <Version>5.0.1</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfPullToRefresh">
-      <Version>20.2.0.39</Version>
+      <Version>20.2.0.45</Version>
     </PackageReference>
     <PackageReference Include="Plugin.MediaManager.Forms">
       <Version>1.1.1</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfSignaturePad">
-      <Version>20.2.0.39</Version>
+      <Version>20.2.0.45</Version>
     </PackageReference>
     <PackageReference Include="Xam.Plugin.Connectivity">
       <Version>3.2.0</Version>
@@ -250,10 +250,10 @@
       <Version>4.5.3</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfBusyIndicator">
-      <Version>20.2.0.39</Version>
+      <Version>20.2.0.45</Version>
     </PackageReference>
     <PackageReference Include="SkiaSharp.Views.Forms">
-      <Version>2.88.0</Version>
+      <Version>2.88.1</Version>
     </PackageReference>
     <PackageReference Include="Plugin.FirebasePushNotification">
       <Version>3.4.25</Version>
@@ -265,7 +265,7 @@
       <Version>4.7.1</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfPopupLayout">
-      <Version>20.2.0.39</Version>
+      <Version>20.2.0.45</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

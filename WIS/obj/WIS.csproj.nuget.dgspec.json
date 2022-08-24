@@ -13,9 +13,6 @@
         "packagesPath": "/Users/sovi/.nuget/packages/",
         "outputPath": "/Users/sovi/Projects/WIS-APP/WIS/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
-        ],
         "configFilePaths": [
           "/Users/sovi/.config/NuGet/NuGet.Config"
         ],
@@ -63,63 +60,63 @@
             },
             "SkiaSharp.Views.Forms": {
               "target": "Package",
-              "version": "[2.88.0, )"
+              "version": "[2.88.1, )"
             },
             "Syncfusion.Xamarin.Buttons": {
               "target": "Package",
-              "version": "[20.2.0.39, )"
+              "version": "[20.2.0.45, )"
             },
             "Syncfusion.Xamarin.Cards": {
               "target": "Package",
-              "version": "[20.2.0.39, )"
+              "version": "[20.2.0.45, )"
             },
             "Syncfusion.Xamarin.Core": {
               "target": "Package",
-              "version": "[20.2.0.39, )"
+              "version": "[20.2.0.45, )"
             },
             "Syncfusion.Xamarin.SfBadgeView": {
               "target": "Package",
-              "version": "[20.2.0.39, )"
+              "version": "[20.2.0.45, )"
             },
             "Syncfusion.Xamarin.SfBusyIndicator": {
               "target": "Package",
-              "version": "[20.2.0.39, )"
+              "version": "[20.2.0.45, )"
             },
             "Syncfusion.Xamarin.SfComboBox": {
               "target": "Package",
-              "version": "[20.2.0.39, )"
+              "version": "[20.2.0.45, )"
             },
             "Syncfusion.Xamarin.SfDataForm": {
               "target": "Package",
-              "version": "[20.2.0.39, )"
+              "version": "[20.2.0.45, )"
             },
             "Syncfusion.Xamarin.SfListView": {
               "target": "Package",
-              "version": "[20.2.0.39, )"
+              "version": "[20.2.0.45, )"
             },
             "Syncfusion.Xamarin.SfPicker": {
               "target": "Package",
-              "version": "[20.2.0.39, )"
+              "version": "[20.2.0.45, )"
             },
             "Syncfusion.Xamarin.SfPopupLayout": {
               "target": "Package",
-              "version": "[20.2.0.39, )"
+              "version": "[20.2.0.45, )"
             },
             "Syncfusion.Xamarin.SfPullToRefresh": {
               "target": "Package",
-              "version": "[20.2.0.39, )"
+              "version": "[20.2.0.45, )"
             },
             "Syncfusion.Xamarin.SfRating": {
               "target": "Package",
-              "version": "[20.2.0.39, )"
+              "version": "[20.2.0.45, )"
             },
             "Syncfusion.Xamarin.SfSchedule": {
               "target": "Package",
-              "version": "[20.2.0.39, )"
+              "version": "[20.2.0.45, )"
             },
             "Syncfusion.Xamarin.SfSignaturePad": {
               "target": "Package",
-              "version": "[20.2.0.39, )"
+              "version": "[20.2.0.45, )"
             },
             "Xam.Plugin.Connectivity": {
               "target": "Package",
@@ -157,7 +154,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.408/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.422/RuntimeIdentifierGraph.json"
         }
       }
     }

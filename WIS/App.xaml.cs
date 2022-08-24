@@ -115,11 +115,22 @@ namespace WIS
             if (!uri.ToString().ToLowerInvariant().StartsWith(appDomain, StringComparison.Ordinal))
                 return;
 
+            string invoiceID = ""; // Todo Retrieve from Parameter
+
             // Check if authentified
             // Launch login page with message if not authentified
             // else
-            //Shell.Current.GoToAsync($"InvoiceDetails?ID={invoice.id}&IsSubmitable=true");
-            
+            if (DataService.Instance.CurrentUser != null) // check if authenticated
+            {
+                Shell.Current.GoToAsync($"InvoiceDetails?ID={invoiceID}&IsSubmitable=true");
+
+            }
+            else
+            {
+
+                MainPage = new LoginPage();
+            }
+
             base.OnAppLinkRequestReceived(uri);
         }
     }

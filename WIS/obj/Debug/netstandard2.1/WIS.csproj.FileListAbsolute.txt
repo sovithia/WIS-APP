@@ -2,7 +2,6 @@
 /Users/sovi/Projects/WIS-APP/WIS/bin/Debug/netstandard2.1/WIS.dll
 /Users/sovi/Projects/WIS-APP/WIS/bin/Debug/netstandard2.1/ref/WIS.dll
 /Users/sovi/Projects/WIS-APP/WIS/bin/Debug/netstandard2.1/WIS.pdb
-/Users/sovi/Projects/WIS-APP/WIS/obj/Debug/netstandard2.1/WIS.GeneratedMSBuildEditorConfig.editorconfig
 /Users/sovi/Projects/WIS-APP/WIS/obj/Debug/netstandard2.1/App.xaml.g.cs
 /Users/sovi/Projects/WIS-APP/WIS/obj/Debug/netstandard2.1/AppShell.xaml.g.cs
 /Users/sovi/Projects/WIS-APP/WIS/obj/Debug/netstandard2.1/Styles/AvatarViewStyles.xaml.g.cs
